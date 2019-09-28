@@ -1,0 +1,13 @@
+config:
+  backup: true
+  create: true
+  dotpath: dotfiles
+  longkey: true
+dotfiles:
+  f_zshrc:
+    src: zshrc
+    dst: ~/.zshrc
+profiles:
+  anarchy:
+    dotfiles:
+    - f_zshrc
