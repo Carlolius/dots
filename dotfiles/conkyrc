@@ -1,0 +1,134 @@
+# Use Xft?
+use_xft yes
+xftfont Trebuchet MS:size=6
+xftalpha 0.8
+text_buffer_size 2048
+background yes
+# Update interval in seconds
+update_interval 1
+xftalpha 0.8
+own_window_argb_visual no
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Create own window instead of using desktop (required in nautilus)
+own_window yes
+own_window_transparent yes
+own_window_type override
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Minimum size of text area
+minimum_size 250 0
+
+# Draw shades?
+draw_shades no
+
+# Draw outlines?
+draw_outline no
+
+# Draw borders around text
+draw_borders no
+
+# Stippled borders?
+stippled_borders 0
+
+# border margins
+border_margin 5
+
+# border width
+border_width 1
+
+# Default colors and also border colors
+#default_color white
+# own_window_colour white
+
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+net_avg_samples 2
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale yes
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+use_spacer none
+
+temperature_unit celsius
+maximum_width 400
+draw_graph_borders no
+default_color 00FF00
+alignment top_right
+gap_x 20
+gap_y 10
+
+TEXT
+${font sans-serif:bold:size=8}SYSTEMA ${hr 2}
+${font sans-serif:normal:size=8}$sysname $kernel $alignr $machine
+Host:$alignr$nodename
+Tiempo encendido:$alignr$uptime
+Bateria: $battery $alignr$battery_time
+###############################################################################
+${font sans-serif:bold:size=8}PROCESADOR ${hr 2}
+${font sans-serif:normal:size=8}${cpugraph cpu1}
+CPU1: ${cpu cpu1}% ${goto 65} ${cpubar cpu1}
+CPU2: ${cpu cpu2}% ${goto 65} ${cpubar cpu2}
+Temperatura: ${alignr} ${acpitemp}°C
+
+###############################################################################
+${font sans-serif:bold:size=8}MEMORIA ${hr 2}
+${font sans-serif:normal:size=8}RAM $alignc $mem / $memmax $alignr $memperc%
+$membar
+SWAP $alignc ${swap} / ${swapmax} $alignr ${swapperc}%
+${swapbar}
+
+###############################################################################
+${font sans-serif:bold:size=8}DISCO ${hr 2}
+${font sans-serif:normal:size=8}/ $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
+${fs_bar /}
+Lectura / Escritura: $alignr $diskio_read/ $diskio_write
+${font sans-serif:normal:size=8}/Datos $alignc ${fs_used /mnt/4EAA9EAF45D54629} / ${fs_size /mnt/4EAA9EAF45D54629} $alignr ${fs_used_perc /mnt/4EAA9EAF45D54629}%
+${fs_bar /mnt/4EAA9EAF45D54629}
+
+###############################################################################
+${font sans-serif:bold:size=8}PROCESOS ${hr 2}
+${font sans-serif:normal:size=8}${top_mem name 1}${alignr}${top mem 1} %
+${top_mem name 2}${alignr}${top mem 2} %
+$font${top_mem name 3}${alignr}${top mem 3} %
+$font${top_mem name 4}${alignr}${top mem 4} %
+$font${top_mem name 5}${alignr}${top mem 5} %
+
+###############################################################################
+${if_existing /sys/class/net/wlp3s0/operstate up}#
+${font sans-serif:bold:size=8}Wi-Fi ${hr 2}
+${font sans-serif:normal:size=8}IP Externa: ${alignr}${texeci 3600 wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1}
+IP Local: $alignr ${addr wlp3s0}
+Red: $alignr ${wireless_essid wlp3s0}
+Potencia: $alignr ${wireless_link_qual_perc wlp3s0}%
+Descarga: ${downspeed wlp3s0}/s $alignr Subida: ${upspeed wlp3s0}/s
+${downspeedgraph wlp3s0 30,120} $alignr ${upspeedgraph wlp3s0 30,120}
+Total: ${totaldown wlp3s0}$alignr Total: ${totalup wlp3s0}
+${endif}#
+##################################################################################
+${if_existing /sys/class/net/eno1/operstate up}#
+${font sans-serif:bold:size=8}Cable ${hr 2}
+${font sans-serif:normal:size=8}IP Externa: ${alignr}${texeci 3600 wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1}
+IP Local: $alignr ${addr enp0s25}
+Descarga: ${downspeed enp0s25}/s $alignr Subida: ${upspeed enp0s25}/s
+${downspeedgraph enp0s25 30,120} $alignr ${upspeedgraph enp0s25 30,120}
+Total: ${totaldown enp0s25}$alignr Total: ${totalup enp0s25}
+${endif}#
+##################################################################################

@@ -7,7 +7,23 @@ dotfiles:
   f_zshrc:
     src: zshrc
     dst: ~/.zshrc
+  f_bashrc:
+    src: bashrc
+    dst: ~/.bashrc
+  f_inicio-conky.sh:
+    src: inicio-conky.sh
+    dst: ~/.inicio-conky.sh
+  f_conkyrc:
+    src: conkyrc
+    dst: ~/.conkyrc
+  f_conkyrc2:
+    src: conkyrc2
+    dst: ~/.conkyrc2
 profiles:
   anarchy:
     dotfiles:
     - f_zshrc
+    - f_bashrc
+    - f_inicio-conky.sh
+    - f_conkyrc
+    - f_conkyrc2
