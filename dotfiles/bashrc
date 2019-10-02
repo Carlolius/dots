@@ -1,3 +1,4 @@
+# {{@@ header() @@}}
 #
 # ~/.bashrc
 #
@@ -135,6 +136,8 @@ export PS1="\[\033[38;5;12m\][\[$(tput sgr0)\]\[\033[38;5;10m\]\u\[$(tput sgr0)\
 [ -e "$DIR_COLORS" ] || DIR_COLORS=""
 eval "`dircolors -b $DIR_COLORS`"
 
+{%@@ if profile == "anarchy" @@%}
+
 # J2SE
 export JAVA_HOME=/opt/jdk1.8.0_181
 
@@ -148,3 +151,11 @@ export MAVEN_OPTS="-Xms512m -Xmx1024m"
 
 # Eclipse.
 PATH=/opt/eclipse:$PATH
+
+{%@@ elif profile == "bender-el-que-ofende" @@%}
+
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
+
+{%@@ endif @@%}

@@ -24,7 +24,7 @@ ZSH_THEME="robbyrussell"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
 # DISABLE_UPDATE_PROMPT="true"
@@ -42,7 +42,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -94,42 +94,7 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Aliases
+# Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias cls="clear"
-alias ll="ls -lisa"
-alias home="cd ~"
-alias myip="curl http://ipecho.net/plain; echo"
-
-function extract {
- if [ -z "$1" ]; then
-    # display usage if no parameters given
-    echo "Usage: extract <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
- else
-    if [ -f $1 ] ; then
-        # NAME=${1%.*}
-        # mkdir $NAME && cd $NAME
-        case $1 in
-          *.tar.bz2)   tar xvjf ../$1    ;;
-          *.tar.gz)    tar xvzf ../$1    ;;
-          *.tar.xz)    tar xvJf ../$1    ;;
-          *.lzma)      unlzma ../$1      ;;
-          *.bz2)       bunzip2 ../$1     ;;
-          *.rar)       unrar x -ad ../$1 ;;
-          *.gz)        gunzip ../$1      ;;
-          *.tar)       tar xvf ../$1     ;;
-          *.tbz2)      tar xvjf ../$1    ;;
-          *.tgz)       tar xvzf ../$1    ;;
-          *.zip)       unzip ../$1       ;;
-          *.Z)         uncompress ../$1  ;;
-          *.7z)        7z x ../$1        ;;
-          *.xz)        unxz ../$1        ;;
-          *.exe)       cabextract ../$1  ;;
-          *)           echo "extract: '$1' - unknown archive method" ;;
-        esac
-    else
-        echo "$1 - file does not exist"
-    fi
-fi
-}
+source $HOME/.config/aliases

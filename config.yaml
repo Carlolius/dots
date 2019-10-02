@@ -11,14 +11,17 @@ dotfiles:
     src: bashrc
     dst: ~/.bashrc
   f_inicio-conky.sh:
-    src: inicio-conky.sh
+    src: /conky/inicio-conky.sh
     dst: ~/.inicio-conky.sh
   f_conkyrc:
-    src: conkyrc
+    src: /conky/conkyrc
     dst: ~/.conkyrc
   f_conkyrc2:
-    src: conkyrc2
+    src: /conky/conkyrc2
     dst: ~/.conkyrc2
+  f_aliases:
+    src: aliases
+    dst: ~/.config/aliases
 profiles:
   anarchy:
     dotfiles:
@@ -27,3 +30,9 @@ profiles:
     - f_inicio-conky.sh
     - f_conkyrc
     - f_conkyrc2
+    - f_aliases
+  bender-el-que-ofende:
+    dotfiles:
+    - f_zshrc
+    - f_aliases
+    - f_bashrc
