@@ -1,3 +1,5 @@
+# {{@@ header() @@}} #
+
 # Use Xft?
 use_xft yes
 xftfont Trebuchet MS:size=6
