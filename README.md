@@ -22,7 +22,6 @@ To deactivate the enviroment use: `deactivate`
 
 ## To do
 * Add more dotfiles
-* Cheatsheet for vim and i3
 * How to use dotdrop
 
 [dotdrop]: https://github.com/deadc0de6/dotdrop

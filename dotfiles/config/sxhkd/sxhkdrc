@@ -1,0 +1,5 @@
+mod4+Return
+	i3-sensible-terminal
+
+mod4+d
+	rofi -show run

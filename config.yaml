@@ -22,6 +22,15 @@ dotfiles:
   f_aliases:
     src: aliases
     dst: ~/.config/aliases
+  f_xinitrc:
+    src: xinitrc
+    dst: ~/.xinitrc
+  f_xprofile:
+    src: xprofile
+    dst: ~/.xprofile
+  f_config_sxhkd_sxhkdrc:
+    src: config/sxhkd/sxhkdrc
+    dst: ~/.config/sxhkd/sxhkdrc
 profiles:
   anarchy:
     dotfiles:
@@ -36,3 +45,8 @@ profiles:
     - f_zshrc
     - f_aliases
     - f_bashrc
+  nibbler:
+    dotfiles:
+    - f_xinitrc
+    - f_xprofile
+    - f_config_sxhkd_sxhkdrc

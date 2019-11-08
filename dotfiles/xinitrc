@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Shellcheck source=/home/carlos/.xprofile
+[ -f ~/.xprofile ] && . ~/.xprofile &
+exec i3
