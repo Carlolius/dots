@@ -31,6 +31,9 @@ dotfiles:
   f_config_sxhkd_sxhkdrc:
     src: config/sxhkd/sxhkdrc
     dst: ~/.config/sxhkd/sxhkdrc
+  f_xresources:
+    src: Xresources
+    dst: ~/.Xresources
 profiles:
   anarchy:
     dotfiles:
@@ -50,3 +53,4 @@ profiles:
     - f_xinitrc
     - f_xprofile
     - f_config_sxhkd_sxhkdrc
+    - f_xresources
