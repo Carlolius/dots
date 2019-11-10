@@ -34,6 +34,12 @@ dotfiles:
   f_xresources:
     src: Xresources
     dst: ~/.Xresources
+  f_config_i3_barconfig:
+    src: config/i3/barconfig
+    dst: ~/.config/i3/barconfig
+  f_config_i3_config:
+    src: config/i3/config
+    dst: ~/.config/i3/config
 profiles:
   anarchy:
     dotfiles:
@@ -54,3 +60,5 @@ profiles:
     - f_xprofile
     - f_config_sxhkd_sxhkdrc
     - f_xresources
+    - f_config_i3_barconfig
+    - f_config_i3_config

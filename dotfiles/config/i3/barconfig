@@ -1,0 +1,76 @@
+# Config of py3status
+
+# Configuration
+general {
+	colors = true
+	interval = 5
+}
+
+# Modules
+order += "static_string i3lock"
+order += "group uptime"
+order += "sysdata"
+order += "disk /"
+#order += "diskdata /Datos"
+order += "hddtemp"
+order += "wifi"
+order += "battery_level"
+order += "i3block"
+order += "backlight"
+order += "volume_status"
+order += "time"
+
+# Modules configuration
+
+backlight {
+	brightness_delta = 12
+	format = '☼ {level}%'
+}
+battery_level {
+	hide_seconds = true
+	notify_low_level = true
+	format = '[\?color=percent ⚡ {percent}% {time_remaining}]'
+}
+
+disk "/" {
+	format = '%avail'
+}
+
+hddtemp {
+	gradients = True
+	format_hdd = '\?color=temperature {temperature}°C'
+}
+
+sysdata{
+	format = 'C:[\?color=cpu_used_percent {cpu_used_percent}%] [\?color=cpu_temp {cpu_temp}{temp_unit}] R:[\?color=mem_used_percent {mem_used}/{mem_total}{mem_total_unit}] S:[\?color=swap_used_percent {swap_used}/{swap_total}{swap_total_unit}]'
+}
+
+static_string i3lock {
+	format = "🔒"
+	on_click 1 = "exec i3lock -c 000000 & sleep 5 && pgrep i3lock && xset dpms force off"
+}
+
+time {
+	format = "%d/%m/%Y %H:%M"
+}
+
+group uptime {
+    format = "up {output}"
+    uptime {
+        format = '[\?if=weeks {weeks}w ][\?if=days {days}d ][\?if=hours {hours}h ][\?if=minutes {minutes}m]'
+    }
+    uptime {
+        format = '[\?if=days {days}, ][\?if=hours {hours}:][\?if=minutes {minutes:02d}]'
+    }
+}
+
+volume_status {
+	volume_delta = 1
+	cache_timeout = 5
+	format = '[\?if=is_input 😮|♪] {percentage}%'
+	format_muted = '[\?if=is_input 😶|♪] muted'
+}
+
+wifi {
+	format = '{ssid} {signal_percent}%|Wi-Fi disconnected'
+}
