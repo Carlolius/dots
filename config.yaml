@@ -62,3 +62,4 @@ profiles:
     - f_xresources
     - f_config_i3_barconfig
     - f_config_i3_config
+    - f_bashrc

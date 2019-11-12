@@ -6,6 +6,16 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+{%@@ if profile == "nibbler" @@%}
+# Executes startx at login in tt1
+if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec startx
+fi
+
+PS1='[\u@\h \W]\$ '
+
+{%@@ else @@%}
+
 # Make colorcoding available for everyone
 
 Black='\e[0;30m'        # Black
@@ -136,6 +146,9 @@ export PS1="\[\033[38;5;12m\][\[$(tput sgr0)\]\[\033[38;5;10m\]\u\[$(tput sgr0)\
 [ -e "$DIR_COLORS" ] || DIR_COLORS=""
 eval "`dircolors -b $DIR_COLORS`"
 
+# Endif for no nibbler options
+{%@@ endif @@%}
+
 {%@@ if profile == "anarchy" @@%}
 
 # J2SE
@@ -157,5 +170,4 @@ PATH=/opt/eclipse:$PATH
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
 fi
-
 {%@@ endif @@%}
