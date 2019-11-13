@@ -29,7 +29,7 @@ backlight {
 battery_level {
 	hide_seconds = true
 	notify_low_level = true
-	format = '[\?color=percent  {percent}% {time_remaining}]'
+	format = '[\?color=percent  {percent}% {time_remaining}]'
 }
 
 disk "/" {
