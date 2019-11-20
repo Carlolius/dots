@@ -2,4 +2,9 @@
 *background: #000000
 !*font: mono:size=18:antialias=true
 rofi.font: Hack 12
+
 xterm*faceName: Hack
+xterm.vt100.selectToClipboard
+xterm*VT100.Translations: #override \
+                 Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
+                 Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)
