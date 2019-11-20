@@ -7,6 +7,7 @@ To install the **dots** repository in a new host you need to clone the [Dotdrop]
 ~~~
 git clone --recursive-submodules https://github.com/Carlolius/dots.git
 virtualenv -p python3 env
+echo 'env' > .gitignore
 source env/bin/activate
 pip install -r dotdrop/requirements.txt
 ~~~
@@ -19,6 +20,15 @@ source env/bin/activate
 ./dotdrop.sh --help
 ~~~
 To deactivate the enviroment use: `deactivate`
+
+## Python update
+When Python updates it can't find the shared libraries for the virtual env so it's necesary to delete and create a new one.
+~~~
+rm -r env/ # Path to the virtual env
+virtualenv -p python3 env
+source env/bin/activate
+pip install -r dotdrop/requirements.txt
+~~~
 
 ## To do
 * Add more dotfiles
