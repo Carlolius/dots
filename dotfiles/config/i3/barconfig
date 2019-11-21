@@ -11,7 +11,7 @@ order += "static_string i3lock"
 order += "group uptime"
 order += "sysdata"
 order += "hddtemp"
-order += "disk /"
+order += "diskdata"
 #order += "diskdata /Datos"
 order += "wifi"
 order += "battery_level"
@@ -32,13 +32,13 @@ battery_level {
 	format = '[\?color=percent  {percent}% {time_remaining}]'
 }
 
-disk "/" {
-	format = '%avail'
+diskdata {
+	format = '[\?color=used /:{used_percent}%]'
 }
 
 hddtemp {
 	gradients = True
-	format_hdd = '\?color=temperature  {temperature}°C'
+	format_hdd = '[\?color=temperature  {temperature}°C]'
 }
 
 sysdata{
@@ -69,8 +69,10 @@ volume_status {
 	cache_timeout = 5
 	format = '[\?if=is_input 😮|♪] {percentage}%'
 	format_muted = '[\?if=is_input 😶|♪] muted'
+	on_click 3 = "exec i3-sensible-terminal -e pulsemixer"
 }
 
 wifi {
 	format = ' {ssid} {signal_percent}%| disconnected'
+	on_click 1 = "exec i3-sensible-terminal -e sudo wifi-menu -o"
 }
