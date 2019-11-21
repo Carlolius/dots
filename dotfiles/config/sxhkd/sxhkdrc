@@ -1,9 +1,30 @@
 # Shortcuts to default terminal
-mod4+Return
+mod4 + Return
 	i3-sensible-terminal
-mod4+x
+alt + x
 	i3-sensible-terminal
 
 # Shows rofi
-mod4+d
+mod4 + d
 	rofi -show run
+
+# Screenshot and copy to clipboard
+shift + Print
+	maim -s | xclip -selection clipboard -t image/png; xclip -selection clipboard -t image/png -o > ~/Screenshots/$(date +%F-%H:%M:%S).png
+
+Print
+	maim | xclip -selection clipboard -t image/png; xclip -selection clipboard -t image/png -o > ~/Screenshots/$(date +%F-%H:%M:%S).png
+
+# Volume
+XF86AudioRaiseVolume
+	pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+XF86AudioLowerVolume
+	pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+XF86AudioMute
+	pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+XF86AudioMicMute
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# Locksreen
+control + mod1 + l
+	i3lock -c 000000 & sleep 5 && pgrep i3lock && xset dpms force off
