@@ -10,9 +10,8 @@ general {
 order += "static_string i3lock"
 order += "group uptime"
 order += "sysdata"
-order += "hddtemp"
 order += "diskdata"
-#order += "diskdata /Datos"
+order += "hddtemp"
 order += "wifi"
 order += "battery_level"
 order += "i3block"
@@ -33,16 +32,16 @@ battery_level {
 }
 
 diskdata {
-	format = '[\?color=used /:{used_percent}%]'
+	format = '[\?color=used {used_percent}%]'
 }
 
 hddtemp {
 	gradients = True
-	format_hdd = '[\?color=temperature  {temperature}°C]'
+	format_hdd = '[\?color=temperature  {temperature}°C]'
 }
 
 sysdata{
-	format = '[ \?color=cpu_temp {cpu_temp}{temp_unit}] [\?color=cpu_used_percent {cpu_used_percent}%]  [\?color=mem_used_percent {mem_used}/{mem_total}{mem_total_unit}]  [\?color=swap_used_percent {swap_used}/{swap_total}{swap_total_unit}]'
+	format = '[ \?color=cpu_used_percent {cpu_used_percent}%] [ \?color=cpu_temp {cpu_temp}{temp_unit}]  [\?color=mem_used_percent {mem_used}/{mem_total}{mem_total_unit}]  [\?color=swap_used_percent {swap_used}/{swap_total}{swap_total_unit}]'
 }
 
 static_string i3lock {
