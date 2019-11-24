@@ -14,6 +14,8 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:monospace 8
+default_border pixel 1
+hide_edge_borders smart
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -169,6 +171,24 @@ bar {
 }
 
 ##### Extra config #####
+
+# Colors
+set $bg		#000000 
+set $red	#ff0000
+set $green	#18f018
+set $yellow	#ffff00
+set $blue	#5454ff
+set $purple	#7B00FF
+set $aqua	#54ffff
+set $gray	#a89984
+set $black	#000000
+set $darkred	#b21818
+
+# Class                 border|backgr|text|indicator|child_border
+client.focused          $red $red $black $purple $red
+client.focused_inactive $darkred $darkred $black $purple $darkred
+client.unfocused        $black $black $green $purple $darkgray
+client.urgent           $red $yellow $black $yellow $red
 
 # Keyboard shorcut
 bindsym Control+Mod1+Left workspace prev
