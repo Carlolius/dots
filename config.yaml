@@ -40,6 +40,12 @@ dotfiles:
   f_config_i3_config:
     src: config/i3/config
     dst: ~/.config/i3/config
+  f_config_rofi_config.rasi:
+    src: config/rofi/config.rasi
+    dst: ~/.config/rofi/config.rasi
+  f_config_rofi_personal.rasi:
+    src: config/rofi/personal.rasi
+    dst: ~/.config/rofi/personal.rasi
 profiles:
   anarchy:
     dotfiles:
@@ -63,3 +69,5 @@ profiles:
     - f_config_i3_barconfig
     - f_config_i3_config
     - f_bashrc
+    - f_config_rofi_config.rasi
+    - f_config_rofi_personal.rasi
