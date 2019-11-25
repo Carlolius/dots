@@ -46,6 +46,9 @@ dotfiles:
   f_config_rofi_personal.rasi:
     src: config/rofi/personal.rasi
     dst: ~/.config/rofi/personal.rasi
+  f_config_nvim_init.vim:
+    src: config/nvim/init.vim
+    dst: ~/.config/nvim/init.vim
 profiles:
   anarchy:
     dotfiles:
@@ -71,3 +74,4 @@ profiles:
     - f_bashrc
     - f_config_rofi_config.rasi
     - f_config_rofi_personal.rasi
+    - f_config_nvim_init.vim
