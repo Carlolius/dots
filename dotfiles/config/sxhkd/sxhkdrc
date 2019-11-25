@@ -10,7 +10,7 @@ super + Escape
 
 # Shows rofi
 mod4 + d
-	rofi -show run -config ~/.config/rofi/config.rasi
+	rofi -show run
 
 # Screenshot and copy to clipboard
 shift + Print
@@ -21,9 +21,9 @@ Print
 
 # Volume
 XF86AudioRaiseVolume
-	pactl set-sink-volume @DEFAULT_SINK@ +3% && $refresh_i3status
+	pactl set-sink-volume @DEFAULT_SINK@ +2% && $refresh_i3status
 XF86AudioLowerVolume
-	pactl set-sink-volume @DEFAULT_SINK@ -3% && $refresh_i3status
+	pactl set-sink-volume @DEFAULT_SINK@ -2% && $refresh_i3status
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 XF86AudioMicMute
