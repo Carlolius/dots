@@ -33,15 +33,16 @@
 *.color14:      #54ffff
 
 ! white
-*.color7:       #b2b2b2
+*.color7:	#b2b2b2
 *.color15:      #ffffff
 
 ! Xterm
 ! Font
 xterm*faceName: Hack
+xterm*faceSize: 9 
 ! Clipboard
-xterm.vt100.selectToClipboard
-xterm*VT100.Translations: #override \
+xterm*vt100.selectToClipboard
+xterm*vt100.Translations: #override \n\
         Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
         Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)
 ! Keybind Fontsize

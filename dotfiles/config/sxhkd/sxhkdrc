@@ -31,4 +31,4 @@ XF86AudioMicMute
 
 # Locksreen
 control + mod1 + l
-	i3lock -c 000000 & sleep 5 && pgrep i3lock && xset dpms force off
+	sleep .2 && i3lock -c 000000 & sleep 5 && pgrep i3lock && xset dpms force off
