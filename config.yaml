@@ -28,25 +28,25 @@ dotfiles:
   f_xprofile:
     src: xprofile
     dst: ~/.xprofile
-  f_config_sxhkd_sxhkdrc:
+  f_sxhkd:
     src: config/sxhkd/sxhkdrc
     dst: ~/.config/sxhkd/sxhkdrc
   f_xresources:
     src: Xresources
     dst: ~/.Xresources
-  f_config_i3_barconfig:
+  f_i3_barconfig:
     src: config/i3/barconfig
     dst: ~/.config/i3/barconfig
-  f_config_i3_config:
+  f_i3_config:
     src: config/i3/config
     dst: ~/.config/i3/config
-  f_config_rofi_config.rasi:
+  f_rofi_config.rasi:
     src: config/rofi/config.rasi
     dst: ~/.config/rofi/config.rasi
-  f_config_rofi_personal.rasi:
+  f_rofi_personal.rasi:
     src: config/rofi/personal.rasi
     dst: ~/.config/rofi/personal.rasi
-  f_config_nvim_init.vim:
+  f_nvim_init.vim:
     src: config/nvim/init.vim
     dst: ~/.config/nvim/init.vim
 profiles:
@@ -67,11 +67,11 @@ profiles:
     dotfiles:
     - f_xinitrc
     - f_xprofile
-    - f_config_sxhkd_sxhkdrc
+    - f_sxhkd
     - f_xresources
-    - f_config_i3_barconfig
-    - f_config_i3_config
+    - f_i3_barconfig
+    - f_i3_config
     - f_bashrc
-    - f_config_rofi_config.rasi
-    - f_config_rofi_personal.rasi
-    - f_config_nvim_init.vim
+    - f_rofi_config.rasi
+    - f_rofi_personal.rasi
+    - f_nvim_init.vim
