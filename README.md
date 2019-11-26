@@ -20,6 +20,13 @@ source env/bin/activate
 ./dotdrop.sh --help
 ~~~
 To deactivate the enviroment use: `deactivate`
+### Install
+To add new config files to your computer, edit **configure.yaml** with the desired dotfiles and install.
+`./dotdrop.sh install`
+
+### Import
+To save new dotfiles to the cloud you need to use import with the name of the file.
+`./dotdrop.sh import ~/path/to/file/`
 
 ## Python update
 When Python updates it can't find the shared libraries for the virtual env so it's necesary to delete and create a new one.
