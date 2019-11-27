@@ -14,6 +14,11 @@ fi
 
 PS1='[\u@\h \W]\$ '
 
+# Load aliases 
+if [ -f ~/.config/aliases ]; then
+    source ~/.config/aliases
+fi
+
 {%@@ else @@%}
 
 # Make colorcoding available for everyone

@@ -5,10 +5,10 @@ config:
   longkey: true
 dotfiles:
   f_zshrc:
-    src: zshrc
+    src: zsh/zshrc
     dst: ~/.zshrc
   f_bashrc:
-    src: bashrc
+    src: bash/bashrc
     dst: ~/.bashrc
   f_inicio-conky.sh:
     src: conky/inicio-conky.sh
@@ -23,16 +23,16 @@ dotfiles:
     src: aliases
     dst: ~/.config/aliases
   f_xinitrc:
-    src: xinitrc
+    src: X/xinitrc
     dst: ~/.xinitrc
   f_xprofile:
-    src: xprofile
+    src: X/xprofile
     dst: ~/.xprofile
   f_sxhkd:
     src: config/sxhkd/sxhkdrc
     dst: ~/.config/sxhkd/sxhkdrc
   f_xresources:
-    src: Xresources
+    src: X/Xresources
     dst: ~/.Xresources
   f_i3_barconfig:
     src: config/i3/barconfig
@@ -52,26 +52,27 @@ dotfiles:
 profiles:
   anarchy:
     dotfiles:
-    - f_zshrc
+    - f_aliases
     - f_bashrc
-    - f_inicio-conky.sh
     - f_conkyrc
     - f_conkyrc2
-    - f_aliases
+    - f_inicio-conky.sh
+    - f_zshrc
   bender-el-que-ofende:
     dotfiles:
-    - f_zshrc
     - f_aliases
     - f_bashrc
+    - f_zshrc
   nibbler:
     dotfiles:
-    - f_xinitrc
-    - f_xprofile
-    - f_sxhkd
-    - f_xresources
+    - f_aliases
+    - f_bashrc
     - f_i3_barconfig
     - f_i3_config
-    - f_bashrc
+    - f_nvim_init.vim
     - f_rofi_config.rasi
     - f_rofi_personal.rasi
-    - f_nvim_init.vim
+    - f_sxhkd
+    - f_xinitrc
+    - f_xprofile
+    - f_xresources
