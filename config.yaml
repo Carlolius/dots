@@ -58,36 +58,6 @@ dotfiles:
   f_zprofile:
     src: zsh/zprofile
     dst: ~/.zprofile
-  f_mbsyncrc:
-    src: neomutt/mbsyncrc
-    dst: ~/.mbsyncrc
-    trans_read: gpg
-  f_msmtprc:
-    src: neomutt/msmtprc
-    dst: ~/.msmtprc
-    trans_read: gpg
-  d_neomutt_accounts:
-    src: neomutt/accounts
-    dst: ~/.config/neomutt/accounts
-    trans_read: gpg
-  f_neomutt_bindings:
-    src: neomutt/bindings
-    dst: ~/.config/neomutt/bindings
-  f_neomutt_colors:
-    src: neomutt/colors
-    dst: ~/.config/neomutt/colors
-  f_neomutt_mailcap:
-    src: neomutt/mailcap
-    dst: ~/.config/neomutt/mailcap
-  f_neomutt_neomuttrc:
-    src: neomutt/neomuttrc
-    dst: ~/.config/neomutt/neomuttrc
-    trans_read: gpg
-  f_neomutt_view-attachment.sh:
-    src: neomutt/view-attachment.sh
-    dst: ~/.config/neomutt/view-attachment.sh
-trans_read:
-    gpg: gpg2 -q --for-your-eyes-only --no-tty -d {0} > {1}
 profiles:
   anarchy:
     dotfiles:
@@ -121,9 +91,3 @@ profiles:
     - f_zshrc
     - f_mbsyncrc
     - f_msmtprc
-    - d_neomutt_accounts
-    - f_neomutt_bindings
-    - f_neomutt_colors
-    - f_neomutt_mailcap
-    - f_neomutt_neomuttrc
-    - f_neomutt_view-attachment.sh
