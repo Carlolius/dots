@@ -53,10 +53,10 @@ dotfiles:
     src: scripts
     dst: ~/scripts
   f_profile:
-    src: profile
+    src: bash/profile
     dst: ~/.profile
   f_zprofile:
-    src: zprofile
+    src: zsh/zprofile
     dst: ~/.zprofile
 profiles:
   anarchy:
@@ -74,17 +74,18 @@ profiles:
     - f_zshrc
   nibbler:
     dotfiles:
+    - d_scripts
     - f_aliases
     - f_bashrc
     - f_i3_barconfig
     - f_i3_config
     - f_nvim_init.vim
+    - f_profile
     - f_rofi_config.rasi
     - f_rofi_personal.rasi
     - f_sxhkd
     - f_xinitrc
     - f_xprofile
     - f_xresources
-    - d_scripts
-    - f_profile
     - f_zprofile
+    - f_zshrc  
