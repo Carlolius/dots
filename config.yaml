@@ -52,6 +52,12 @@ dotfiles:
   d_scripts:
     src: scripts
     dst: ~/scripts
+  f_profile:
+    src: profile
+    dst: ~/.profile
+  f_zprofile:
+    src: zprofile
+    dst: ~/.zprofile
 profiles:
   anarchy:
     dotfiles:
@@ -80,3 +86,5 @@ profiles:
     - f_xprofile
     - f_xresources
     - d_scripts
+    - f_profile
+    - f_zprofile
