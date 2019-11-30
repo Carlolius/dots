@@ -23,4 +23,5 @@ xidlehook \
 	--timer normal \
 	'10' \
 	'xset dpms force off' \
-	'xrandr --output "$PRIMARY_DISPLAY" --brightness 1'
+	'killall feh' \
+	`#xrandr --output "$PRIMARY_DISPLAY" --brightness 1`
