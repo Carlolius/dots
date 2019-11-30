@@ -11,9 +11,9 @@ xidlehook \
 	--timer normal \
 	'180' \
 	`#xrandr --output "$PRIMARY_DISPLAY" --brightness .1` \
-	'sxiv -fb ~/dots/media/aperture_laboratories.jpg' \
+	'feh -F ~/dots/media/aperture_laboratories.jpg' \
 	`#xrandr --output "$PRIMARY_DISPLAY" --brightness 1` \
-	'killall sxiv' \
+	'killall feh' \
 	`# Lock screen after another X seconds, full bright if user active` \
 	--timer normal \
 	'60' \
