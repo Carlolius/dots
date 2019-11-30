@@ -199,3 +199,4 @@ exec setxkbmap -layout es # Set the spanish layout for the keyboard
 # Autostart
 exec --no-startup-id mpv ~/dots/media/seatbelt.wav
 exec --no-startup-id sh ~/scripts/screenlock.sh
+exec --no-startup-id dropbox
