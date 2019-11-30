@@ -6,23 +6,23 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Enable colors and change prompt:
-autoload -U colors
-colors
-setopt PROMPT_SUBST
-PROMPT='%B%{$fg[green]%}%n%{$reset_color%}@%{$fg[cyan]%}%m%{$reset_color%}:%b%{$fg[yellow]%}%~%{$reset_color%}%(?..[%{$fg[red]%}%?%{$reset_color%}]) %(!.#.>) '
+#autoload -U colors
+#colors
+#setopt PROMPT_SUBST
+#PROMPT='%B%{$fg[green]%}%n%{$reset_color%}@%{$fg[cyan]%}%m%{$reset_color%}:%b%{$fg[yellow]%}%~%{$reset_color%}%(?..[%{$fg[red]%}%?%{$reset_color%}]) %(!.#.>) '
 
 HISTFILE=~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
-setopt appendhistory autocd beep extendedglob nomatch notify
-bindkey -v
+HISTSIZE=2000
+SAVEHIST=2000
+#setopt appendhistory autocd beep extendedglob nomatch notify
+#bindkey -v
 
-autoload -Uz compinit
-compinit
-zstyle ':completion:*' menu select
-zstyle ':completion::complete:*' gain-privileges 1
+#autoload -Uz compinit
+#compinit
+#zstyle ':completion:*' menu select
+#zstyle ':completion::complete:*' gain-privileges 1
 
-setopt COMPLETE_ALIASES
-_comp_options+=(globdots)               # Include hidden files.
+#setopt COMPLETE_ALIASES
+#_comp_options+=(globdots)               # Include hidden files.
 source ~/.config/aliases
 

@@ -89,5 +89,3 @@ profiles:
     - f_xresources
     - f_zprofile
     - f_zshrc
-    - f_mbsyncrc
-    - f_msmtprc

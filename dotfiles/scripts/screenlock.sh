@@ -10,8 +10,10 @@ xidlehook \
 	`# Dim the screen after X seconds, undim if user becomes active` \
 	--timer normal \
 	'180' \
-	'xrandr --output "$PRIMARY_DISPLAY" --brightness .1' \
-	'xrandr --output "$PRIMARY_DISPLAY" --brightness 1' \
+	`#xrandr --output "$PRIMARY_DISPLAY" --brightness .1` \
+	'sxiv -fb ~/dots/media/aperture_laboratories.jpg' \
+	`#xrandr --output "$PRIMARY_DISPLAY" --brightness 1` \
+	'killall sxiv' \
 	`# Lock screen after another X seconds, full bright if user active` \
 	--timer normal \
 	'60' \
