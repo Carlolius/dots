@@ -41,11 +41,12 @@
 xterm*faceName: Hack
 xterm*faceSize: 9 
 ! Clipboard
-xterm.vt100.selectToClipboard
-xterm*vt100.Translations: #override \n\
-        Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
-        Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)
+xterm.vt100.selectToClipboard:true
+
+xterm*vt100.Translations: #override \
+        Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+        Ctrl Shift <Key>V: insert-selection(CLIPBOARD) 
 ! Keybind Fontsize
-xterm.vt100.Translations: #override \n\
+xterm.vt100.Translations: #override \
 	Ctrl <Key> minus: smaller-vt-font() \n\
 	Ctrl <Key> plus: larger-vt-font()
