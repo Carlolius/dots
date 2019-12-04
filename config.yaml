@@ -43,6 +43,9 @@ dotfiles:
   f_sxhkd:
     src: config/sxhkd/sxhkdrc
     dst: ~/.config/sxhkd/sxhkdrc
+  f_vim_vimrc:
+    src: vim/vimrc
+    dst: ~/.vim/vimrc
   f_xinitrc:
     src: X/xinitrc
     dst: ~/.xinitrc
@@ -84,6 +87,7 @@ profiles:
     - f_rofi_config.rasi
     - f_rofi_personal.rasi
     - f_sxhkd
+    - f_vim_vimrc
     - f_xinitrc
     - f_xprofile
     - f_xresources
