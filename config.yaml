@@ -74,6 +74,8 @@ profiles:
     dotfiles:
     - f_aliases
     - f_bashrc
+    - f_nvim_init.vim
+    - f_vim_vimrc
     - f_zshrc
   nibbler:
     dotfiles:
