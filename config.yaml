@@ -4,60 +4,60 @@ config:
   dotpath: dotfiles
   longkey: true
 dotfiles:
-  f_zshrc:
-    src: zsh/zshrc
-    dst: ~/.zshrc
-  f_bashrc:
-    src: bash/bashrc
-    dst: ~/.bashrc
-  f_inicio-conky.sh:
-    src: conky/inicio-conky.sh
-    dst: ~/.inicio-conky.sh
-  f_conkyrc:
-    src: conky/conkyrc
-    dst: ~/.conkyrc
-  f_conkyrc2:
-    src: conky/conkyrc2
-    dst: ~/.conkyrc2
+  d_scripts:
+    src: scripts
+    dst: ~/scripts
   f_aliases:
     src: aliases
     dst: ~/.config/aliases
-  f_xinitrc:
-    src: X/xinitrc
-    dst: ~/.xinitrc
-  f_xprofile:
-    src: X/xprofile
-    dst: ~/.xprofile
-  f_sxhkd:
-    src: config/sxhkd/sxhkdrc
-    dst: ~/.config/sxhkd/sxhkdrc
-  f_xresources:
-    src: X/Xresources
-    dst: ~/.Xresources
+  f_bashrc:
+    src: bash/bashrc
+    dst: ~/.bashrc
+  f_conkyrc2:
+    src: conky/conkyrc2
+    dst: ~/.conkyrc2
+  f_conkyrc:
+    src: conky/conkyrc
+    dst: ~/.conkyrc
   f_i3_barconfig:
     src: config/i3/barconfig
     dst: ~/.config/i3/barconfig
   f_i3_config:
     src: config/i3/config
     dst: ~/.config/i3/config
+  f_inicio-conky.sh:
+    src: conky/inicio-conky.sh
+    dst: ~/.inicio-conky.sh
+  f_nvim_init.vim:
+    src: config/nvim/init.vim
+    dst: ~/.config/nvim/init.vim
+  f_profile:
+    src: bash/profile
+    dst: ~/.profile
   f_rofi_config.rasi:
     src: config/rofi/config.rasi
     dst: ~/.config/rofi/config.rasi
   f_rofi_personal.rasi:
     src: config/rofi/personal.rasi
     dst: ~/.config/rofi/personal.rasi
-  f_nvim_init.vim:
-    src: config/nvim/init.vim
-    dst: ~/.config/nvim/init.vim
-  d_scripts:
-    src: scripts
-    dst: ~/scripts
-  f_profile:
-    src: bash/profile
-    dst: ~/.profile
+  f_sxhkd:
+    src: config/sxhkd/sxhkdrc
+    dst: ~/.config/sxhkd/sxhkdrc
+  f_xinitrc:
+    src: X/xinitrc
+    dst: ~/.xinitrc
+  f_xprofile:
+    src: X/xprofile
+    dst: ~/.xprofile
+  f_xresources:
+    src: X/Xresources
+    dst: ~/.Xresources
   f_zprofile:
     src: zsh/zprofile
     dst: ~/.zprofile
+  f_zshrc:
+    src: zsh/zshrc
+    dst: ~/.zshrc
 profiles:
   anarchy:
     dotfiles:
