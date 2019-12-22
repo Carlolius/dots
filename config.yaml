@@ -64,7 +64,7 @@ dotfiles:
   f_zshrc:
     src: zsh/zshrc
     dst: ~/.zshrc
-  profiles:
+profiles:
   anarchy:
     dotfiles:
     - f_aliases
