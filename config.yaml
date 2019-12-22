@@ -19,6 +19,9 @@ dotfiles:
   f_conkyrc:
     src: conky/conkyrc
     dst: ~/.conkyrc
+  f_functions:
+    src: config/functions
+    dst: ~/.config/functions
   f_i3_barconfig:
     src: config/i3/barconfig
     dst: ~/.config/i3/barconfig
@@ -61,7 +64,7 @@ dotfiles:
   f_zshrc:
     src: zsh/zshrc
     dst: ~/.zshrc
-profiles:
+  profiles:
   anarchy:
     dotfiles:
     - f_aliases
@@ -82,6 +85,7 @@ profiles:
     - d_scripts
     - f_aliases
     - f_bashrc
+    - f_functions
     - f_i3_barconfig
     - f_i3_config
     - f_nvim_init.vim

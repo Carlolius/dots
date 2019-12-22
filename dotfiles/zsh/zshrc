@@ -25,4 +25,4 @@ SAVEHIST=2000
 #setopt COMPLETE_ALIASES
 #_comp_options+=(globdots)               # Include hidden files.
 source ~/.config/aliases
-
+source ~/.config/functions
