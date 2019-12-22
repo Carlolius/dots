@@ -20,7 +20,7 @@ dotfiles:
     src: conky/conkyrc
     dst: ~/.conkyrc
   f_functions:
-    src: config/functions
+    src: functions
     dst: ~/.config/functions
   f_i3_barconfig:
     src: config/i3/barconfig
