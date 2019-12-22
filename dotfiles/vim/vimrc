@@ -1,6 +1,7 @@
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages.
 runtime! archlinux.vim
+runtime! config-plugins/**.vim
 
 " This autoinstalls vim-plug inf not installed
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -15,7 +16,16 @@ call plug#begin('~/.vim/plugged')
 " Declare the list of plugins.
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'neoclide/coc.nvim'
 "Plug 'junegunn/seoul256.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
+
+" Plugins config
+" Nerdtree
+"map <silent> ç :NERDTreeToggle<CR>
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

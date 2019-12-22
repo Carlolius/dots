@@ -7,6 +7,9 @@ dotfiles:
   d_scripts:
     src: scripts
     dst: ~/scripts
+  d_vim_config-plugins:
+    src: vim/config-plugins
+    dst: ~/.vim/config-plugins
   f_aliases:
     src: aliases
     dst: ~/.config/aliases
@@ -75,8 +78,10 @@ profiles:
     - f_zshrc
   bender-el-que-ofende:
     dotfiles:
+    - d_vim_config-plugins
     - f_aliases
     - f_bashrc
+    - f_functions
     - f_nvim_init.vim
     - f_vim_vimrc
     - f_zshrc
