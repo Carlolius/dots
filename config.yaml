@@ -88,6 +88,7 @@ profiles:
   nibbler:
     dotfiles:
     - d_scripts
+    - d_vim_config-plugins
     - f_aliases
     - f_bashrc
     - f_functions
