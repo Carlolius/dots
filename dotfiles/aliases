@@ -1,7 +1,0 @@
-# Aliases #
-# {{@@ header() @@}} #
-
-alias cls="clear"
-alias ll="ls -lisa"
-alias home="cd ~"
-alias myip="curl http://ipecho.net/plain; echo"

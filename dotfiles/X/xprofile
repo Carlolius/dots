@@ -1,9 +1,0 @@
-#!/bin/sh
-
-# Load Xresoruces
-[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
-
-sxhkd & # runs the x hotkey daemon
-
-# Wallpaper
-feh --bg-fill ~/dots/media/Joker-Card-Wallpaper.jpg
