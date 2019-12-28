@@ -8,8 +8,7 @@ alias myip="curl http://ipecho.net/plain; echo && hostname -i"
 alias copy="xclip -o | xclip -selection clipboard -i"
 
 alias musica="spotifyd && spt"
-
 # Aliases of my functions
 alias upd=total_update
 alias descomprimir=extract
-
+alias tiempo=weather

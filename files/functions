@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Shows the weather in terminal
+function weather {
+	curl wttr.in/"$1"
+}
+
 # Creates an archive (*.tar.gz) from given directory.
 function maketar() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
  
@@ -41,10 +46,10 @@ fi
 
 # Case to update different stuff quickly
 function total_update {
-    function guiki { echo "Actualizando güiki" && git -C ~/guiki pull }
-    function dots { echo "Actualizando dots" && git -C ~/dots pull }
-    function sistema { echo "Actualizando sistema" && yay }
-    function vim { echo "Actualizando plugins de vim" && echo "no funciona aún" }
+    function u_guiki { echo "Actualizando güiki" && git -C ~/guiki pull }
+    function u_dots { echo "Actualizando dots" && git -C ~/dots pull }
+    function u_sistema { echo "Actualizando sistema" && yay }
+    function u_vim { echo "Actualizando plugins de vim" && echo "no funciona aún" }
     echo "¿Qué actualizamos?
     s) Sistema
     v) Plugins de Vim
@@ -56,32 +61,26 @@ function total_update {
     read opt 
     case $opt in
         s)
-	    sistema
-	    ;;
+	    u_sistema;;
         v)
-	    vim
-	    ;;
+	    u_vim;;
 	g)
-	    guiki
-	    ;;
+	    u_guiki;;
 	d)
-	    dots
-	    ;;
+	    u_dots;;
 	r)
-	    guiki
-	    dots
+	    u_guiki
+	    u_dots
 	    ;;
 	[Aa])
-	    sistema
-	    vim
-	    guiki
-	    dots
+	    u_sistema
+	    u_vim
+	    u_guiki
+	    u_dots
 	    ;;
 	n)
-	    echo "Ok" 
-	    ;;
+	    echo "Ok";;
 	*)
-	    echo "Mira a ver en que la has liado"
-	    ;;
+	    echo "Mira a ver en que la has liado";;
     esac
 }
