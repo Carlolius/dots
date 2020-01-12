@@ -8,7 +8,7 @@ xidlehook \
 	`# Don't lock when fullscreen` \
 	--not-when-fullscreen \
 	`# Dim the screen after X seconds, undim if user becomes active` \
-	--timer	180180180180180180180180180180180180180180180180180180 \
+	--timer	180 \
 	  `# xrandr --output "$PRIMARY_DISPLAY" --brightness .1` \
 	  'feh -F ~/dots/media/aperture_laboratories.jpg' \
 	  `# xrandr --output "$PRIMARY_DISPLAY" --brightness 1` \
