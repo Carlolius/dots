@@ -84,6 +84,7 @@ profiles:
     - f_functions
     - f_nvim_init.vim
     - f_vim_vimrc
+    - f_xresources
     - f_zshrc
   nibbler:
     dotfiles:
