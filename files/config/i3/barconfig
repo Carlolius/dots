@@ -37,11 +37,11 @@ diskdata {
 
 hddtemp {
 	gradients = True
-	format_hdd = '[\?color=temperature  {temperature}°C]'
+	format_hdd = '[\?color=temperature  {temperature}°C]'
 }
 
 sysdata{
-	format = '[ \?color=cpu_used_percent {cpu_used_percent}%] [ \?color=cpu_temp {cpu_temp}{temp_unit}]  [\?color=mem_used_percent {mem_used}/{mem_total}{mem_total_unit}]  [\?color=swap_used_percent {swap_used}/{swap_total}{swap_total_unit}]'
+	format = '[ \?color=cpu_used_percent {cpu_used_percent}%] [ \?color=cpu_temp {cpu_temp}{temp_unit}]  [\?color=mem_used_percent {mem_used}/{mem_total}{mem_total_unit}]  [\?color=swap_used_percent {swap_used}/{swap_total}{swap_total_unit}]'
 }
 
 static_string i3lock {
