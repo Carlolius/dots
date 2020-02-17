@@ -26,3 +26,6 @@ SAVEHIST=2000
 #_comp_options+=(globdots)               # Include hidden files.
 source ~/.config/aliases
 source ~/.config/functions
+
+# Load environment variables
+[ -r  ~/.config/envrc ] && . ~/.config/envrc
