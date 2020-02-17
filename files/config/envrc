@@ -1,0 +1,4 @@
+# Environment Variables to be loaded from .zshrc, .bashrc ...
+
+# Let GPG know the tty so it can ask prompt for pin.
+export GPG_TTY=$(tty)

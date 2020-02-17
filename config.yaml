@@ -67,6 +67,9 @@ dotfiles:
   f_zshrc:
     src: zsh/zshrc
     dst: ~/.zshrc
+  f_config_envrc:
+    src: config/envrc
+    dst: ~/.config/envrc
 profiles:
   anarchy:
     dotfiles:
@@ -106,3 +109,4 @@ profiles:
     - f_xresources
     - f_zprofile
     - f_zshrc
+    - f_config_envrc
