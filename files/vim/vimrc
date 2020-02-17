@@ -3,6 +3,9 @@
 runtime! archlinux.vim
 runtime! config-plugins/**.vim
 
+set guifont=DejaVu\ Nerd\ Font\ 11
+let g:airline_powerline_fonts = 1
+
 " This autoinstalls vim-plug inf not installed
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -17,10 +20,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdtree'
-Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
+Plug 'ryanoasis/vim-devicons'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'neoclide/coc.nvim'
+
 "Plug 'junegunn/seoul256.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
