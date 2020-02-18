@@ -50,15 +50,19 @@ function total_update {
     function u_dots { echo "Actualizando dots" && git -C ~/dots pull }
     function u_sistema { echo "Actualizando sistema" && yay }
     function u_vim { echo "Actualizando plugins de vim" && echo "no funciona aún" }
-    echo "¿Qué actualizamos?
-    s) Sistema
-    v) Plugins de Vim
-    r) Repositorios de git
-       g) guiki
-       d) dots
-    A) Todo lo anterior
-    n) nada"
-    read opt 
+    if [[ $1 != '' ]] ; then
+	    opt=$1
+    else
+   	echo "¿Qué actualizamos?
+   	s) Sistema
+   	v) Plugins de Vim
+   	r) Repositorios de git
+   	   g) guiki
+   	   d) dots
+   	A) Todo lo anterior
+   	n) nada"
+    	read opt
+    fi
     case $opt in
         s)
 	    u_sistema;;
