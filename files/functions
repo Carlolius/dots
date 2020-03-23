@@ -77,10 +77,10 @@ function total_update {
 	    u_dots
 	    ;;
 	[Aa])
+	    u_vim &
+	    u_guiki &
+	    u_dots &
 	    u_sistema
-	    u_vim
-	    u_guiki
-	    u_dots
 	    ;;
 	n)
 	    echo "Ok";;
