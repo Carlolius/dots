@@ -1,11 +1,8 @@
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages.
 runtime! archlinux.vim
-runtime! config-plugins/**.vim
 
-set guifont=DejaVu\ Nerd\ Font\ 11
-let g:airline_powerline_fonts = 1
-
+" Plugins configuration
 " This autoinstalls vim-plug inf not installed
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -17,16 +14,44 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-commentary'
-Plug 'scrooloose/nerdtree'
-Plug 'vim-airline/vim-airline'
-Plug 'ryanoasis/vim-devicons'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-Plug 'neoclide/coc.nvim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-sensible'
+Plug 'vim-airline/vim-airline'
 
-"Plug 'junegunn/seoul256.vim'
+" LSP and auto complete plugins
+
+Plug 'neoclide/coc.nvim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
+" Global config
+
+" See the left row numbers
+set number
+" Yank and paste outside Vim
+set clipboard=unnamed
+" Let use mouse a bit
+set mouse=a
+" Show a line where cursor is
+set cursorline
+" Indent correctly
+set autoindent
+" Allow undo even if the file has been closed
+set undofile
+set undodir=/tmp
+" Map leader to space
+let mapleader = " "
+" Quickly cancel search highlighting
+nnoremap <leader><space> :nohlsearch<cr>
+
+" Colors
+" Change colors of pmenu 
+hi Pmenu ctermbg=240
+hi PmenuSel ctermbg=40 ctermfg=0
+
+" Load the folder with plugins config, has to be at the end.
+runtime! config-plugins/**.vim
