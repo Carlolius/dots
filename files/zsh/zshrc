@@ -3,29 +3,25 @@
 export ZSH=/usr/share/oh-my-zsh
 ZSH_THEME="robbyrussell"
 plugins=(git)
-source $ZSH/oh-my-zsh.sh
 
-# Enable colors and change prompt:
-#autoload -U colors
-#colors
-#setopt PROMPT_SUBST
-#PROMPT='%B%{$fg[green]%}%n%{$reset_color%}@%{$fg[cyan]%}%m%{$reset_color%}:%b%{$fg[yellow]%}%~%{$reset_color%}%(?..[%{$fg[red]%}%?%{$reset_color%}]) %(!.#.>) '
+# History
+HISTFILE=~/cache/zsh/history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt hist_ignore_all_dups # remove older duplicate entries from history
+setopt hist_reduce_blanks   # remove superfluous blanks from history items
 
-HISTFILE=~/.zsh_history
-HISTSIZE=2000
-SAVEHIST=2000
-#setopt appendhistory autocd beep extendedglob nomatch notify
-#bindkey -v
-
-#autoload -Uz compinit
-#compinit
-#zstyle ':completion:*' menu select
-#zstyle ':completion::complete:*' gain-privileges 1
-
-#setopt COMPLETE_ALIASES
-#_comp_options+=(globdots)               # Include hidden files.
+# Source from other files
 source ~/.config/aliases
 source ~/.config/functions
+source $ZSH/oh-my-zsh.sh
+
+# ZSH Options
+setopt auto_cd       # cd by typing the dir name if its not a command name
+setopt correct_all   # autocorrect commandsl
+setopt auto_list     # automatically list choices on ambiguous completion
+setopt auto_menu     # automatically use menu completion
+setopt always_to_end # move cursor to end if word had one match
 
 # Load environment variables
 [ -r  ~/.config/envrc ] && . ~/.config/envrc

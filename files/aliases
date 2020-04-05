@@ -1,9 +1,19 @@
-# Aliases #
+# Aliases
+# Config
+alias aliases="nvim ~/.config/aliases"
+alias evim="nvim ~/.vim/vimrc"
 
+# Nvim
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
+
+# Better, easier
 alias cls="clear"
+alias la="ls -la"
 alias ll="ls -lisa"
 alias home="cd ~"
-alias myip="curl http://ipecho.net/plain && print "\$n" && ip route get 1 | awk '{print \$7}'" 
+alias myip="ip route get 1 | awk '{print \$7}' && curl http://ipecho.net/plain && print " 
 
 alias copy="xclip -o | xclip -selection clipboard -i"
 
