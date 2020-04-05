@@ -21,17 +21,24 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
 Plug 'vim-airline/vim-airline'
 
-" LSP and auto complete plugins
+" Colorscheme
+Plug 'morhetz/gruvbox', { 'as': 'gruvbox'}
+Plug 'atahabaki/archman-vim', { 'as': 'archman'}
 
+" LSP and auto complete plugins
 Plug 'neoclide/coc.nvim'
+
+" Higlight the letters to be faster moving in lines
+Plug 'unblevable/quick-scope'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
 " Global config
 
-" See the left row numbers
+" See the left row numbers and relative row number
 set number
+set relativenumber
 " Yank and paste outside Vim
 set clipboard=unnamed
 " Let use mouse a bit
@@ -47,11 +54,44 @@ set undodir=/tmp
 let mapleader = " "
 " Quickly cancel search highlighting
 nnoremap <leader><space> :nohlsearch<cr>
+" Move buffer
+nnoremap <leader>bn :bNext<cr>
 
 " Colors
+" Colorscheme
+colorscheme archman
 " Change colors of pmenu 
-hi Pmenu ctermbg=240
-hi PmenuSel ctermbg=40 ctermfg=0
+" hi Pmenu ctermbg=240
+" hi PmenuSel ctermbg=40 ctermfg=0
+
+" Autocommands
+" Stoled from https://github.com/CKolkey/.dotfiles/blob/master/nvim_init.vim
+" Autoreload changed files
+    set autoread
+    augroup autoreadfiles
+      autocmd!
+      autocmd CursorHold,CursorHoldI * checktime
+      autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk - Buffer reloaded" | echohl None
+    augroup END
+
+" Autosave current buffer
+  augroup autosavebuffer
+    autocmd!
+    autocmd InsertLeave * nested silent! update
+  augroup end
+
+" Relative line numbers in normal mode, absolute numbers in insert mode
+    augroup numbertoggle
+      autocmd!
+      autocmd InsertLeave * set relativenumber
+      autocmd InsertEnter * set norelativenumber
+    augroup END
+
+" Autosource vimrc on save
+    augroup autosource
+      autocmd!
+      autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
+    augroup END
 
 " Load the folder with plugins config, has to be at the end.
 runtime! config-plugins/**.vim

@@ -78,4 +78,4 @@ let g:mkdp_port = ''
 " ${name} will be replace with the file name
 let g:mkdp_page_title = '「${name}」'
 
-nmap <C-p> <Plug>MarkdownPreviewToggle
+nmap <leader>md <Plug>MarkdownPreviewToggle
