@@ -14,11 +14,19 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
+
+" Markdown highlight and preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-Plug 'ryanoasis/vim-devicons'
+
+" Nerdtree
 Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+
+" Tpope
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
+
+" Airline
 Plug 'vim-airline/vim-airline'
 
 " Colorscheme
@@ -35,6 +43,8 @@ Plug 'unblevable/quick-scope'
 call plug#end()
 
 " Global config
+
+syntax on
 
 " See the left row numbers and relative row number
 set number
@@ -56,6 +66,9 @@ let mapleader = " "
 nnoremap <leader><space> :nohlsearch<cr>
 " Move buffer
 nnoremap <leader>bn :bNext<cr>
+" No backup of files needed
+set nobackup
+set nowritebackup
 
 " Colors
 " Colorscheme
