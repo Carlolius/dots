@@ -1,3 +1,4 @@
+
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages.
 runtime! archlinux.vim
@@ -39,6 +40,9 @@ Plug 'neoclide/coc.nvim'
 " Higlight the letters to be faster moving in lines
 Plug 'unblevable/quick-scope'
 
+" GitGutter
+Plug 'airblade/vim-gitgutter'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -73,7 +77,7 @@ set nowritebackup
 " Colors
 " Colorscheme
 colorscheme archman
-" Change colors of pmenu 
+" Change colors of pmenu
 " hi Pmenu ctermbg=240
 " hi PmenuSel ctermbg=40 ctermfg=0
 
