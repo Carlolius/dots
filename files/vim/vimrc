@@ -70,6 +70,12 @@ let mapleader = " "
 nnoremap <leader><space> :nohlsearch<cr>
 " Move buffer
 nnoremap <leader>bn :bNext<cr>
+" Shortcutting split navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
 " No backup of files needed
 set nobackup
 set nowritebackup
@@ -77,11 +83,17 @@ set nowritebackup
 " Colors
 " Colorscheme
 colorscheme archman
+set termguicolors
+" Little color changes
+hi Visual  guifg=#000000 guibg=#FFFFFF gui=none
 " Change colors of pmenu
-" hi Pmenu ctermbg=240
-" hi PmenuSel ctermbg=40 ctermfg=0
+hi Pmenu guifg=#000000 guibg=#FFFFFF ctermbg=240
+hi PmenuSel guifg=#000000 guibg=#2ffd00 ctermbg=40 ctermfg=0
+hi Cursorline guibg=#303030 
 
 " Autocommands
+" Vertically center document when entering insert mode
+autocmd InsertEnter * norm zz
 " Stoled from https://github.com/CKolkey/.dotfiles/blob/master/nvim_init.vim
 " Autoreload changed files
     set autoread
@@ -102,12 +114,6 @@ colorscheme archman
       autocmd!
       autocmd InsertLeave * set relativenumber
       autocmd InsertEnter * set norelativenumber
-    augroup END
-
-" Autosource vimrc on save
-    augroup autosource
-      autocmd!
-      autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
     augroup END
 
 " Load the folder with plugins config, has to be at the end.
