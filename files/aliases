@@ -14,10 +14,17 @@ alias la="ls -la"
 alias ll="ls -lisa"
 alias home="cd ~"
 alias myip="ip route get 1 | awk '{print \$7}' && curl http://ipecho.net/plain && print " 
-
 alias copy="xclip -o | xclip -selection clipboard -i"
-
 alias musica="spotifyd && spt"
+
+# Dotdrop
+alias dotdrop="source ~/dots/env/bin/activate; sh ~/dots/dotdrop.sh"
+alias dotdropinstall="source ~/dots/env/bin/activate; sh ~/dots/dotdrop.sh install; deactivate"
+alias dotdropupdate="source ~/dots/env/bin/activate; sh ~/dots/dotdrop.sh update; deactivate"
+alias dotins="dotdropinstall"
+alias dotup="dotdropupdate"
+alias dotconf="nvim ~/dots/config.yaml"
+
 # Aliases of my functions
 alias upd=total_update
 alias descomprimir=extract
