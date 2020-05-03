@@ -1,4 +1,5 @@
-" Quick scope
+" Quick scope config
+"""""""""""""""""""""
 " Lightning fast left-right movement in Vim
 " https://github.com/unblevable/quick-scope
 

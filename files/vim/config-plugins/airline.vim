@@ -1,5 +1,6 @@
-" Airline config "
-""""""""""""""""""
+" Airline config 
+"""""""""""""""""
+
 " Enable paste detection 
 let g:airline_detect_paste=1
 " Enable crypt detection

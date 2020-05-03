@@ -1,20 +1,49 @@
+" My temporary Vim configuration, always temporary.
 
-" This line should not be removed as it ensures that various options are
-" properly set to work with the Vim-related packages.
-runtime! archlinux.vim
+" Global config
+""""""""""""""""
+" Highlight syntax
+syntax on
+" See the left row numbers and relative row number
+set number
+set relativenumber
+" Yank and paste outside Vim
+set clipboard=unnamedplus
+" Let use mouse a bit
+set mouse=a
+" Show a line where cursor is
+set cursorline
+" Indent correctly
+set autoindent
+" Allow undo even if the file has been closed
+set undofile
+set undodir=/tmp
+" No backup of files needed
+set nobackup
+set nowritebackup
+" Insert 2 spaces for a tab
+set tabstop=2
+" Change the number of space characters inserted for indentation
+set shiftwidth=2
+" Makes tabbing smarter will realize you have 2 vs 4
+set smarttab
+" Makes indenting smart
+set smartindent
+" Incremental search
+set incsearch
 
 " Plugins configuration
+""""""""""""""""""""""""
 " This autoinstalls vim-plug inf not installed
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
-" Declare the list of plugins.
+" List of plugins.
 
 " Markdown highlight and preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
@@ -33,6 +62,11 @@ Plug 'vim-airline/vim-airline'
 " Colorscheme
 Plug 'morhetz/gruvbox', { 'as': 'gruvbox'}
 Plug 'atahabaki/archman-vim', { 'as': 'archman'}
+" Colorizer.lua
+Plug 'norcalli/nvim-colorizer.lua'
+
+" Rainbow, add color to the parentheses so it's easier to see
+Plug 'luochen1990/rainbow'
 
 " LSP and auto complete plugins
 Plug 'neoclide/coc.nvim'
@@ -46,24 +80,9 @@ Plug 'airblade/vim-gitgutter'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-" Global config
 
-syntax on
-
-" See the left row numbers and relative row number
-set number
-set relativenumber
-" Yank and paste outside Vim
-set clipboard=unnamed
-" Let use mouse a bit
-set mouse=a
-" Show a line where cursor is
-set cursorline
-" Indent correctly
-set autoindent
-" Allow undo even if the file has been closed
-set undofile
-set undodir=/tmp
+" Keybinds
+"""""""""""
 " Map leader to space
 let mapleader = " "
 " Quickly cancel search highlighting
@@ -78,46 +97,55 @@ map <C-l> <C-w>l
 " Move the selected block
 xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv
-
-" No backup of files needed
-set nobackup
-set nowritebackup
+" TAB and shift TAB in general to move around buffers
+nnoremap <TAB> :bnext<CR>
+nnoremap <S-TAB> :bprevious<CR>
+" Better tabbing, doesn't unselect after tab
+vnoremap < <gv
+vnoremap > >gv
 
 " Colors
+"""""""""
 " Colorscheme
 colorscheme archman
 set termguicolors
-" Little color changes
-hi Visual  guifg=#000000 guibg=#FFFFFF gui=none
-" Change colors of pmenu
+" Color changes
+hi Visual  guifg=#000000 guibg=#BDBDBD gui=none
+" Change pmenu colors 
 hi Pmenu guifg=#000000 guibg=#FFFFFF ctermbg=240
-hi PmenuSel guifg=#000000 guibg=#2ffd00 ctermbg=40 ctermfg=0
+hi PmenuSel guifg=#000000 guibg=#2FFD00 ctermbg=40 ctermfg=0
 hi Cursorline guibg=#303030 
 
 " Autocommands
+"""""""""""""""
 " Vertically center document when entering insert mode
 autocmd InsertEnter * norm zz
 " Stoled from https://github.com/CKolkey/.dotfiles/blob/master/nvim_init.vim
 " Autoreload changed files
-    set autoread
-    augroup autoreadfiles
-      autocmd!
-      autocmd CursorHold,CursorHoldI * checktime
-      autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk - Buffer reloaded" | echohl None
-    augroup END
+set autoread
+augroup autoreadfiles
+	autocmd!
+	autocmd CursorHold,CursorHoldI * checktime
+	autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk - Buffer reloaded" | echohl None
+augroup END
 
 " Autosave current buffer
-  augroup autosavebuffer
-    autocmd!
-    autocmd InsertLeave * nested silent! update
-  augroup end
+augroup autosavebuffer
+	autocmd!
+	autocmd InsertLeave * nested silent! update
+augroup end
 
 " Relative line numbers in normal mode, absolute numbers in insert mode
-    augroup numbertoggle
-      autocmd!
-      autocmd InsertLeave * set relativenumber
-      autocmd InsertEnter * set norelativenumber
-    augroup END
+augroup numbertoggle
+	autocmd!
+	autocmd InsertLeave * set relativenumber
+	autocmd InsertEnter * set norelativenumber
+augroup END
 
-" Load the folder with plugins config, has to be at the end.
+" Source files
+"""""""""""""""
+" Load the folder with plugins config, has to be at the end due overwriting
 runtime! config-plugins/**.vim
+" This line should not be removed as it ensures that various options are
+" properly set to work with the Vim-related packages.
+runtime! archlinux.vim
