@@ -1,6 +1,9 @@
 " Coc Nvim config
 """"""""""""""""""
 
+" Coc extensions
+let g:coc_global_extensions = [ 'coc-snippets', 'coc-pairs', 'coc-python', 'coc-markdownlint', 'coc-json', 'coc-html', 'coc-css', 'coc-angular', 'coc-tsserver' ]
+
 " TextEdit might fail if hidden is not set.
 set hidden
 

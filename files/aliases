@@ -16,6 +16,7 @@ alias home="cd ~"
 alias myip="ip route get 1 | awk '{print \$7}' && curl http://ipecho.net/plain && print " 
 alias copy="xclip -o | xclip -selection clipboard -i"
 alias musica="spotifyd && spt"
+alias ssh="TERM=xterm-256color \ssh"  # easier connection to non 256 color supported terminal
 
 # Dotdrop
 alias dotdrop="source ~/dots/env/bin/activate; sh ~/dots/dotdrop.sh"
