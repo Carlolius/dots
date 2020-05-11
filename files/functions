@@ -49,7 +49,7 @@ function total_update {
     function u_guiki { echo "Actualizando güiki" && git -C ~/guiki pull }
     function u_dots { echo "Actualizando dots" && git -C ~/dots pull }
     function u_sistema { echo "Actualizando sistema" && yay }
-    function u_vim { echo "Actualizando plugins de vim" && nvim -es +PlugUpgrade +PlugUpdate }
+    function u_vim { echo "Actualizando plugins de vim" && nvim --headless -eVs +PlugUpgrade +PlugUpdate +qall!}
     if [[ $1 != '' ]] ; then
 	    opt=$1
     else

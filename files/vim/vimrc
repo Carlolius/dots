@@ -46,10 +46,10 @@ call plug#begin('~/.vim/plugged')
 " List of plugins.
 
 " Markdown highlight and preview
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'on': 'MarkdownPreviewToggle'}
 
 " Nerdtree
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ryanoasis/vim-devicons'
 
 " Tpope
@@ -60,8 +60,8 @@ Plug 'tpope/vim-sensible'
 Plug 'vim-airline/vim-airline'
 
 " Colorscheme
-Plug 'morhetz/gruvbox', { 'as': 'gruvbox'}
-Plug 'atahabaki/archman-vim', { 'as': 'archman'}
+Plug 'morhetz/gruvbox', { 'as': 'gruvbox' }
+Plug 'atahabaki/archman-vim', { 'as': 'archman' }
 " Colorizer.lua
 Plug 'norcalli/nvim-colorizer.lua'
 
@@ -75,34 +75,10 @@ Plug 'neoclide/coc.nvim'
 Plug 'unblevable/quick-scope'
 
 " GitGutter
-Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter', { 'on': 'GitGutterToggle' }
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
-
-
-" Keybinds
-"""""""""""
-" Map leader to space
-let mapleader = " "
-" Quickly cancel search highlighting
-nnoremap <leader><space> :nohlsearch<cr>
-" Move buffer
-nnoremap <leader>bn :bNext<cr>
-" Shortcutting split navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-" Move the selected block
-xnoremap K :move '<-2<CR>gv-gv
-xnoremap J :move '>+1<CR>gv-gv
-" TAB and shift TAB in general to move around buffers
-nnoremap <TAB> :bnext<CR>
-nnoremap <S-TAB> :bprevious<CR>
-" Better tabbing, doesn't unselect after tab
-vnoremap < <gv
-vnoremap > >gv
 
 " Colors
 """""""""
@@ -146,6 +122,8 @@ augroup END
 """""""""""""""
 " Load the folder with plugins config, has to be at the end due overwriting
 runtime! config-plugins/**.vim
+" Load the Keybinds, overwriting the plugins ones that should be empty.
+runtime! settings/key.vim
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages.
 runtime! archlinux.vim
