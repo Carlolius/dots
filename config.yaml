@@ -70,6 +70,9 @@ dotfiles:
   f_config_envrc:
     src: config/envrc
     dst: ~/.config/envrc
+  f_config_alacritty_alacritty.yml:
+    src: config/alacritty/alacritty.yml
+    dst: ~/.config/alacritty/alacritty.yml
 profiles:
   anarchy:
     dotfiles:
@@ -89,6 +92,7 @@ profiles:
     - f_vim_vimrc
     - f_xresources
     - f_zshrc
+    - f_config_alacritty_alacritty.yml
   nibbler:
     dotfiles:
     - d_scripts
