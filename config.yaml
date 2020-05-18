@@ -10,12 +10,18 @@ dotfiles:
   d_vim_config-plugins:
     src: vim/config-plugins
     dst: ~/.vim/config-plugins
+  f_alacritty:
+    src: config/alacritty.yml
+    dst: ~/.config/alacritty/alacritty.yml
   f_aliases:
     src: aliases
     dst: ~/.config/aliases
   f_bashrc:
     src: bash/bashrc
     dst: ~/.bashrc
+  f_config_envrc:
+    src: config/envrc
+    dst: ~/.config/envrc
   f_conkyrc2:
     src: conky/conkyrc2
     dst: ~/.conkyrc2
@@ -67,12 +73,6 @@ dotfiles:
   f_zshrc:
     src: zsh/zshrc
     dst: ~/.zshrc
-  f_config_envrc:
-    src: config/envrc
-    dst: ~/.config/envrc
-  f_config_alacritty_alacritty.yml:
-    src: config/alacritty/alacritty.yml
-    dst: ~/.config/alacritty/alacritty.yml
 profiles:
   anarchy:
     dotfiles:
@@ -92,11 +92,12 @@ profiles:
     - f_vim_vimrc
     - f_xresources
     - f_zshrc
-    - f_config_alacritty_alacritty.yml
+    - f_alacritty
   nibbler:
     dotfiles:
     - d_scripts
     - d_vim_config-plugins
+    - f_alacritty
     - f_aliases
     - f_bashrc
     - f_functions
