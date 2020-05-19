@@ -73,6 +73,12 @@ dotfiles:
   f_zshrc:
     src: zsh/zshrc
     dst: ~/.zshrc
+  f_config_nvim_coc-settings.json:
+    src: config/nvim/coc-settings.json
+    dst: ~/.config/nvim/coc-settings.json
+  d_vim_settings:
+    src: vim/settings
+    dst: ~/.vim/settings
 profiles:
   anarchy:
     dotfiles:
@@ -93,6 +99,8 @@ profiles:
     - f_xresources
     - f_zshrc
     - f_alacritty
+    - f_config_nvim_coc-settings.json
+    - d_vim_settings
   nibbler:
     dotfiles:
     - d_scripts
