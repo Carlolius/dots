@@ -10,6 +10,9 @@ dotfiles:
   d_vim_config-plugins:
     src: vim/config-plugins
     dst: ~/.vim/config-plugins
+  d_vim_settings:
+    src: vim/settings
+    dst: ~/.vim/settings
   f_alacritty:
     src: config/alacritty.yml
     dst: ~/.config/alacritty/alacritty.yml
@@ -22,6 +25,9 @@ dotfiles:
   f_config_envrc:
     src: config/envrc
     dst: ~/.config/envrc
+  f_coc-settings.json:
+    src: config/nvim/coc-settings.json
+    dst: ~/.config/nvim/coc-settings.json
   f_conkyrc2:
     src: conky/conkyrc2
     dst: ~/.conkyrc2
@@ -73,41 +79,29 @@ dotfiles:
   f_zshrc:
     src: zsh/zshrc
     dst: ~/.zshrc
-  f_config_nvim_coc-settings.json:
-    src: config/nvim/coc-settings.json
-    dst: ~/.config/nvim/coc-settings.json
-  d_vim_settings:
-    src: vim/settings
-    dst: ~/.vim/settings
 profiles:
-  anarchy:
-    dotfiles:
-    - f_aliases
-    - f_bashrc
-    - f_conkyrc
-    - f_conkyrc2
-    - f_inicio-conky.sh
-    - f_zshrc
   bender-el-que-ofende:
     dotfiles:
     - d_vim_config-plugins
+    - d_vim_settings
+    - f_alacritty
     - f_aliases
     - f_bashrc
+    - f_coc-settings.json
     - f_functions
     - f_nvim_init.vim
     - f_vim_vimrc
     - f_xresources
     - f_zshrc
-    - f_alacritty
-    - f_config_nvim_coc-settings.json
-    - d_vim_settings
   nibbler:
     dotfiles:
     - d_scripts
     - d_vim_config-plugins
+    - d_vim_settings
     - f_alacritty
     - f_aliases
     - f_bashrc
+    - f_coc-settings.json
     - f_functions
     - f_i3_barconfig
     - f_i3_config
