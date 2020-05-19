@@ -1,9 +1,8 @@
 # Shortcuts to default terminal
 mod4 + Return
-	i3-sensible-terminal
+	$TERMINAL
 alt + x
-	i3-sensible-terminal
-
+	$TERMINAL
 # Make sxhkd reload its configuration files
 super + Escape
 	pkill -USR1 -x sxhkd

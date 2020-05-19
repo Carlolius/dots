@@ -1,4 +1,27 @@
 # Environment Variables to be loaded from .zshrc, .bashrc ...
 
-# Let GPG know the tty so it can ask prompt for pin.
-export GPG_TTY=$(tty)
+# Usefull function to check if some program is installed
+exists() {
+    command -v "$1" > /dev/null 2>&1
+}
+
+# Tell GPG which tty one is using so that it can prompt for pw
+GPG_TTY=$(tty)
+export GPG_TTY
+export GPG_AGENT_INFO=1
+
+# Choose default editor
+if exists nvim; then
+    EDITOR='nvim'
+elif exists vim; then
+    EDITOR='vim'
+else
+    EDITOR='vi'
+fi
+export EDITOR
+export VISUAL="$EDITOR"
+
+# Default terminal
+# Disbles libgl for alacritty to work
+export LIBGL_ALWAYS_SOFTWARE=1
+export TERMINAL=alacritty
