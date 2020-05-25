@@ -1,4 +1,6 @@
 # ZSH
+# Load environment variables
+[ -r  ~/.config/envrc ] && . ~/.config/envrc
 # oh-my-zsh
 export ZSH=/usr/share/oh-my-zsh
 ZSH_THEME="robbyrussell"
@@ -22,6 +24,3 @@ setopt correct_all   # autocorrect commandsl
 setopt auto_list     # automatically list choices on ambiguous completion
 setopt auto_menu     # automatically use menu completion
 setopt always_to_end # move cursor to end if word had one match
-
-# Load environment variables
-[ -r  ~/.config/envrc ] && . ~/.config/envrc

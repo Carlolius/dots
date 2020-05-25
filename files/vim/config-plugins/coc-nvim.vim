@@ -2,7 +2,7 @@
 """"""""""""""""""
 
 " Coc extensions
-let g:coc_global_extensions = [ 'coc-snippets', 'coc-pairs', 'coc-python', 'coc-markdownlint', 'coc-json', 'coc-html', 'coc-css', 'coc-angular', 'coc-tsserver' ]
+let g:coc_global_extensions = [ 'coc-snippets', 'coc-pairs', 'coc-python', 'coc-markdownlint', 'coc-json', 'coc-html', 'coc-css', 'coc-angular', 'coc-tsserver', 'coc-sh']
 
 " TextEdit might fail if hidden is not set.
 set hidden

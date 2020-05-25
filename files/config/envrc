@@ -24,4 +24,4 @@ export VISUAL="$EDITOR"
 # Default terminal
 # Disbles libgl for alacritty to work
 export LIBGL_ALWAYS_SOFTWARE=1
-export TERMINAL=alacritty
+export TERMINAL='alacritty'
