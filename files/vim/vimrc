@@ -80,6 +80,9 @@ Plug 'airblade/vim-gitgutter', { 'on': 'GitGutterToggle' }
 " Whichkey tells you your keybindings
 Plug 'liuchengxu/vim-which-key'
 
+" Floaterm
+Plug 'voldikss/vim-floaterm'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 

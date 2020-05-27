@@ -1,3 +1,6 @@
+" WhichKey config
+""""""""""""""""""
+
 " Map leader to which_key
 nnoremap <silent> <leader> :silent <c-u> :silent WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
@@ -158,7 +161,7 @@ let g:which_key_map.l = {
 
 " f is for float terminal
 let g:which_key_map.f = {
-      \ 'name' : '+terminal' ,
+      \ 'name' : '+float_terminal' ,
       \ ';' : [':FloatermNew --wintype=popup --height=6'        , 'terminal'],
       \ 'f' : [':FloatermNew fzf'                               , 'fzf'],
       \ 'g' : [':FloatermNew lazygit'                           , 'git'],
