@@ -1,6 +1,9 @@
 " Keybinds config
 """"""""""""""""""
 
+" Some keybinds are moved to which key plugin and commented here for the moment
+" When I see how it works I'll fix it
+
 " General "
 
 " Map leader to space
@@ -8,7 +11,7 @@ let mapleader = " "
 " Quickly cancel search highlighting
 nnoremap <leader><space> :nohlsearch<cr>
 " Move buffer
-nnoremap <leader>bn :bNext<cr>
+"nnoremap <leader>bn :bNext<cr>
 " Shortcutting split navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -34,7 +37,7 @@ nmap <leader>md <Plug>MarkdownPreviewToggle
 " Coc keybinds are in coc-nvim.vim
 
 " GitGutter
-nmap <leader>tgg :GitGutterToggle<CR>
+" nmap <leader>tgg :GitGutterToggle<CR>
 
 " NERDTree
 " Toggle NERDTree

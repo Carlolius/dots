@@ -69,13 +69,16 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'luochen1990/rainbow'
 
 " LSP and auto complete plugins
-Plug 'neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Higlight the letters to be faster moving in lines
 Plug 'unblevable/quick-scope'
 
 " GitGutter
 Plug 'airblade/vim-gitgutter', { 'on': 'GitGutterToggle' }
+
+" Whichkey tells you your keybindings
+Plug 'liuchengxu/vim-which-key'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -120,10 +123,10 @@ augroup END
 
 " Source files
 """""""""""""""
+" Load the Keybinds
+runtime! settings/key.vim
 " Load the folder with plugins config, has to be at the end due overwriting
 runtime! config-plugins/**.vim
-" Load the Keybinds, overwriting the plugins ones that should be empty.
-runtime! settings/key.vim
 " This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages.
 runtime! archlinux.vim
