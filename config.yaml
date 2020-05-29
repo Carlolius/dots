@@ -4,6 +4,9 @@ config:
   dotpath: files
   longkey: true
 dotfiles:
+  d_termite:
+    src: config/termite
+    dst: ~/.config/termite
   d_scripts:
     src: scripts
     dst: ~/scripts
@@ -95,6 +98,7 @@ profiles:
     - f_zshrc
   nibbler:
     dotfiles:
+    - d_termite
     - d_scripts
     - d_vim_config-plugins
     - d_vim_settings

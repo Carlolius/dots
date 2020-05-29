@@ -1,14 +1,16 @@
 # Shortcuts to default terminal
-mod4 + Return
-	$TERMINAL
+super + Return
+	termite
+
 alt + x
-	$TERMINAL
+	termite
+
 # Make sxhkd reload its configuration files
 super + Escape
 	pkill -USR1 -x sxhkd
 
 # Shows rofi
-mod4 + d
+super + d
 	rofi -show run
 
 # Screenshot and copy to clipboard
