@@ -26,6 +26,9 @@ alias dotins="dotdropinstall"
 alias dotup="dotdropupdate"
 alias dotconf="nvim ~/dots/config.yaml"
 
+# Tmux
+alias tmux='tmux -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
+
 # Aliases of my functions
 alias upd=total_update
 alias descomprimir=extract
