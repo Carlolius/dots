@@ -55,6 +55,7 @@ Plug 'ryanoasis/vim-devicons'
 " Tpope
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-obsession'
 
 " Airline
 Plug 'vim-airline/vim-airline'
