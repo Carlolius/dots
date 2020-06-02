@@ -46,8 +46,8 @@ fi
 
 # Case to update different stuff quickly
 function total_update {
-    function u_guiki { echo "Actualizando güiki" && git -C ~/guiki pull }
-    function u_dots { echo "Actualizando dots" && git -C ~/dots pull }
+    function u_guiki { echo "Actualizando güiki" && git -C ~/guiki pull --no-rebase}
+    function u_dots { echo "Actualizando dots" && git -C ~/dots pull --no-rebase}
     function u_sistema { echo "Actualizando sistema" && yay }
     function u_vim { echo "Actualizando plugins de vim" && nvim --headless -e +PlugUpgrade +PlugUpdate +qall!}
     if [[ $1 != '' ]] ; then
