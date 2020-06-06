@@ -9,6 +9,11 @@ alias vi='nvim'
 alias vim='nvim'
 
 # Better, easier
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~"
 alias cls="clear"
 alias la="ls -la"
 alias ll="ls -lisa"
