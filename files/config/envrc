@@ -24,3 +24,6 @@ export VISUAL="$EDITOR"
 # Default terminal
 # Disbles libgl for alacritty to work
 export TERMINAL='termite'
+
+# Set config dir
+export XDG_CONFIG_HOME="$HOME"/.config
