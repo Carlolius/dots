@@ -88,6 +88,7 @@ dotfiles:
 profiles:
   bender-el-que-ofende:
     dotfiles:
+    - d_tmux
     - d_vim_config-plugins
     - d_vim_settings
     - f_alacritty
@@ -101,15 +102,16 @@ profiles:
     - f_zshrc
   nibbler:
     dotfiles:
+    - d_scripts
     - d_termite
     - d_tmux
-    - d_scripts
     - d_vim_config-plugins
     - d_vim_settings
     - f_alacritty
     - f_aliases
     - f_bashrc
     - f_coc-settings.json
+    - f_config_envrc
     - f_functions
     - f_i3_barconfig
     - f_i3_config
@@ -124,4 +126,3 @@ profiles:
     - f_xresources
     - f_zprofile
     - f_zshrc
-    - f_config_envrc
