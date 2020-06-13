@@ -5,10 +5,10 @@ config:
   longkey: true
 dotfiles:
   d_termite:
-    src: config/termite
+    src: termite
     dst: ~/.config/termite
   d_tmux:
-    src: config/tmux
+    src: tmux
     dst: ~/.config/tmux
   d_scripts:
     src: scripts
@@ -20,7 +20,7 @@ dotfiles:
     src: vim/settings
     dst: ~/.vim/settings
   f_alacritty:
-    src: config/alacritty.yml
+    src: alacritty/alacritty.yml
     dst: ~/.config/alacritty/alacritty.yml
   f_aliases:
     src: aliases
@@ -28,11 +28,11 @@ dotfiles:
   f_bashrc:
     src: bash/bashrc
     dst: ~/.bashrc
-  f_config_envrc:
-    src: config/envrc
+  f_envrc:
+    src: envrc
     dst: ~/.config/envrc
   f_coc-settings.json:
-    src: config/nvim/coc-settings.json
+    src: nvim/coc-settings.json
     dst: ~/.config/nvim/coc-settings.json
   f_conkyrc2:
     src: conky/conkyrc2
@@ -44,28 +44,28 @@ dotfiles:
     src: functions
     dst: ~/.config/functions
   f_i3_barconfig:
-    src: config/i3/barconfig
+    src: i3/barconfig
     dst: ~/.config/i3/barconfig
   f_i3_config:
-    src: config/i3/config
+    src: i3/config
     dst: ~/.config/i3/config
   f_inicio-conky.sh:
     src: conky/inicio-conky.sh
     dst: ~/.inicio-conky.sh
   f_nvim_init.vim:
-    src: config/nvim/init.vim
+    src: nvim/init.vim
     dst: ~/.config/nvim/init.vim
   f_profile:
     src: bash/profile
     dst: ~/.profile
   f_rofi_config.rasi:
-    src: config/rofi/config.rasi
+    src: rofi/config.rasi
     dst: ~/.config/rofi/config.rasi
   f_rofi_personal.rasi:
-    src: config/rofi/personal.rasi
+    src: rofi/personal.rasi
     dst: ~/.config/rofi/personal.rasi
   f_sxhkd:
-    src: config/sxhkd/sxhkdrc
+    src: sxhkd/sxhkdrc
     dst: ~/.config/sxhkd/sxhkdrc
   f_vim_vimrc:
     src: vim/vimrc
@@ -95,6 +95,7 @@ profiles:
     - f_aliases
     - f_bashrc
     - f_coc-settings.json
+    - f_envrc
     - f_functions
     - f_nvim_init.vim
     - f_vim_vimrc
@@ -111,7 +112,7 @@ profiles:
     - f_aliases
     - f_bashrc
     - f_coc-settings.json
-    - f_config_envrc
+    - f_envrc
     - f_functions
     - f_i3_barconfig
     - f_i3_config
