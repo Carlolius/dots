@@ -17,7 +17,7 @@ set cursorline
 set autoindent
 " Allow undo even if the file has been closed
 set undofile
-set undodir=/tmp
+set undodir=~/.cache/vim/undo
 " No backup of files needed
 set nobackup
 set nowritebackup
@@ -31,6 +31,8 @@ set smarttab
 set smartindent
 " Incremental search
 set incsearch
+" Ignore search case
+set ignorecase
 
 " Plugins configuration
 """"""""""""""""""""""""
