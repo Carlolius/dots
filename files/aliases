@@ -7,6 +7,7 @@ alias evim="nvim ~/.vim/vimrc"
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
+alias calendar='nvim -e +visual +Calendar'
 
 # Better, easier
 alias ..="cd .."
@@ -22,6 +23,7 @@ alias myip="ip route get 1 | awk '{print \$7}' && curl http://ipecho.net/plain &
 alias copy="xclip -o | xclip -selection clipboard -i"
 alias musica="spotifyd && spt"
 alias ssh="TERM=xterm-256color \ssh"  # easier connection to non 256 color supported terminal
+alias mirrorupdate='sudo reflector --country Spain --country Portugal --country France --age 24 --completion-percent 100 --sort score --fastest 100 --verbose --save /etc/pacman.d/mirrorlist'
 
 # Dotdrop
 alias dotdrop="source ~/dots/env/bin/activate; sh ~/dots/dotdrop.sh"

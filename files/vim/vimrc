@@ -33,6 +33,8 @@ set smartindent
 set incsearch
 " Ignore search case
 set ignorecase
+" Don't ignorecase if upper chase characters
+set smartcase
 
 " Plugins configuration
 """"""""""""""""""""""""
@@ -86,6 +88,9 @@ Plug 'liuchengxu/vim-which-key'
 " Floaterm
 Plug 'voldikss/vim-floaterm'
 
+" Calendar
+Plug 'itchyny/calendar.vim'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -106,6 +111,7 @@ hi Cursorline guibg=#303030
 " Vertically center document when entering insert mode
 autocmd InsertEnter * norm zz
 " Stoled from https://github.com/CKolkey/.dotfiles/blob/master/nvim_init.vim
+
 " Autoreload changed files
 set autoread
 augroup autoreadfiles
@@ -115,10 +121,10 @@ augroup autoreadfiles
 augroup END
 
 " Autosave current buffer
-augroup autosavebuffer
-	autocmd!
-	autocmd InsertLeave * nested silent! update
-augroup end
+" augroup autosavebuffer
+" 	autocmd!
+" 	autocmd InsertLeave * nested silent! update
+" augroup end
 
 " Relative line numbers in normal mode, absolute numbers in insert mode
 augroup numbertoggle
