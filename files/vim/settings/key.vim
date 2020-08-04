@@ -26,6 +26,8 @@ nnoremap <S-TAB> :bprevious<CR>
 " Better tabbing, doesn't unselect after tab
 vnoremap < <gv
 vnoremap > >gv
+" Esc in insert mode
+:imap jj <Esc>
 
 " Plugins "
 

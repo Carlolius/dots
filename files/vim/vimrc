@@ -48,6 +48,34 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " List of plugins.
+" Airline
+Plug 'vim-airline/vim-airline'
+
+" Calendar
+Plug 'itchyny/calendar.vim'
+
+" Colorizer.lua
+Plug 'norcalli/nvim-colorizer.lua'
+
+" Colorscheme
+Plug 'morhetz/gruvbox', { 'as': 'gruvbox' }
+Plug 'atahabaki/archman-vim', { 'as': 'archman' }
+
+" Floaterm
+Plug 'voldikss/vim-floaterm'
+
+" Fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" GitGutter
+Plug 'airblade/vim-gitgutter', { 'on': 'GitGutterToggle' }
+
+" Higlight the letters to be faster moving in lines
+Plug 'unblevable/quick-scope'
+
+" LSP and auto complete plugins
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Markdown highlight and preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
@@ -56,40 +84,16 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ryanoasis/vim-devicons'
 
+" Rainbow, add color to the parentheses so it's easier to see
+Plug 'luochen1990/rainbow'
+
 " Tpope
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-obsession'
 
-" Airline
-Plug 'vim-airline/vim-airline'
-
-" Colorscheme
-Plug 'morhetz/gruvbox', { 'as': 'gruvbox' }
-Plug 'atahabaki/archman-vim', { 'as': 'archman' }
-" Colorizer.lua
-Plug 'norcalli/nvim-colorizer.lua'
-
-" Rainbow, add color to the parentheses so it's easier to see
-Plug 'luochen1990/rainbow'
-
-" LSP and auto complete plugins
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Higlight the letters to be faster moving in lines
-Plug 'unblevable/quick-scope'
-
-" GitGutter
-Plug 'airblade/vim-gitgutter', { 'on': 'GitGutterToggle' }
-
 " Whichkey tells you your keybindings
 Plug 'liuchengxu/vim-which-key'
-
-" Floaterm
-Plug 'voldikss/vim-floaterm'
-
-" Calendar
-Plug 'itchyny/calendar.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
