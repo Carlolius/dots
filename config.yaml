@@ -13,10 +13,10 @@ dotfiles:
   d_scripts:
     src: scripts
     dst: ~/scripts
-  d_vim_config-plugins:
+  d_vim-config-plugins:
     src: vim/config-plugins
     dst: ~/.vim/config-plugins
-  d_vim_settings:
+  d_vim-settings:
     src: vim/settings
     dst: ~/.vim/settings
   f_alacritty:
@@ -31,7 +31,7 @@ dotfiles:
   f_envrc:
     src: envrc
     dst: ~/.config/envrc
-  f_coc-settings.json:
+  f_coc-settings:
     src: nvim/coc-settings.json
     dst: ~/.config/nvim/coc-settings.json
   f_conkyrc2:
@@ -43,31 +43,31 @@ dotfiles:
   f_functions:
     src: functions
     dst: ~/.config/functions
-  f_i3_barconfig:
+  f_i3-barconfig:
     src: i3/barconfig
     dst: ~/.config/i3/barconfig
-  f_i3_config:
+  f_i3-config:
     src: i3/config
     dst: ~/.config/i3/config
-  f_inicio-conky.sh:
+  f_inicio-conky:
     src: conky/inicio-conky.sh
     dst: ~/.inicio-conky.sh
-  f_nvim_init.vim:
+  f_nvim-init:
     src: nvim/init.vim
     dst: ~/.config/nvim/init.vim
   f_profile:
     src: bash/profile
     dst: ~/.profile
-  f_rofi_config.rasi:
+  f_rofi-config:
     src: rofi/config.rasi
     dst: ~/.config/rofi/config.rasi
-  f_rofi_personal.rasi:
+  f_rofi-personal:
     src: rofi/personal.rasi
     dst: ~/.config/rofi/personal.rasi
   f_sxhkd:
     src: sxhkd/sxhkdrc
     dst: ~/.config/sxhkd/sxhkdrc
-  f_vim_vimrc:
+  f_vim-vimrc:
     src: vim/vimrc
     dst: ~/.vim/vimrc
   f_xinitrc:
@@ -89,16 +89,16 @@ profiles:
   bender-el-que-ofende:
     dotfiles:
     - d_tmux
-    - d_vim_config-plugins
-    - d_vim_settings
+    - d_vim-config-plugins
+    - d_vim-settings
     - f_alacritty
     - f_aliases
     - f_bashrc
-    - f_coc-settings.json
+    - f_coc-settings
     - f_envrc
     - f_functions
-    - f_nvim_init.vim
-    - f_vim_vimrc
+    - f_nvim-init
+    - f_vim-vimrc
     - f_xresources
     - f_zshrc
   nibbler:
@@ -106,24 +106,32 @@ profiles:
     - d_scripts
     - d_termite
     - d_tmux
-    - d_vim_config-plugins
-    - d_vim_settings
+    - d_vim-config-plugins
+    - d_vim-settings
     - f_alacritty
     - f_aliases
     - f_bashrc
-    - f_coc-settings.json
+    - f_coc-settings
     - f_envrc
     - f_functions
-    - f_i3_barconfig
-    - f_i3_config
-    - f_nvim_init.vim
+    - f_i3-barconfig
+    - f_i3-config
+    - f_nvim-init
     - f_profile
-    - f_rofi_config.rasi
-    - f_rofi_personal.rasi
+    - f_rofi-config
+    - f_rofi-personal
     - f_sxhkd
-    - f_vim_vimrc
+    - f_vim-vimrc
     - f_xinitrc
     - f_xprofile
     - f_xresources
     - f_zprofile
     - f_zshrc
+  server:
+    dotfiles:
+    - d_vim-settings
+    - d_vim-config-plugins
+    - f_aliases
+    - f_coc-settings
+    - f_nvim-init
+    - f_vim-vimrc
