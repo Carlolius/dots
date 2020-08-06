@@ -55,6 +55,9 @@ dotfiles:
   f_nvim-init:
     src: nvim/init.vim
     dst: ~/.config/nvim/init.vim
+  f_p10k:
+    src: p10k.zsh
+    dst: ~/.p10k.zsh
   f_profile:
     src: bash/profile
     dst: ~/.profile
@@ -95,9 +98,13 @@ profiles:
     - f_aliases
     - f_bashrc
     - f_coc-settings
+    - f_conkyrc
+    - f_conkyrc2
     - f_envrc
     - f_functions
+    - f_inicio-conky
     - f_nvim-init
+    - f_p10k
     - f_vim-vimrc
     - f_xresources
     - f_zshrc

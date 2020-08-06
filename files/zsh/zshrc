@@ -1,10 +1,18 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # ZSH
 # Load environment variables
 [ -r  ~/.config/envrc ] && . ~/.config/envrc
 # oh-my-zsh
 export ZSH=/usr/share/oh-my-zsh
-ZSH_THEME="robbyrussell"
-plugins=(git)
+# ZSH_THEME="robbyrussell"
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+plugins=(git z zsh-autosuggestions)
 
 # History
 HISTFILE=~/.cache/zsh/history
@@ -18,6 +26,10 @@ source ~/.config/aliases
 source ~/.config/functions
 source $ZSH/oh-my-zsh.sh
 
+# Autoload
+autoload -Uz compinit
+compinit
+
 # ZSH Options
 setopt auto_cd       # cd by typing the dir name if its not a command name
 setopt correct_all   # autocorrect commandsl
@@ -25,3 +37,14 @@ setopt auto_list     # automatically list choices on ambiguous completion
 setopt auto_menu     # automatically use menu completion
 setopt always_to_end # move cursor to end if word had one match
 setopt completealiases # complete aliases
+setopt appendhistory # append history list instead replace it
+setopt nomatch 			 # print error if generation pattern has no match
+setopt notify        # status of the jobs inmediately
+
+# IDK
+zstyle ':completion:*' menu select
+zstyle ':completion::complete:*' gain-privileges 1
+zstyle ':completion:*' completer _expand_alias _complete _ignored
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
