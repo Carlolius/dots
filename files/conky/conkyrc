@@ -1,136 +1,152 @@
-# {{@@ header() @@}} #
+-- conkyrc config
 
-# Use Xft?
-use_xft yes
-xftfont Trebuchet MS:size=6
-xftalpha 0.8
-text_buffer_size 2048
-background yes
-# Update interval in seconds
-update_interval 1
-xftalpha 0.8
-own_window_argb_visual no
-# This is the number of times Conky will update before quitting.
-# Set to zero to run forever.
-total_run_times 0
+conky.config = {
 
-# Create own window instead of using desktop (required in nautilus)
-own_window yes
-own_window_transparent yes
-own_window_type override
-own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+	-- Various config
 
-# Use double buffering (reduces flicker, may not work for everyone)
-double_buffer yes
+	background = true, -- Conky will be forked to background when started
+	cpu_avg_samples = 2, -- The number of samples to average for CPU monitoring. 
+	diskio_avg_samples = 10, -- The number of samples to average for disk I/O monitoring. 
+	double_buffer = true,  --  (eliminates flicker) 
+	if_up_strictness = 'address',
+	net_avg_samples = 2, -- The number of samples to average for net data 
+	no_buffers = true, -- Subtract (file system) buffers from used memory? 
+	temperature_unit = 'celsius',
+	update_interval = 1,
+	imlib_cache_size = 0,
+	total_run_times = 0, -- This is the number of times Conky will update before quitting, set to zero to run forever.
+	temperature_unit = 'celsius',
 
-# Minimum size of text area
-minimum_size 250 0
+-- Position
 
-# Draw shades?
-draw_shades no
+	alignment = 'top_right',
+	gap_x = 20,
+	gap_y = 10,
+	maximum_width = 400,
+	minimum_width = 250,
 
-# Draw outlines?
-draw_outline no
+-- Graphical
 
-# Draw borders around text
-draw_borders no
+	border_width = 1, -- Border width
+	draw_borders = false, -- Draw borders around text
+	draw_graph_borders = false,
+	draw_shades = false,
+	draw_outline = false,
+	stippled_borders = 0,
 
-# Stippled borders?
-stippled_borders 0
+	--Textual
+	
+	format_human_readable = true,
+	font = 'Trebuchet MS:size=6',
+	max_text_width = 0,
+	short_units = true,
+	use_xft = true,
+	xftalpha = 1,
+	uppercase = false, -- set to yes if you want all text to be in uppercase
 
-# border margins
-border_margin 5
+	--Windows
 
-# border width
-border_width 1
+	own_window = true, -- Create own window instead of using desktop (required in nautilus)
+	own_window_argb_value = 0,
+	own_window_argb_visual = true,
+	own_window_type = 'normal',-- # options are: normal/override/dock/desktop/panel
+	text_buffer_size = 2048,
+	own_window_transparent = true,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
 
-# Default colors and also border colors
-#default_color white
-# own_window_colour white
+	--Colours
 
+	default_color = '#00FF00', -- default color and border color
+	color1 = '#68A1DF', -- title_color
+	color2 = '#FAA916', -- top memory or processe, graphs
+	color3 = '#FBFFFE',	-- text color
 
-# Subtract file system buffers from used memory?
-no_buffers yes
+};
 
-# set to yes if you want all text to be in uppercase
-uppercase no
-
-# number of cpu samples to average
-# set to 1 to disable averaging
-cpu_avg_samples 2
-
-# number of net samples to average
-# set to 1 to disable averaging
-net_avg_samples 2
-
-# Force UTF8? note that UTF8 support required XFT
-override_utf8_locale yes
-
-# Add spaces to keep things from moving about?  This only affects certain objects.
-use_spacer none
-
-temperature_unit celsius
-maximum_width 400
-draw_graph_borders no
-default_color 00FF00
-alignment top_right
-gap_x 20
-gap_y 10
-
-TEXT
+conky.text = [[
 ${font sans-serif:bold:size=8}SYSTEMA ${hr 2}
-${font sans-serif:normal:size=8}$sysname $kernel $alignr $machine
+${font sans-serif:normal:size=8}Kernel: $kernel $alignr $machine
 Host:$alignr$nodename
 Tiempo encendido:$alignr$uptime
-Bateria: $battery $alignr$battery_time
-###############################################################################
+
+#Procesador####################################################################
 ${font sans-serif:bold:size=8}PROCESADOR ${hr 2}
 ${font sans-serif:normal:size=8}${cpugraph cpu1}
 CPU1: ${cpu cpu1}% ${goto 65} ${cpubar cpu1}
 CPU2: ${cpu cpu2}% ${goto 65} ${cpubar cpu2}
-Temperatura: ${alignr} ${acpitemp}°C
+CPU3: ${cpu cpu3}% ${goto 65} ${cpubar cpu3}
+CPU4: ${cpu cpu4}% ${goto 65} ${cpubar cpu4}
+Temperatura: ${alignr} ${execi 5 sensors | grep Package | cut -c 17-20} °C
+Ventilador: ${alignr} ${execi 5 sensors | grep fan2 | cut -c 16-20} RPM
 
-###############################################################################
+#GPU###########################################################################
+${font sans-serif:bold:size=8}GPU ${hr 2}
+${font sans-serif:normal:size=8}Uso: $alignr${exec nvidia-smi -i 0 | grep % | cut -c 2-4} %
+VRAM: ${alignr}${exec nvidia-smi -i 0| grep % | cut -c 37-40} MB
+${voffset 2}Temperatura: ${alignr}${nvidia temp}°C
+
+#Memoria#######################################################################
 ${font sans-serif:bold:size=8}MEMORIA ${hr 2}
 ${font sans-serif:normal:size=8}RAM $alignc $mem / $memmax $alignr $memperc%
 $membar
 SWAP $alignc ${swap} / ${swapmax} $alignr ${swapperc}%
 ${swapbar}
+${voffset 5}Name${goto 180}MEM%${alignr}MEM
+${top_mem name 1} ${goto 180}${top_mem mem 1}${alignr}${top_mem mem_res 1}
+${top_mem name 2} ${goto 180}${top_mem mem 2}${alignr}${top_mem mem_res 2}
+${top_mem name 3} ${goto 180}${top_mem mem 3}${alignr}${top_mem mem_res 3}
+${top_mem name 4} ${goto 180}${top_mem mem 4}${alignr}${top_mem mem_res 4}
+${top_mem name 5} ${goto 180}${top_mem mem 5}${alignr}${top_mem mem_res 5}
 
-###############################################################################
-${font sans-serif:bold:size=8}DISCO ${hr 2}
-${font sans-serif:normal:size=8}/ $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
-${fs_bar /}
-Lectura / Escritura: $alignr $diskio_read/ $diskio_write
-${font sans-serif:normal:size=8}/Datos $alignc ${fs_used /mnt/4EAA9EAF45D54629} / ${fs_size /mnt/4EAA9EAF45D54629} $alignr ${fs_used_perc /mnt/4EAA9EAF45D54629}%
-${fs_bar /mnt/4EAA9EAF45D54629}
-
-###############################################################################
+#Procesos######################################################################
 ${font sans-serif:bold:size=8}PROCESOS ${hr 2}
-${font sans-serif:normal:size=8}${top_mem name 1}${alignr}${top mem 1} %
-${top_mem name 2}${alignr}${top mem 2} %
-$font${top_mem name 3}${alignr}${top mem 3} %
-$font${top_mem name 4}${alignr}${top mem 4} %
-$font${top_mem name 5}${alignr}${top mem 5} %
+${font sans-serif:normal:size=8}#
+${voffset 5}Name${goto 180}CPU%${alignr}MEM%
+${top name 1} ${goto 180}${top cpu 1}${alignr}${top mem 1}
+${top name 2} ${goto 180}${top cpu 2}${alignr}${top mem 2}
+${top name 3} ${goto 180}${top cpu 3}${alignr}${top mem 3}
+${top name 4} ${goto 180}${top cpu 4}${alignr}${top mem 4}
+${top name 5} ${goto 180}${top cpu 5}${alignr}${top mem 5}
 
-###############################################################################
-${if_existing /sys/class/net/wlp3s0/operstate up}#
-${font sans-serif:bold:size=8}Wi-Fi ${hr 2}
-${font sans-serif:normal:size=8}IP Externa: ${alignr}${texeci 3600 wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1}
-IP Local: $alignr ${addr wlp3s0}
-Red: $alignr ${wireless_essid wlp3s0}
-Potencia: $alignr ${wireless_link_qual_perc wlp3s0}%
-Descarga: ${downspeed wlp3s0}/s $alignr Subida: ${upspeed wlp3s0}/s
-${downspeedgraph wlp3s0 30,120} $alignr ${upspeedgraph wlp3s0 30,120}
-Total: ${totaldown wlp3s0}$alignr Total: ${totalup wlp3s0}
-${endif}#
-##################################################################################
+#Discos########################################################################
+${font sans-serif:bold:size=8}DISCOS ${hr 2}${font sans-serif:normal:size=8}
+/ $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
+${fs_bar /}
+Lectura / Escritura: ${alignr} ${diskio_read} / ${diskio_write}
+${if_existing /mnt/Datos160}
+Datos160 $alignc ${fs_used /mnt/Datos160} / ${fs_size /mnt/Datos160} $alignr ${fs_used_perc /mnt/Datos160}%
+${fs_bar /mnt/Datos160}
+Lectura / Escritura: $alignr ${diskio_read /dev/sda} / ${diskio_write /dev/sda}
+${endif}${if_existing /mnt/Datos500}
+Datos500 $alignc ${fs_used /mnt/Datos500} / ${fs_size /mnt/Datos500} $alignr ${fs_used_perc /mnt/Datos500}%
+${fs_bar /mnt/Datos500}
+Lectura / Escritura: $alignr ${diskio_read /dev/sdc} / ${diskio_write /dev/sdc}
+${endif}
+#Internet######################################################################
+${font sans-serif:bold:size=8}INTERNET ${hr 2}
+${font sans-serif:normal:size=8}#
+IP Externa: ${alignr}${texeci 3600 wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1}
+####
 ${if_existing /sys/class/net/eno1/operstate up}#
-${font sans-serif:bold:size=8}Cable ${hr 2}
-${font sans-serif:normal:size=8}IP Externa: ${alignr}${texeci 3600 wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1}
-IP Local: $alignr ${addr enp0s25}
-Descarga: ${downspeed enp0s25}/s $alignr Subida: ${upspeed enp0s25}/s
-${downspeedgraph enp0s25 30,120} $alignr ${upspeedgraph enp0s25 30,120}
-Total: ${totaldown enp0s25}$alignr Total: ${totalup enp0s25}
+IP Local: $alignr ${addr eno1}
+Descarga: ${downspeed eno1}/s $alignr Subida: ${upspeed eno1}/s
+${downspeedgraph eno1 32,120}$alignr ${upspeedgraph eno1 32,120}
+Total: ${totaldown eno1} $alignr Total: ${totalup eno1}
 ${endif}#
-##################################################################################
+####
+${if_existing /sys/class/net/wlp0s29u1u1/operstate up}#
+Red: $alignr ${wireless_essid}
+IP Local: $alignr ${addr wlp0s29u1u1}
+Descarga: ${downspeed wlp0s29u1u1}/s $alignr Subida: ${upspeed wlp0s29u1u1}/s
+${downspeedgraph wlp0s29u1u1 32,120}$alignr ${upspeedgraph wlp0s29u1u1 32,120}
+Total: ${totaldown wlp0s29u1u1} $alignr Total: ${totalup wlp0s29u1u1}
+${endif}#
+####
+${if_existing /sys/class/net/wlp3s0u2/operstate up}#
+Red: $alignr ${wireless_essid}
+IP Local: $alignr ${addr wlp3s0u2}
+Descarga: ${downspeed wlp3s0u2}/s $alignr Subida: ${upspeed wlp3s0u2}/s
+${downspeedgraph wlp3s0u2 32,120}$alignr ${upspeedgraph wlp3s0u2 32,120}
+Total: ${totaldown wlp3s0u2} $alignr Total: ${totalup wlp3s0u2}
+${endif}
+]];

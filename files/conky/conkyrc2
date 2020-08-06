@@ -1,85 +1,71 @@
-# {{@@ header() @@}} #
+-- conkyrc2 config
 
-# Use Xft?
-use_xft yes
-xftfont Trebuchet MS:size=6
-xftalpha 0.8
-text_buffer_size 2048
-background yes
-# Update interval in seconds
-update_interval 1
-xftalpha 0.8
-own_window_argb_visual no
-# This is the number of times Conky will update before quitting.
-# Set to zero to run forever.
-total_run_times 0
+conky.config = {
 
-# Create own window instead of using desktop (required in nautilus)
-own_window yes
-own_window_transparent yes
-own_window_type normal
-own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+	-- Various config
 
-# Use double buffering (reduces flicker, may not work for everyone)
-double_buffer yes
+	background = true, -- Conky will be forked to background when started
+	cpu_avg_samples = 2, -- The number of samples to average for CPU monitoring. 
+	diskio_avg_samples = 10, -- The number of samples to average for disk I/O monitoring. 
+	double_buffer = true,  --  (eliminates flicker) 
+	if_up_strictness = 'address',
+	net_avg_samples = 2, -- The number of samples to average for net data 
+	no_buffers = true, -- Subtract (file system) buffers from used memory? 
+	temperature_unit = 'celsius',
+	update_interval = 1,
+	imlib_cache_size = 0,
+	total_run_times = 0, -- This is the number of times Conky will update before quitting, set to zero to run forever.
+	temperature_unit = 'celsius',
 
-# Minimum size of text area
-minimum_size 250 0
+-- Position
 
-# Draw shades?
-draw_shades no
+	alignment = 'bottom_right',
+	gap_x = 20,
+	gap_y = 10,
+	maximum_width = 400,
+	minimum_width = 250,
 
-# Draw outlines?
-draw_outline no
+-- Graphical
 
-# Draw borders around text
-draw_borders no
+	border_width = 1, -- Border width
+	draw_borders = false, -- Draw borders around text
+	draw_graph_borders = false,
+	draw_shades = false,
+	draw_outline = false,
+	stippled_borders = 0,
 
-# Stippled borders?
-stippled_borders 0
+	--Textual
+	
+	format_human_readable = true,
+	font = 'Trebuchet MS:size=6',
+	max_text_width = 0,
+	short_units = true,
+	use_xft = true,
+	xftalpha = 1,
+	uppercase = false, -- set to yes if you want all text to be in uppercase
 
-# border margins
-border_margin 5
+	--Windows
 
-# border width
-border_width 1
+	own_window = true, -- Create own window instead of using desktop (required in nautilus)
+	own_window_argb_value = 0,
+	own_window_argb_visual = true,
+	own_window_type = 'normal',-- # options are: normal/override/dock/desktop/panel
+	text_buffer_size = 2048,
+	own_window_transparent = true,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
 
-# Default colors and also border colors
-#default_color white
-# own_window_colour white
+	--Colours
 
+	default_color = '#00FF00', -- default color and border color
+	color1 = '#68A1DF', -- title_color
+	color2 = '#FAA916', -- top memory or processe, graphs
+	color3 = '#FBFFFE',	-- text color
 
-# Subtract file system buffers from used memory?
-no_buffers yes
-
-# set to yes if you want all text to be in uppercase
-uppercase no
-
-# number of cpu samples to average
-# set to 1 to disable averaging
-cpu_avg_samples 2
-
-# number of net samples to average
-# set to 1 to disable averaging
-net_avg_samples 2
-
-# Force UTF8? note that UTF8 support required XFT
-override_utf8_locale yes
-
-# Add spaces to keep things from moving about?  This only affects certain objects.
-use_spacer none
-
-temperature_unit celsius
-maximum_width 400
-draw_graph_borders no
-default_color 00FF00
-alignment bottom_right
-gap_x 2
-gap_y 15
-
-TEXT
+};
+conky.text = [[
 
 #Esta es la parte del reloj
 
-${font GE Inspira:pixelsize=55}${alignr}${time %H:%M}${font GE Inspira:pixelsize=13}
+${font Hack:pixelsize=55}${alignr}${time %H:%M}${font GE Inspira:pixelsize=13}
 ${voffset 10}${alignr}${time %A} ${color FF00f0}${time %d} ${color 00FF00}${time %B} de ${time %Y}
+]];
