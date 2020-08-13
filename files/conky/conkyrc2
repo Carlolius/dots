@@ -66,6 +66,6 @@ conky.text = [[
 
 #Esta es la parte del reloj
 
-${font Hack:pixelsize=55}${alignr}${time %H:%M}${font GE Inspira:pixelsize=13}
-${voffset 10}${alignr}${time %A} ${color FF00f0}${time %d} ${color 00FF00}${time %B} de ${time %Y}
+${font Hack:pixelsize=55}${alignr}${time %H:%M}${font Hack:pixelsize=15}
+${voffset 10}${alignr}${time %A} ${color FF00F0}${time %d}${color 00FF00} de ${color FF00F0}${time %B} ${color 00FF00}del ${color FF00F0}${time %Y}
 ]];
