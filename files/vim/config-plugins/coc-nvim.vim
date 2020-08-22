@@ -13,6 +13,7 @@ let g:coc_global_extensions = [
 		\ 'coc-angular',
 		\ 'coc-tsserver',
 		\ 'coc-sh',
+		\ 'coc-solargraph',
 		\ ]
 
 " TextEdit might fail if hidden is not set.

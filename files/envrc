@@ -27,3 +27,5 @@ export TERMINAL='termite'
 
 # Set config dir
 export XDG_CONFIG_HOME="$HOME"/.config
+
+PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
