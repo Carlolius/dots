@@ -124,6 +124,7 @@ profiles:
     - f_i3-barconfig
     - f_i3-config
     - f_nvim-init
+    - f_p10k
     - f_profile
     - f_rofi-config
     - f_rofi-personal
