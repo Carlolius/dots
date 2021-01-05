@@ -5,7 +5,7 @@ I use [Dotdrop][dotdrop] to help having same dotfiles for different hosts.
 ## Installation
 To install the **dots** repository in a new host you need to clone the [Dotdrop][dotdrop] submodule, the easiest way is use the `--recurse-submodules` flag. The best way is to use a Python virtualenv.
 ~~~
-git clone --recursive-submodules https://github.com/Carlolius/dots.git
+git clone --recurse-submodules https://github.com/Carlolius/dots.git
 virtualenv -p python3 env
 echo 'env' > .gitignore
 source env/bin/activate
