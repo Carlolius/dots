@@ -112,7 +112,7 @@ ${top name 5} ${goto 180}${top cpu 5}${alignr}${top mem 5}
 ${font sans-serif:bold:size=8}DISCOS ${hr 2}${font sans-serif:normal:size=8}
 / $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
 ${fs_bar /}
-Lectura / Escritura: ${alignr} ${diskio_read} / ${diskio_write}
+Lectura / Escritura: ${alignr} ${diskio_read /dev/sdb} / ${diskio_write /dev/sdb}
 ${if_existing /mnt/Datos160}
 Datos160 $alignc ${fs_used /mnt/Datos160} / ${fs_size /mnt/Datos160} $alignr ${fs_used_perc /mnt/Datos160}%
 ${fs_bar /mnt/Datos160}
@@ -120,7 +120,7 @@ Lectura / Escritura: $alignr ${diskio_read /dev/sda} / ${diskio_write /dev/sda}
 ${endif}${if_existing /mnt/Datos500}
 Datos500 $alignc ${fs_used /mnt/Datos500} / ${fs_size /mnt/Datos500} $alignr ${fs_used_perc /mnt/Datos500}%
 ${fs_bar /mnt/Datos500}
-Lectura / Escritura: $alignr ${diskio_read /dev/sdc} / ${diskio_write /dev/sdc}
+Lectura / Escritura: $alignr ${diskio_read /dev/sdd} / ${diskio_write /dev/sdd}
 ${endif}
 #Internet######################################################################
 ${font sans-serif:bold:size=8}INTERNET ${hr 2}

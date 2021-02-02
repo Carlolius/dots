@@ -74,6 +74,9 @@ Plug 'airblade/vim-gitgutter', { 'on': 'GitGutterToggle' }
 " Higlight the letters to be faster moving in lines
 Plug 'unblevable/quick-scope'
 
+" LanguageTool grammar checker
+Plug 'dpelle/vim-LanguageTool'
+
 " LSP and auto complete plugins
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
