@@ -73,5 +73,5 @@ volume_status {
 
 wifi {
 	format = ' {ssid} {signal_percent}%| disconnected'
-	on_click 1 = "exec i3-sensible-terminal -e sudo wifi-menu -o"
+	on_click 1 = "exec i3-sensible-terminal -e iwctl"
 }

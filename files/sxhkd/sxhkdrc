@@ -13,6 +13,10 @@ super + Escape
 super + d
 	rofi -show run
 
+# Rofi window switcher
+alt + Tab
+  rofi -show window
+
 # Screenshot and copy to clipboard
 shift + Print
 	maim -s | xclip -selection clipboard -t image/png; xclip -selection clipboard -t image/png -o > ~/Screenshots/$(date +%F-%H:%M:%S).png

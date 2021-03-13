@@ -51,9 +51,6 @@ call plug#begin('~/.vim/plugged')
 " Airline
 Plug 'vim-airline/vim-airline'
 
-" Calendar
-Plug 'itchyny/calendar.vim'
-
 " Colorizer.lua
 Plug 'norcalli/nvim-colorizer.lua'
 

@@ -1,7 +1,5 @@
-/**
- * Rogi personal theme.
- * Rofi version: 1.5.4
- **/
+/** Rofi personal theme **/
+
 * {
     active-background:           var(background);
     active-foreground:           var(blue);
@@ -144,4 +142,5 @@ error-message {
     background-color: rgba ( 0, 0, 0, 0 % );
     text-color:       var(normal-foreground);
 }
+
 
