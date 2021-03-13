@@ -1,10 +1,7 @@
 " Keybinds config
 """"""""""""""""""
 
-" Some keybinds are moved to which key plugin and commented here for the moment
-" When I see how it works I'll fix it
-
-" General "
+" General keybinds the other ones are in WhichKey plugin configuration "
 
 " Map leader to space
 let mapleader = " "
@@ -28,19 +25,3 @@ vnoremap < <gv
 vnoremap > >gv
 " Esc in insert mode
 :imap jj <Esc>
-
-" Plugins "
-
-" Markdown Preview
-" Toggle Markdown preview
-nmap <leader>md <Plug>MarkdownPreviewToggle
-
-" Coc
-" Coc keybinds are in coc-nvim.vim
-
-" GitGutter
-" nmap <leader>tgg :GitGutterToggle<CR>
-
-" NERDTree
-" Toggle NERDTree
-nnoremap <leader>m :NERDTreeToggle<CR>

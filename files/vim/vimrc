@@ -80,10 +80,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Markdown highlight and preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 
-" Nerdtree
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'ryanoasis/vim-devicons'
-
 " Rainbow, add color to the parentheses so it's easier to see
 Plug 'luochen1990/rainbow'
 

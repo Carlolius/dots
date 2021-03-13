@@ -29,12 +29,10 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 
 " Single mappings
 let g:which_key_map['/'] = [ ':Commentary'  , 'comment' ]
-let g:which_key_map['.'] = [ ':e $MYVIMRC'                , 'open init' ]
 let g:which_key_map['='] = [ '<C-W>='                     , 'balance windows' ]
 let g:which_key_map['d'] = [ ':bd'                        , 'delete buffer']
 let g:which_key_map['e'] = [ ':CocCommand explorer'       , 'explorer' ]
 let g:which_key_map['h'] = [ '<C-W>s'                     , 'split below']
-let g:which_key_map['q'] = [ 'q'                          , 'quit' ]
 let g:which_key_map['v'] = [ '<C-W>v'                     , 'split right']
 
 " Group mappings
@@ -178,8 +176,6 @@ let g:which_key_map.f = {
 " t is for toggle
 let g:which_key_map.t = {
 			\ 'name' : '+toggle' ,
-			\ 'g'   : [':GitGutterToggle' 							, 'Toggle GitGutter'],
-			\ 'n'   : [':NERDTreeToggle' 							, 'Toggle NERDTree'],
 			\ 'm' 	: ['<Plug>MarkdownPreviewToggle' 	, 'Activate MardownPreview'],
 			\	}
 
