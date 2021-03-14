@@ -33,6 +33,12 @@ XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 XF86AudioMicMute
 	pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+XF86AudioPlay
+  playerctl play-pause
+XF86AudioNext
+  playerctl next
+XF86AudioPrev
+	playerctl prev
 
 # Locksreen
 control + mod1 + l
