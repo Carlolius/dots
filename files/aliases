@@ -8,7 +8,6 @@ alias functions="nvim ~/.config/functions"
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
-alias calendar='nvim -e +visual +Calendar'
 
 # Better, easier
 # Navigation
