@@ -115,7 +115,6 @@ profiles:
     - d_tmux
     - d_vim-config-plugins
     - d_vim-settings
-    - f_alacritty
     - f_aliases
     - f_bashrc
     - f_coc-settings
