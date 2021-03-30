@@ -6,8 +6,7 @@ alias functions="nvim ~/.config/functions"
 
 # Nvim
 alias v='nvim'
-alias vi='nvim'
-alias vim='nvim'
+alias ndiff='nvim -d'
 
 # Better, easier
 # Navigation
@@ -32,6 +31,13 @@ alias mirrorupdate='sudo reflector --country Spain --country Portugal --country 
 # Flags
 alias grep='grep --color=auto'
 alias df='df -h'
+# Sudo
+alias please='sudo !!'
+alias visudo='sudo -E visudo'
+
+# Rsync
+alias cpr='rsync --archive -hh --partial --info=stats1 --info=progress2 --modify-window=1'
+alias mvr='rsync --archive -hh --partial --info=stats1 --info=progress2 --modify-window=1 --remove-source-files'
 
 # Dotdrop
 alias dotdrop="source ~/dots/env/bin/activate; sh ~/dots/dotdrop.sh"
