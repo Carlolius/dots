@@ -11,6 +11,10 @@ activate_virtualenv() {
 	elif [ -f ../env/bin/activate ]; then . ../env/bin/activate;
 	elif [ -f ../../env/bin/activate ]; then . ../../env/bin/activate;
 	elif [ -f ../../../env/bin/activate ]; then . ../../../env/bin/activate;
+	elif [ -f */bin/activate ]; then . */bin/activate;
+	elif [ -f ../*/bin/activate ]; then . ../*/bin/activate;
+	elif [ -f ../../*/bin/activate ]; then . ../../*/bin/activate;
+	elif [ -f ../../../*/bin/activate ]; then . ../../../*/bin/activate;
 	fi
 }
 
