@@ -32,6 +32,7 @@ alias mirrorupdate='sudo reflector --country Spain --country Portugal --country 
 alias grep='grep --color=auto'
 alias df='df -h'
 # Sudo
+alias sudo='sudo '
 alias please='sudo !!'
 alias visudo='sudo -E visudo'
 
