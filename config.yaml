@@ -4,6 +4,9 @@ config:
   dotpath: files
   longkey: true
 dotfiles:
+  d_polybar:
+    src: polybar
+    dst: ~/.config/polybar
   d_termite:
     src: termite
     dst: ~/.config/termite
@@ -110,6 +113,7 @@ profiles:
     - f_zshrc
   nibbler:
     dotfiles:
+    - d_polybar
     - d_scripts
     - d_termite
     - d_tmux
