@@ -97,14 +97,14 @@ call plug#end()
 " Colors
 """""""""
 " Colorscheme
-colorscheme archman
+colorscheme gruvbox
 set termguicolors
 " Color changes
-hi Visual  guifg=#000000 guibg=#BDBDBD gui=none
-" Change pmenu colors 
-hi Pmenu guifg=#000000 guibg=#515151 ctermbg=240
-hi PmenuSel guifg=#000000 guibg=#2FFD00 ctermbg=40 ctermfg=0
-hi Cursorline guibg=#303030 
+" hi Visual  guifg=#000000 guibg=#BDBDBD gui=none
+" " Change pmenu colors 
+" hi Pmenu guifg=#000000 guibg=#515151 ctermbg=240
+" hi PmenuSel guifg=#000000 guibg=#2FFD00 ctermbg=40 ctermfg=0
+" hi Cursorline guibg=#303030 
 
 " Autocommands
 """""""""""""""
