@@ -165,10 +165,14 @@ bindsym $mod+r mode "resize"
 #        status_command i3status
 # }
 
-bar {
-	font pango:mono, FontAwesome 8
-        status_command py3status -c ~/.config/i3/barconfig
-}
+# bar {
+# 	font pango:mono, FontAwesome 8
+#         status_command py3status -c ~/.config/i3/barconfig
+# }
+#
+# Start Polybar
+#
+exec_always --no-startup-id $HOME/.config/polybar/polylauncher.sh
 
 ##### Extra config #####
 

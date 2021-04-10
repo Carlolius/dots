@@ -9,22 +9,13 @@
 ;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
 ;
 ;
-;   To learn more about how to configure Polybar
-;   go to https://github.com/polybar/polybar
+;   Polybar: https://github.com/polybar/polybar
 ;
-;   The README contains a lot of information
+;   My official polybar config.
 ;
 ;==========================================================
 
 [colors]
-; background = #000000
-; background-alt = #212121
-; foreground = #18F018
-; foreground-alt = #FFFFFF
-; primary = #FAA613
-; secondary = #F44708
-; alert = #A10702
-
 background = ${xrdb:color0:#282828}
 background-alt = ${xrdb:color8:#928374}
 foreground = ${xrdb:color15:#ebdbb2}
@@ -36,19 +27,17 @@ secondary-alt = ${xrdb:color5:#b16286}
 alert = ${xrdb:color9:#fb4934}
 alert-alt = ${xrdb:color9:#cc241d}
 
+[settings]
+screenchange-reload = true
+
 [bar/mybar]
 ;monitor = ${env:MONITOR:HDMI-1}
+bottom = true
+fixed-center = false
 width = 100%
 height = 20
-;offset-x = 1%
-;offset-y = 1%
-radius = 0
-fixed-center = false
-
 background = ${colors.background}
 foreground = ${colors.foreground}
-
-bottom = true
 
 line-size = 1
 line-color = ${colors.alert}
@@ -67,30 +56,51 @@ font-1 = fixed:pixelsize=10;1
 font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-3 = siji:pixelsize=10;1
 
-locale = es_ES.UTF-8
-
 modules-left = i3
 modules-center = xwindow
-modules-right = uptime-pretty cpu temperature memory filesystem wlan eth xbacklight pulseaudio date
+modules-right = powermenu uptime-pretty cpu temperature ram swap filesystem wlan eth xbacklight pulseaudio date
+
+; Separator in between workspaces
+; separator = |
+
+locale = es_ES.UTF-8
 
 tray-position = right
 tray-padding = 4
 ; tray-background = ${colors.secondary-alt}
 
-;wm-restack = bspwm
+; wm-restack = bspwm
 ; wm-restack = i3
-
-; override-redirect = true
-
-; scroll-up = #i3.prev
-; scroll-down = #i3.next
 
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-; Separator in between workspaces
-; separator = |
+[module/powermenu]
+type = custom/menu
 
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+expand-right = false
+label-open = " "
+label-open-font = 10
+label-close = ""
+label-close-foreground = ${colors.secondary}
+label-separator = " | "
+label-separator-foreground = ${colors.foreground}
+
+; shutdown
+menu-0-0 = ""
+menu-0-0-exec = systemctl poweroff
+menu-0-0-foreground = ${colors.primary}
+; reboot
+menu-0-1 = ""
+menu-0-1-exec = systemctl reboot
+menu-0-1-foreground = ${colors.primary}
+; suspend
+menu-0-2 = "鈴"
+menu-0-2-exec = systemctl hibernate
+menu-0-2-foreground = ${colors.primary}
 
 [module/xwindow]
 type = internal/xwindow
@@ -160,6 +170,7 @@ label-urgent-padding = 1
 
 [module/xbacklight]
 type = internal/xbacklight
+enable-scroll = false
 
 format = <ramp> <label>
 label = %percentage%%
@@ -171,44 +182,95 @@ ramp-4 = 
 ramp-5 = 
 ramp-6 = 
 
-[module/uptime-pretty]
-type = custom/script
-exec = ~/.config/polybar/scripts/uptime-pretty.sh
-interval = 30
-format-prefix = " "
-
 [module/backlight-acpi]
 inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
 
+[module/uptime-pretty]
+type = custom/script
+exec = ~/.config/polybar/scripts/uptime-pretty.sh
+interval = 30
+
 [module/cpu]
 type = internal/cpu
 interval = 2
-format = <label>
+format = <ramp-load><label>
 label =  %percentage%%
 
-[module/memory]
+ramp-load-0 = %{F#50ff00}
+ramp-load-1 = %{F#85ed00}
+ramp-load-2 = %{F#a5da00}
+ramp-load-3 = %{F#bec500}
+ramp-load-4 = %{F#d2b000}
+ramp-load-5 = %{F#e29900}
+ramp-load-6 = %{F#ee8000}
+ramp-load-7 = %{F#f66400}
+ramp-load-8 = %{F#fa4300}
+ramp-load-9 = %{F#fa0303}
+
+[module/ram]
 type = internal/memory
 interval = 2
-format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
-label = %gb_used% 易 %gb_swap_used%
+format = <ramp-used><label>
+;format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = #4bffdc
+label =  %gb_used%
+
+ramp-used-0 = %{F#50ff00}
+ramp-used-1 = %{F#85ed00}
+ramp-used-2 = %{F#a5da00}
+ramp-used-3 = %{F#bec500}
+ramp-used-4 = %{F#d2b000}
+ramp-used-5 = %{F#e29900}
+ramp-used-6 = %{F#ee8000}
+ramp-used-7 = %{F#f66400}
+ramp-used-8 = %{F#fa4300}
+ramp-used-9 = %{F#fa0303}
+
+[module/swap]
+type = internal/memory
+interval = 2
+format = <ramp-swap-used><label>
+;format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = #4bffdc
+label = 易 %gb_swap_used%
+
+ramp-swap-used-0 = %{F#50ff00}
+ramp-swap-used-1 = %{F#85ed00}
+ramp-swap-used-2 = %{F#a5da00}
+ramp-swap-used-3 = %{F#bec500}
+ramp-swap-used-4 = %{F#d2b000}
+ramp-swap-used-5 = %{F#e29900}
+ramp-swap-used-6 = %{F#ee8000}
+ramp-swap-used-7 = %{F#f66400}
+ramp-swap-used-8 = %{F#fa4300}
+ramp-swap-used-9 = %{F#fa0303}
 
 [module/wlan]
 type = internal/network
 interface = wlan0
 interval = 3.0
+click-left = termite
 
-format-connected =  <label-connected>
+format-connected = <ramp-signal><label-connected>
 format-connected-underline = #9f78e1
-label-connected = %essid% %signal%%
+label-connected =  %essid% %signal%%
 
 format-disconnected = 睊 <label-disconnected>
 format-disconnected-underline = #ff1321
 label-disconnected = disconnected
+
+ramp-signal-0 = %{F#fa0303}
+ramp-signal-1 = %{F#fa4300}
+ramp-signal-2 = %{F#f66400}
+ramp-signal-3 = %{F#ee8000}
+ramp-signal-4 = %{F#e29900}
+ramp-signal-5 = %{F#d2b000}
+ramp-signal-6 = %{F#bec500}
+ramp-signal-7 = %{F#a5da00}
+ramp-signal-8 = %{F#85ed00} 
+ramp-signal-9 = %{F#50ff00}
 
 [module/eth]
 type = internal/network
@@ -237,30 +299,24 @@ label = %date%  %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
-
-format-volume =  <label-volume>
-label-volume = %percentage%%
-label-volume-foreground = ${root.foreground}
+interval = 1
+format-volume-underline = ${colors.secondary-alt}
+format-volume = <ramp-volume> <label-volume>
+label-volume =  %percentage%%
 
 label-muted = ﱝ muted
 label-muted-foreground = #666
 
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+ramp-volume-0 = %{F#50ff00}
+ramp-volume-1 = %{F#85ed00}
+ramp-volume-2 = %{F#a5da00}
+ramp-volume-3 = %{F#bec500}
+ramp-volume-4 = %{F#d2b000}
+ramp-volume-5 = %{F#e29900}
+ramp-volume-6 = %{F#ee8000}
+ramp-volume-7 = %{F#f66400}
+ramp-volume-8 = %{F#fa4300}
+ramp-volume-9 = %{F#fa0303}
 
 [module/alsa]
 type = internal/alsa
@@ -330,28 +386,21 @@ hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp3_input
 base-temperature = 35
 warn-temperature = 60
 
-format =  <label>
-format-warn = <label-warn>
+format = <ramp><label>
+format-warn = <ramp><label-warn>
 
-label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.alert}
+label =  %temperature-c%
+label-warn =  %temperature-c%
+label-warn-foreground = ${colors.foreground}
+label-warn-background = ${colors.alert}
 
-ramp-0 = A
-ramp-1 = B
-ramp-2 = C
-ramp-foreground = ${colors.foreground-alt}
-
-[settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
-
-[global/wm]
-margin-top = 1
-margin-bottom = 0
-
-; vim:ft=dosini
+ramp-0 = %{F#50ff00}
+ramp-1 = %{F#85ed00}
+ramp-2 = %{F#a5da00}
+ramp-3 = %{F#bec500}
+ramp-4 = %{F#d2b000}
+ramp-5 = %{F#e29900}
+ramp-6 = %{F#ee8000}
+ramp-7 = %{F#f66400}
+ramp-8 = %{F#fa4300}
+ramp-9 = %{F#fa0303}
