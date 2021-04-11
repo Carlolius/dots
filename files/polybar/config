@@ -21,8 +21,8 @@ foreground = #f5e9ca
 foreground-alt = #a89984
 primary = #fabd2f
 primary-alt = #d79921
-secondary = #d3869b
-secondary-alt = #b16286
+secondary = #ba5ad1
+secondary-alt = #9145d0
 alert = #fb4934
 alert-alt = #cc241d
 
