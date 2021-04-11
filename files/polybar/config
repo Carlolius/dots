@@ -8,7 +8,6 @@
 ;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
 ;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
 ;
-;
 ;   Polybar: https://github.com/polybar/polybar
 ;
 ;   My official polybar config.
@@ -16,16 +15,16 @@
 ;==========================================================
 
 [colors]
-background = ${xrdb:color0:#282828}
-background-alt = ${xrdb:color8:#928374}
-foreground = ${xrdb:color15:#ebdbb2}
-foreground-alt = ${xrdb:color7:#a89984}
-primary = ${xrdb:color11:#fabd2f}
-primary-alt = ${xrdb:color3:#d79921}
-secondary = ${xrdb:color13:#d3869b}
-secondary-alt = ${xrdb:color5:#b16286}
-alert = ${xrdb:color9:#fb4934}
-alert-alt = ${xrdb:color9:#cc241d}
+background = #000000
+background-alt = #7c6f62
+foreground = #f5e9ca
+foreground-alt = #a89984
+primary = #fabd2f
+primary-alt = #d79921
+secondary = #d3869b
+secondary-alt = #b16286
+alert = #fb4934
+alert-alt = #cc241d
 
 [settings]
 screenchange-reload = true
@@ -35,7 +34,7 @@ screenchange-reload = true
 bottom = true
 fixed-center = false
 width = 100%
-height = 20
+height = 21
 background = ${colors.background}
 foreground = ${colors.foreground}
 
@@ -43,7 +42,7 @@ line-size = 1
 line-color = ${colors.alert}
 
 border-size = 0
-border-color = #800000
+border-color = ${colors.alert}
 
 padding-left = 0
 padding-right = 0
@@ -51,17 +50,13 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 1
 
-font-0 = Hack Nerd Font:style=Regular:size=8;0
-font-1 = fixed:pixelsize=10;1
-font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-3 = siji:pixelsize=10;1
+font-0 = Hack Nerd Font:size=9
+font-1 = Noto Sans:size=11
+font-2 = OpenSans:size=11
 
 modules-left = i3
-modules-center = xwindow
+modules-center = windowtitle
 modules-right = powermenu uptime-pretty cpu temperature ram swap filesystem wlan eth xbacklight pulseaudio date
-
-; Separator in between workspaces
-; separator = |
 
 locale = es_ES.UTF-8
 
@@ -71,6 +66,9 @@ tray-padding = 4
 
 ; wm-restack = bspwm
 ; wm-restack = i3
+
+; Separator in between workspaces
+; separator = |
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -102,25 +100,15 @@ menu-0-2 = "鈴"
 menu-0-2-exec = systemctl hibernate
 menu-0-2-foreground = ${colors.primary}
 
-[module/xwindow]
+[module/windowtitle]
 type = internal/xwindow
-label = %title:0:30:...%
+label = %title:0:40:...%
 
-[module/xkeyboard]
+[module/keyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
+label-layout =   %layout%
 
 [module/filesystem]
 type = internal/fs
@@ -157,16 +145,13 @@ label-unfocused-padding = 1
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
 label-visible-background = ${self.label-focused-background}
-; label-visible-underline = ${self.label-focused-underline}
+label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
-label-urgent-background = ${colors.alert}
+label-urgent-background = ${colors.alert-alt}
 label-urgent-padding = 1
-
-; Separator in between workspaces
-; label-separator = |
 
 [module/xbacklight]
 type = internal/xbacklight
@@ -174,7 +159,7 @@ enable-scroll = false
 
 format = <ramp> <label>
 label = %percentage%%
-ramp-0 = 🌕
+ramp-0 = 
 ramp-1 = 
 ramp-2 = 
 ramp-3 = 
@@ -190,7 +175,7 @@ card = intel_backlight
 [module/uptime-pretty]
 type = custom/script
 exec = ~/.config/polybar/scripts/uptime-pretty.sh
-interval = 30
+interval = 60
 
 [module/cpu]
 type = internal/cpu
@@ -213,8 +198,6 @@ ramp-load-9 = %{F#fa0303}
 type = internal/memory
 interval = 2
 format = <ramp-used><label>
-;format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = #4bffdc
 label =  %gb_used%
 
 ramp-used-0 = %{F#50ff00}
@@ -232,8 +215,6 @@ ramp-used-9 = %{F#fa0303}
 type = internal/memory
 interval = 2
 format = <ramp-swap-used><label>
-;format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = #4bffdc
 label = 易 %gb_swap_used%
 
 ramp-swap-used-0 = %{F#50ff00}
@@ -254,12 +235,12 @@ interval = 3.0
 click-left = termite
 
 format-connected = <ramp-signal><label-connected>
-format-connected-underline = #9f78e1
-label-connected =  %essid% %signal%%
+format-connected-underline = ${colors.secondary-alt}
+label-connected = %{A1:termite -e iwctl:}  %essid% %signal%%%{A}
 
 format-disconnected = 睊 <label-disconnected>
-format-disconnected-underline = #ff1321
-label-disconnected = disconnected
+format-disconnected-underline = ${colors.alert}
+label-disconnected = %{A1:termite -e iwctl:}disconnected%{A}
 
 ramp-signal-0 = %{F#fa0303}
 ramp-signal-1 = %{F#fa4300}
@@ -277,7 +258,7 @@ type = internal/network
 interface = enp0s25
 interval = 3.0
 
-format-connected-underline = #9f78e1
+format-connected-underline = ${colors.secondary-alt}
 format-connected-prefix = ""
 label-connected = %local_ip%
 
@@ -285,27 +266,26 @@ label-connected = %local_ip%
 type = internal/date
 interval = 1
 
-date = " %d/%m/%Y"
-date-alt = " %A, %e de %B del %Y"
+date = "%d/%m/%Y"
+date-alt = "%A, %e de %B del %Y"
 
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.secondary}
 
-label = %date%  %time%
+label =  %date%  %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
 interval = 1
 format-volume-underline = ${colors.secondary-alt}
 format-volume = <ramp-volume> <label-volume>
-label-volume =  %percentage%%
+label-volume = %{A3:playerctl play-pause:}%{A6:playerctl prev:}%{A8:playerctl next:} %percentage%%%{A}%{A}%{A}
 
 label-muted = ﱝ muted
-label-muted-foreground = #666
+label-muted-foreground = ${colors.foreground-alt}
 
 ramp-volume-0 = %{F#50ff00}
 ramp-volume-1 = %{F#85ed00}
@@ -404,3 +384,5 @@ ramp-6 = %{F#ee8000}
 ramp-7 = %{F#f66400}
 ramp-8 = %{F#fa4300}
 ramp-9 = %{F#fa0303}
+
+; vim:ft=dosini
