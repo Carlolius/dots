@@ -167,12 +167,8 @@ bindsym $mod+r mode "resize"
 
 # bar {
 # 	font pango:mono, FontAwesome 8
-#         status_command py3status -c ~/.config/i3/barconfig
+# 		status_command py3status -c ~/.config/i3/barconfig
 # }
-#
-# Start Polybar
-#
-exec_always --no-startup-id $HOME/.config/polybar/polylauncher.sh
 
 ##### Extra config #####
 
@@ -201,6 +197,11 @@ bindsym Control+Mod1+Right workspace next
 exec setxkbmap -layout es # Set the spanish layout for the keyboard
 
 # Autostart
+# Sound at start
 exec --no-startup-id mpv ~/dots/media/seatbelt.wav
+# Screenlocker
 # exec --no-startup-id sh ~/scripts/screenlock.sh
+# Dropbox
 exec --no-startup-id dropbox
+# Polybar
+exec_always --no-startup-id ~/.config/polybar/polylauncher.sh
