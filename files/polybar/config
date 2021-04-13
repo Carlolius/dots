@@ -236,11 +236,15 @@ click-left = termite
 
 format-connected = <ramp-signal><label-connected>
 format-connected-underline = ${colors.secondary-alt}
-label-connected = %{A1:termite -e iwctl:}  %essid% %signal%%%{A}
+format-connected-prefix = 
+format-connected-prefix-foreground = #50ff00
+label-connected = %{A1:termite -e iwctl:} %essid% %signal%%%{A}
 
-format-disconnected = 睊 <label-disconnected>
+format-disconnected = <label-disconnected>
 format-disconnected-underline = ${colors.alert}
-label-disconnected = %{A1:termite -e iwctl:}disconnected%{A}
+format-disconnected-prefix = 睊
+format-disconnected-prefix-foreground = ${colors.alert}
+label-disconnected = %{A1:termite -e iwctl:} disconnected%{A}
 
 ramp-signal-0 = %{F#fa0303}
 ramp-signal-1 = %{F#fa4300}
@@ -258,9 +262,13 @@ type = internal/network
 interface = enp0s25
 interval = 3.0
 
-format-connected-underline = ${colors.secondary-alt}
-format-connected-prefix = ""
+format-connected-prefix = " "
+format-connected-foreground = #50ff00
 label-connected = %local_ip%
+
+label-disconnected = %local_ip
+format-disconnected-prefix = 
+format-disconnected-prefix-foreground = ${colors.alert}
 
 [module/date]
 type = internal/date
