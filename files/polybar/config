@@ -266,8 +266,7 @@ format-connected-prefix = " "
 format-connected-foreground = #50ff00
 label-connected = %local_ip%
 
-label-disconnected = %local_ip
-format-disconnected-prefix = 
+format-disconnected-prefix = " "
 format-disconnected-prefix-foreground = ${colors.alert}
 
 [module/date]
