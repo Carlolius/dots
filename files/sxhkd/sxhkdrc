@@ -1,9 +1,15 @@
 # Shortcuts to default terminal
+{%@@ if profile == "bender" @@%}
+super + Return
+	alacritty
+alt + x
+	alacritty
+{%@@ elif profile == "nibbler" @@%}
 super + Return
 	termite
-
 alt + x
 	termite
+{%@@ endif @@%}
 
 # Make sxhkd reload its configuration files
 super + Escape
@@ -26,13 +32,13 @@ Print
 
 # Volume
 XF86AudioRaiseVolume
-	pactl set-sink-volume @DEFAULT_SINK@ +2% && $refresh_i3status
+	pactl set-sink-volume @DEFAULT_SINK@ +2%
 XF86AudioLowerVolume
-	pactl set-sink-volume @DEFAULT_SINK@ -2% && $refresh_i3status
+	pactl set-sink-volume @DEFAULT_SINK@ -2%
 XF86AudioMute
-	pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
 XF86AudioMicMute
-	pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle
 XF86AudioPlay
   playerctl play-pause
 XF86AudioNext

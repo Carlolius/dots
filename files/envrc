@@ -1,8 +1,8 @@
 # Environment Variables to be loaded from .zshrc, .bashrc ...
 
-# Usefull function to check if some program is installed
+# Check if a command exists
 exists() {
-    command -v "$1" > /dev/null 2>&1
+    command -v "$1" >/dev/null 2>&1
 }
 
 # Tell GPG which tty one is using so that it can prompt for pw
@@ -13,8 +13,10 @@ export GPG_AGENT_INFO=1
 # Choose default editor
 if exists nvim; then
     EDITOR='nvim'
+    DIFFPROG='nvim -d'
 elif exists vim; then
     EDITOR='vim'
+    DIFFPROG='vim -d'
 else
     EDITOR='vi'
 fi
@@ -22,8 +24,14 @@ export EDITOR
 export VISUAL="$EDITOR"
 
 # Default terminal
-# Disbles libgl for alacritty to work
-export TERMINAL='termite'
+if [ "$(hostname)" = "bender" ]; then
+	export TERMINAL='alacritty'
+elif [ "$(hostname)" = "nibbler" ]; then
+	export TERMINAL='termite'
+fi
+#
+# set sxhkd shell to sh for faster response times
+export SXHKD_SHELL="sh"
 
 # Set config dir
 export XDG_CONFIG_HOME="$HOME"/.config

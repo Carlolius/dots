@@ -92,8 +92,9 @@ dotfiles:
     src: zsh/zshrc
     dst: ~/.zshrc
 profiles:
-  bender-el-que-ofende:
+  bender:
     dotfiles:
+    - d_polybar
     - d_tmux
     - d_vim-config-plugins
     - d_vim-settings
@@ -104,12 +105,21 @@ profiles:
     - f_conkyrc
     - f_conkyrc2
     - f_envrc
+    - f_envrc
     - f_functions
+    - f_i3-config
     - f_inicio-conky
     - f_nvim-init
     - f_p10k
+    - f_profile
+    - f_rofi-config
+    - f_rofi-personal
+    - f_sxhkd
     - f_vim-vimrc
+    - f_xinitrc
+    - f_xprofile
     - f_xresources
+    - f_zprofile
     - f_zshrc
   nibbler:
     dotfiles:

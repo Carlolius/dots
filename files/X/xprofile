@@ -1,9 +1,17 @@
 #!/bin/sh
 
-# Load Xresoruces
-[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+if [ $XDG_CURRENT_DESKTOP != "KDE" ]; then
+	# Load Xresoruces
+	[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
-sxhkd & # runs the x hotkey daemon
+	if [ "$(hostname)" = "bender" ]; then
+		# Xrndr to use only one monitor
+		xrandr --output DVI-I-0 --off --output DVI-I-1 --off --output DVI-I-2 --off --output HDMI-0 --off --output DVI-I-3 --primary --mode 1920x1080 --pos 0x0 --rotate normal
+	fi
 
-# Wallpaper
-feh --bg-fill ~/dots/media/Joker-Card-Wallpaper.jpg
+	# Runs the x hotkey daemon
+	sxhkd &
+
+	# Wallpaper
+	feh --bg-fill ~/dots/media/Joker-Card-Wallpaper.jpg
+fi

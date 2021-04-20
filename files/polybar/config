@@ -29,7 +29,7 @@ alert-alt = #cc241d
 [settings]
 screenchange-reload = true
 
-[bar/mybar]
+[bar/nibblerbar]
 ;monitor = ${env:MONITOR:HDMI-1}
 bottom = true
 fixed-center = false
@@ -56,7 +56,7 @@ font-2 = OpenSans:size=11
 
 modules-left = i3
 modules-center = windowtitle
-modules-right = powermenu uptime-pretty cpu temperature ram swap filesystem wlan eth xbacklight pulseaudio date
+modules-right = powermenu uptime-pretty cpu temperature ram swap filesystem wlan ethN xbacklight pulseaudio date
 
 locale = es_ES.UTF-8
 
@@ -72,6 +72,51 @@ tray-padding = 4
 
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+[bar/benderbar]
+; monitor = ${env:MONITOR:HDMI-1}
+bottom = true
+fixed-center = false
+width = 100%
+height = 24
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 1
+line-color = ${colors.alert}
+
+border-size = 0
+border-color = ${colors.alert}
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 1
+
+font-0 = Hack Nerd Font:size=10
+font-1 = Noto Sans:size=11
+font-2 = OpenSans:size=11
+
+modules-left = i3
+modules-center = windowtitle
+modules-right = powermenu uptime-pretty cpu temperature ram swap filesystem ethB pulseaudio date
+
+locale = es_ES.UTF-8
+
+tray-position = right
+tray-padding = 4
+; tray-background = ${colors.secondary-alt}
+
+; wm-restack = bspwm
+; wm-restack = i3
+
+; Separator in between workspaces
+; separator = |
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
 
 [module/powermenu]
 type = custom/menu
@@ -257,7 +302,19 @@ ramp-signal-7 = %{F#a5da00}
 ramp-signal-8 = %{F#85ed00} 
 ramp-signal-9 = %{F#50ff00}
 
-[module/eth]
+[module/ethB]
+type = internal/network
+interface = eno1
+interval = 3.0
+
+format-connected-prefix = " "
+format-connected-foreground = #50ff00
+label-connected = %local_ip%
+
+format-disconnected-prefix = " "
+format-disconnected-prefix-foreground = ${colors.alert}
+
+[module/ethN]
 type = internal/network
 interface = enp0s25
 interval = 3.0
