@@ -44,7 +44,7 @@ XF86AudioPlay
 XF86AudioNext
   playerctl next
 XF86AudioPrev
-	playerctl prev
+	playerctl previous
 
 # Locksreen
 control + mod1 + l
