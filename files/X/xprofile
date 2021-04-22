@@ -13,5 +13,9 @@ if [ $XDG_CURRENT_DESKTOP != "KDE" ]; then
 	sxhkd &
 
 	# Wallpaper
-	feh --bg-fill ~/dots/media/Joker-Card-Wallpaper.jpg
+	if [ "$(hostname)" = "bender" ]; then
+		feh --recursive --bg-max --randomize /mnt/dropbox/eldropbox/Dropbox/Photos/Fondos\ de\ pantalla/nasa --bg-max --randomize /mnt/dropbox/eldropbox/Dropbox/Photos/Fondos\ de\ pantalla/Posters
+	elif [ "$(hostname)" = "nibbler" ]; then
+		feh --bg-fill ~/dots/media/Joker-Card-Wallpaper.jpg
+	fi
 fi
