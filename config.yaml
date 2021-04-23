@@ -7,6 +7,8 @@ dotfiles:
   d_polybar:
     src: polybar
     dst: ~/.config/polybar
+    upignore:
+      - '*/scripts/env.sh'
   d_termite:
     src: termite
     dst: ~/.config/termite

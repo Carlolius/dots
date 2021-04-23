@@ -1,6 +1,6 @@
 #!/bin/sh
 
-envFile=~/.config/polybar/scripts/polybar-redshift/env.sh
+envFile=~/.config/polybar/scripts/env.sh
 # Contain of env.sh
 # export REDSHIFT=on
 # export REDSHIFT_TEMP=2300
