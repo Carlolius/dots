@@ -21,7 +21,7 @@ conky.config = {
 
 	alignment = 'bottom_right',
 	gap_x = 20,
-	gap_y = 10,
+	gap_y = 15,
 	maximum_width = 400,
 	minimum_width = 250,
 
@@ -49,7 +49,7 @@ conky.config = {
 	own_window = true, -- Create own window instead of using desktop (required in nautilus)
 	own_window_argb_value = 0,
 	own_window_argb_visual = true,
-	own_window_type = 'normal',-- # options are: normal/override/dock/desktop/panel
+	own_window_type = 'override',-- # options are: normal/override/dock/desktop/panel
 	text_buffer_size = 2048,
 	own_window_transparent = true,
 	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
