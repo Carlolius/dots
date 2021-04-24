@@ -2,7 +2,20 @@
 
 # Shows the weather in terminal
 function weather {
-	curl wttr.in/"$1"
+	echo "
+	1. Teo v2.wttr.io/Teo 
+	2. Ferrol wttr.io/Ferrol
+	3. Luna wttr.io/Moon
+	"
+	read opt
+	case $opt in
+		1)
+			curl "v2.wttr.in/Teo?lang=es";;
+		2)
+			curl "wttr.in/Ferrol?lang=es";;
+		3)
+			curl "wttr.in/Moon?lang=es";;
+	esac
 }
 
 # Try to find and activate pythonvirtualenv
