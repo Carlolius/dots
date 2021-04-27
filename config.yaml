@@ -107,7 +107,6 @@ profiles:
     - f_conkyrc
     - f_conkyrc2
     - f_envrc
-    - f_envrc
     - f_functions
     - f_i3-config
     - f_inicio-conky
