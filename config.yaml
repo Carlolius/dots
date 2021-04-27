@@ -3,30 +3,27 @@ config:
   create: true
   dotpath: files
   longkey: true
+  showdiff: true
 dotfiles:
-  d_polybar:
-    src: polybar
-    dst: ~/.config/polybar
-    upignore:
-      - '*/scripts/env.sh'
+
+  ## Programs ##
+  d_scripts:
+    src: scripts
+    dst: ~/scripts
   d_termite:
     src: termite
     dst: ~/.config/termite
   d_tmux:
     src: tmux
     dst: ~/.config/tmux
-  d_scripts:
-    src: scripts
-    dst: ~/scripts
-  d_vim-config-plugins:
-    src: vim/config-plugins
-    dst: ~/.vim/config-plugins
-  d_vim-settings:
-    src: vim/settings
-    dst: ~/.vim/settings
   f_alacritty:
     src: alacritty/alacritty.yml
     dst: ~/.config/alacritty/alacritty.yml
+  f_sxhkd:
+    src: sxhkd/sxhkdrc
+    dst: ~/.config/sxhkd/sxhkdrc
+
+  ## Sh zsh ##
   f_aliases:
     src: aliases
     dst: ~/.config/aliases
@@ -36,18 +33,34 @@ dotfiles:
   f_envrc:
     src: envrc
     dst: ~/.config/envrc
-  f_coc-settings:
-    src: nvim/coc-settings.json
-    dst: ~/.config/nvim/coc-settings.json
-  f_conkyrc2:
-    src: conky/conkyrc2
-    dst: ~/.conkyrc2
-  f_conkyrc:
-    src: conky/conkyrc
-    dst: ~/.conkyrc
   f_functions:
     src: functions
     dst: ~/.config/functions
+  f_p10k:
+    src: p10k.zsh
+    dst: ~/.p10k.zsh
+  f_profile:
+    src: bash/profile
+    dst: ~/.profile
+  f_zprofile:
+    src: zsh/zprofile
+    dst: ~/.zprofile
+  f_zshrc:
+    src: zsh/zshrc
+    dst: ~/.zshrc
+
+  ## Visual ##
+  d_polybar:
+    src: polybar
+    dst: ~/.config/polybar
+    upignore:
+      - '*/scripts/env.sh'
+  f_conkyrc:
+    src: conky/conkyrc
+    dst: ~/.conkyrc
+  f_conkyrc2:
+    src: conky/conkyrc2
+    dst: ~/.conkyrc2
   f_i3-barconfig:
     src: i3/barconfig
     dst: ~/.config/i3/barconfig
@@ -57,27 +70,31 @@ dotfiles:
   f_inicio-conky:
     src: conky/inicio-conky.sh
     dst: ~/.inicio-conky.sh
-  f_nvim-init:
-    src: nvim/init.vim
-    dst: ~/.config/nvim/init.vim
-  f_p10k:
-    src: p10k.zsh
-    dst: ~/.p10k.zsh
-  f_profile:
-    src: bash/profile
-    dst: ~/.profile
   f_rofi-config:
     src: rofi/config.rasi
     dst: ~/.config/rofi/config.rasi
   f_rofi-personal:
     src: rofi/personal.rasi
     dst: ~/.config/rofi/personal.rasi
-  f_sxhkd:
-    src: sxhkd/sxhkdrc
-    dst: ~/.config/sxhkd/sxhkdrc
+
+  ## Vim ##
+  d_vim-config-plugins:
+    src: vim/config-plugins
+    dst: ~/.vim/config-plugins
+  d_vim-settings:
+    src: vim/settings
+    dst: ~/.vim/settings
+  f_coc-settings:
+    src: nvim/coc-settings.json
+    dst: ~/.config/nvim/coc-settings.json
+  f_nvim-init:
+    src: nvim/init.vim
+    dst: ~/.config/nvim/init.vim
   f_vim-vimrc:
     src: vim/vimrc
     dst: ~/.vim/vimrc
+
+  ## X ##
   f_xinitrc:
     src: X/xinitrc
     dst: ~/.xinitrc
@@ -87,73 +104,79 @@ dotfiles:
   f_xresources:
     src: X/Xresources
     dst: ~/.Xresources
-  f_zprofile:
-    src: zsh/zprofile
-    dst: ~/.zprofile
-  f_zshrc:
-    src: zsh/zshrc
-    dst: ~/.zshrc
+
 profiles:
   bender:
+    include:
+      - X
+      - conky
+      - i3
+      - rofi
+      - sh
+      - vim
     dotfiles:
-    - d_polybar
-    - d_tmux
-    - d_vim-config-plugins
-    - d_vim-settings
-    - f_alacritty
-    - f_aliases
-    - f_bashrc
-    - f_coc-settings
-    - f_conkyrc
-    - f_conkyrc2
-    - f_envrc
-    - f_functions
-    - f_i3-config
-    - f_inicio-conky
-    - f_nvim-init
-    - f_p10k
-    - f_profile
-    - f_rofi-config
-    - f_rofi-personal
-    - f_sxhkd
-    - f_vim-vimrc
-    - f_xinitrc
-    - f_xprofile
-    - f_xresources
-    - f_zprofile
-    - f_zshrc
+      - d_tmux
+      - f_alacritty
+      - f_sxhkd
+
   nibbler:
+    include:
+      - X
+      - i3
+      - rofi
+      - sh
+      - vim
     dotfiles:
-    - d_polybar
-    - d_scripts
-    - d_termite
-    - d_tmux
-    - d_vim-config-plugins
-    - d_vim-settings
-    - f_aliases
-    - f_bashrc
-    - f_coc-settings
-    - f_envrc
-    - f_functions
-    - f_i3-barconfig
-    - f_i3-config
-    - f_nvim-init
-    - f_p10k
-    - f_profile
-    - f_rofi-config
-    - f_rofi-personal
-    - f_sxhkd
-    - f_vim-vimrc
-    - f_xinitrc
-    - f_xprofile
-    - f_xresources
-    - f_zprofile
-    - f_zshrc
+      - d_scripts
+      - d_termite
+      - d_tmux
+      - f_sxhkd
+
   server:
+    include:
+      - vim
     dotfiles:
-    - d_vim-settings
-    - d_vim-config-plugins
-    - f_aliases
-    - f_coc-settings
-    - f_nvim-init
-    - f_vim-vimrc
+      - f_aliases
+
+# Packages used above
+  conky:
+    dotfiles:
+      - f_conkyrc
+      - f_conkyrc2
+      - f_inicio-conky
+
+  i3:
+    dotfiles:
+      - d_polybar
+      - f_i3-barconfig
+      - f_i3-config
+
+  rofi:
+    dotfiles:
+      - f_rofi-config
+      - f_rofi-personal
+
+  sh:
+    dotfiles:
+      - f_aliases
+      - f_bashrc
+      - f_envrc
+      - f_functions
+      - f_p10k
+      - f_profile
+      - f_zprofile
+      - f_zshrc
+
+  vim:
+    dotfiles:
+      - d_vim-config-plugins
+      - d_vim-settings
+      - f_coc-settings
+      - f_nvim-init
+      - f_vim-vimrc
+
+  X:
+    dotfiles:
+      - f_xinitrc
+      - f_xprofile
+      - f_xresources
