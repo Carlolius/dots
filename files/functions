@@ -3,9 +3,9 @@
 # Shows the weather in terminal
 function weather {
 	echo "
-	1. Teo v2.wttr.io/Teo 
-	2. Ferrol wttr.io/Ferrol
-	3. Luna wttr.io/Moon
+	1. Teo v2.wttr.in/Teo 
+	2. Ferrol wttr.in/Ferrol
+	3. Luna wttr.in/Moon
 	"
 	read opt
 	case $opt in
