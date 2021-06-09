@@ -12,5 +12,13 @@
 			"filetypes": ["sh"],
 			"ignoredRootPaths": ["~"]
 		}
-	}
+	},
+
+	"python.linting.pylintArgs": [
+
+		"--load-plugins=pylint_django",
+
+		"--load-plugins=pylint_django.checkers.migrations",
+
+		"--errors-only" ]
 }
