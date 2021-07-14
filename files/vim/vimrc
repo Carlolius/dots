@@ -88,6 +88,9 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-obsession'
 
+" Vimtex
+Plug 'lervag/vimtex'
+
 " Whichkey tells you your keybindings
 Plug 'liuchengxu/vim-which-key'
 
