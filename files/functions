@@ -75,7 +75,7 @@ function total_update {
 	function u_guiki { echo "Actualizando güiki" && git -C ~/guiki pull --no-rebase }
 	function u_dots { echo "Actualizando dots" && git -C ~/dots pull --no-rebase }
 	function u_sistema { echo "Actualizando sistema" && yay }
-	function u_vim { echo "Actualizando plugins de vim" && nvim --headless -e +PlugUpgrade +PlugUpdate +qall! }
+	function u_vim { echo "Actualizando plugins de vim" && nvim --headless -e +PackerSync +qall! }
 	function u_pip { echo "Actualizando pip" && pip freeze --user | cut -d'=' -f1 | xargs -n1 pip install -U }
 	if [[ $1 != '' ]] ; then
 		opt=$1
