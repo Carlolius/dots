@@ -77,6 +77,17 @@ dotfiles:
     src: rofi/personal.rasi
     dst: ~/.config/rofi/personal.rasi
 
+  ## Nvim ##
+  d_nvim-lua:
+    src: nvim/lua
+    dst: ~/.config/nvim/lua
+  f_coc-settings:
+    src: nvim/coc-settings.json
+    dst: ~/.config/nvim/coc-settings.json
+  f_nvim-init:
+    src: nvim/init.lua
+    dst: ~/.config/nvim/init.lua
+  
   ## Vim ##
   d_vim-config-plugins:
     src: vim/config-plugins
@@ -84,12 +95,6 @@ dotfiles:
   d_vim-settings:
     src: vim/settings
     dst: ~/.vim/settings
-  f_coc-settings:
-    src: nvim/coc-settings.json
-    dst: ~/.config/nvim/coc-settings.json
-  f_nvim-init:
-    src: nvim/init.vim
-    dst: ~/.config/nvim/init.vim
   f_vim-vimrc:
     src: vim/vimrc
     dst: ~/.vim/vimrc
