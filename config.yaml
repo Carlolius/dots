@@ -139,7 +139,7 @@ profiles:
 
   server:
     include:
-      - vim
+      - nvim
     dotfiles:
       - f_aliases
 
@@ -155,6 +155,12 @@ profiles:
       - d_polybar
       - f_i3-barconfig
       - f_i3-config
+
+  nvim:
+    dotfiles:
+      - d_nvim-lua
+      - f_coc-settings
+      - f_nvim-init
 
   rofi:
     dotfiles:
@@ -176,8 +182,6 @@ profiles:
     dotfiles:
       - d_vim-config-plugins
       - d_vim-settings
-      - f_coc-settings
-      - f_nvim-init
       - f_vim-vimrc
 
   X:
