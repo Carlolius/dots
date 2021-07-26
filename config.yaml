@@ -116,6 +116,7 @@ profiles:
       - X
       - conky
       - i3
+      - nvim
       - rofi
       - sh
       - vim

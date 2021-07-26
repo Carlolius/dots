@@ -9,7 +9,9 @@ local opt = vim.opt
 require("key")
 require("plugins.which-key-config")
 require("plugins.compe-config")
-require("plugins.lspinstall-config")
+require("plugins.autopair")
+require("plugins.toggle")
+require("plugins.lsp")
 require("plugins")
 
 -- Global options
@@ -20,6 +22,8 @@ opt.backup = false -- No backup file
 opt.clipboard = "unnamedplus" -- Yank and paste outside Vim
 opt.cursorline = true -- Show a line where cursor is
 opt.hidden = true -- Enabe background buffers
+opt.hlsearch = true -- Highlights search
+opt.completeopt = "menuone,noselect"
 opt.ignorecase = true -- Ignore search case
 opt.incsearch = true -- Incremental search
 opt.mouse = "a" -- Enable mouse
@@ -52,7 +56,9 @@ opt.showbreak = '↪ '
 ---------
 -- Enable 24 bits color
 opt.termguicolors = true
-vim.g.colors_name = 'gruvbox'
+-- vim.g.colors_name = 'gruvbox'
+vim.cmd[[colorscheme gruvbox]]
+vim.g.tokyonight_style = "night"
 
 -- Autocomands
 --------------

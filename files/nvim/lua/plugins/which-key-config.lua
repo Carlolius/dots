@@ -16,6 +16,13 @@ local leader = {
 	["f"] = {
 		name = "+floating",
 		["l"] = { "<cmd>lua Lazygit_toggle()<cr>", "Lazygit" },
+		["m"] = { "<cmd>:Glow<cr>", "Markdown Glow" },
+	},
+	["l"] = {
+		name = "+LSP",
+		["i"] = { "<cmd>:LspStart<cr>", "LSP start" },
+		["s"] = { "<cmd>:LspStop<cr>", "LSP stop" },
+		["f"] = { "<cmd>:LspInfo<cr>", "LSP info" },
 	},
 	["p"] = {
 		name = "+packer",
