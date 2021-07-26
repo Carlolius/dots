@@ -40,3 +40,7 @@ PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
 # Python pip path
 export PATH="$PATH:/$HOME/.local/bin"
+
+# Npm packages
+PATH="$HOME/.local/bin:$PATH"
+export npm_config_prefix="$HOME/.local"
