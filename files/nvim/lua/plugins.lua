@@ -13,15 +13,43 @@ return require('packer').startup{
 		use {'morhetz/gruvbox'} -- Gruvbox colorscheme
 		use {'folke/tokyonight.nvim'}
 		use {'nvim-treesitter/nvim-treesitter'}
-		use {'neovim/nvim-lspconfig'} -- Nvim LSP plugin
-		use {'hrsh7th/nvim-compe'} -- Autocomplete
 		use {'b3nj5m1n/kommentary'} -- Easy comment
 		use {'rafamadriz/friendly-snippets'} -- Snippets
-		use {'akinsho/nvim-toggleterm.lua'} -- Terminal
 		use {'npxbr/glow.nvim', run = "GlowInstall"} -- Markdown visualizer
 		use {'gabrielelana/vim-markdown'} -- Markdown highlighting
 		use {'kyazdani42/nvim-tree.lua'} -- File explorer
-		use {'windwp/nvim-autopairs'} -- Autopairing
+
+		-- Terminal
+		use {
+			'akinsho/nvim-toggleterm.lua',
+			config = function()
+				require("config.toggle")
+			end
+		}
+
+		-- Nvim LSP plugin
+		use {
+			'neovim/nvim-lspconfig',
+			config = function()
+				require("config.lsp")
+			end
+		}
+
+		-- Autocomplete
+		use {
+			'hrsh7th/nvim-compe',
+			config = function()
+				require("config.compe-config")
+			end
+		}
+
+		-- Autopairing
+		use {
+			'windwp/nvim-autopairs',
+			config = function()
+				require("config.autopairs")
+			end
+		}
 
 		-- Telescope
 		use {
@@ -29,7 +57,7 @@ return require('packer').startup{
 			requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
 		}
 
-		-- Help for keybindigns
+		-- Which key
 		use {
 			'folke/which-key.nvim',
 			config = function()
@@ -44,9 +72,10 @@ return require('packer').startup{
 			'glepnir/galaxyline.nvim',
 			branch = 'main',
 			-- your statusline
-			config = function() require'plugins.my-statusline' end,
-			-- some optional icons
-			requires = {'kyazdani42/nvim-web-devicons', opt = true}
+			config = function()
+				require'config.my-statusline' end,
+				-- some optional icons
+				requires = {'kyazdani42/nvim-web-devicons', opt = true}
 		}
 	end
 }

@@ -7,11 +7,6 @@ local opt = vim.opt
 -- Source files
 ---------------
 require("key")
-require("plugins.which-key-config")
-require("plugins.compe-config")
-require("plugins.autopair")
-require("plugins.toggle")
-require("plugins.lsp")
 require("plugins")
 
 -- Global options
