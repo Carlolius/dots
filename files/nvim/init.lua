@@ -57,6 +57,8 @@ vim.g.tokyonight_style = "night"
 
 -- Autocomands
 --------------
+-- Highlight on yank
+vim.cmd("au TextYankPost * lua vim.highlight.on_yank {}")
 -- relative in normal mode, absolute in insert
 -- From here: https://github.com/sum-catnip/nvim/tree/master/lua
 -- af('BufEnter,FocusGained,InsertLeave', '*', function() vim.wo.relativenumber = true end)

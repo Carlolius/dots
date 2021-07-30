@@ -80,3 +80,20 @@ _G.s_tab_complete = function()
     return t "<S-Tab>"
   end
 end
+_G.cr_complete = function()
+    if vim.fn.pumvisible() == 1 then
+        if vim.fn.complete_info()["selected"] ~= -1 then
+            return vim.fn["compe#confirm"]("<CR>")
+        else
+            return t("<c-e><CR>")
+        end
+    else
+        return t("<CR>")
+    end
+end
+
+local map = require("config.mapper")
+
+map.ilua("<tab>", "tab_complete()")
+map.ilua("<s-tab>", "s_tab_complete()")
+map.ilua("<cr>", "cr_complete()")

@@ -38,6 +38,7 @@ return require('packer').startup{
 		-- Autocomplete
 		use {
 			'hrsh7th/nvim-compe',
+			event = "InsertEnter",
 			config = function()
 				require("config.compe-config")
 			end
@@ -62,7 +63,7 @@ return require('packer').startup{
 			'folke/which-key.nvim',
 			config = function()
 				require("which-key").setup {
-					-- your configuration comes here
+					require("config.which-key-config")
 				}
 			end
 		}
