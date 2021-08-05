@@ -19,6 +19,15 @@ return require('packer').startup{
 		use {'gabrielelana/vim-markdown'} -- Markdown highlighting
 		use {'kyazdani42/nvim-tree.lua'} -- File explorer
 
+		-- LanguageTool
+		use {
+			'dpelle/vim-LanguageTool',
+			config = function ()
+				require("config.languagetool")
+			end,
+			requires = {'matze-dd/YaLafi'},
+		}
+
 		-- Terminal
 		use {
 			'akinsho/nvim-toggleterm.lua',
