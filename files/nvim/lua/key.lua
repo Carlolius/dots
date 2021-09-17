@@ -5,6 +5,8 @@
 -- Map leader to space
 vim.g.mapleader = " "
 -- Quickly cancel search highlighting
-vim.api.nvim_set_keymap('n', '<Leader><space>', ':set nohlsearch<cr>', { noremap = true} )
+vim.api.nvim_set_keymap('n', '<Leader><space>', ':nohlsearch<cr>', { noremap = true} )
 -- jk = to esc
 vim.api.nvim_set_keymap('i', 'jk', '<ESC>', { noremap = true } )
+-- kj = to esc
+vim.api.nvim_set_keymap('i', 'kj', '<ESC>', { noremap = true } )

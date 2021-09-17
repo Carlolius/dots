@@ -12,6 +12,7 @@ return require('packer').startup{
 		use {'wbthomason/packer.nvim'} -- Packer can manage itself
 		use {'morhetz/gruvbox'} -- Gruvbox colorscheme
 		use {'folke/tokyonight.nvim'}
+		use {"Pocco81/Catppuccino.nvim"}
 		use {'nvim-treesitter/nvim-treesitter'}
 		use {'b3nj5m1n/kommentary'} -- Easy comment
 		use {'rafamadriz/friendly-snippets'} -- Snippets

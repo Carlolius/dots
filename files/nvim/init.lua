@@ -3,6 +3,7 @@
 
 -- Local var
 local opt = vim.opt
+local cmd = vim.cmd
 
 -- Source files
 ---------------
@@ -18,7 +19,7 @@ opt.clipboard = "unnamedplus" -- Yank and paste outside Vim
 opt.cursorline = true -- Show a line where cursor is
 opt.hidden = true -- Enabe background buffers
 opt.hlsearch = true -- Highlights search
-opt.completeopt = "menuone,noselect"
+opt.completeopt = {"menuone", "noselect"}
 opt.ignorecase = true -- Ignore search case
 opt.incsearch = true -- Incremental search
 opt.mouse = "a" -- Enable mouse
@@ -52,13 +53,13 @@ opt.showbreak = '↪ '
 -- Enable 24 bits color
 opt.termguicolors = true
 -- vim.g.colors_name = 'gruvbox'
-vim.cmd[[colorscheme gruvbox]]
+cmd[[colorscheme gruvbox]]
 vim.g.tokyonight_style = "night"
 
 -- Autocomands
 --------------
 -- Highlight on yank
-vim.cmd("au TextYankPost * lua vim.highlight.on_yank {}")
+cmd [[ autocmd TextYankPost * lua vim.highlight.on_yank {on_visual = false} ]]
 -- relative in normal mode, absolute in insert
 -- From here: https://github.com/sum-catnip/nvim/tree/master/lua
 -- af('BufEnter,FocusGained,InsertLeave', '*', function() vim.wo.relativenumber = true end)

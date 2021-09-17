@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sleep 7
+sleep 9
 
 if ! pgrep -x "conky"; then
 	conky -c ~/.conkyrc

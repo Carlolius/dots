@@ -45,12 +45,22 @@ local leader = {
 			["l"] = { "<cmd>PackerClean<cr>", "Clean" },
 		},
 	},
+	["s"] = {
+		name = "+spell",
+		["c"] = { "<cmd>:LanguageToolCheck<cr>", "Language Tool Check" },
+		["C"] = { "<cmd>:LanguageToolClean<cr>", "Language Tool Clean" },
+		["g"] = { "<cmd>:set spelllang=gl_ES<cr>", "Set Galician" },
+		["s"] = { "<cmd>:set spelllang=es_ES<cr>", "Set Spanish" },
+		["e"] = { "<cmd>:set spelllang=en<cr>", "Set English" },
+	},
 	["t"] = {
 		name = "+telescope",
 		["f"] = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "Find files" },
 		["g"] = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Live grep" },
 		["b"] = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffers" },
 		["h"] = { "<cmd>lua require('telescope.builtin').help_tags()<cr>", "Help tags" },
+		["d"] = { "<cmd>Telescope lsp_document_diagnostics<cr>", "Document diagnostics" },
+		["w"] = { "<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace diagnostics" },
 	},
 	["w"] = {
 		name = "+windows",
