@@ -129,6 +129,7 @@ profiles:
     include:
       - X
       - i3
+      - nvim
       - rofi
       - sh
       - vim
