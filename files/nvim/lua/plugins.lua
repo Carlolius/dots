@@ -80,6 +80,26 @@ return require('packer').startup{
 
 		-- Statusline
 		use {
+			'famiu/feline.nvim',
+			config = function()
+				require('config.feline-statusline') end,
+				requires = {{'kyazdani42/nvim-web-devicons'},
+				{'lewis6991/gitsigns.nvim'},
+				requires = {
+					'nvim-lua/plenary.nvim'
+				},
+				config = function ()
+					require('config.gitsigns').setup()
+				end,
+			},
+		}
+		use {
+			'lewis6991/gitsigns.nvim',
+			requires = {
+				'nvim-lua/plenary.nvim'
+			}
+		}
+		--[[ use {
 			'glepnir/galaxyline.nvim',
 			branch = 'main',
 			-- your statusline
@@ -87,6 +107,6 @@ return require('packer').startup{
 				require'config.my-statusline' end,
 				-- some optional icons
 				requires = {'kyazdani42/nvim-web-devicons', opt = true}
-		}
+		} ]]
 	end
 }
