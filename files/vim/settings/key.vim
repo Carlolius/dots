@@ -25,3 +25,4 @@ vnoremap < <gv
 vnoremap > >gv
 " Esc in insert mode
 :imap jj <Esc>
+:imap jk <Esc>

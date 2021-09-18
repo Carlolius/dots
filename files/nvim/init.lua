@@ -2,42 +2,43 @@
 ----------------------------------
 
 -- Local var
-local opt = vim.opt
-local cmd = vim.cmd
+local set = vim.opt -- options, same as set
+local cmd = vim.cmd -- comand options
+local global = vim.g -- global options
 
 -- Source files
 ---------------
 require("key")
 require("plugins")
 
--- Global options
+-- Global setions
 ----------------
-opt.autoindent = true -- Indent correctly
-opt.syntax = 'on'
-opt.backup = false -- No backup file
-opt.clipboard = "unnamedplus" -- Yank and paste outside Vim
-opt.cursorline = true -- Show a line where cursor is
-opt.hidden = true -- Enabe background buffers
-opt.hlsearch = true -- Highlights search
-opt.completeopt = {"menuone", "noselect"}
-opt.ignorecase = true -- Ignore search case
-opt.incsearch = true -- Incremental search
-opt.mouse = "a" -- Enable mouse
-opt.number = true -- See the left row numbers
-opt.relativenumber = true -- Set relative numbers
-opt.shiftround = true -- Round indent
-opt.shiftwidth =  0 -- Change the number of space characters inserted for indentation
-opt.smartcase = true -- Don't ignorecase if upper chase characters
-opt.smartindent = true -- Makes indenting smart
-opt.swapfile = false -- No swap file
-opt.syntax = 'on' -- Higlight syntax
-opt.tabstop = 4 -- Spaces in tab
-opt.undofile = true -- Allow undo even if the file has been closed
-opt.wildmode = {'list', 'longest'}  -- Command-line completion mode
-opt.writebackup = false -- Do not backup file before write
-vim.g.mapleader = " " -- Set mapleader
+set.autoindent = true -- Indent correctly
+set.syntax = 'on'
+set.backup = false -- No backup file
+set.clipboard = "unnamedplus" -- Yank and paste outside Vim
+set.cursorline = true -- Show a line where cursor is
+set.hidden = true -- Enabe background buffers
+set.hlsearch = true -- Highlights search
+set.completeopt = {"menuone", "noselect"}
+set.ignorecase = true -- Ignore search case
+set.incsearch = true -- Incremental search
+set.mouse = "a" -- Enable mouse
+set.number = true -- See the left row numbers
+set.relativenumber = true -- Set relative numbers
+set.shiftround = true -- Round indent
+set.shiftwidth =  0 -- Change the number of space characters inserted for indentation
+set.smartcase = true -- Don't ignorecase if upper chase characters
+set.smartindent = true -- Makes indenting smart
+set.swapfile = false -- No swap file
+set.syntax = 'on' -- Higlight syntax
+set.tabstop = 4 -- Spaces in tab
+set.undofile = true -- Allow undo even if the file has been closed
+set.wildmode = {'list', 'longest'}  -- Command-line completion mode
+set.writebackup = false -- Do not backup file before write
+global.mapleader = " " -- Set mapleader
 -- invisible characters to use on ':set list'
-opt.listchars = {
+set.listchars = {
   tab       = '→ '  ,
   eol       = '↲'   ,
   nbsp      = '␣'   ,
@@ -46,15 +47,15 @@ opt.listchars = {
   precedes  = '⟨'   ,
   space     = '␣'   ,
 }
-opt.showbreak = '↪ '
+set.showbreak = '↪ '
 
 -- Colors
 ---------
 -- Enable 24 bits color
-opt.termguicolors = true
--- vim.g.colors_name = 'gruvbox'
+set.termguicolors = true
+-- global.colors_name = 'gruvbox'
 cmd[[colorscheme gruvbox]]
-vim.g.tokyonight_style = "night"
+global.tokyonight_style = "night"
 
 -- Autocomands
 --------------
