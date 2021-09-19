@@ -20,7 +20,7 @@ set.clipboard = "unnamedplus" -- Yank and paste outside Vim
 set.cursorline = true -- Show a line where cursor is
 set.hidden = true -- Enabe background buffers
 set.hlsearch = true -- Highlights search
-set.completeopt = {"menuone", "noselect"}
+set.completeopt = {"menuone", "noinsert", "noselect"}
 set.ignorecase = true -- Ignore search case
 set.incsearch = true -- Incremental search
 set.mouse = "a" -- Enable mouse
@@ -39,13 +39,13 @@ set.writebackup = false -- Do not backup file before write
 global.mapleader = " " -- Set mapleader
 -- invisible characters to use on ':set list'
 set.listchars = {
-  tab       = '→ '  ,
-  eol       = '↲'   ,
-  nbsp      = '␣'   ,
-  trail     = '•'   ,
-  extends   = '⟩'   ,
-  precedes  = '⟨'   ,
-  space     = '␣'   ,
+	tab       = '→ '  ,
+	eol       = '↲'   ,
+	nbsp      = '␣'   ,
+	trail     = '•'   ,
+	extends   = '⟩'   ,
+	precedes  = '⟨'   ,
+	space     = '␣'   ,
 }
 set.showbreak = '↪ '
 
@@ -61,6 +61,22 @@ global.tokyonight_style = "night"
 --------------
 -- Highlight on yank
 cmd [[ autocmd TextYankPost * lua vim.highlight.on_yank {on_visual = false} ]]
+
+cmd [[
+augroup recompile_plugins
+  autocmd!
+  autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+augroup END
+]]
+
+cmd [[
+augroup number_toggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+]]
+
 -- relative in normal mode, absolute in insert
 -- From here: https://github.com/sum-catnip/nvim/tree/master/lua
 -- af('BufEnter,FocusGained,InsertLeave', '*', function() vim.wo.relativenumber = true end)

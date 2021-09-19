@@ -99,14 +99,19 @@ local comps = {
     file = {
         info = {
             provider = 'file_info',
+            left_sep = ' ',
+			file_modified_icon = '﯂',
+
             hl = {
                 fg = colors.blue,
                 style = 'bold'
-            },
-            left_sep = ' '
+            }
         },
         encoding = {
             provider = 'file_encoding',
+			enabled = function(winid)
+				return vim.api.nvim_win_get_width(winid) > 80
+			end,
             left_sep = ' ',
             hl = {
                 fg = colors.violet,
@@ -123,6 +128,9 @@ local comps = {
         },
         os = {
             provider = file_osinfo,
+			enabled = function(winid)
+				return vim.api.nvim_win_get_width(winid) > 80
+			end,
             left_sep = ' ',
             hl = {
                 fg = colors.green,
@@ -146,6 +154,9 @@ local comps = {
     },
     line_percentage = {
         provider = 'line_percentage',
+		enabled = function(winid)
+			return vim.api.nvim_win_get_width(winid) > 80
+		end,
         left_sep = ' ',
         hl = {
             style = 'bold'
@@ -178,6 +189,9 @@ local comps = {
 	},
     scroll_bar = {
         provider = 'scroll_bar',
+		enabled = function(winid)
+			return vim.api.nvim_win_get_width(winid) > 80
+		end,
         left_sep = ' ',
         hl = {
             fg = colors.blue,
