@@ -131,14 +131,17 @@ return require('packer').startup{
 			config = function()
 				require('config.feline-statusline') end,
 				requires = {{'kyazdani42/nvim-web-devicons'},
-				{'lewis6991/gitsigns.nvim'},
-				requires = {
-					'nvim-lua/plenary.nvim'
-				},
-				config = function ()
-					require('config.gitsigns').setup()
-				end,
 			},
+		}
+		-- Necessary for the git info
+		use {
+			'lewis6991/gitsigns.nvim',
+			requires = {
+				'nvim-lua/plenary.nvim'
+			},
+			config = function()
+				require('gitsigns').setup()
+			end
 		}
 		--[[ use {
 			'glepnir/galaxyline.nvim',

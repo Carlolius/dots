@@ -298,15 +298,15 @@ components.active[2] = {
 	comps.diagnos.err,
 	comps.diagnos.warn,
 	comps.diagnos.hint,
-	comps.diagnos.info
+	comps.diagnos.info,
+	comps.git.branch,
+	comps.git.add,
+	comps.git.change,
+	comps.git.remove,
 }
 components.inactive[2] = {
 }
 components.active[3] = {
-	comps.git.add,
-	comps.git.change,
-	comps.git.remove,
-	comps.git.branch,
 	comps.file.encoding,
 	comps.file.os,
 	comps.scroll_bar,
