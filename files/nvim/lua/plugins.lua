@@ -11,10 +11,12 @@ return require('packer').startup{
 	function(use)
 		use {'wbthomason/packer.nvim'} -- Packer can manage itself
 		use {'b3nj5m1n/kommentary'} -- Easy comment
-		use {'npxbr/glow.nvim', run = "GlowInstall"} -- Markdown visualizer
-		use {'gabrielelana/vim-markdown'} -- Markdown highlighting
 		use {'unblevable/quick-scope'} -- Color f & t
 		use {'kyazdani42/nvim-tree.lua'} -- File explorer
+
+		-- Markdown
+		use {'npxbr/glow.nvim', run = "GlowInstall"} -- Markdown visualizer
+		use {'plasticboy/vim-markdown'} -- Markdown highlighting
 
 		-- Treesitter
 		use {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"}
@@ -30,6 +32,14 @@ return require('packer').startup{
 			config = function ()
 				require'colorizer'.setup()
 			end
+		}
+
+		-- Neoclip clipboard
+		use {
+			'AckslD/nvim-neoclip.lua',
+			config = function()
+				require('neoclip').setup()
+			end,
 		}
 
 		-- LanguageTool
