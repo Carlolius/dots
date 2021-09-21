@@ -55,7 +55,7 @@ return require('packer').startup{
 		use {
 			'akinsho/nvim-toggleterm.lua',
 			config = function()
-				require("config.toggle")
+				require("config.toggleterm-config")
 			end
 		}
 
@@ -140,7 +140,7 @@ return require('packer').startup{
 				'nvim-lua/plenary.nvim'
 			},
 			config = function()
-				require('gitsigns').setup()
+				require('config.gitsings-config')
 			end
 		}
 		--[[ use {

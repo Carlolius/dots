@@ -31,6 +31,14 @@ local leader = {
 		["l"] = { "<cmd>lua Lazygit_toggle()<cr>", "Lazygit" },
 		["m"] = { "<cmd>:Glow<cr>", "Markdown Glow" },
 	},
+	["g"] = {
+		name = "+Git",
+		["s"] = { "<cmd>:Gitsigns toggle_signs<cr>", "Toggle signs" },
+		["n"] = { "<cmd>:Gitsigns toggle_numhl<cr>", "Toggle numhl" },
+		["l"] = { "<cmd>:Gitsigns toggle_linehl<cr>", "Toggle linehl" },
+		["w"] = { "<cmd>:Gitsigns toggle_word_diff<cr>", "Toggle word diff" },
+		["c"] = { "<cmd>:Gitsigns toggle_current_line_blame<cr>", "Toggle line blame" },
+	},
 	["l"] = {
 		name = "+LSP",
 		["i"] = { "<cmd>:LspStart<cr>", "LSP start" },
