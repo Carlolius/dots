@@ -9,51 +9,57 @@ end
 
 return require('packer').startup{
 	function(use)
-		use {'wbthomason/packer.nvim'} -- Packer can manage itself
-		use {'b3nj5m1n/kommentary'} -- Easy comment
-		use {'unblevable/quick-scope'} -- Color f & t
-		use {'kyazdani42/nvim-tree.lua'} -- File explorer
+		-- Packer can manage itself
+		use {"wbthomason/packer.nvim"}
+
+		use {"b3nj5m1n/kommentary"} -- Easy comment
+		use {"unblevable/quick-scope"} -- Color f & t
+		use {"kyazdani42/nvim-tree.lua"} -- File explorer
 
 		-- Markdown
-		use {'npxbr/glow.nvim', run = "GlowInstall"} -- Markdown visualizer
-		use {'plasticboy/vim-markdown'} -- Markdown highlighting
+		use {"npxbr/glow.nvim", run = "GlowInstall"} -- Markdown visualizer
+		use {"plasticboy/vim-markdown"} -- Markdown highlighting
 
 		-- Treesitter
-		use {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"}
+		use {
+			"nvim-treesitter/nvim-treesitter",
+			event = "BufRead",
+			run = ":TSUpdate"
+		}
 
 		-- ColorSchemes
-		use {'morhetz/gruvbox'} -- Gruvbox
-		use {'folke/tokyonight.nvim'} -- Tokyonight
-		use {'Pocco81/Catppuccino.nvim'} -- Catppuccino
+		use {"morhetz/gruvbox"} -- Gruvbox
+		use {"folke/tokyonight.nvim"} -- Tokyonight
+		use {"Pocco81/Catppuccino.nvim"} -- Catppuccino
 
 		-- Colors in code
 		use {
-			'norcalli/nvim-colorizer.lua',
+			"norcalli/nvim-colorizer.lua",
 			config = function ()
-				require'colorizer'.setup()
+				require"colorizer".setup()
 			end
 		}
 
 		-- Neoclip clipboard
 		use {
-			'AckslD/nvim-neoclip.lua',
+			"AckslD/nvim-neoclip.lua",
 			config = function()
-				require('neoclip').setup()
+				require("neoclip").setup()
 			end,
 		}
 
 		-- LanguageTool
 		use {
-			'dpelle/vim-LanguageTool',
+			"dpelle/vim-LanguageTool",
 			config = function ()
 				require("config.languagetool")
 			end,
-			requires = {'matze-dd/YaLafi'},
+			requires = {"matze-dd/YaLafi"},
 		}
 
 		-- Terminal
 		use {
-			'akinsho/nvim-toggleterm.lua',
+			"akinsho/nvim-toggleterm.lua",
 			config = function()
 				require("config.toggleterm-config")
 			end
@@ -61,30 +67,13 @@ return require('packer').startup{
 
 		-- Nvim LSP plugin
 		use {
-			'neovim/nvim-lspconfig',
+			"neovim/nvim-lspconfig",
 			config = function()
 				require("config.lsp")
 			end
 		}
 
 		-- Autocomplete
-		  -- Snippets
-		use {'rafamadriz/friendly-snippets'} -- Snippets
-		use({
-            "L3MON4D3/LuaSnip",
-            as = "luasnip",
-            module = "luasnip",
-            event = "InsertCharPre",
-            config = function()
-				require("config.snippets-config")
-            end,
-            requires = {
-                "kitagry/vs-snippets",
-                "rafamadriz/friendly-snippets",
-                "kkonghao/snippet-dog",
-            },
-        })
-
 		  -- Nvim-Cmp
         use({ "hrsh7th/cmp-nvim-lsp", as = "cmp-lsp", module = "cmp_nvim_lsp" })
         use({
@@ -95,15 +84,25 @@ return require('packer').startup{
 				require("config.cmp-config")
             end,
             requires = {
-                "cmp-lsp",
-                "hrsh7th/cmp-path",
+				"L3MON4D3/LuaSnip",
+				"cmp-lsp",
+				"hrsh7th/cmp-buffer",
+				"hrsh7th/cmp-nvim-lsp",
+				"hrsh7th/cmp-nvim-lua",
+				"hrsh7th/cmp-path",
                 { "saadparwaiz1/cmp_luasnip", requires = "luasnip" },
             },
         })
 
+		  -- Snippets
+		use {
+			"rafamadriz/friendly-snippets",
+			event = "InsertEnter",
+		}
+
 		-- Autopairing
 		use {
-			'windwp/nvim-autopairs',
+			"windwp/nvim-autopairs",
 			config = function()
 				require("config.autopairs")
 			end
@@ -111,13 +110,13 @@ return require('packer').startup{
 
 		-- Telescope
 		use {
-			'nvim-telescope/telescope.nvim',
-			requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+			"nvim-telescope/telescope.nvim",
+			requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
 		}
 
 		-- Which key
 		use {
-			'folke/which-key.nvim',
+			"folke/which-key.nvim",
 			config = function()
 				require("which-key").setup {
 					require("config.which-key-config")
@@ -127,30 +126,30 @@ return require('packer').startup{
 
 		-- Statusline
 		use {
-			'famiu/feline.nvim',
+			"famiu/feline.nvim",
 			config = function()
-				require('config.feline-statusline') end,
-				requires = {{'kyazdani42/nvim-web-devicons'},
+				require("config.feline-statusline") end,
+				requires = {{"kyazdani42/nvim-web-devicons"},
 			},
 		}
 		-- Necessary for the git info
 		use {
-			'lewis6991/gitsigns.nvim',
+			"lewis6991/gitsigns.nvim",
 			requires = {
-				'nvim-lua/plenary.nvim'
+				"nvim-lua/plenary.nvim"
 			},
 			config = function()
-				require('config.gitsings-config')
+				require("config.gitsings-config")
 			end
 		}
 		--[[ use {
-			'glepnir/galaxyline.nvim',
-			branch = 'main',
+			"glepnir/galaxyline.nvim",
+			branch = "main",
 			-- your statusline
 			config = function()
-				require'config.my-statusline' end,
+				require"config.my-statusline" end,
 				-- some optional icons
-				requires = {'kyazdani42/nvim-web-devicons', opt = true}
+				requires = {"kyazdani42/nvim-web-devicons", opt = true}
 		} ]]
 	end
 }

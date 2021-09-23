@@ -20,7 +20,7 @@ set.clipboard = "unnamedplus" -- Yank and paste outside Vim
 set.cursorline = true -- Show a line where cursor is
 set.hidden = true -- Enabe background buffers
 set.hlsearch = true -- Highlights search
-set.completeopt = {"menuone", "noinsert", "noselect"}
+set.completeopt = {"menuone", "preview", "noinsert", "noselect"}
 set.ignorecase = true -- Ignore search case
 set.incsearch = true -- Incremental search
 set.mouse = "a" -- Enable mouse
@@ -34,7 +34,7 @@ set.swapfile = false -- No swap file
 set.syntax = 'on' -- Higlight syntax
 set.tabstop = 4 -- Spaces in tab
 set.undofile = true -- Allow undo even if the file has been closed
-set.wildmode = {'list', 'longest'}  -- Command-line completion mode
+set.wildmode = {"longest:full,full"}  -- Command-line completion mode
 set.writebackup = false -- Do not backup file before write
 global.mapleader = " " -- Set mapleader
 -- invisible characters to use on ':set list'

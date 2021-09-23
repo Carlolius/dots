@@ -16,6 +16,37 @@ cmp.setup({
             require("luasnip").lsp_expand(args.body)
         end,
     },
+	documentation = {
+		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+	},
+    formatting = {
+        format = function(entry, vim_item)
+			-- load icons
+			vim_item.kind = string.format (
+				"%s %s",
+				require("config.icons").icons[vim_item.kind],
+				vim_item.kind
+			)
+            -- set a name for each source
+            vim_item.menu = ({
+				buffer = "[Buffer]",
+				calc = "[Calc]",
+				cmp_tabnine = "[Tabnine]",
+				emoji = "[Emoji]",
+				luasnip = "[LuaSnip]",
+				nvim_lsp = "[LSP]",
+				nvim_lua = "[Lua]",
+				path = "[Path]",
+				vsnip = "[Vsnip]",
+            })[entry.source.name]
+			vim_item.dup = ({
+				buffer = 1,
+				path = 1,
+				nvim_lsp = 0,
+			})[entry.source.name] or 0
+            return vim_item
+        end,
+    },
     mapping = {
         ["<Tab>"] = cmp.mapping(function(fallback)
             if vim.fn.pumvisible() == 1 then
@@ -48,20 +79,17 @@ cmp.setup({
             select = true,
         }),
     },
-    formatting = {
-        format = function(entry, vim_item)
-            -- set a name for each source
-            vim_item.menu = ({
-                path = "[Path]",
-                nvim_lsp = "[LSP]",
-                luasnip = "[LuaSnip]",
-            })[entry.source.name]
-            return vim_item
-        end,
-    },
     sources = {
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-        { name = "path" },
+		{ name = "nvim_lsp" },
+		{ name = "path" },
+		{ name = "luasnip" },
+		{ name = "cmp_tabnine" },
+		{ name = "nvim_lua" },
+		{ name = "buffer" },
+		{ name = "calc" },
+		{ name = "emoji" },
+		{ name = "treesitter" },
+		{ name = "crates" },
     },
 })
+require("luasnip/loaders/from_vscode").lazy_load()
