@@ -23,16 +23,20 @@ return require('packer').startup{
 		-- Treesitter
 		use {
 			"nvim-treesitter/nvim-treesitter",
-			event = "BufRead",
-			run = ":TSUpdate"
+			-- event = "BufRead",
+			run = ":TSUpdate",
+			config = function()
+				require("config.treesitter-config")
+			end,
 		}
 
 		-- ColorSchemes
 		use {"morhetz/gruvbox"} -- Gruvbox
 		use {"folke/tokyonight.nvim"} -- Tokyonight
 		use {"Pocco81/Catppuccino.nvim"} -- Catppuccino
+		use {"wuelnerdotexe/vim-enfocado"} -- Enfocado
 
-		-- Colors in code
+		-- Show colors in code RGB, HEX...
 		use {
 			"norcalli/nvim-colorizer.lua",
 			config = function ()
@@ -75,29 +79,29 @@ return require('packer').startup{
 
 		-- Autocomplete
 		  -- Nvim-Cmp
-        use({ "hrsh7th/cmp-nvim-lsp", as = "cmp-lsp", module = "cmp_nvim_lsp" })
-        use({
-            "hrsh7th/nvim-cmp",
-            event = "InsertEnter",
-            module = "cmp",
-            config = function()
-				require("config.cmp-config")
-            end,
-            requires = {
-				"L3MON4D3/LuaSnip",
-				"cmp-lsp",
+		use {
+			"hrsh7th/nvim-cmp",
+			requires = {
 				"hrsh7th/cmp-buffer",
 				"hrsh7th/cmp-nvim-lsp",
+				"L3MON4D3/LuaSnip",
+				"saadparwaiz1/cmp_luasnip",
 				"hrsh7th/cmp-nvim-lua",
+				"rafamadriz/friendly-snippets",
 				"hrsh7th/cmp-path",
-                { "saadparwaiz1/cmp_luasnip", requires = "luasnip" },
-            },
-        })
+				"hrsh7th/cmp-calc",
+				"hrsh7th/cmp-emoji"
+			},
+			config = function()
+				require("config.cmp-config")
+			end,
+		}
 
-		  -- Snippets
+		  -- Tabnine
 		use {
-			"rafamadriz/friendly-snippets",
-			event = "InsertEnter",
+			"tzachar/cmp-tabnine",
+			run = "./install.sh",
+			requires = "hrsh7th/nvim-cmp"
 		}
 
 		-- Autopairing
