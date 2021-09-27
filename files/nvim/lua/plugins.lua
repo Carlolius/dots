@@ -14,7 +14,12 @@ return require('packer').startup{
 
 		use {"b3nj5m1n/kommentary"} -- Easy comment
 		use {"unblevable/quick-scope"} -- Color f & t
-		use {"kyazdani42/nvim-tree.lua"} -- File explorer
+
+		 -- File explorer
+		use {
+			"kyazdani42/nvim-tree.lua",
+			require("nvim-tree").setup()
+		}
 
 		-- Markdown
 		use {"npxbr/glow.nvim", run = "GlowInstall"} -- Markdown visualizer
