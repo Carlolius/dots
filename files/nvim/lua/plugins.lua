@@ -16,11 +16,11 @@ return require('packer').startup{
 		use {"unblevable/quick-scope"} -- Color f & t
 
 		 -- File explorer
-		use {
-			"kyazdani42/nvim-tree.lua",
-			require("nvim-tree").setup()
-		}
-
+		 use {
+			 'kyazdani42/nvim-tree.lua',
+			 requires = 'kyazdani42/nvim-web-devicons',
+			 config = function() require'nvim-tree'.setup {} end
+		 }
 		-- Markdown
 		use {"npxbr/glow.nvim", run = "GlowInstall"} -- Markdown visualizer
 		use {"plasticboy/vim-markdown"} -- Markdown highlighting
