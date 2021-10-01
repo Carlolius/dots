@@ -15,73 +15,6 @@ return require('packer').startup{
 		use {"b3nj5m1n/kommentary"} -- Easy comment
 		use {"unblevable/quick-scope"} -- Color f & t
 
-		 -- File explorer
-		 use {
-			 'kyazdani42/nvim-tree.lua',
-			 requires = 'kyazdani42/nvim-web-devicons',
-			 config = function() require'nvim-tree'.setup {} end
-		 }
-		-- Markdown
-		use {"npxbr/glow.nvim", run = "GlowInstall"} -- Markdown visualizer
-		use {"plasticboy/vim-markdown"} -- Markdown highlighting
-
-		-- Treesitter
-		use {
-			"nvim-treesitter/nvim-treesitter",
-			-- event = "BufRead",
-			run = ":TSUpdate",
-			config = function()
-				require("config.treesitter-config")
-			end,
-		}
-
-		-- ColorSchemes
-		use {"morhetz/gruvbox"} -- Gruvbox
-		use {"folke/tokyonight.nvim"} -- Tokyonight
-		use {"Pocco81/Catppuccino.nvim"} -- Catppuccino
-		use {"wuelnerdotexe/vim-enfocado"} -- Enfocado
-
-		-- Show colors in code RGB, HEX...
-		use {
-			"norcalli/nvim-colorizer.lua",
-			config = function ()
-				require"colorizer".setup()
-			end
-		}
-
-		-- Neoclip clipboard
-		use {
-			"AckslD/nvim-neoclip.lua",
-			config = function()
-				require("neoclip").setup()
-			end,
-		}
-
-		-- LanguageTool
-		use {
-			"dpelle/vim-LanguageTool",
-			config = function ()
-				require("config.languagetool")
-			end,
-			requires = {"matze-dd/YaLafi"},
-		}
-
-		-- Terminal
-		use {
-			"akinsho/nvim-toggleterm.lua",
-			config = function()
-				require("config.toggleterm-config")
-			end
-		}
-
-		-- Nvim LSP plugin
-		use {
-			"neovim/nvim-lspconfig",
-			config = function()
-				require("config.lsp")
-			end
-		}
-
 		-- Autocomplete
 		  -- Nvim-Cmp
 		use {
@@ -101,7 +34,6 @@ return require('packer').startup{
 				require("config.cmp-config")
 			end,
 		}
-
 		  -- Tabnine
 		use {
 			"tzachar/cmp-tabnine",
@@ -117,19 +49,59 @@ return require('packer').startup{
 			end
 		}
 
-		-- Telescope
+		-- CodeAction menu
+		require('packer').use({
+			'weilbith/nvim-code-action-menu',
+			cmd = 'CodeActionMenu',
+		})
+
+		-- ColorSchemes
+		use {"morhetz/gruvbox"} -- Gruvbox
+		use {"folke/tokyonight.nvim"} -- Tokyonight
+		use {"Pocco81/Catppuccino.nvim"} -- Catppuccino
+		use {"wuelnerdotexe/vim-enfocado"} -- Enfocado
+
+		 -- File explorer
+		 use {
+			 'kyazdani42/nvim-tree.lua',
+			 requires = 'kyazdani42/nvim-web-devicons',
+			 config = function() require'nvim-tree'.setup {} end
+		 }
+
+		-- LanguageTool
 		use {
-			"nvim-telescope/telescope.nvim",
-			requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
+			"dpelle/vim-LanguageTool",
+			config = function ()
+				require("config.languagetool")
+			end,
+			requires = {"matze-dd/YaLafi"},
 		}
 
-		-- Which key
+		-- Markdown
+		use {"npxbr/glow.nvim", run = "GlowInstall"} -- Markdown visualizer
+		use {"plasticboy/vim-markdown"} -- Markdown highlighting
+
+		-- Neoclip clipboard
 		use {
-			"folke/which-key.nvim",
+			"AckslD/nvim-neoclip.lua",
 			config = function()
-				require("which-key").setup {
-					require("config.which-key-config")
-			}
+				require("neoclip").setup()
+			end,
+		}
+
+		-- Nvim LSP plugin
+		use {
+			"neovim/nvim-lspconfig",
+			config = function()
+				require("config.lsp")
+			end
+		}
+
+		-- Show colors in code RGB, HEX...
+		use {
+			"norcalli/nvim-colorizer.lua",
+			config = function ()
+				require"colorizer".setup()
 			end
 		}
 
@@ -141,7 +113,7 @@ return require('packer').startup{
 				requires = {{"kyazdani42/nvim-web-devicons"},
 			},
 		}
-		-- Necessary for the git info
+			-- Necessary for the git info
 		use {
 			"lewis6991/gitsigns.nvim",
 			requires = {
@@ -160,5 +132,39 @@ return require('packer').startup{
 				-- some optional icons
 				requires = {"kyazdani42/nvim-web-devicons", opt = true}
 		} ]]
+
+		-- Telescope
+		use {
+			"nvim-telescope/telescope.nvim",
+			requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
+		}
+
+		-- Terminal
+		use {
+			"akinsho/nvim-toggleterm.lua",
+			config = function()
+				require("config.toggleterm-config")
+			end
+		}
+
+		-- Treesitter
+		use {
+			"nvim-treesitter/nvim-treesitter",
+			-- event = "BufRead",
+			run = ":TSUpdate",
+			config = function()
+				require("config.treesitter-config")
+			end,
+		}
+
+		-- Which key
+		use {
+			"folke/which-key.nvim",
+			config = function()
+				require("which-key").setup {
+					require("config.which-key-config")
+			}
+			end
+		}
 	end
 }
