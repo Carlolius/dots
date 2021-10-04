@@ -66,215 +66,238 @@ local lsp = require 'feline.providers.lsp'
 local vi_mode_utils = require 'feline.providers.vi_mode'
 
 -- LuaFormatter off
-
-local comps = {
-    vi_mode = {
-        left = {
-            provider = function()
-                local current_text = ' '..vi_mode_text[vim.fn.mode()]..' '
-                return current_text
-            end,
-            hl = function()
-                local val = {
-                    name = vi_mode_utils.get_mode_highlight_name(),
-                    fg = colors.bg,
-                    bg = vi_mode_utils.get_mode_color(),
-                    style = 'bold'
-                }
-                return val
-            end
-        },
-        right = {
-            provider = '▊',
-            hl = function()
-                local val = {
-                    name = vi_mode_utils.get_mode_highlight_name(),
-                    fg = vi_mode_utils.get_mode_color()
-                }
-                return val
-            end,
-            left_sep = ' '
-        }
-    },
-    file = {
-        info = {
-            provider = 'file_info',
-            left_sep = ' ',
-			file_modified_icon = '﯂',
-
-            hl = {
-                fg = colors.blue,
-                style = 'bold'
-            }
-        },
-        encoding = {
-            provider = 'file_encoding',
-			enabled = function(winid)
-				return vim.api.nvim_win_get_width(winid) > 80
-			end,
-            left_sep = ' ',
-            hl = {
-                fg = colors.violet,
-                style = 'bold'
-            }
-        },
-        type = {
-            provider = 'file_type',
-            left_sep = ' ',
-            hl = {
-                fg = colors.violet,
-                style = 'bold'
-            }
-        },
-        os = {
-            provider = file_osinfo,
-			enabled = function(winid)
-				return vim.api.nvim_win_get_width(winid) > 80
-			end,
-            left_sep = ' ',
-            hl = {
-                fg = colors.green,
-                style = 'bold'
-            }
-        },
-		size = {
-			provider = 'file_size',
-            left_sep = {
-				str = '  ',
-				hl = {
-					fg = colors.violet
-				}
-			},
-            right_sep = ' ',
-            hl = {
-                fg = colors.violet,
-                style = 'bold'
-            }
-		}
-    },
-    line_percentage = {
-        provider = 'line_percentage',
-		enabled = function(winid)
-			return vim.api.nvim_win_get_width(winid) > 80
+local vi_mode = {
+	left = {
+		provider = function()
+			local current_text = ' '..vi_mode_text[vim.fn.mode()]..' '
+			return current_text
 		end,
-        left_sep = ' ',
-        hl = {
-            style = 'bold'
-        }
-    },
-	position = {
-		line = {
-			provider = function()
-				return string.format("%4i /%4i", vim.fn.line('.'),vim.fn.line('$'))
-			end,
-			icon = ' ',
-			left_sep = ' ',
-			hl = {
-				fg = colors.fg,
-				bg = colors.darkblue,
+		hl = function()
+			local val = {
+				name = vi_mode_utils.get_mode_highlight_name(),
+				fg = colors.bg,
+				bg = vi_mode_utils.get_mode_color(),
 				style = 'bold'
+			}
+			return val
+		end
+	},
+	right = {
+		provider = '▊',
+		hl = function()
+			local val = {
+				name = vi_mode_utils.get_mode_highlight_name(),
+				fg = vi_mode_utils.get_mode_color()
+			}
+			return val
+		end,
+		left_sep = ' '
+	}
+}
+
+
+local file = {
+	info = {
+		provider = 'file_info',
+		priority = 5,
+		left_sep = ' ',
+		file_modified_icon = '﯂',
+		hl = {
+			fg = colors.blue,
+			style = 'bold'
+		}
+	},
+	encoding = {
+		provider = 'file_encoding',
+		truncate_hide = true,
+		left_sep = ' ',
+		hl = {
+			fg = colors.violet,
+			style = 'bold'
+		}
+	},
+	type = {
+		provider = 'file_type',
+		truncate_hide = true,
+		left_sep = ' ',
+		hl = {
+			fg = colors.violet,
+			style = 'bold'
+		}
+	},
+	os = {
+		provider = file_osinfo,
+		truncate_hide = true,
+		priority = -5,
+		left_sep = ' ',
+		hl = {
+			fg = colors.green,
+			style = 'bold'
+		}
+	},
+	size = {
+		provider = 'file_size',
+		truncate_hide = true,
+		left_sep = {
+			str = '  ',
+			hl = {
+				fg = colors.violet
 			}
 		},
-		column = {
-			provider = function()
-				return string.format("%3i /%3i ", vim.fn.col('.'),string.len(vim.fn.getline('.')))
-			end,
-			icon = '  ',
-			hl = {
-				fg = colors.fg,
-				bg = colors.darkblue,
-				style = 'bold'
-			}
+		right_sep = ' ',
+		hl = {
+			fg = colors.violet,
+			style = 'bold'
+		}
+	}
+}
+
+
+local line_percentage = {
+	provider = 'line_percentage',
+	truncate_hide = true,
+	left_sep = ' ',
+	hl = {
+		style = 'bold'
+	}
+}
+
+
+local position = {
+	all = {
+		provider = function()
+			return string.format(" %4i /%4i  %3i /%3i ", vim.fn.line('.'),vim.fn.line('$'),vim.fn.col('.'),string.len(vim.fn.getline('.')))
+		end,
+		-- icon = ' ',
+		priority = 5,
+		short_provider = 'position',
+		left_sep = ' ',
+		hl = {
+			fg = colors.fg,
+			bg = colors.darkblue,
+			style = 'bold'
 		},
 	},
-    scroll_bar = {
-        provider = 'scroll_bar',
-		enabled = function(winid)
-			return vim.api.nvim_win_get_width(winid) > 80
+	line = {
+		provider = function()
+			return string.format("%4i /%4i", vim.fn.line('.'),vim.fn.line('$'))
 		end,
-        left_sep = ' ',
-        hl = {
-            fg = colors.blue,
-            style = 'bold'
-        }
-    },
-    diagnos = {
-        err = {
-            provider = 'diagnostic_errors',
-            enabled = function()
-                return lsp.diagnostics_exist('Error')
-            end,
-            hl = {
-                fg = colors.red
-            }
-        },
-        warn = {
-            provider = 'diagnostic_warnings',
-            enabled = function()
-                return lsp.diagnostics_exist('Warning')
-            end,
-            hl = {
-                fg = colors.yellow
-            }
-        },
-        hint = {
-            provider = 'diagnostic_hints',
-            enabled = function()
-                return lsp.diagnostics_exist('Hint')
-            end,
-            hl = {
-                fg = colors.cyan
-            }
-        },
-        info = {
-            provider = 'diagnostic_info',
-            enabled = function()
-                return lsp.diagnostics_exist('Information')
-            end,
-            hl = {
-                fg = colors.blue
-            }
-        },
-    },
-    lsp = {
-        name = {
-            provider = 'lsp_client_names',
-            left_sep = ' ',
-            icon = ' ',
-            hl = {
-                fg = colors.yellow
-            }
-        }
-    },
-    git = {
-        branch = {
-            provider = 'git_branch',
-            icon = ' ',
-            left_sep = ' ',
-            hl = {
-                fg = colors.violet,
-                style = 'bold'
-            },
-        },
-        add = {
-            provider = 'git_diff_added',
-            hl = {
-                fg = colors.green
-            }
-        },
-        change = {
-            provider = 'git_diff_changed',
-            hl = {
-                fg = colors.orange
-            }
-        },
-        remove = {
-            provider = 'git_diff_removed',
-            hl = {
-                fg = colors.red
-            }
-        }
-    }
+		icon = ' ',
+		priority = 5,
+		short_provider = 'position',
+		left_sep = ' ',
+		hl = {
+			fg = colors.fg,
+			bg = colors.darkblue,
+			style = 'bold'
+		},
+	},
+	column = {
+		provider = function()
+			return string.format("%3i /%3i ", vim.fn.col('.'),string.len(vim.fn.getline('.')))
+		end,
+		icon = '  ',
+		truncate_hide = true,
+		hl = {
+			fg = colors.fg,
+			bg = colors.darkblue,
+			style = 'bold'
+		}
+	},
+}
+
+
+local scroll_bar = {
+	provider = 'scroll_bar',
+	truncate_hide = true,
+	left_sep = ' ',
+	hl = {
+		fg = colors.blue,
+		style = 'bold'
+	}
+}
+
+
+local diagnos = {
+	err = {
+		provider = 'diagnostic_errors',
+		enabled = function()
+			return lsp.diagnostics_exist('Error')
+		end,
+		hl = {
+			fg = colors.red
+		}
+	},
+	warn = {
+		provider = 'diagnostic_warnings',
+		enabled = function()
+			return lsp.diagnostics_exist('Warning')
+		end,
+		hl = {
+			fg = colors.yellow
+		}
+	},
+	hint = {
+		provider = 'diagnostic_hints',
+		enabled = function()
+			return lsp.diagnostics_exist('Hint')
+		end,
+		hl = {
+			fg = colors.cyan
+		}
+	},
+	info = {
+		provider = 'diagnostic_info',
+		enabled = function()
+			return lsp.diagnostics_exist('Information')
+		end,
+		hl = {
+			fg = colors.blue
+		}
+	},
+}
+
+
+local flsp = {
+	name = {
+		provider = 'lsp_client_names',
+		left_sep = ' ',
+		icon = ' ',
+		hl = {
+			fg = colors.yellow
+		}
+	}
+}
+
+
+local git = {
+	branch = {
+		provider = 'git_branch',
+		icon = ' ',
+		left_sep = ' ',
+		hl = {
+			fg = colors.violet,
+			style = 'bold'
+		},
+	},
+	add = {
+		provider = 'git_diff_added',
+		hl = {
+			fg = colors.green
+		}
+	},
+	change = {
+		provider = 'git_diff_changed',
+		hl = {
+			fg = colors.orange
+		}
+	},
+	remove = {
+		provider = 'git_diff_removed',
+		hl = {
+			fg = colors.red
+		}
+	}
 }
 
 local components = {
@@ -283,39 +306,40 @@ local components = {
 }
 
 components.active[1] = {
-	comps.vi_mode.left,
-	comps.file.info,
-	comps.file.type,
-	comps.file.size,
-	comps.lsp.name
+	vi_mode.left,
+	file.info,
+	file.type,
+	file.size,
+	flsp.name
 }
 
 components.inactive[1] = {
-	comps.file.info
+	file.info
 }
 
 components.active[2] = {
-	comps.diagnos.err,
-	comps.diagnos.warn,
-	comps.diagnos.hint,
-	comps.diagnos.info,
-	comps.git.branch,
-	comps.git.add,
-	comps.git.change,
-	comps.git.remove,
+	diagnos.err,
+	diagnos.warn,
+	diagnos.hint,
+	diagnos.info,
+	git.branch,
+	git.add,
+	git.change,
+	git.remove,
 }
 components.inactive[2] = {
 }
 components.active[3] = {
-	comps.file.encoding,
-	comps.file.os,
-	comps.scroll_bar,
-	comps.line_percentage,
-	comps.position.line,
-	comps.position.column,
+	file.encoding,
+	file.os,
+	scroll_bar,
+	line_percentage,
+	position.all,
+	--[[ position.line,
+	position.column, ]]
 }
 components.inactive[3] = {
-	comps.file.os
+	file.os
 }
 
 -- LuaFormatter on
