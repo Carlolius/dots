@@ -72,8 +72,8 @@ augroup END
 cmd [[
 augroup number_toggle
   autocmd!
-  autocmd FocusGained,InsertLeave * set relativenumber
-  autocmd FocusLost,InsertEnter   * set norelativenumber
+  autocmd BufEnter,FocusGained,InsertLeave * if @% != 'NvimTree' | set relativenumber | endif
+  autocmd BufLeave,FocusLost,InsertEnter   * if @% != 'NvimTree' | set norelativenumber | endif
 augroup END
 ]]
 
