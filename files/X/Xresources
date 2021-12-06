@@ -65,7 +65,6 @@ URxvt*.font: xft:Hack Nerd Font mono:size=9
 !URxvt*.boldItalicFont: xft:Hack Nerd Font mono:style=Bold Italic:size=8
 
 ! Copy and paste
-URxvt.perl-ext-common:  ...,clipboard,...
-URxvt.clipboard.autocopy: true
-URxvt.keysym.M-c: perl:clipboard:copy
-URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.perl-ext-common: selection-to-clipboard
+URxvt.keysym.Control-Shift-V: eval:paste_clipboard
+URxvt.keysym.Control-Shift-C: eval:selection_to_clipboard
