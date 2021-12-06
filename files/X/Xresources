@@ -50,3 +50,22 @@ xterm*vt100.Translations: #override \
 xterm.vt100.Translations: #override \
 	Ctrl <Key> minus: smaller-vt-font() \n\
 	Ctrl <Key> plus: larger-vt-font()
+
+! Urxvt
+! No scrollbar
+URxvt.scrollBar:false
+
+! Blink cursor
+URxvt.cursorBlink:true
+
+! Font
+URxvt*.font: xft:Hack Nerd Font mono:size=9
+!URxvt*.boldFont: xft:Hack Nerd Font mono:style=Bold:size=8
+!URxvt*.italicFont: xft:Hack Nerd Font mono:style=Italic:size=8
+!URxvt*.boldItalicFont: xft:Hack Nerd Font mono:style=Bold Italic:size=8
+
+! Copy and paste
+URxvt.perl-ext-common:  ...,clipboard,...
+URxvt.clipboard.autocopy: true
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
