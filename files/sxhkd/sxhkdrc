@@ -6,9 +6,9 @@ alt + x
 	alacritty
 {%@@ elif profile == "nibbler" @@%}
 super + Return
-	termite
+	urxvt
 alt + x
-	termite
+	urxvt
 {%@@ endif @@%}
 
 # Make sxhkd reload its configuration files
