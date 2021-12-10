@@ -34,12 +34,6 @@ return require('packer').startup{
 				require("config.cmp-config")
 			end,
 		}
-		  -- Tabnine
-		use {
-			"tzachar/cmp-tabnine",
-			run = "./install.sh",
-			requires = "hrsh7th/nvim-cmp"
-		}
 
 		-- Autopairing
 		use {

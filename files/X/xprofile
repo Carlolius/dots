@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$XDG_CURRENT_DESKTOP" != "KDE" ]; then
+if [ $XDG_CURRENT_DESKTOP != "KDE" ]; then
 	# Load Xresoruces
 	[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 

@@ -85,7 +85,6 @@ cmp.setup {
 		{ name = "treesitter" },
 		{ name = "buffer" },
 		{ name = "calc" },
-		{ name = "cmp_tabnine" }
 	},
 }
 
@@ -95,9 +94,5 @@ require("cmp").setup({
 	map_complete = true,
 	auto_select = true
 })
-
--- TabNine
-local tabnine = require "cmp_tabnine.config"
-tabnine:setup { max_lines = 1000, max_num_results = 20, sort = true }
 
 require("luasnip.loaders.from_vscode").lazy_load() -- load the other snippets line "friendly snippets"
