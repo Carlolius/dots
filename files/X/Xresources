@@ -33,7 +33,7 @@
 *.color14:      #54ffff
 
 ! white
-*.color7:	#b2b2b2
+*.color7:		#b2b2b2
 *.color15:      #ffffff
 
 ! Xterm
@@ -52,19 +52,29 @@ xterm.vt100.Translations: #override \
 	Ctrl <Key> plus: larger-vt-font()
 
 ! Urxvt
+! Extensions
+URxvt.perl-ext-common: selection-to-clipboard,default,matcher,resize-font
+
 ! No scrollbar
 URxvt.scrollBar:false
 
 ! Blink cursor
 URxvt.cursorBlink:true
 
+! Do not scroll with output
+URxvt.scrollTtyOutput: false
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+
+! Scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt.scrollWithBuffer: true
+
+! Scroll back to the bottom on keypress
+URxvt.scrollTtyKeypress: true
+
 ! Font
-URxvt*.font: xft:Hack Nerd Font mono:size=9
-!URxvt*.boldFont: xft:Hack Nerd Font mono:style=Bold:size=8
-!URxvt*.italicFont: xft:Hack Nerd Font mono:style=Italic:size=8
-!URxvt*.boldItalicFont: xft:Hack Nerd Font mono:style=Bold Italic:size=8
+URxvt.font: xft:Hack Nerd Font mono:size=9
 
 ! Copy and paste
-URxvt.perl-ext-common: selection-to-clipboard
 URxvt.keysym.Control-Shift-V: eval:paste_clipboard
 URxvt.keysym.Control-Shift-C: eval:selection_to_clipboard
