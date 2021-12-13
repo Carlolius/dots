@@ -48,11 +48,19 @@ local leader = {
 		["i"] = { "<cmd>:LspStart<cr>", "LSP start" },
 		["s"] = { "<cmd>:LspStop<cr>", "LSP stop" },
 		["f"] = { "<cmd>:LspInfo<cr>", "LSP info" },
+		["k"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help"},
+		["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover"},
+		["R"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename"},
+		["t"] = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type definition"},
 		["D"] = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
 		["d"] = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
 		["c"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
 		["r"] = { "<cmd>lua vim.lsp.buf.references()<CR>", "References" },
 		["l"] = { "<cmd>lua vim.lsp.buf.set_loclist()<CR>", "Set loclist" },
+		["e"] = { "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", "Show line diagnostics"},
+		["n"] = { "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "Go to next diagnostic"},
+		["N"] = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", "Go to previous diagnostic"}
+
 	},
 	["h"] = {
 		name = "+help",
