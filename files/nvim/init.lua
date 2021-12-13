@@ -72,12 +72,7 @@ augroup END
 cmd [[
 augroup number_toggle
   autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * if @% != 'NvimTree' | set relativenumber | endif
-  autocmd BufLeave,FocusLost,InsertEnter   * if @% != 'NvimTree' | set norelativenumber | endif
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
 augroup END
 ]]
-
--- relative in normal mode, absolute in insert
--- From here: https://github.com/sum-catnip/nvim/tree/master/lua
--- af('BufEnter,FocusGained,InsertLeave', '*', function() vim.wo.relativenumber = true end)
--- af('BufLeave,FocusLost,InsertEnter',   '*', function() vim.wo.relativenumber = false end)

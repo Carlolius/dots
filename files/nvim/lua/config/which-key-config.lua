@@ -30,6 +30,8 @@ local leader = {
 	["f"] = {
 		name = "+floating",
 		["l"] = { "<cmd>lua Lazygit_toggle()<cr>", "Lazygit" },
+		["h"] = { "<cmd>lua horizontal_toggle()<cr>", "Horizontal" },
+		["v"] = { "<cmd>lua vertical_toggle()<cr>", "Vertical" },
 		["m"] = { "<cmd>:Glow<cr>", "Markdown Glow" },
 		["t"] = { "<cmd>:ToggleTerm<cr>", "Toggle terminal" },
 	},
