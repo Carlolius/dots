@@ -13,7 +13,12 @@ return require('packer').startup{
 		use {"wbthomason/packer.nvim"}
 
 		use {"b3nj5m1n/kommentary"} -- Easy comment
-		use {"unblevable/quick-scope"} -- Color f & t
+		
+		-- Color f & t
+		use {
+			"unblevable/quick-scope",
+			event = "BufWinEnter"
+		} 
 
 		-- Autocomplete
 		  -- Nvim-Cmp
@@ -30,17 +35,14 @@ return require('packer').startup{
 				"hrsh7th/cmp-calc",
 				"hrsh7th/cmp-emoji"
 			},
-			config = function()
-				require("config.cmp-config")
-			end,
+			config = "require('config.cmp-config')"
 		}
 
 		-- Autopairing
 		use {
 			"windwp/nvim-autopairs",
-			config = function()
-				require("config.autopairs")
-			end
+			config = "require('config.autopairs')",
+			after = "nvim-cmp"
 		}
 
 		-- CodeAction menu
@@ -59,15 +61,15 @@ return require('packer').startup{
 		 use {
 			 'kyazdani42/nvim-tree.lua',
 			 requires = 'kyazdani42/nvim-web-devicons',
-			 config = function() require'nvim-tree'.setup {} end
+			 cmd = "NvimTreeToggle",
+			 config = "require('config.nvim-tree-config')"
 		 }
 
 		-- LanguageTool
 		use {
 			"dpelle/vim-LanguageTool",
-			config = function ()
-				require("config.languagetool")
-			end,
+			config = "require('config.languagetool')",
+			cmd = "LanguageToolCheck",
 			requires = {"matze-dd/YaLafi"},
 		}
 
@@ -78,33 +80,28 @@ return require('packer').startup{
 		-- Neoclip clipboard
 		use {
 			"AckslD/nvim-neoclip.lua",
-			config = function()
-				require("neoclip").setup()
-			end,
+			config = "require('neoclip')"
 		}
 
 		-- Nvim LSP plugin
 		use {
 			"neovim/nvim-lspconfig",
-			config = function()
-				require("config.lsp")
-			end
+			event = "BufRead",
+			config = "require('config.lsp')"
 		}
 
 		-- Show colors in code RGB, HEX...
 		use {
 			"norcalli/nvim-colorizer.lua",
-			config = function ()
-				require"colorizer".setup()
-			end
+			config = "require('config.colorizer-config')",
+			event = "BufRead"
 		}
 
 		-- Statusline
 		use {
 			"famiu/feline.nvim",
-			config = function()
-				require("config.feline-statusline") end,
-				requires = {{"kyazdani42/nvim-web-devicons"},
+			requires = {{"kyazdani42/nvim-web-devicons"},
+			config = "require('config.feline-statusline')",
 			},
 		}
 			-- Necessary for the git info
@@ -113,32 +110,20 @@ return require('packer').startup{
 			requires = {
 				"nvim-lua/plenary.nvim"
 			},
-			config = function()
-				require("config.gitsings-config")
-			end
+			config = "require('config.gitsings-config')"
 		}
-		--[[ use {
-			"glepnir/galaxyline.nvim",
-			branch = "main",
-			-- your statusline
-			config = function()
-				require"config.my-statusline" end,
-				-- some optional icons
-				requires = {"kyazdani42/nvim-web-devicons", opt = true}
-		} ]]
 
 		-- Telescope
 		use {
 			"nvim-telescope/telescope.nvim",
-			requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
+			requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
+			cmd = "Telescope"
 		}
 
 		-- Terminal
 		use {
 			"akinsho/nvim-toggleterm.lua",
-			config = function()
-				require("config.toggleterm-config")
-			end
+			config = "require('config.toggleterm-config')"
 		}
 
 		-- Treesitter
@@ -146,19 +131,15 @@ return require('packer').startup{
 			"nvim-treesitter/nvim-treesitter",
 			-- event = "BufRead",
 			run = ":TSUpdate",
-			config = function()
-				require("config.treesitter-config")
-			end,
+			event = "BufWinEnter",
+			config = "require('config.treesitter-config')"
 		}
 
 		-- Which key
 		use {
 			"folke/which-key.nvim",
-			config = function()
-				require("which-key").setup {
-					require("config.which-key-config")
-			}
-			end
+			event = "BufWinEnter",
+			config = "require('config.which-key-config')"
 		}
 	end
 }
