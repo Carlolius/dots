@@ -100,9 +100,8 @@ return require('packer').startup{
 		-- Statusline
 		use {
 			"famiu/feline.nvim",
-			requires = {{"kyazdani42/nvim-web-devicons"},
+			requires = {"kyazdani42/nvim-web-devicons"},
 			config = "require('config.feline-statusline')",
-			},
 		}
 			-- Necessary for the git info
 		use {
