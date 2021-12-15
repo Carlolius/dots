@@ -24,17 +24,23 @@ export EDITOR
 export VISUAL="$EDITOR"
 
 # Default terminal
-if [ "$(hostname)" = "bender" ]; then
-	export TERMINAL='alacritty'
-elif [ "$(hostname)" = "nibbler" ]; then
-	export TERMINAL='termite'
-fi
+# if [ "$(hostname)" = "bender" ]; then
+# 	export TERMINAL='alacritty'
+# elif [ "$(hostname)" = "nibbler" ]; then
+# 	export TERMINAL='termite'
+# fi
+export TERMINAL='urxvt'
 #
 # set sxhkd shell to sh for faster response times
 export SXHKD_SHELL="sh"
 
-# Set config dir
+# XDG Paths
 export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_CACHE="$HOME"/.cache
+export XDG_DATA="$HOME"/.local/share
+
+# ZSH config dir
+export ZDOTDIR=$HOME/.config/zsh
 
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 

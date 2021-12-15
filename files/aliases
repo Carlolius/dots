@@ -1,24 +1,26 @@
 # Aliases
 # Config
 alias aliases="nvim ~/.config/aliases"
-alias evim="nvim ~/.vim/vimrc"
+alias evim="nvim ~/.config/init.lua"
 alias functions="nvim ~/.config/functions"
 
 # Nvim
 alias v='nvim'
 alias ndiff='nvim -d'
 
-# Better, easier
 # Navigation
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+
 # Directories
 alias ~="cd ~"
 alias la="ls -la"
 alias ll="ls -lisa"
+alias ls='ls --color=auto'
 alias home="cd ~"
+
 # Utilities
 alias cls="clear"
 alias myip="ip route get 1 | awk '{print \$7}' && curl http://ipecho.net/plain && print " 
@@ -26,6 +28,13 @@ alias copy="xclip -o | xclip -selection clipboard -i"
 alias musica="spotifyd && spt"
 alias unlock="sudo rm /var/lib/pacman/db.lck)"
 alias ssh="TERM=xterm-256color \ssh"  # easier connection to non 256 color supported terminal
+# Get top process eating memory
+alias psmem='ps auxf | sort -nr -k 4 | head -5'
+# Get top process eating cpu ##
+alias pscpu='ps auxf | sort -nr -k 3 | head -5'
+# For when keys brea
+alias archlinx-fix-keys="sudo pacman-key --init && sudo pacman-key --populate archlinux && sudo pacman-key --refresh-keys"
+
 # Mirrors
 alias mirrorupdate='sudo reflector --country Spain --country Portugal --country France --age 24 --completion-percent 100 --sort score --fastest 100 --verbose --save /etc/pacman.d/mirrorlist'
 # Flags
