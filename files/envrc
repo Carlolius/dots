@@ -39,9 +39,6 @@ export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE="$HOME"/.cache
 export XDG_DATA="$HOME"/.local/share
 
-# ZSH config dir
-export ZDOTDIR=$HOME/.config/zsh
-
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
 # Python pip path

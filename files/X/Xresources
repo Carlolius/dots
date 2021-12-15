@@ -73,7 +73,7 @@ URxvt.scrollWithBuffer: true
 URxvt.scrollTtyKeypress: true
 
 ! Font
-URxvt.font: xft:Hack Nerd Font mono:size=9
+URxvt.font: xft:Hack Nerd Font mono:size=10
 
 ! Copy and paste
 URxvt.keysym.Control-Shift-V: eval:paste_clipboard
