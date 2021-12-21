@@ -1,10 +1,15 @@
 -- Plugins
 ----------
--- ensure that packer is installed
+-- Ensure that packer is installed
 local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	vim.api.nvim_command('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
-	vim.api.nvim_command'packadd packer.nvim'
+  packer_bootstrap = vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+end
+
+-- Use a protected call so we don't error out on first use
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+  return
 end
 
 return require('packer').startup{
@@ -141,5 +146,11 @@ return require('packer').startup{
 			event = "BufWinEnter",
 			config = "require('config.which-key-config')"
 		}
+		
+		-- Automatically set up your configuration after cloning packer.nvim
+		-- Put this at the end after all plugins
+		if packer_bootstrap then
+			require('packer').sync()
+		end
 	end
 }
