@@ -9,6 +9,7 @@ require'nvim-treesitter.configs'.setup {
 		"json",
 		"latex",
 		"lua",
+		"markdown",
 		"python",
 		"regex",
 		"typescript",
@@ -22,5 +23,11 @@ require'nvim-treesitter.configs'.setup {
 		-- Using this option may slow down your editor, and you may see some duplicate highlights.
 		-- Instead of true it can also be a list of languages
 		additional_vim_regex_highlighting = false,
+	},
+	incremental_selection = {
+		enable = true,
+	},
+	indent = {
+		enable = true
 	},
 }

@@ -62,6 +62,7 @@ global.tokyonight_style = "night"
 -- Highlight on yank
 cmd [[ autocmd TextYankPost * lua vim.highlight.on_yank {on_visual = false} ]]
 
+-- Recompile after save plugins.lua
 cmd [[
 augroup recompile_plugins
   autocmd!
@@ -69,6 +70,7 @@ augroup recompile_plugins
 augroup END
 ]]
 
+-- Toggle between relativenumber and number depending on focus
 cmd [[
 augroup number_toggle
   autocmd!

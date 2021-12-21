@@ -116,7 +116,8 @@ return require('packer').startup{
 		use {
 			"nvim-telescope/telescope.nvim",
 			requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
-			cmd = "Telescope"
+			cmd = "Telescope",
+			config = "require('config.telescope-config')"
 		}
 
 		-- Terminal
