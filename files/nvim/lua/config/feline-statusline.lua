@@ -222,7 +222,7 @@ local diagnos = {
 	err = {
 		provider = 'diagnostic_errors',
 		enabled = function()
-			return lsp.diagnostics_exist('Error')
+			return vim.diagnostic.severity.ERROR
 		end,
 		hl = {
 			fg = colors.red
@@ -231,7 +231,7 @@ local diagnos = {
 	warn = {
 		provider = 'diagnostic_warnings',
 		enabled = function()
-			return lsp.diagnostics_exist('Warning')
+			return vim.diagnostic.severity.WARN
 		end,
 		hl = {
 			fg = colors.yellow
@@ -240,7 +240,7 @@ local diagnos = {
 	hint = {
 		provider = 'diagnostic_hints',
 		enabled = function()
-			return lsp.diagnostics_exist('Hint')
+			return vim.diagnostic.severity.HINT
 		end,
 		hl = {
 			fg = colors.cyan
@@ -249,7 +249,7 @@ local diagnos = {
 	info = {
 		provider = 'diagnostic_info',
 		enabled = function()
-			return lsp.diagnostics_exist('Information')
+			return vim.diagnostic.severity.INFO
 		end,
 		hl = {
 			fg = colors.blue
