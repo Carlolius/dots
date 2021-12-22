@@ -24,13 +24,12 @@ export EDITOR
 export VISUAL="$EDITOR"
 
 # Default terminal
-# if [ "$(hostname)" = "bender" ]; then
-# 	export TERMINAL='alacritty'
-# elif [ "$(hostname)" = "nibbler" ]; then
-# 	export TERMINAL='termite'
-# fi
-export TERMINAL='urxvt'
-#
+if [ "$(hostname)" = "bender" ]; then
+	export TERMINAL='alacritty'
+elif [ "$(hostname)" = "nibbler" ]; then
+	export TERMINAL='urxvt'
+fi
+
 # set sxhkd shell to sh for faster response times
 export SXHKD_SHELL="sh"
 
