@@ -61,6 +61,7 @@ return require('packer').startup{
 		use {"folke/tokyonight.nvim"} -- Tokyonight
 		use {"Pocco81/Catppuccino.nvim"} -- Catppuccino
 		use {"wuelnerdotexe/vim-enfocado"} -- Enfocado
+		use {"rebelot/kanagawa.nvim"} -- Kanagawa
 
 		 -- File explorer
 		 use {
