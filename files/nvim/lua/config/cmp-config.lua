@@ -12,10 +12,11 @@ local luasnip = require("luasnip")
 
 cmp.setup {
 	formatting = {
+		fields = {"kind", "abbr", "menu"},
 		format = function(entry, vim_item)
 			-- fancy icons and a name of kind
 			vim_item.kind = string.format (
-			"%s %s",
+			"%s", -- With 2 %s shows the string with the name
 			require("config.icons").icons[vim_item.kind],
 			vim_item.kind
 			)
@@ -25,7 +26,6 @@ cmp.setup {
 				nvim_lsp = "[LSP]",
 				luasnip = "[LuaSnip]",
 				nvim_lua = "[Lua]",
-				cmp_tabnine = "[TabNine]",
 				look = "[Look]",
 				path = "[Path]",
 				spell = "[Spell]",
@@ -77,14 +77,14 @@ cmp.setup {
 		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 	},
 	sources = {
-		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
+		{ name = "luasnip" },
 		{ name = "path" },
-		{ name = "emoji" },
 		{ name = "treesitter" },
-		{ name = "buffer" },
+		{ name = "buffer", default = 5 },
 		{ name = "calc" },
+		{ name = "emoji" },
 	},
 }
 

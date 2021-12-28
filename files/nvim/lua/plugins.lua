@@ -18,27 +18,27 @@ return require('packer').startup{
 		use {"wbthomason/packer.nvim"}
 
 		use {"b3nj5m1n/kommentary"} -- Easy comment
-		
+
 		-- Color f & t
 		use {
 			"unblevable/quick-scope",
 			event = "BufWinEnter"
-		} 
+		}
 
 		-- Autocomplete
 		  -- Nvim-Cmp
 		use {
 			"hrsh7th/nvim-cmp",
 			requires = {
-				"hrsh7th/cmp-buffer",
-				"hrsh7th/cmp-nvim-lsp",
 				"L3MON4D3/LuaSnip",
-				"saadparwaiz1/cmp_luasnip",
-				"hrsh7th/cmp-nvim-lua",
-				"rafamadriz/friendly-snippets",
-				"hrsh7th/cmp-path",
+				"hrsh7th/cmp-buffer",
 				"hrsh7th/cmp-calc",
-				"hrsh7th/cmp-emoji"
+				"hrsh7th/cmp-emoji",
+				"hrsh7th/cmp-nvim-lsp",
+				"hrsh7th/cmp-nvim-lua",
+				"hrsh7th/cmp-path",
+				"rafamadriz/friendly-snippets",
+				"saadparwaiz1/cmp_luasnip",
 			},
 			config = "require('config.cmp-config')"
 		}
@@ -71,6 +71,9 @@ return require('packer').startup{
 			 config = "require('config.nvim-tree-config')"
 		 }
 
+		-- Gkeep, Google Keep in Nvim
+		use {"stevearc/gkeep.nvim", run = "UpdateRemotePlugins"}
+
 		-- LanguageTool
 		use {
 			"dpelle/vim-LanguageTool",
@@ -93,8 +96,9 @@ return require('packer').startup{
 		use {
 			"neovim/nvim-lspconfig",
 			event = "BufRead",
-			config = "require('config.lsp')"
+			config = "require('config.lsp.lsp')"
 		}
+		use {"williamboman/nvim-lsp-installer"}
 
 		-- Show colors in code RGB, HEX...
 		use {
@@ -147,7 +151,7 @@ return require('packer').startup{
 			event = "BufWinEnter",
 			config = "require('config.which-key-config')"
 		}
-		
+
 		-- Automatically set up your configuration after cloning packer.nvim
 		-- Put this at the end after all plugins
 		if packer_bootstrap then
