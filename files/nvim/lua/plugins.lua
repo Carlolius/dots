@@ -17,7 +17,11 @@ return require('packer').startup{
 		-- Packer can manage itself
 		use {"wbthomason/packer.nvim"}
 
-		use {"b3nj5m1n/kommentary"} -- Easy comment
+		-- use {"b3nj5m1n/kommentary"} -- Easy comment
+		use {"numToStr/Comment.nvim",
+		config = function ()
+			require('Comment').setup()
+		end}
 
 		-- Color f & t
 		use {

@@ -39,10 +39,10 @@ local vertical = Terminal:new({
 function Lazygit_toggle()
 	lazygit:toggle()
 end
-function horizontal_toggle()
+function Horizontal_toggle()
 	horizontal:toggle()
 end
-function vertical_toggle()
+function Vertical_toggle()
 	vertical:toggle()
 end
 
