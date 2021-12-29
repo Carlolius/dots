@@ -54,7 +54,7 @@ set.showbreak = '↪ '
 -- Enable 24 bits color
 set.termguicolors = true
 -- global.colors_name = 'gruvbox'
-cmd[[colorscheme gruvbox]]
+cmd[[colorscheme onedarkpro]]
 global.tokyonight_style = "night"
 
 -- Autocomands

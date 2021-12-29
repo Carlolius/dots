@@ -61,11 +61,12 @@ return require('packer').startup{
 		})
 
 		-- ColorSchemes
-		use {"morhetz/gruvbox"} -- Gruvbox
-		use {"folke/tokyonight.nvim"} -- Tokyonight
 		use {"Pocco81/Catppuccino.nvim"} -- Catppuccino
-		use {"wuelnerdotexe/vim-enfocado"} -- Enfocado
+		use {"folke/tokyonight.nvim"} -- Tokyonight
+		use {"morhetz/gruvbox"} -- Gruvbox
+		use {"olimorris/onedarkpro.nvim"} -- One Dark Pro
 		use {"rebelot/kanagawa.nvim"} -- Kanagawa
+		use {"wuelnerdotexe/vim-enfocado"} -- Enfocado
 
 		 -- File explorer
 		 use {
