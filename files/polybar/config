@@ -163,6 +163,10 @@ menu-0-1-foreground = ${colors.primary}
 menu-0-2 = "鈴"
 menu-0-2-exec = systemctl hibernate
 menu-0-2-foreground = ${colors.primary}
+; save me
+menu-0-3 = "d(-.-)b"
+menu-0-3-exec = feh --bg-fill ~/dots/media/Joker-Card-Wallpaper.jpg && sxhkd
+menu-0-3-foreground = ${colors.primary}
 
 [module/windowtitle]
 type = internal/xwindow
