@@ -24,15 +24,13 @@ return require('packer').startup{
 		end}
 
 		-- Color f & t
-		use {
-			"unblevable/quick-scope",
+		use {"unblevable/quick-scope",
 			event = "BufWinEnter"
 		}
 
 		-- Autocomplete
 		  -- Nvim-Cmp
-		use {
-			"hrsh7th/nvim-cmp",
+		use {"hrsh7th/nvim-cmp",
 			requires = {
 				"L3MON4D3/LuaSnip",
 				"hrsh7th/cmp-buffer",
@@ -48,8 +46,7 @@ return require('packer').startup{
 		}
 
 		-- Autopairing
-		use {
-			"windwp/nvim-autopairs",
+		use {"windwp/nvim-autopairs",
 			config = "require('config.autopairs')",
 			after = "nvim-cmp"
 		}
@@ -69,8 +66,7 @@ return require('packer').startup{
 		use {"wuelnerdotexe/vim-enfocado"} -- Enfocado
 
 		 -- File explorer
-		 use {
-			 'kyazdani42/nvim-tree.lua',
+		 use {"kyazdani42/nvim-tree.lua",
 			 requires = 'kyazdani42/nvim-web-devicons',
 			 cmd = "NvimTreeToggle",
 			 config = "require('config.nvim-tree-config')"
@@ -80,47 +76,43 @@ return require('packer').startup{
 		use {"stevearc/gkeep.nvim", run = "UpdateRemotePlugins"}
 
 		-- LanguageTool
-		use {
-			"dpelle/vim-LanguageTool",
-			config = "require('config.languagetool')",
-			cmd = "LanguageToolCheck",
-			requires = {"matze-dd/YaLafi"},
-		}
+		use {"brymer-meneses/grammar-guard.nvim"}
 
 		-- Markdown
-		use {"npxbr/glow.nvim", run = "GlowInstall"} -- Markdown visualizer
 		use {"plasticboy/vim-markdown"} -- Markdown highlighting
+		use {"iamcco/markdown-preview.nvim", -- Preview Markdown file in browser
+			run = function()
+				vim.fn["mkdp#util#install"]()
+			end,
+			ft = "markdown",
+			cmd = { "MarkdownPreview" },
+		}
 
 		-- Neoclip clipboard
-		use {
-			"AckslD/nvim-neoclip.lua",
+		use {"AckslD/nvim-neoclip.lua",
 			config = "require('neoclip')"
 		}
 
 		-- Nvim LSP plugin
-		use {
-			"neovim/nvim-lspconfig",
+		use {"neovim/nvim-lspconfig",
 			event = "BufRead",
 			config = "require('config.lsp.lsp')"
 		}
 		use {"williamboman/nvim-lsp-installer"}
 
 		-- Show colors in code RGB, HEX...
-		use {
-			"norcalli/nvim-colorizer.lua",
+		use {"norcalli/nvim-colorizer.lua",
 			config = "require('config.colorizer-config')",
 			event = "BufRead"
 		}
 
 		-- Statusline
-		use {
-			"famiu/feline.nvim",
+		use {"famiu/feline.nvim",
 			requires = {"kyazdani42/nvim-web-devicons"},
 			config = "require('config.feline-statusline')",
 		}
 			-- Necessary for the git info
-		use {
-			"lewis6991/gitsigns.nvim",
+		use {"lewis6991/gitsigns.nvim",
 			requires = {
 				"nvim-lua/plenary.nvim"
 			},
@@ -128,22 +120,19 @@ return require('packer').startup{
 		}
 
 		-- Telescope
-		use {
-			"nvim-telescope/telescope.nvim",
+		use {"nvim-telescope/telescope.nvim",
 			requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
 			cmd = "Telescope",
 			config = "require('config.telescope-config')"
 		}
 
 		-- Terminal
-		use {
-			"akinsho/nvim-toggleterm.lua",
+		use {"akinsho/nvim-toggleterm.lua",
 			config = "require('config.toggleterm-config')"
 		}
 
 		-- Treesitter
-		use {
-			"nvim-treesitter/nvim-treesitter",
+		use {"nvim-treesitter/nvim-treesitter",
 			-- event = "BufRead",
 			run = ":TSUpdate",
 			event = "BufWinEnter",
@@ -151,8 +140,7 @@ return require('packer').startup{
 		}
 
 		-- Which key
-		use {
-			"folke/which-key.nvim",
+		use {"folke/which-key.nvim",
 			event = "BufWinEnter",
 			config = "require('config.which-key-config')"
 		}

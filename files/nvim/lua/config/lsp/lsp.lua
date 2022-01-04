@@ -12,6 +12,7 @@ local servers = {
 	"bashls",
 	"html",
 	"jsonls",
+	"ltex",
 	"pyright",
 	"sumneko_lua",
 	"texlab",
@@ -47,6 +48,13 @@ lsp_installer.on_server_ready(function(server)
 	 	local sumneko_opts = require("config.lsp.settings.sumneko_lua")
 	 	opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
 	 end
+
+	-- Ltex & Grammar guard
+	 if server.name == "ltex" then
+		require("grammar-guard").init()
+		local grammarguard = require("config.lsp.settings.grammarguard")
+		opts = vim.tbl_deep_extend("force", grammarguard, opts)
+	end
 
     -- This setup() function is exactly the same as lspconfig's setup function.
     -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
