@@ -1,3 +1,6 @@
+-- Sumneko lua config
+---------------------
+
 return{
 	settings = {
 

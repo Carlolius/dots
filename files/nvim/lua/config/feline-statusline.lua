@@ -1,3 +1,6 @@
+-- Feline config
+----------------
+
 local colors ={
     bg = '#2c323c',
     fg = '#FFFFFF',

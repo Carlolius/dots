@@ -1,3 +1,6 @@
+-- Telescope config
+-------------------
+
 local actions = require("telescope.actions")
 local actions_layout = require("telescope.actions.layout")
 

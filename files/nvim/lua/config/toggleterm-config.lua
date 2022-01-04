@@ -1,5 +1,6 @@
 -- Toggleterm config
 --------------------
+
 require("toggleterm").setup({
 	size = 20,
 	hide_numbers = true,

@@ -1,3 +1,6 @@
+-- Grammar Guard config
+-----------------------
+
 return({
 	settings = {
 		ltex = {

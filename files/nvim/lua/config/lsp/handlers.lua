@@ -1,3 +1,6 @@
+-- LSP handlers config
+----------------------
+
 local M = {}
 
 -- TODO: backfill this to template
