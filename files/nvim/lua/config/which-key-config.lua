@@ -124,9 +124,9 @@ local mappings = {
 		["c"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
 		["r"] = { "<cmd>lua vim.lsp.buf.references()<CR>", "References" },
 		["l"] = { "<cmd>lua vim.lsp.buf.set_loclist()<CR>", "Set loclist" },
-		["e"] = { "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", "Show line diagnostics"},
-		["n"] = { "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "Go to next diagnostic"},
-		["N"] = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", "Go to previous diagnostic"}
+		["e"] = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Show line diagnostics"},
+		["n"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Go to next diagnostic"},
+		["N"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Go to previous diagnostic"}
 
 	},
 	["h"] = {

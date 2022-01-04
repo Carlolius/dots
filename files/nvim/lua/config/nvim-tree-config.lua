@@ -1,3 +1,6 @@
+-- Nvim Tree config
+-------------------
+
 vim.g.nvim_tree_ignore = {'*.tmp', '.git'}
 vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_icons = {
@@ -29,6 +32,15 @@ require'nvim-tree'.setup {
 	hijack_cursor = true,
 	update_cwd = true,
 	update_focused_file = {enable = true, update_cwd = true, ignore_list = {}},
+	diagnostics = {
+		enable = true,
+		icons = {
+			hint = "",
+			info = "",
+			warning = "",
+			error = "",
+		}
+	},
 	git = {
 		enable = true,
 		ignore = true,
