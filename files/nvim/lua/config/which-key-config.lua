@@ -71,7 +71,6 @@ local setup = {
 }
 
 local mappings = {
-	["e"] = { "<cmd>NvimTreeToggle<cr>", "Toogle NvimTree" },
 	["b"] = {
 		name = "+buffer",
 		["b"] = { "<cmd>:e #<cr>", "Switch to other buffer" },
@@ -92,7 +91,7 @@ local mappings = {
 			end,
 			"Delete empty buffers"},
 	},
-
+	["e"] = { "<cmd>NvimTreeToggle<cr>", "Toogle NvimTree" },
 	["f"] = {
 		name = "+floating",
 		["l"] = { "<cmd>lua Lazygit_toggle()<cr>", "Lazygit" },
@@ -108,26 +107,6 @@ local mappings = {
 		["l"] = { "<cmd>:Gitsigns toggle_linehl<cr>", "Toggle linehl" },
 		["w"] = { "<cmd>:Gitsigns toggle_word_diff<cr>", "Toggle word diff" },
 		["b"] = { "<cmd>:Gitsigns toggle_current_line_blame<cr>", "Toggle line blame" },
-	},
-	["l"] = {
-		name = "+LSP",
-		["i"] = { "<cmd>:LspStart<cr>", "LSP start" },
-		["s"] = { "<cmd>:LspStop<cr>", "LSP stop" },
-		["I"] = { "<cmd>:LspInfo<cr>", "LSP info" },
-		["f"] = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
-		["k"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help"},
-		["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover"},
-		["R"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename"},
-		["t"] = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type definition"},
-		["D"] = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
-		["d"] = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
-		["c"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
-		["r"] = { "<cmd>lua vim.lsp.buf.references()<CR>", "References" },
-		["l"] = { "<cmd>lua vim.lsp.buf.set_loclist()<CR>", "Set loclist" },
-		["e"] = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Show line diagnostics"},
-		["n"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Go to next diagnostic"},
-		["N"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Go to previous diagnostic"}
-
 	},
 	["h"] = {
 		name = "+help",
@@ -150,10 +129,28 @@ local mappings = {
 			["u"] = {":PackerUpdate<cr>", "Update Plugins"},
 		},
 	},
+	["l"] = {
+		name = "+LSP",
+		["i"] = { "<cmd>:LspStart<cr>", "LSP start" },
+		["s"] = { "<cmd>:LspStop<cr>", "LSP stop" },
+		["I"] = { "<cmd>:LspInfo<cr>", "LSP info" },
+		["f"] = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
+		["k"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help"},
+		["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover"},
+		["R"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename"},
+		["t"] = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type definition"},
+		["D"] = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
+		["d"] = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
+		["c"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
+		["r"] = { "<cmd>lua vim.lsp.buf.references()<CR>", "References" },
+		["l"] = { "<cmd>lua vim.lsp.buf.set_loclist()<CR>", "Set loclist" },
+		["e"] = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Show line diagnostics"},
+		["n"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Go to next diagnostic"},
+		["N"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Go to previous diagnostic"}
+
+	},
 	["s"] = {
 		name = "+spell",
-		["c"] = { "<cmd>:LanguageToolCheck<cr>", "Language Tool Check" },
-		["C"] = { "<cmd>:LanguageToolClear<cr>", "Language Tool Clear" },
 		["g"] = { "<cmd>:set spelllang=gl_ES<cr>", "Set Galician" },
 		["s"] = { "<cmd>:set spelllang=es_ES<cr>", "Set Spanish" },
 		["e"] = { "<cmd>:set spelllang=en<cr>", "Set English" },
