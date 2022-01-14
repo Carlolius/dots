@@ -42,7 +42,7 @@ alias grep='grep --color=auto'
 alias df='df -h'
 # Sudo
 alias sudo='sudo '
-alias please='sudo !!'
+alias please='sudo $(fc -ln -1)'
 alias visudo='sudo -E visudo'
 
 # Rsync
