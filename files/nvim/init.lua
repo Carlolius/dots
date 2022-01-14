@@ -57,6 +57,13 @@ set.termguicolors = true
 cmd[[colorscheme onedarkpro]]
 global.tokyonight_style = "night"
 
+-- Python environment
+if vim.fn.exists("$VIRTUAL_ENV") == 1 then
+    global.python3_host_prog = vim.fn.substitute(vim.fn.system("which -a python3 | head -n2 | tail -n1"), "\n", "", "g")
+else
+    global.python3_host_prog = vim.fn.substitute(vim.fn.system("which python3"), "\n", "", "g")
+end
+
 -- Autocomands
 --------------
 -- Highlight on yank
