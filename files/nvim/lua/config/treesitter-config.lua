@@ -45,4 +45,6 @@ require'nvim-treesitter.configs'.setup {
 		highlight_definitions = { enable = true },
 		highlight_current_scope = { enable = false },
 	},
+	vim.cmd[[set foldmethod=expr]],
+	vim.cmd[[set foldexpr=nvim_treesitter#foldexpr()]],
 }
