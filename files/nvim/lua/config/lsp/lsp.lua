@@ -3,6 +3,7 @@
 
 require("lspconfig")
 require("config.lsp.handlers").setup()
+require("config.lsp.null-ls")
 
 local lsp_installer = require("nvim-lsp-installer")
 

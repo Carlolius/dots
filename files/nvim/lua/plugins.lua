@@ -101,6 +101,12 @@ return require('packer').startup{
 		}
 		use {"williamboman/nvim-lsp-installer"}
 
+		-- Null-ls
+		use {"jose-elias-alvarez/null-ls.nvim",
+			requires = {
+				"nvim-lua/plenary.nvim"},
+		}
+
 		-- Show colors in code RGB, HEX...
 		use {"norcalli/nvim-colorizer.lua",
 			config = "require('config.colorizer-config')",
