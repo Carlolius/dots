@@ -16,23 +16,28 @@ alias .....="cd ../../../.."
 
 # Directories
 alias ~="cd ~"
-alias la="ls -la"
-alias ll="ls -lisa"
+alias la="ls -lah --color=auto"
+alias ll="ls -lsa --color=auto"
 alias ls='ls --color=auto'
 alias home="cd ~"
+
+# Confirm before overwriting something
+alias cp="cp -i"
+alias mv='mv -i'
+alias rm='rm -I'
 
 # Utilities
 alias cls="clear"
 alias myip="ip route get 1 | awk '{print \$7}' && curl http://ipecho.net/plain && print " 
 alias copy="xclip -o | xclip -selection clipboard -i"
 alias musica="spotifyd && spt"
-alias unlock="sudo rm /var/lib/pacman/db.lck)"
+alias unlock="sudo rm /var/lib/pacman/db.lck"
 alias ssh="TERM=xterm-256color \ssh"  # easier connection to non 256 color supported terminal
 # Get top process eating memory
 alias psmem='ps auxf | sort -nr -k 4 | head -5'
 # Get top process eating cpu ##
 alias pscpu='ps auxf | sort -nr -k 3 | head -5'
-# For when keys brea
+# For when keys break
 alias fix-keys="sudo pacman-key --init && sudo pacman-key --populate archlinux && sudo pacman-key --refresh-keys"
 
 # Mirrors
