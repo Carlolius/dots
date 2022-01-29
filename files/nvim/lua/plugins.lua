@@ -2,36 +2,44 @@
 ----------
 
 -- Ensure that packer is installed
-local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  packer_bootstrap = vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+	Packer_bootstrap = vim.fn.system({
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	})
 end
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
-  return
+	return
 end
 
-return require('packer').startup{
+packer.startup({
 	function(use)
 		-- Packer can manage itself
-		use {"wbthomason/packer.nvim"}
+		use({ "wbthomason/packer.nvim" })
 
 		-- use {"b3nj5m1n/kommentary"} -- Easy comment
-		use {"numToStr/Comment.nvim",
-		config = function ()
-			require('Comment').setup()
-		end}
+		use({
+			"numToStr/Comment.nvim",
+			config = function()
+				require("Comment").setup()
+			end,
+		})
 
 		-- Color f & t
-		use {"unblevable/quick-scope",
-			event = "BufWinEnter"
-		}
+		use({ "unblevable/quick-scope", event = "BufWinEnter" })
 
 		-- Autocomplete
-		  -- Nvim-Cmp
-		use {"hrsh7th/nvim-cmp",
+		-- Nvim-Cmp
+		use({
+			"hrsh7th/nvim-cmp",
 			requires = {
 				"L3MON4D3/LuaSnip",
 				"hrsh7th/cmp-buffer",
@@ -43,119 +51,120 @@ return require('packer').startup{
 				"rafamadriz/friendly-snippets",
 				"saadparwaiz1/cmp_luasnip",
 			},
-			config = "require('config.cmp-config')"
-		}
+			config = "require('config.cmp-config')",
+		})
 
 		-- Autopairing
-		use {"windwp/nvim-autopairs",
+		use({
+			"windwp/nvim-autopairs",
 			config = "require('config.autopairs')",
-			after = "nvim-cmp"
-		}
+			after = "nvim-cmp",
+		})
 
 		-- CodeAction menu
-		require('packer').use({
-			'weilbith/nvim-code-action-menu',
-			cmd = 'CodeActionMenu',
+		require("packer").use({
+			"weilbith/nvim-code-action-menu",
+			cmd = "CodeActionMenu",
 		})
 
 		-- ColorSchemes
-		use {"Pocco81/Catppuccino.nvim"} -- Catppuccino
-		use {"folke/tokyonight.nvim"} -- Tokyonight
-		use {"morhetz/gruvbox"} -- Gruvbox
-		use {"olimorris/onedarkpro.nvim"} -- One Dark Pro
-		use {"rebelot/kanagawa.nvim"} -- Kanagawa
-		use {"wuelnerdotexe/vim-enfocado"} -- Enfocado
+		use({ "Pocco81/Catppuccino.nvim" }) -- Catppuccino
+		use({ "folke/tokyonight.nvim" }) -- Tokyonight
+		use({ "morhetz/gruvbox" }) -- Gruvbox
+		use({ "olimorris/onedarkpro.nvim" }) -- One Dark Pro
+		use({ "rebelot/kanagawa.nvim" }) -- Kanagawa
+		use({ "wuelnerdotexe/vim-enfocado" }) -- Enfocado
 
-		 -- File explorer
-		 use {"kyazdani42/nvim-tree.lua",
-			 requires = 'kyazdani42/nvim-web-devicons',
-			 cmd = "NvimTreeToggle",
-			 config = "require('config.nvim-tree-config')"
-		 }
+		-- File explorer
+		use({
+			"kyazdani42/nvim-tree.lua",
+			requires = "kyazdani42/nvim-web-devicons",
+			cmd = "NvimTreeToggle",
+			config = "require('config.nvim-tree-config')",
+		})
 
 		-- Gkeep, Google Keep in Nvim
-		use {"stevearc/gkeep.nvim", run = "UpdateRemotePlugins"}
+		use({ "stevearc/gkeep.nvim", run = "UpdateRemotePlugins" })
 
 		-- LanguageTool
-		use {"brymer-meneses/grammar-guard.nvim"}
+		use({ "brymer-meneses/grammar-guard.nvim" })
 
 		-- Markdown
-		use {"plasticboy/vim-markdown"} -- Markdown highlighting
-		use {"iamcco/markdown-preview.nvim", -- Preview Markdown file in browser
+		use({ "plasticboy/vim-markdown" }) -- Markdown highlighting
+		use({
+			"iamcco/markdown-preview.nvim", -- Preview Markdown file in browser
 			run = function()
 				vim.fn["mkdp#util#install"]()
 			end,
 			ft = "markdown",
 			cmd = { "MarkdownPreview" },
-		}
+		})
 
 		-- Neoclip clipboard
-		use {"AckslD/nvim-neoclip.lua",
-			config = "require('neoclip')"
-		}
+		use({ "AckslD/nvim-neoclip.lua", config = "require('neoclip')" })
 
 		-- Nvim LSP plugin
-		use {"neovim/nvim-lspconfig",
-			event = "BufRead",
-			config = "require('config.lsp.lsp')"
-		}
-		use {"williamboman/nvim-lsp-installer"}
+		use({ "neovim/nvim-lspconfig", event = "BufRead", config = "require('config.lsp.lsp')" })
+		use({ "williamboman/nvim-lsp-installer" })
 
 		-- Null-ls
-		use {"jose-elias-alvarez/null-ls.nvim",
-			requires = {
-				"nvim-lua/plenary.nvim"},
-		}
+		use({ "jose-elias-alvarez/null-ls.nvim", requires = {
+			"nvim-lua/plenary.nvim",
+		} })
 
 		-- Show colors in code RGB, HEX...
-		use {"norcalli/nvim-colorizer.lua",
+		use({
+			"norcalli/nvim-colorizer.lua",
 			config = "require('config.colorizer-config')",
-			event = "BufRead"
-		}
+			event = "BufRead",
+		})
 
 		-- Statusline
-		use {"famiu/feline.nvim",
-			requires = {"kyazdani42/nvim-web-devicons"},
+		use({
+			"famiu/feline.nvim",
+			requires = { "kyazdani42/nvim-web-devicons" },
 			config = "require('config.feline-statusline')",
-		}
-			-- Necessary for the git info
-		use {"lewis6991/gitsigns.nvim",
+		})
+		-- Necessary for the git info
+		use({
+			"lewis6991/gitsigns.nvim",
 			requires = {
-				"nvim-lua/plenary.nvim"
+				"nvim-lua/plenary.nvim",
 			},
-			config = "require('config.gitsings-config')"
-		}
+			config = "require('config.gitsings-config')",
+		})
 
 		-- Telescope
-		use {"nvim-telescope/telescope.nvim",
-			requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
+		use({
+			"nvim-telescope/telescope.nvim",
+			requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
 			cmd = "Telescope",
-			config = "require('config.telescope-config')"
-		}
+			config = "require('config.telescope-config')",
+		})
 
 		-- Terminal
-		use {"akinsho/nvim-toggleterm.lua",
-			config = "require('config.toggleterm-config')"
-		}
+		use({ "akinsho/nvim-toggleterm.lua", config = "require('config.toggleterm-config')" })
 
 		-- Treesitter
-		use {"nvim-treesitter/nvim-treesitter",
+		use({
+			"nvim-treesitter/nvim-treesitter",
 			-- event = "BufRead",
 			run = ":TSUpdate",
 			event = "BufWinEnter",
-			config = "require('config.treesitter-config')"
-		}
+			config = "require('config.treesitter-config')",
+		})
 
 		-- Which key
-		use {"folke/which-key.nvim",
+		use({
+			"folke/which-key.nvim",
 			event = "BufWinEnter",
-			config = "require('config.which-key-config')"
-		}
+			config = "require('config.which-key-config')",
+		})
 
 		-- Automatically set up your configuration after cloning packer.nvim
 		-- Put this at the end after all plugins
-		if packer_bootstrap then
-			require('packer').sync()
+		if Packer_bootstrap then
+			require("packer").sync()
 		end
-	end
-}
+	end,
+})
