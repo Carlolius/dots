@@ -192,7 +192,9 @@ client.urgent           $red $yellow $black $yellow $red
 
 # Keyboard shorcut
 bindsym Control+Mod1+Left workspace prev
+bindsym Control+Mod1+h workspace prev
 bindsym Control+Mod1+Right workspace next 
+bindsym Control+Mod1+l workspace next 
 
 exec setxkbmap -layout es # Set the spanish layout for the keyboard
 

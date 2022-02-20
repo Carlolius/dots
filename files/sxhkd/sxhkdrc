@@ -47,5 +47,5 @@ XF86AudioPrev
 	playerctl previous
 
 # Locksreen
-control + mod1 + l
+control + mod1 + shift + l
 	sleep .2 && i3lock -c 000000 & sleep 5 && pgrep i3lock && xset dpms force off
