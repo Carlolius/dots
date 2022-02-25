@@ -101,7 +101,17 @@ packer.startup({
 		})
 
 		-- Neoclip clipboard
-		use({ "AckslD/nvim-neoclip.lua", config = "require('neoclip')" })
+		use {
+			"AckslD/nvim-neoclip.lua",
+			requires = {
+				-- you'll need at least one of these
+				{'nvim-telescope/telescope.nvim'},
+				-- {'ibhagwan/fzf-lua'},
+			},
+			config = function()
+				require('neoclip').setup()
+			end,
+		}
 
 		-- Nvim LSP plugin
 		use({ "neovim/nvim-lspconfig", event = "BufRead", config = "require('config.lsp.lsp')" })
