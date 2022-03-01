@@ -54,7 +54,7 @@ set.showbreak = "↪ "
 -- Enable 24 bits color
 set.termguicolors = true
 -- global.colors_name = 'gruvbox'
-cmd([[colorscheme tokyonight]])
+cmd([[colorscheme onedarkpro]])
 cmd([[highlight TabLineSel guibg=#454545]])
 global.tokyonight_style = "night"
 
