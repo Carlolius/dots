@@ -83,6 +83,22 @@ packer.startup({
 			config = "require('config.nvim-tree-config')",
 		})
 
+		-- GitHub Copilot
+		use({
+			"zbirenbaum/copilot.lua",
+			event = "InsertEnter",
+			config = function()
+				vim.schedule(function()
+					require("copilot").setup()
+				end)
+			end,
+		})
+
+		use({
+			"zbirenbaum/copilot-cmp",
+			after = { "copilot.lua", "nvim-cmp" },
+		})
+
 		-- Gkeep, Google Keep in Nvim
 		use({ "stevearc/gkeep.nvim", run = "UpdateRemotePlugins" })
 
@@ -101,17 +117,17 @@ packer.startup({
 		})
 
 		-- Neoclip clipboard
-		use {
+		use({
 			"AckslD/nvim-neoclip.lua",
 			requires = {
 				-- you'll need at least one of these
-				{'nvim-telescope/telescope.nvim'},
+				{ "nvim-telescope/telescope.nvim" },
 				-- {'ibhagwan/fzf-lua'},
 			},
 			config = function()
-				require('neoclip').setup()
+				require("neoclip").setup()
 			end,
-		}
+		})
 
 		-- Nvim LSP plugin
 		use({ "neovim/nvim-lspconfig", event = "BufRead", config = "require('config.lsp.lsp')" })
