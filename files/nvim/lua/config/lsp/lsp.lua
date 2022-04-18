@@ -11,6 +11,7 @@ local lsp_installer = require("nvim-lsp-installer")
 local servers = {
 	"angularls",
 	"bashls",
+	"dockerls",
 	"html",
 	"jsonls",
 	"ltex",
