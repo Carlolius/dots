@@ -1,7 +1,7 @@
 # Aliases
 # Config
 alias aliases="nvim ~/.config/aliases"
-alias evim="nvim ~/.config/init.lua"
+alias vime="nvim ~/.config/nvim/init.lua"
 alias functions="nvim ~/.config/functions"
 
 # Nvim
@@ -13,13 +13,14 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+alias ~="cd ~"
+alias home="cd ~"
+alias dots="$HOME/dots"
 
 # Directories
-alias ~="cd ~"
 alias la="ls -lah --color=auto"
 alias ll="ls -lsa --color=auto"
 alias ls='ls --color=auto'
-alias home="cd ~"
 
 # Confirm before overwriting something
 alias cp="cp -i"
