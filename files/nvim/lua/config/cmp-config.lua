@@ -36,7 +36,7 @@ cmp.setup({
 			return vim_item
 		end,
 	},
-	mapping = {
+	--[[ mapping = {
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
@@ -58,7 +58,32 @@ cmp.setup({
 				fallback()
 			end
 		end, { "i", "s" }),
-	},
+	}, ]]
+	mapping = cmp.mapping.preset.insert({
+		["<C-d>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-e>"] = cmp.mapping.abort(),
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
+	}),
+
+	-- `/` cmdline setup.
+	cmp.setup.cmdline("/", {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = {
+			{ name = "buffer" },
+		},
+	}),
+
+	-- `:` cmdline setup.
+	cmp.setup.cmdline(":", {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = cmp.config.sources({
+			{ name = "path" },
+		}, {
+			{ name = "cmdline" },
+		}),
+	}),
 
 	snippet = {
 		expand = function(args)
@@ -67,6 +92,11 @@ cmp.setup({
 	},
 	window = {
 		documentation = {
+			-- cmp.config.window.bordered(),
+			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+		},
+		completion = {
+			-- cmp.config.window.bordered()
 			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 		},
 	},

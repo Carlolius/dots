@@ -1,7 +1,6 @@
 -- Nvim Tree config
 -------------------
 
-vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_icons = {
   default = "",
   symlink = "",
@@ -30,6 +29,9 @@ require'nvim-tree'.setup {
 	hijack_cursor = true,
 	update_cwd = true,
 	update_focused_file = {enable = true, update_cwd = true, ignore_list = {}},
+	render = {
+		indent_markers = {enable = true}
+	},
 	filters = {
 		custom = {'*.tmp', '.git'}
 	},

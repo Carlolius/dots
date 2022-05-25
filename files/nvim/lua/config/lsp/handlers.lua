@@ -64,7 +64,7 @@ local function lsp_highlight_document(client)
 end
 
 M.on_attach = function(client)
-  if client.name == "tsserver" then
+  if client.name == "tsserver" or client.name == "dockerls" then
     client.resolved_capabilities.document_formatting = false
   end
   lsp_highlight_document(client)
