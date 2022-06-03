@@ -134,13 +134,10 @@ packer.startup({
 				config = function()
 					require("nvim-lsp-installer").setup({})
 					require("config.lsp.lsp")
-					require("config.lsp.handlers").setup()
 					require("config.lsp.null-ls")
 				end,
 			},
 		})
-		-- use({ "neovim/nvim-lspconfig", event = "BufRead", config = "require('config.lsp.lsp')" })
-		-- use({ "williamboman/nvim-lsp-installer" })
 
 		-- Null-ls
 		use({ "jose-elias-alvarez/null-ls.nvim", requires = {

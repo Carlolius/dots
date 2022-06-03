@@ -9,6 +9,10 @@ end
 require("lspconfig")
 require("config.lsp.handlers").setup()
 
+-- Solargraph doesn't work well with lsp-installer.
+-- Install with gem install solargraph, and add the gems to the PATH.
+require'lspconfig'.solargraph.setup{}
+
 local lspconfig = require("lspconfig")
 
 -- Include the servers you want to have installed by default below
@@ -20,7 +24,7 @@ local servers = {
 	"jsonls",
 	"ltex",
 	"pyright",
-	"solargraph",
+	-- "solargraph",
 	"sumneko_lua",
 	"texlab",
 	"tsserver",

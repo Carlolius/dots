@@ -38,7 +38,9 @@ export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE="$HOME"/.cache
 export XDG_DATA="$HOME"/.local/share
 
-PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+# Ruby gems
+export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+export PATH="$PATH:$GEM_HOME/bin"
 
 # Python pip path
 export PATH="$PATH:/$HOME/.local/bin"
