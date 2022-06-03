@@ -7,13 +7,15 @@ local formatting = null_ls.builtins.formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 local diagnostics = null_ls.builtins.diagnostics
 
-null_ls.setup {
-  debug = false,
-  sources = {
-    formatting.prettier.with { extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } },
-    -- formatting.yapf,
-    formatting.stylua,
-	formatting.autopep8,
-    diagnostics.flake8,
-  },
-}
+null_ls.setup({
+	debug = false,
+	sources = {
+		formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
+		-- formatting.yapf,
+		formatting.stylua,
+		formatting.autopep8,
+		diagnostics.flake8,
+		formatting.rubocop,
+		diagnostics.rubocop,
+	},
+})
