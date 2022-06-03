@@ -1,26 +1,26 @@
 -- Nvim Tree config
 -------------------
 
-vim.g.nvim_tree_icons = {
-  default = "",
-  symlink = "",
-  git = {
-    unstaged = "",
-    staged = "S",
-    unmerged = "",
-    renamed = "➜",
-    deleted = "",
-    untracked = "U",
-    ignored = "◌",
-  },
-  folder = {
-    default = "",
-    open = "",
-    empty = "",
-    empty_open = "",
-    symlink = "",
-  },
-}
+-- vim.g.nvim_tree_icons = {
+--   default = "",
+--   symlink = "",
+--   git = {
+--     unstaged = "",
+--     staged = "S",
+--     unmerged = "",
+--     renamed = "➜",
+--     deleted = "",
+--     untracked = "U",
+--     ignored = "◌",
+--   },
+--   folder = {
+--     default = "",
+--     open = "",
+--     empty = "",
+--     empty_open = "",
+--     symlink = "",
+--   },
+-- }
 require'nvim-tree'.setup {
 	disable_netrw = true,
 	hijack_netrw = true,
@@ -29,11 +29,33 @@ require'nvim-tree'.setup {
 	hijack_cursor = true,
 	update_cwd = true,
 	update_focused_file = {enable = true, update_cwd = true, ignore_list = {}},
-	render = {
-		indent_markers = {enable = true}
-	},
 	filters = {
 		custom = {'*.tmp', '.git'}
+	},
+	renderer = {
+		indent_markers = {enable = true},
+		icons = {
+			glyphs = {
+				default = "",
+				symlink = "",
+				git = {
+					unstaged = "",
+					staged = "S",
+					unmerged = "",
+					renamed = "➜",
+					deleted = "",
+					untracked = "U",
+					ignored = "◌",
+				},
+				folder = {
+					default = "",
+					open = "",
+					empty = "",
+					empty_open = "",
+					symlink = "",
+				},
+			},
+		}
 	},
 	diagnostics = {
 		enable = true,
