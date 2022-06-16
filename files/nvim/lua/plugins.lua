@@ -86,7 +86,7 @@ packer.startup({
 		-- GitHub Copilot
 		use({
 			"zbirenbaum/copilot.lua",
-			event = "InsertEnter",
+			event = "VimEnter",
 			config = function()
 				vim.schedule(function()
 					require("copilot").setup()
@@ -169,7 +169,7 @@ packer.startup({
 		-- Telescope
 		use({
 			"nvim-telescope/telescope.nvim",
-			requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
+			requires = { "nvim-lua/plenary.nvim" },
 			cmd = "Telescope",
 			config = "require('config.telescope-config')",
 		})

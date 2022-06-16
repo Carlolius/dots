@@ -14,7 +14,6 @@ require("plugins")
 -- Global setions
 ----------------
 set.autoindent = true -- Indent correctly
-set.syntax = "on"
 set.backup = false -- No backup file
 set.clipboard = "unnamedplus" -- Yank and paste outside Vim
 set.cursorline = true -- Show a line where cursor is
