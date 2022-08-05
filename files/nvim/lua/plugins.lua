@@ -74,6 +74,7 @@ packer.startup({
 		use({ "olimorris/onedarkpro.nvim" }) -- One Dark Pro
 		use({ "rebelot/kanagawa.nvim" }) -- Kanagawa
 		use({ "wuelnerdotexe/vim-enfocado" }) -- Enfocado
+		use({ "glepnir/zephyr-nvim" }) -- Zephyr
 
 		-- File explorer
 		use({
