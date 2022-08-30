@@ -100,6 +100,11 @@ packer.startup({
 			after = { "copilot.lua", "nvim-cmp" },
 		})
 
+		-- Indent blankline
+		use({ "lukas-reineke/indent-blankline.nvim",
+			config = "require('config.indent-blankline')",
+		})
+
 		-- LanguageTool
 		use({ "brymer-meneses/grammar-guard.nvim" })
 
