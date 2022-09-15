@@ -5,6 +5,7 @@ M.icons = {
 	Method = "",
 	Function = "",
 	Constructor = "",
+	Copilot = "",
 	Field = "ﰠ",
 	Variable = "",
 	Class = "ﴯ",
