@@ -25,7 +25,7 @@ packer.startup({
 		-- Packer can manage itself
 		use({ "wbthomason/packer.nvim" })
 
-		-- use {"b3nj5m1n/kommentary"} -- Easy comment
+		-- Easy comment
 		use({
 			"numToStr/Comment.nvim",
 			config = function()
@@ -124,6 +124,25 @@ packer.startup({
 			cmd = { "MarkdownPreview" },
 		})
 
+		-- Mason
+		use({
+			"williamboman/mason.nvim",
+			config = "require('config.mason-config')"
+		})
+
+		use({
+			"williamboman/mason-lspconfig.nvim",
+			require("mason").setup(),
+			require("mason-lspconfig").setup(),
+			config = "require('config.mason_lspconfig-config')",
+		})
+
+		use({ "neovim/nvim-lspconfig" })
+		
+		-- use({ "neovim/nvim-lspconfig",
+		-- 	config = "require('config.lsp.lsp')", "require('config.lsp.null-ls')",
+		-- })
+
 		-- Neoclip clipboard
 		use({
 			"AckslD/nvim-neoclip.lua",
@@ -138,17 +157,17 @@ packer.startup({
 		})
 
 		-- Nvim LSP plugin
-		use({
-			"williamboman/nvim-lsp-installer",
-			{
-				"neovim/nvim-lspconfig",
-				config = function()
-					require("nvim-lsp-installer").setup({})
-					require("config.lsp.lsp")
-					require("config.lsp.null-ls")
-				end,
-			},
-		})
+		-- use({
+		-- 	"williamboman/nvim-lsp-installer",
+		-- 	{
+		-- 		"neovim/nvim-lspconfig",
+		-- 		config = function()
+		-- 			require("nvim-lsp-installer").setup({})
+		-- 			require("config.lsp.lsp")
+		-- 			require("config.lsp.null-ls")
+		-- 		end,
+		-- 	},
+		-- })
 
 		-- Null-ls
 		use({ "jose-elias-alvarez/null-ls.nvim", requires = {

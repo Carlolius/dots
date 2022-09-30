@@ -31,7 +31,7 @@ local servers = {
 }
 
 lsp_installer.setup({
-	ensure_installed = servers,
+	-- ensure_installed = servers,
 })
 
 for _, server in pairs(servers) do
