@@ -18,7 +18,7 @@ null_ls.setup({
 		-- diagnostics.flake8,
 		-- formatting.rubocop,
 		-- -- diagnostics.rubocop,
-		null_ls.builtins.diagnostics.editorconfig_checker.with({ command = "editorconfig-checker" }),
+		-- null_ls.builtins.diagnostics.editorconfig_checker.with({ command = "editorconfig-checker" }),
 		null_ls.builtins.diagnostics.actionlint,
 		null_ls.builtins.diagnostics.codespell,
 		null_ls.builtins.diagnostics.gitlint,

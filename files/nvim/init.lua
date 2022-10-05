@@ -27,6 +27,7 @@ set.number = true -- See the left row numbers
 set.relativenumber = true -- Set relative numbers
 set.shiftround = true -- Round indent
 set.shiftwidth = 0 -- Change the number of space characters inserted for indentation
+set.signcolumn = "yes" -- Show line number on sign column
 set.smartcase = true -- Don't ignorecase if upper chase characters
 set.smartindent = true -- Makes indenting smart
 set.swapfile = false -- No swap file
