@@ -8,11 +8,11 @@ end
 mason_lspconfig.setup({
 	-- A list of servers to automatically install if they're not already installed.
 	ensure_installed = {
-		"json-lsp",
-		"lua-language-server",
+		"jsonls",
+		"luau_lsp",
 		"pyright",
-		"vim-language-server",
-		"yaml-language-server",
+		"vimls",
+		"yamlls",
 	},
 })
 
