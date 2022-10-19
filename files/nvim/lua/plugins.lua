@@ -133,7 +133,6 @@ packer.startup({
 		use({
 			"williamboman/mason-lspconfig.nvim",
 			require("mason").setup(),
-			require("mason-lspconfig").setup(),
 			config = "require('config.mason_lspconfig-config')",
 		})
 
