@@ -1,0 +1,76 @@
+#
+# Personal binds for Sway
+# ######## ##### ### ####
+
+#
+# Audio
+#
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+#
+# Backlight
+#
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+
+#
+# Term
+#
+bindsym Mod1+x exec foot
+
+#
+# Toggle screen on/off
+#
+bindsym --locked Mod1+f2 exec swaymsg "output LVDS-1 dpms toggle"
+
+#
+# Lock screen
+#
+bindsym Mod4+Mod1+l exec ~/.config/sway/lock.sh
+
+#
+# Exit mode
+#
+set $exit "exit: Poweroff, Sleep, Hibernate, Reboot, Logout"
+mode $exit {
+    bindsym --to-code {
+        p exec systemctl poweroff
+        s exec systemctl suspend, mode "default"
+	h exec systemctl hibernate, mode "default"
+        r exec systemctl reboot
+        l exec swaymsg exit
+    
+# back to normal: Enter or Escape
+        Return mode "default"
+        Escape mode "default"
+        $mod+x mode "default"
+    }
+}
+
+bindsym --to-code $mod+shift+a mode $exit
+
+#
+# Screen capture
+#
+set $screenshot 1 Screen, 2 area, 3 screen clipboard, 4 area clipboard
+mode "$screenshot" {
+    bindsym 1 exec 'grim ~/ps_$(date +"%Y%m%d%H%M%S").png', mode "default"
+    bindsym 2 exec 'grim -g "$(slurp)" ~/ps_$(date +"%Y%m%d%H%M%S").png', mode "default"
+    bindsym 3 exec 'grim - | wl-copy', mode "default"
+    bindsym 4 exec 'grim -g "$(slurp)" - | wl-copy', mode "default"
+
+# back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+Print mode "default"
+}
+
+bindsym $mod+Print mode "$screenshot"
+bindsym Print exec 'grim - | swappy -f -', mode "default"
+bindsym shift+Print exec 'grim -g "$(slurp)" - | swappy -f -', mode "default"

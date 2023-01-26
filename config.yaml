@@ -6,7 +6,11 @@ config:
   showdiff: true
 dotfiles:
 
+
   ## Programs ##
+  d_foot:
+    src: config/foot
+    dst: ~/.config/foot
   d_scripts:
     src: scripts
     dst: ~/scripts
@@ -54,7 +58,10 @@ dotfiles:
     src: polybar
     dst: ~/.config/polybar
     upignore:
-      - '*/scripts/env.sh'
+    - '*/scripts/env.sh'
+  d_waybar:
+    src: config/waybar
+    dst: ~/.config/waybar
   f_conkyrc:
     src: conky/conkyrc
     dst: ~/.conkyrc
@@ -87,7 +94,15 @@ dotfiles:
   f_nvim-init:
     src: nvim/init.lua
     dst: ~/.config/nvim/init.lua
-  
+
+  ## Sway ##
+  d_sway:
+    src: config/sway
+    dst: ~/.config/sway
+  d_environment:
+    src: config/environment.d
+    dst: ~/.config/environment.d
+ 
   ## Vim ##
   d_vim-config-plugins:
     src: vim/config-plugins
@@ -113,81 +128,97 @@ dotfiles:
 profiles:
   bender:
     include:
-      - X
-      - conky
-      - i3
-      - nvim
-      - rofi
-      - sh
-      - vim
+    - X
+    - conky
+    - i3
+    - nvim
+    - rofi
+    - sh
+    - vim
     dotfiles:
-      - d_tmux
-      - f_alacritty
-      - f_sxhkd
+    - d_tmux
+    - f_alacritty
+    - f_sxhkd
 
+  kug:
+    include:
+    - nvim
+    - sway
+    - sh
+    dotfiles:
+    - d_tmux
+    - d_foot
+    - d_waybar
+    - f_rofi-config
+        
   nibbler:
     include:
-      - X
-      - i3
-      - nvim
-      - rofi
-      - sh
-      - vim
+    - X
+    - i3
+    - nvim
+    - rofi
+    - sh
+    - vim
     dotfiles:
-      - d_scripts
-      - d_termite
-      - d_tmux
-      - f_sxhkd
+    - d_scripts
+    - d_termite
+    - d_tmux
+    - f_sxhkd
 
   server:
     include:
-      - nvim
+    - nvim
     dotfiles:
-      - f_aliases
+    - f_aliases
 
 # Packages used above
   conky:
     dotfiles:
-      - f_conkyrc
-      - f_conkyrc2
-      - f_inicio-conky
+    - f_conkyrc
+    - f_conkyrc2
+    - f_inicio-conky
 
   i3:
     dotfiles:
-      - d_polybar
-      - f_i3-barconfig
-      - f_i3-config
+    - d_polybar
+    - f_i3-barconfig
+    - f_i3-config
 
   nvim:
     dotfiles:
-      - d_nvim-lua
-      - f_coc-settings
-      - f_nvim-init
+    - d_nvim-lua
+    - f_coc-settings
+    - f_nvim-init
 
   rofi:
     dotfiles:
-      - f_rofi-config
-      - f_rofi-personal
+    - f_rofi-config
+    - f_rofi-personal
 
   sh:
     dotfiles:
-      - f_aliases
-      - f_bashrc
-      - f_envrc
-      - f_functions
-      - f_p10k
-      - f_profile
-      - f_zprofile
-      - f_zshrc
+    - f_aliases
+    - f_bashrc
+    - f_envrc
+    - f_functions
+    - f_p10k
+    - f_profile
+    - f_zprofile
+    - f_zshrc
+
+  sway:
+    dotfiles:
+    - d_sway
+    - d_environment
 
   vim:
     dotfiles:
-      - d_vim-config-plugins
-      - d_vim-settings
-      - f_vim-vimrc
+    - d_vim-config-plugins
+    - d_vim-settings
+    - f_vim-vimrc
 
   X:
     dotfiles:
-      - f_xinitrc
-      - f_xprofile
-      - f_xresources
+    - f_xinitrc
+    - f_xprofile
+    - f_xresources
