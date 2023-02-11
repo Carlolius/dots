@@ -39,9 +39,10 @@ output * bg /home/carlos/Downloads/IMG20221010_193306359.jpg fill
 #
   input "2:7:SynPS/2_Synaptics_TouchPad" {
       dwt enabled
+      dwtp enable
       tap enabled
-      pointer_accel 0.4
-      scroll_factor 0.6
+      pointer_accel 0.1
+      scroll_factor 0.3
       tap_button_map lrm
       middle_emulation enabled
       accel_profile adaptive
