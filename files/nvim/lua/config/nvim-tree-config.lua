@@ -1,30 +1,9 @@
 -- Nvim Tree config
 -------------------
 
--- vim.g.nvim_tree_icons = {
---   default = "",
---   symlink = "",
---   git = {
---     unstaged = "",
---     staged = "S",
---     unmerged = "",
---     renamed = "➜",
---     deleted = "",
---     untracked = "U",
---     ignored = "◌",
---   },
---   folder = {
---     default = "",
---     open = "",
---     empty = "",
---     empty_open = "",
---     symlink = "",
---   },
--- }
 require'nvim-tree'.setup {
 	disable_netrw = true,
 	hijack_netrw = true,
-	open_on_setup = true,
 	open_on_tab = false,
 	hijack_cursor = true,
 	update_cwd = true,
