@@ -25,7 +25,6 @@ local servers = {
 	"ltex",
 	"pyright",
 	-- "solargraph",
-	"sumneko_lua",
 	"texlab",
 	"tsserver",
 }

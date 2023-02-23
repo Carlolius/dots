@@ -44,8 +44,8 @@ mason_lspconfig.setup_handlers({
 		require("rust-tools").setup({})
 	end,
 
-	["sumneko_lua"] = function()
-		lspconfig.sumneko_lua.setup({
+	["lua_ls"] = function()
+		lspconfig.lua_ls.setup({
 			on_attach = opts.on_attach,
 			capabilities = opts.capabilities,
 

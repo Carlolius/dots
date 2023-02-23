@@ -48,6 +48,7 @@ packer.startup({
 				"hrsh7th/cmp-nvim-lsp",
 				"hrsh7th/cmp-nvim-lua",
 				"hrsh7th/cmp-path",
+				"hrsh7th/cmp-cmdline",
 				"rafamadriz/friendly-snippets",
 				"saadparwaiz1/cmp_luasnip",
 			},
@@ -137,10 +138,6 @@ packer.startup({
 		})
 
 		use({ "neovim/nvim-lspconfig" })
-		
-		-- use({ "neovim/nvim-lspconfig",
-		-- 	config = "require('config.lsp.lsp')", "require('config.lsp.null-ls')",
-		-- })
 
 		-- Neoclip clipboard
 		use({
@@ -154,19 +151,6 @@ packer.startup({
 				require("neoclip").setup()
 			end,
 		})
-
-		-- Nvim LSP plugin
-		-- use({
-		-- 	"williamboman/nvim-lsp-installer",
-		-- 	{
-		-- 		"neovim/nvim-lspconfig",
-		-- 		config = function()
-		-- 			require("nvim-lsp-installer").setup({})
-		-- 			require("config.lsp.lsp")
-		-- 			require("config.lsp.null-ls")
-		-- 		end,
-		-- 	},
-		-- })
 
 		-- Null-ls
 		use({ "jose-elias-alvarez/null-ls.nvim", requires = {
@@ -182,7 +166,7 @@ packer.startup({
 
 		-- Statusline
 		use({
-			"famiu/feline.nvim",
+			"freddiehaddad/feline.nvim",
 			requires = { "kyazdani42/nvim-web-devicons" },
 			config = "require('config.feline-statusline')",
 		})

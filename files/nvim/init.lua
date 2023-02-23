@@ -34,6 +34,7 @@ set.swapfile = false -- No swap file
 set.syntax = "on" -- Higlight syntax
 -- set.tabstop = 4 -- Spaces in tab
 set.undofile = true -- Allow undo even if the file has been closed
+set.wildmenu = true
 set.wildmode = { "longest:full,full" } -- Command-line completion mode
 set.writebackup = false -- Do not backup file before write
 global.mapleader = " " -- Set mapleader
