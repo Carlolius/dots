@@ -128,17 +128,18 @@ packer.startup({
 		-- Mason
 		use({
 			"williamboman/mason.nvim",
+			run = ":MasonUpdate", -- :MasonUpdate updates registry contents
 			config = "require('config.mason-config')"
 		})
 
 		use({
 			"williamboman/mason-lspconfig.nvim",
-			require("mason").setup(),
 			config = "require('config.mason_lspconfig-config')",
 		})
 
 		use({ "neovim/nvim-lspconfig" })
 
+		
 		-- Neoclip clipboard
 		use({
 			"AckslD/nvim-neoclip.lua",

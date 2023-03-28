@@ -7,7 +7,9 @@ local keymap = vim.api.nvim_set_keymap
 -- Map leader to space
 vim.g.mapleader = " "
 -- Quickly cancel search highlighting
-keymap("n", "<Leader><space>", ":nohlsearch<cr>", { noremap = true })
+keymap("n", "<Leader>c", ":nohlsearch<cr>", { noremap = true })
+-- Quick search in buffer
+keymap("n", "<Leader><space>", "<cmd>Telescope buffers<cr>", { noremap = true })
 -- jk and kj = to esc
 keymap("i", "jk", "<ESC>", { noremap = true })
 keymap("i", "kj", "<ESC>", { noremap = true })
