@@ -50,6 +50,11 @@ output * bg /home/carlos/Downloads/IMG20221010_193306359.jpg fill
   input * {
       xkb_layout "es,de"
   }
+
+  input "2:10:TPPS/2_IBM_TrackPoint" {
+      pointer_accel -0.3
+      scroll_factor 0.2
+  }
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.

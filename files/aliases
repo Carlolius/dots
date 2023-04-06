@@ -66,8 +66,7 @@ alias dotcomp="dotdropcompare"
 alias dotconf="nvim ~/dots/config.yaml"
 
 # Battery
-alias batery99="sudo tpacpi-bat -s st 0 99"
-alias batery50="sudo tpacpi-bat -s st 0 50"
+alias battery="sudo tpacpi-bat --help"
 
 # Tmux
 alias tmux='tmux -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
