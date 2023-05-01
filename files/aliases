@@ -40,6 +40,8 @@ alias psmem='ps auxf | sort -nr -k 4 | head -5'
 alias pscpu='ps auxf | sort -nr -k 3 | head -5'
 # For when keys break
 alias fix-keys="sudo pacman-key --init && sudo pacman-key --populate archlinux && sudo pacman-key --refresh-keys"
+# Show all files in the folder and sort by size
+alias dust='du -sh * | sort -hr'
 
 # Mirrors
 alias mirrorupdate='sudo reflector --country Spain --country Portugal --country France --age 24 --completion-percent 100 --sort score --fastest 100 --verbose --save /etc/pacman.d/mirrorlist'
