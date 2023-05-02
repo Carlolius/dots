@@ -104,13 +104,13 @@
 		"interval": 5
 	},
 	"memory": {
-		"format": "{}% ",
+		"format": "{}% 󰍛",
 		"tooltip": true,
 		"tooltip-format": "󰍛 {used:0.2f}GiB of {total}GiB \n {swapUsed}GiB of {swapTotal:0.2f}GiB"
 	},
 	"disk": {
 		"interval": 10,
-		"format": "{used} ",
+		"format": "{used} 󰋊",
 		"path": "/"
 	},
 	"custom/fan": {
