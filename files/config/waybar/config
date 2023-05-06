@@ -166,7 +166,7 @@
 			"critical": 15
 		},
 		"format": "{capacity}% {icon}  {power:03.2f}W",
-		"format-charging": "{capacity}%  {power:03.2f}W",
+		"format-charging": "{capacity}% 󰂄 {power:03.2f}W",
 		"format-plugged": "{capacity}% ",
 		"format-alt": "{time} {icon}",
 		// "format-good": "", // An empty format will hide the module
@@ -184,7 +184,7 @@
 		"interval": 5,
 		// "interface": "wlp2*", // (Optional) To force the use of this interface
 		"format-wifi": "{essid} {signalStrength}% ",
-		"format-ethernet": "{ipaddr}/{cidr} ",
+		"format-ethernet": "{ipaddr}/{cidr} 󰈁",
 		"tooltip-format": "{ifname} {ipaddr}/{cidr} ",
 		"format-linked": "{ifname} (No IP) ",
 		"format-disconnected": "Disconnected ⚠",
@@ -195,13 +195,13 @@
 		"format": "{format_source} {volume}% {icon}",
 		"format-bluetooth": "{format_source} {volume}% {icon} ",
 		"format-bluetooth-muted": "{format_source} ﱝ {icon} ",
-		"format-muted": "{format_source} ﱝ",
+		"format-muted": "{format_source} 󰝟",
 		"format-source": "{volume}% ",
 		"format-source-muted": "",
 		"format-icons": {
 			"headphone": "",
 			"hands-free": "",
-			"headset": "",
+			"headset": "󰋎",
 			"phone": "",
 			"portable": "",
 			"car": "",
@@ -217,7 +217,7 @@
 	},
 	"bluetooth": {
 		"format-on": "{status} ",
-		"format-off": "",
+		"format-off": "󰂲",
 		"format-disabled": "", // an empty format will hide the module
 		"format-connected": "{device_alias} ",
 		"tooltip-format": "{controller_alias}\t{controller_address}",
