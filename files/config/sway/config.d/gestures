@@ -1,0 +1,19 @@
+#
+# Personal gestures for Sway
+# ######## ######## ### ####
+
+# Movement
+bindgesture swipe:4:left workspace prev
+bindgesture swipe:4:right workspace next
+
+# Music
+bindgesture swipe:3:down playerctl play-pause
+bindgesture swipe:3:left playerctl previus
+bindgesture swipe:3:right playerctl next
+bindgesture swipe:3:right+up pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindgesture swipe:3:left+down pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+# Bright
+bindgesture swipe:3:left+up brightnessctl set 5%+
+bindgesture swipe:3:right+down brightnessctl set 5%-
+

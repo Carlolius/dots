@@ -211,9 +211,11 @@ bindsym $mod+r mode "resize"
 #
 # Show or hide the title bar
 bindsym Mod4+t border toggle
-default_border normal 2
+default_border pixel 2
 default_floating_border pixel 2
-hide_edge_borders smart
+smart_borders no_gaps
+smart_gaps on
+hide_edge_borders --i3 smart
 
 #
 # Status Bar:
