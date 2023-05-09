@@ -1,7 +1,9 @@
 # Programs that autostart when Sway loads.
+# Change the wallpaper depending on time.
+exec sh /home/carlos/programs/sunpaper/sunpaper.sh -d
 # Megasync for Mega.
 exec sleep 10 && exec megasync
-# Gestures with the touchpad
+# Gestures with the touchpad.
 exec libinput-gestures-setup start
-# Gnome polkit, for graphical authentication
+# Gnome polkit, for graphical authentication.
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1

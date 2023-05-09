@@ -35,6 +35,12 @@ bindsym --locked Mod1+f2 exec swaymsg "output LVDS-1 dpms toggle"
 bindsym Mod4+Mod1+l exec ~/.config/sway/lock.sh
 
 #
+# Alt+Tab to switch between windows
+#
+bindsym Mod1+tab workspace next_on_output 
+bindsym Mod1+Shift+tab workspace back_and_forth
+
+#
 # Exit mode
 #
 set $exit "exit: Poweroff, Sleep, Hibernate, Reboot, Logout"
