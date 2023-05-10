@@ -266,7 +266,7 @@ gls.left =
                 provider = 'DiffModified',
                 condition = condition.check_git_workspace,
                 -- icon = '  ',
-                icon = ' 柳',
+                icon = ' 󰝤 ',
                 highlight = {colors.blue, colors.gitbg}
             }
         }, {
@@ -333,20 +333,20 @@ gls.left =
         {
             DiagnosticError = {
                 provider = 'DiagnosticError',
-                icon = '  ',
+                icon = ' 󰅚 ',
                 separator_highlight = {colors.gitbg, colors.bg},
                 highlight = {colors.diagerror, colors.lspbg}
             }
         }, {
             DiagnosticWarn = {
                 provider = 'DiagnosticWarn',
-                icon = '  ',
+                icon = ' 󰀪 ',
                 highlight = {colors.diagwarn, colors.lspbg}
             }
         }, {
             DiagnosticHint = {
                 provider = 'DiagnosticHint',
-                icon = '  ',
+                icon = ' 󰌶 ',
                 highlight = {colors.diaghint, colors.lspbg}
             }
         }, {

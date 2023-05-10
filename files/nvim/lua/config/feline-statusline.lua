@@ -104,7 +104,7 @@ local file = {
 		provider = 'file_info',
 		priority = 5,
 		left_sep = ' ',
-		file_modified_icon = '﯂',
+		file_modified_icon = '󰛄',
 		hl = {
 			fg = colors.blue,
 			style = 'bold'
@@ -282,7 +282,7 @@ local lsp_progress = {
          local title = Lsp.title or ""
          local spinners = {
             "",
-            "",
+            "",
             "",
          }
 

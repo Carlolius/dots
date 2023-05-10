@@ -139,7 +139,6 @@ packer.startup({
 
 		use({ "neovim/nvim-lspconfig" })
 
-		
 		-- Neoclip clipboard
 		use({
 			"AckslD/nvim-neoclip.lua",
