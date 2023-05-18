@@ -86,9 +86,9 @@ packer.startup({
 		})
 
 		-- GitHub Copilot
-		-- use({ "github/copilot.vim" })
 		use({
 			"zbirenbaum/copilot.lua",
+			cmd = "Copilot",
 			event = "VimEnter",
 			config = function()
 				vim.schedule(function()
@@ -132,10 +132,7 @@ packer.startup({
 			config = "require('config.mason-config')"
 		})
 
-		use({
-			"williamboman/mason-lspconfig.nvim",
-			config = "require('config.mason_lspconfig-config')",
-		})
+		use({ "williamboman/mason-lspconfig.nvim" })
 
 		use({ "neovim/nvim-lspconfig" })
 
@@ -153,9 +150,12 @@ packer.startup({
 		})
 
 		-- Null-ls
-		use({ "jose-elias-alvarez/null-ls.nvim", requires = {
-			"nvim-lua/plenary.nvim",
-		} })
+		use({
+			"jose-elias-alvarez/null-ls.nvim",
+			requires = {
+				"nvim-lua/plenary.nvim",
+			}
+		})
 
 		-- Show colors in code RGB, HEX...
 		use({
