@@ -20,6 +20,7 @@ set.cursorline = true -- Show a line where cursor is
 set.hidden = true -- Enabe background buffers
 set.hlsearch = true -- Highlights search
 set.completeopt = { "menuone", "preview", "noinsert", "noselect" }
+set.foldlevel = 5 -- Set fold level
 set.ignorecase = true -- Ignore search case
 set.incsearch = true -- Incremental search
 set.mouse = "a" -- Enable mouse
