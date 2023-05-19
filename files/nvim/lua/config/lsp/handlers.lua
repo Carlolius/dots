@@ -31,7 +31,7 @@ M.setup = function()
       style = "minimal",
       border = "rounded",
       source = "always",
-      header = "",
+      header = "true",
       prefix = "",
     },
   }
@@ -80,6 +80,6 @@ if not status_ok then
   return
 end
 
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 return M
