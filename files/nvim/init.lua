@@ -16,11 +16,12 @@ require("plugins")
 set.autoindent = true -- Indent correctly
 set.backup = false -- No backup file
 set.clipboard = "unnamedplus" -- Yank and paste outside Vim
+set.completeopt = { "menuone", "preview", "noinsert", "noselect" }
 set.cursorline = true -- Show a line where cursor is
+set.foldlevel = 5 -- Set fold level
+set.formatoptions = "jcroqlnt" -- tcqj
 set.hidden = true -- Enabe background buffers
 set.hlsearch = true -- Highlights search
-set.completeopt = { "menuone", "preview", "noinsert", "noselect" }
-set.foldlevel = 5 -- Set fold level
 set.ignorecase = true -- Ignore search case
 set.incsearch = true -- Incremental search
 set.mouse = "a" -- Enable mouse
