@@ -100,7 +100,7 @@ dotfiles:
     src: sway
     dst: ~/.config/sway
   d_environment:
-    src: sway/environment.d
+    src: environment.d
     dst: ~/.config/environment.d
  
   ## Vim ##
