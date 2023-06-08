@@ -9,7 +9,7 @@ dotfiles:
 
   ## Programs ##
   d_foot:
-    src: config/foot
+    src: foot
     dst: ~/.config/foot
   d_scripts:
     src: scripts
@@ -60,7 +60,7 @@ dotfiles:
     upignore:
     - '*/scripts/env.sh'
   d_waybar:
-    src: config/waybar
+    src: waybar
     dst: ~/.config/waybar
   f_conkyrc:
     src: conky/conkyrc
@@ -97,10 +97,10 @@ dotfiles:
 
   ## Sway ##
   d_sway:
-    src: config/sway
+    src: sway
     dst: ~/.config/sway
   d_environment:
-    src: config/environment.d
+    src: sway/environment.d
     dst: ~/.config/environment.d
  
   ## Vim ##
