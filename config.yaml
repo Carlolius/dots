@@ -171,6 +171,18 @@ profiles:
     dotfiles:
     - f_aliases
 
+  yanos:
+    include:
+      - nvim
+      - sh
+      - vim
+      - d_environment
+    dotfiles:
+      - d_foot
+      - d_scripts
+      - d_tmux
+      - f_aliases
+
 # Packages used above
   conky:
     dotfiles:
