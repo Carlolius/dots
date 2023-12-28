@@ -1,0 +1,48 @@
+live_config_reload = true
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "#686868"
+blue = "#5454ff"
+cyan = "#54ffff"
+green = "#54ff54"
+magenta = "#ff54ff"
+red = "#ff5454"
+white = "#ffffff"
+yellow = "#ffff04"
+
+[colors.cursor]
+cursor = "#18f018"
+
+[colors.normal]
+black = "#000000"
+blue = "#1818b2"
+cyan = "#18b2b2"
+green = "#18b218"
+magenta = "#b218b2"
+red = "#b21818"
+white = "#b2b2b2"
+yellow = "#b26818"
+
+[colors.primary]
+background = "#000000"
+foreground = "#18f018"
+
+[font.bold]
+family = "Hack Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "Hack Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "Hack Nerd Font"
+style = "Regular"
+
+
+[window.padding]
+x = 2
+y = 2

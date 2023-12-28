@@ -21,8 +21,8 @@ dotfiles:
     src: tmux
     dst: ~/.config/tmux
   f_alacritty:
-    src: alacritty/alacritty.yml
-    dst: ~/.config/alacritty/alacritty.yml
+    src: alacritty/alacritty.toml
+    dst: ~/.config/alacritty/alacritty.toml
   f_sxhkd:
     src: sxhkd/sxhkdrc
     dst: ~/.config/sxhkd/sxhkdrc
