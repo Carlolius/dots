@@ -5,9 +5,6 @@ config:
   longkey: true
   showdiff: true
 dotfiles:
-
-
-  ## Programs ##
   d_foot:
     src: foot
     dst: ~/.config/foot
@@ -26,8 +23,6 @@ dotfiles:
   f_sxhkd:
     src: sxhkd/sxhkdrc
     dst: ~/.config/sxhkd/sxhkdrc
-
-  ## Sh zsh ##
   d_zshrc:
     src: zsh
     dst: ~/.config/zsh
@@ -46,8 +41,6 @@ dotfiles:
   f_profile:
     src: bash/profile
     dst: ~/.profile
-
-  ## Visual ##
   d_polybar:
     src: polybar
     dst: ~/.config/polybar
@@ -77,8 +70,6 @@ dotfiles:
   f_rofi-personal:
     src: rofi/personal.rasi
     dst: ~/.config/rofi/personal.rasi
-
-  ## Nvim ##
   d_nvim-lua:
     src: nvim/lua
     dst: ~/.config/nvim/lua
@@ -88,16 +79,12 @@ dotfiles:
   f_nvim-init:
     src: nvim/init.lua
     dst: ~/.config/nvim/init.lua
-
-  ## Sway ##
   d_sway:
     src: sway
     dst: ~/.config/sway
   d_environment:
     src: environment.d
     dst: ~/.config/environment.d
- 
-  ## Vim ##
   d_vim-config-plugins:
     src: vim/config-plugins
     dst: ~/.vim/config-plugins
@@ -107,8 +94,6 @@ dotfiles:
   f_vim-vimrc:
     src: vim/vimrc
     dst: ~/.vim/vimrc
-
-  ## X ##
   f_xinitrc:
     src: X/xinitrc
     dst: ~/.xinitrc
@@ -118,6 +103,9 @@ dotfiles:
   f_xresources:
     src: X/Xresources
     dst: ~/.Xresources
+  f_zshenv:
+    src: zshenv
+    dst: ~/.zshenv
 
 profiles:
   bender:
@@ -144,7 +132,7 @@ profiles:
     - d_foot
     - d_waybar
     - f_rofi-config
-        
+
   nibbler:
     include:
     - X
@@ -167,15 +155,15 @@ profiles:
 
   yanos:
     include:
-      - nvim
-      - sh
-      - vim
-      - d_environment
+    - nvim
+    - sh
+    - vim
+    - d_environment
     dotfiles:
-      - d_foot
-      - d_scripts
-      - d_tmux
-      - f_aliases
+    - d_foot
+    - d_scripts
+    - d_tmux
+    - f_aliases
 
 # Packages used above
   conky:
@@ -209,6 +197,7 @@ profiles:
     - f_envrc
     - f_functions
     - f_profile
+    - f_zshenv
 
   sway:
     dotfiles:
