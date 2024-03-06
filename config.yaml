@@ -28,6 +28,9 @@ dotfiles:
     dst: ~/.config/sxhkd/sxhkdrc
 
   ## Sh zsh ##
+  d_zshrc:
+    src: zsh
+    dst: ~/.config/zsh
   f_aliases:
     src: aliases
     dst: ~/.config/aliases
@@ -40,18 +43,9 @@ dotfiles:
   f_functions:
     src: functions
     dst: ~/.config/functions
-  f_p10k:
-    src: p10k.zsh
-    dst: ~/.p10k.zsh
   f_profile:
     src: bash/profile
     dst: ~/.profile
-  f_zprofile:
-    src: zsh/zprofile
-    dst: ~/.zprofile
-  f_zshrc:
-    src: zsh/zshrc
-    dst: ~/.zshrc
 
   ## Visual ##
   d_polybar:
@@ -209,14 +203,12 @@ profiles:
 
   sh:
     dotfiles:
+    - d_zshrc
     - f_aliases
     - f_bashrc
     - f_envrc
     - f_functions
-    - f_p10k
     - f_profile
-    - f_zprofile
-    - f_zshrc
 
   sway:
     dotfiles:
