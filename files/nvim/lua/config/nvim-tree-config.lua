@@ -8,6 +8,9 @@ require'nvim-tree'.setup {
 	hijack_cursor = true,
 	update_cwd = true,
 	update_focused_file = {enable = false, update_root = true, ignore_list = {}},
+	filters = {
+		custom = {'*.tmp', '.git'}
+	},
 	actions = {
 		open_file = {
 			resize_window = false,
@@ -15,15 +18,41 @@ require'nvim-tree'.setup {
 	},
 	renderer = {
 		indent_markers = {enable = true},
+		icons = {
+			glyphs = {
+				default = "",
+				symlink = "",
+				-- git = {
+				-- 	unstaged = "",
+				-- 	staged = "S",
+				-- 	unmerged = "",
+				-- 	renamed = "➜",
+				-- 	deleted = "",
+				-- 	untracked = "U",
+				-- 	ignored = "◌",
+				-- },
+				folder = {
+					default = "",
+					open = "",
+					empty = "",
+					empty_open = "",
+					symlink = "",
+				},
+			},
+		}
 	},
 	diagnostics = {
-		enable = true
-	},
-	modified = {
-		enable = true
+		enable = true,
+		icons = {
+			hint = "",
+			info = "",
+			warning = "",
+			error = "",
+		}
 	},
 	git = {
 		enable = true,
+		ignore = true,
 		timeout = 500,
 	},
 	system_open = {
@@ -33,8 +62,9 @@ require'nvim-tree'.setup {
 		args = {}
 	},
 	view = {
-		width = 30,
+		width = 25,
 		side = 'left',
-		preserve_window_proportions = true
+		hide_root_folder = false,
+		relativenumber = false,
 	}
 }
