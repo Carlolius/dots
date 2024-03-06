@@ -38,6 +38,11 @@ export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE="$HOME"/.cache
 export XDG_DATA="$HOME"/.local/share
 
+# ZSH Path
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+# Put zsh completion cache in cache directory
+export ZSH_COMPDUMP=$HOME/.cache/.zcompdump-$HOST
+
 # Python pip path
 export PATH="$PATH:/$HOME/.local/bin"
 
