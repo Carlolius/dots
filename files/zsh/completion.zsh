@@ -1,7 +1,7 @@
 # Should be called before compinit
 zmodload zsh/complist
 
-autoload -Uz compinit; compinit
+autoload -Uz compinit; compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
 _comp_options+=(globdots) # With hidden files
 
 # Use hjlk in menu selection (during completion)
