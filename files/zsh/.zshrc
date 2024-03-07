@@ -64,6 +64,9 @@ done
 # Completion
 source $HOME/.config/zsh/completion.zsh
 
+# History substring search
+bindkey '^R' history-incremental-search-backward
+
 # Prompt
 autoload -Uz promptinit
 promptinit
