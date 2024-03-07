@@ -45,6 +45,8 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Vi mode, change to insert mode with jk or kj
 bindkey -v jk vi-cmd-mode
 bindkey -v kj vi-cmd-mode
+# Next line binds the Ctrl + l to end of line in Vi normal mode
+bindkey -v '^L' vi-end-of-line
 # Change cursor, change the beam to the block when in Vi normal mode
 source "$HOME/.config/zsh/cursor_mode"
 # Add Vi text-objects for brackets and quotes, and add a few more key bindings
