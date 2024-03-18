@@ -1,15 +1,15 @@
 -- Nvim Tree config
 -------------------
 
-require'nvim-tree'.setup {
+require 'nvim-tree'.setup {
 	disable_netrw = true,
 	hijack_netrw = true,
 	open_on_tab = false,
 	hijack_cursor = true,
 	update_cwd = true,
-	update_focused_file = {enable = false, update_root = true, ignore_list = {}},
+	update_focused_file = { enable = false, update_root = true, ignore_list = {} },
 	filters = {
-		custom = {'*.tmp', '.git'}
+		custom = { '*.tmp', '.git' }
 	},
 	actions = {
 		open_file = {
@@ -17,7 +17,7 @@ require'nvim-tree'.setup {
 		},
 	},
 	renderer = {
-		indent_markers = {enable = true},
+		indent_markers = { enable = true },
 		icons = {
 			glyphs = {
 				default = "",
@@ -64,7 +64,6 @@ require'nvim-tree'.setup {
 	view = {
 		width = 25,
 		side = 'left',
-		hide_root_folder = false,
 		relativenumber = false,
 	}
 }
