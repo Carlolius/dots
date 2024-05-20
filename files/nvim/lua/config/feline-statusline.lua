@@ -274,7 +274,7 @@ local flsp = {
 
 local lsp_progress = {
    provider = function()
-      local Lsp = vim.lsp.util.get_progress_messages()[1]
+      local Lsp = vim.lsp.status()[1]
 
       if Lsp then
          local msg = Lsp.message or ""
