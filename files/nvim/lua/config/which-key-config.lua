@@ -60,7 +60,9 @@ local setup = {
 		align = "left", -- align columns left, center or right
 	},
 	show_help = true, -- show help message on the command line when the popup is visible
-	triggers = true, -- automatically setup triggers
+	triggers = {
+		{ "<auto>", mode = "nxsot" },
+	},
 	disable = {
 		-- list of mode / prefixes that should never be hooked by WhichKey
 		-- this is mostly relevant for key maps that start with a native binding
