@@ -72,7 +72,7 @@ function extract {
 
 # Case to update different stuff quickly
 function total_update {
-	function u_guiki { echo "Actualizando güiki" && git -C ~/guiki pull --no-rebase }
+	# function u_guiki { echo "Actualizando güiki" && git -C ~/guiki pull --no-rebase }
 	function u_dots { echo "Actualizando dots" && git -C ~/dots pull --no-rebase }
 	function u_sistema { echo "Actualizando sistema" && yay }
 	function u_vim { echo "Actualizando plugins de nvim" && nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' }
@@ -84,7 +84,6 @@ function total_update {
 		s) Sistema
 		v) Plugins de Vim
 		r) Repositorios de git
-		g) guiki
 		d) dots
 		A) Todo lo anterior
 		p) pip
@@ -96,17 +95,16 @@ function total_update {
 			u_sistema;;
 		v)
 			u_vim;;
-		g)
-			u_guiki;;
+		# g)
+		# 	u_guiki;;
 		d)
 			u_dots;;
 		r)
-			u_guiki
 			u_dots
 			;;
 		[Aa])
 			u_vim &
-			u_guiki &
+			# u_guiki &
 			u_dots &
 			u_sistema
 			;;
