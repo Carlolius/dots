@@ -86,24 +86,24 @@ packer.startup({
 		})
 
 		-- GitHub Copilot
-		use({
-			"zbirenbaum/copilot.lua",
-			cmd = "Copilot",
-			event = "VimEnter",
-			config = function()
-				vim.schedule(function()
-					require("config.copilot-config")
-				end)
-			end,
-		})
-
-		use({
-			"zbirenbaum/copilot-cmp",
-			after = { "copilot.lua", "nvim-cmp" },
-			config = function()
-				require("config.copilot_cmp-config")
-			end,
-		})
+		-- use({
+		-- 	"zbirenbaum/copilot.lua",
+		-- 	cmd = "Copilot",
+		-- 	event = "VimEnter",
+		-- 	config = function()
+		-- 		vim.schedule(function()
+		-- 			require("config.copilot-config")
+		-- 		end)
+		-- 	end,
+		-- })
+		--
+		-- use({
+		-- 	"zbirenbaum/copilot-cmp",
+		-- 	after = { "copilot.lua", "nvim-cmp" },
+		-- 	config = function()
+		-- 		require("config.copilot_cmp-config")
+		-- 	end,
+		-- })
 
 		-- Indent blankline
 		use({
