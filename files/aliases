@@ -42,6 +42,8 @@ alias pscpu='ps auxf | sort -nr -k 3 | head -5'
 alias fix-keys="sudo pacman-key --init && sudo pacman-key --populate archlinux && sudo pacman-key --refresh-keys"
 # Show all files in the folder and sort by size
 alias dust='du -sh * | sort -hr'
+# List all installed packages with FZF
+pacman-fzf-local="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
 
 # Mirrors
 alias mirrorupdate='sudo reflector --country Spain --country Portugal --country France --age 24 --completion-percent 100 --sort score --fastest 100 --verbose --save /etc/pacman.d/mirrorlist'
@@ -66,9 +68,6 @@ alias dotins="dotdropinstall"
 alias dotup="dotdropupdate"
 alias dotcomp="dotdropcompare"
 alias dotconf="nvim ~/dots/config.yaml"
-
-# Battery
-alias battery="sudo tpacpi-bat --help"
 
 # Tmux
 alias tmux='tmux -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
