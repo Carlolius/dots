@@ -156,13 +156,15 @@ profiles:
   yanos:
     include:
     - nvim
+    - rofi
     - sh
+    - sway
     - vim
-    - d_environment
     dotfiles:
     - d_foot
     - d_scripts
     - d_tmux
+    - d_waybar
     - f_aliases
 
 # Packages used above
