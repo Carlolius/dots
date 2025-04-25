@@ -188,7 +188,8 @@
 		"tooltip-format": "{ifname} {ipaddr}/{cidr} ",
 		"format-linked": "{ifname} (No IP) ",
 		"format-disconnected": "Disconnected ⚠",
-		"format-alt": "{ifname}  {bandwidthUpBytes}  {bandwidthDownBytes}"
+		"format-alt": "{ifname}  {bandwidthUpBytes}  {bandwidthDownBytes}",
+		"on-click-middle": "foot nmtui-connect"
 	},
 	"pulseaudio": {
 		// "scroll-step": 1, // %, can be a float

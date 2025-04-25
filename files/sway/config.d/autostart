@@ -1,7 +1,9 @@
 # Programs that autostart when Sway loads.
-# Change the wallpaper depending on time.
-exec sh /home/carlos/programs/sunpaper/sunpaper.sh -d &
+# Dunst
+exec sleep 5 && dunst & 
 # Megasync for Mega.
 exec sleep 10 && exec megasync &
-# Gnome polkit, for graphical authentication.
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+# Dropbox
+exec sleep 10 && exec dropbox &
+# KDE polkit, for graphical authentication.
+exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1 &

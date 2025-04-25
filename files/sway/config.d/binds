@@ -12,6 +12,9 @@ bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+bindsym Mod1+Control+c exec playerctl play-pause
+bindsym Mod1+Control+b exec playerctl next
+bindsym Mod1+Control+z exec playerctl previous
 
 #
 # Backlight

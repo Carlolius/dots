@@ -1,5 +1,6 @@
 /** Rofi config file **/
 
+@theme "personal"
 configuration {
 	modi: "window,run,ssh";
 	width: 50;
