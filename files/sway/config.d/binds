@@ -83,3 +83,6 @@ mode "$screenshot" {
 bindsym $mod+Print mode "$screenshot"
 bindsym Print exec 'grim - | swappy -f -', mode "default"
 bindsym shift+Print exec 'grim -g "$(slurp)" - | swappy -f -', mode "default"
+
+# Write faster
+bindsym Control+f1 exec 'bash -c /home/carlos/programs/ydotool/chooser.sh
