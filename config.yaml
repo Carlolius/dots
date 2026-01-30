@@ -73,9 +73,6 @@ dotfiles:
   d_nvim-lua:
     src: nvim/lua
     dst: ~/.config/nvim/lua
-  f_coc-settings:
-    src: nvim/coc-settings.json
-    dst: ~/.config/nvim/coc-settings.json
   f_nvim-init:
     src: nvim/init.lua
     dst: ~/.config/nvim/init.lua
@@ -183,7 +180,6 @@ profiles:
   nvim:
     dotfiles:
     - d_nvim-lua
-    - f_coc-settings
     - f_nvim-init
 
   rofi:
