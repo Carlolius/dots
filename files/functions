@@ -5,7 +5,8 @@ function weather {
 	echo "
 	1. Teo v2.wttr.in/Teo 
 	2. Ferrol wttr.in/Ferrol
-	3. Luna wttr.in/Moon
+	3. Badalona wttr.in/Badalona
+	4. Luna wttr.in/Moon
 	"
 	read opt
 	case $opt in
@@ -14,6 +15,8 @@ function weather {
 		2)
 			curl "wttr.in/Ferrol?lang=es";;
 		3)
+			curl "wttr.in/Badalona?lang=es";;
+		4)
 			curl "wttr.in/Moon?lang=es";;
 	esac
 }
@@ -72,10 +75,9 @@ function extract {
 
 # Case to update different stuff quickly
 function total_update {
-	# function u_guiki { echo "Actualizando güiki" && git -C ~/guiki pull --no-rebase }
 	function u_dots { echo "Actualizando dots" && git -C ~/dots pull --no-rebase }
 	function u_sistema { echo "Actualizando sistema" && yay }
-	function u_vim { echo "Actualizando plugins de nvim" && nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' }
+	function u_vim { echo "Actualizando plugins de nvim" && nvim --headless "+Lazy! sync" +qa }
 	function u_pip { echo "Actualizando pip" && pip freeze --user | cut -d'=' -f1 | xargs -n1 pip install -U }
 	if [[ $1 != '' ]] ; then
 		opt=$1
@@ -95,18 +97,15 @@ function total_update {
 			u_sistema;;
 		v)
 			u_vim;;
-		# g)
-		# 	u_guiki;;
 		d)
 			u_dots;;
 		r)
 			u_dots
 			;;
 		[Aa])
-			u_vim &
-			# u_guiki &
 			u_dots &
 			u_sistema
+			u_vim &
 			;;
 		p)
 			u_pip;;
