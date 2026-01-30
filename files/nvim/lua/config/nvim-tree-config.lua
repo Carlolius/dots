@@ -7,7 +7,7 @@ require 'nvim-tree'.setup {
 	open_on_tab = false,
 	hijack_cursor = true,
 	update_cwd = true,
-	update_focused_file = { enable = false, update_root = true, ignore_list = {} },
+	update_focused_file = { enable = true, update_root = false },
 	filters = {
 		custom = { '*.tmp', '.git' }
 	},
@@ -41,15 +41,8 @@ require 'nvim-tree'.setup {
 			},
 		}
 	},
-	diagnostics = {
-		enable = true,
-		icons = {
-			hint = "",
-			info = "",
-			warning = "",
-			error = "",
-		}
-	},
+	-- diagnostics disabled (no LSP configured currently)
+	diagnostics = { enable = false },
 	git = {
 		enable = true,
 		ignore = true,

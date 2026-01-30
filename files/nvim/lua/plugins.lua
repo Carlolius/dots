@@ -1,215 +1,97 @@
--- Plugins
-----------
-
--- Ensure that packer is installed
-local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	Packer_bootstrap = vim.fn.system({
-		"git",
-		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
-	})
+-- Plugin management using lazy.nvim
+-- Bootstrap lazy.nvim if needed
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+	"git",
+	"clone",
+	"--filter=blob:none",
+	"https://github.com/folke/lazy.nvim.git",
+	"--branch=stable", -- latest stable
+	lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-	return
-end
+require("lazy").setup({
+  -- Utility
+  { "numToStr/Comment.nvim", config = function() require('Comment').setup() end },
+  { "unblevable/quick-scope", event = "BufWinEnter" },
 
-packer.startup({
-	function(use)
-		-- Packer can manage itself
-		use({ "wbthomason/packer.nvim" })
+  -- Completion
+  {
+	"hrsh7th/nvim-cmp",
+	dependencies = {
+	  "L3MON4D3/LuaSnip",
+	  "hrsh7th/cmp-buffer",
+	  "hrsh7th/cmp-calc",
+	  "hrsh7th/cmp-emoji",
+	  "hrsh7th/cmp-nvim-lua",
+	  "hrsh7th/cmp-path",
+	  "hrsh7th/cmp-cmdline",
+	  "rafamadriz/friendly-snippets",
+	  "saadparwaiz1/cmp_luasnip",
+	},
+	config = function() require('config.cmp-config') end,
+  },
 
-		-- Easy comment
-		use({
-			"numToStr/Comment.nvim",
-			config = function()
-				require("Comment").setup()
-			end,
-		})
+  -- Autopairs
+  { "windwp/nvim-autopairs", event = "InsertEnter", config = function() require('config.autopairs') end },
 
-		-- Color f & t
-		use({ "unblevable/quick-scope", event = "BufWinEnter" })
+  -- Code action menu
+  { "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" },
 
-		-- Autocomplete
-		-- Nvim-Cmp
-		use({
-			"hrsh7th/nvim-cmp",
-			requires = {
-				"L3MON4D3/LuaSnip",
-				"hrsh7th/cmp-buffer",
-				"hrsh7th/cmp-calc",
-				"hrsh7th/cmp-emoji",
-				"hrsh7th/cmp-nvim-lsp",
-				"hrsh7th/cmp-nvim-lua",
-				"hrsh7th/cmp-path",
-				"hrsh7th/cmp-cmdline",
-				"rafamadriz/friendly-snippets",
-				"saadparwaiz1/cmp_luasnip",
-			},
-			config = "require('config.cmp-config')",
-		})
+  -- Colorschemes
+  { "Pocco81/Catppuccino.nvim" },
+  { "folke/tokyonight.nvim" },
+  { "morhetz/gruvbox" },
+  { "olimorris/onedarkpro.nvim" },
+  { "rebelot/kanagawa.nvim" },
+  { "wuelnerdotexe/vim-enfocado" },
+  { "glepnir/zephyr-nvim" },
 
-		-- Autopairing
-		use({
-			"windwp/nvim-autopairs",
-			config = "require('config.autopairs')",
-			after = "nvim-cmp",
-		})
+  -- File explorer (updated)
+  {
+	"nvim-tree/nvim-tree.lua",
+	dependencies = { "kyazdani42/nvim-web-devicons" },
+	cmd = "NvimTreeToggle",
+	config = function() require('config.nvim-tree-config') end,
+  },
 
-		-- CodeAction menu
-		require("packer").use({
-			"weilbith/nvim-code-action-menu",
-			cmd = "CodeActionMenu",
-		})
+  -- Indent guide
+  { "lukas-reineke/indent-blankline.nvim", config = function() require('config.indent-blankline') end },
 
-		-- ColorSchemes
-		use({ "Pocco81/Catppuccino.nvim" }) -- Catppuccino
-		use({ "folke/tokyonight.nvim" }) -- Tokyonight
-		use({ "morhetz/gruvbox" }) -- Gruvbox
-		use({ "olimorris/onedarkpro.nvim" }) -- One Dark Pro
-		use({ "rebelot/kanagawa.nvim" }) -- Kanagawa
-		use({ "wuelnerdotexe/vim-enfocado" }) -- Enfocado
-		use({ "glepnir/zephyr-nvim" }) -- Zephyr
+  -- Grammar/LangTool
+  { "brymer-meneses/grammar-guard.nvim" },
 
-		-- File explorer
-		use({
-			"kyazdani42/nvim-tree.lua",
-			requires = "kyazdani42/nvim-web-devicons",
-			cmd = "NvimTreeToggle",
-			config = "require('config.nvim-tree-config')",
-		})
+  -- Markdown
+  { "plasticboy/vim-markdown" },
+  { "iamcco/markdown-preview.nvim", ft = "markdown", cmd = "MarkdownPreview", build = function() vim.fn['mkdp#util#install']() end },
 
-		-- GitHub Copilot
-		-- use({
-		-- 	"zbirenbaum/copilot.lua",
-		-- 	cmd = "Copilot",
-		-- 	event = "VimEnter",
-		-- 	config = function()
-		-- 		vim.schedule(function()
-		-- 			require("config.copilot-config")
-		-- 		end)
-		-- 	end,
-		-- })
-		--
-		-- use({
-		-- 	"zbirenbaum/copilot-cmp",
-		-- 	after = { "copilot.lua", "nvim-cmp" },
-		-- 	config = function()
-		-- 		require("config.copilot_cmp-config")
-		-- 	end,
-		-- })
+  -- Clipboard manager
+  { "AckslD/nvim-neoclip.lua", dependencies = { "nvim-telescope/telescope.nvim" }, config = function() require('neoclip').setup() end },
 
-		-- Indent blankline
-		use({
-			"lukas-reineke/indent-blankline.nvim",
-			config = "require('config.indent-blankline')",
-		})
+  -- Colorizer
+  { "norcalli/nvim-colorizer.lua", event = "BufRead", config = function() require('config.colorizer-config') end },
 
-		-- LanguageTool
-		use({ "brymer-meneses/grammar-guard.nvim" })
+  -- Statusline
+  { "nvim-lualine/lualine.nvim", dependencies = { "kyazdani42/nvim-web-devicons" }, config = function() require('config.lualine-config') end },
 
-		-- Markdown
-		use({ "plasticboy/vim-markdown" }) -- Markdown highlighting
-		use({
-			"iamcco/markdown-preview.nvim", -- Preview Markdown file in browser
-			run = function()
-				vim.fn["mkdp#util#install"]()
-			end,
-			ft = "markdown",
-			cmd = { "MarkdownPreview" },
-		})
+  -- Git signs
+  { "lewis6991/gitsigns.nvim", dependencies = { "nvim-lua/plenary.nvim" }, config = function() require('config.gitsings-config') end },
 
-		-- Mason
-		use({
-			"williamboman/mason.nvim",
-			run = ":MasonUpdate", -- :MasonUpdate updates registry contents
-			config = "require('config.mason-config')"
-		})
+  -- Telescope
+  { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" }, cmd = "Telescope", config = function() require('config.telescope-config') end },
 
-		use({ "williamboman/mason-lspconfig.nvim" })
+  -- Terminal
+  { "akinsho/nvim-toggleterm.lua", config = function() require('config.toggleterm-config') end },
 
-		use({ "neovim/nvim-lspconfig" })
+  -- Treesitter
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", event = "BufWinEnter", config = function() require('config.treesitter-config') end },
 
-		-- Neoclip clipboard
-		use({
-			"AckslD/nvim-neoclip.lua",
-			requires = {
-				-- you'll need at least one of these
-				{ "nvim-telescope/telescope.nvim" },
-				-- {'ibhagwan/fzf-lua'},
-			},
-			config = function()
-				require("neoclip").setup()
-			end,
-		})
+  -- WhichKey
+  { "folke/which-key.nvim", event = "BufWinEnter", config = function() require('config.which-key-config') end },
 
-		-- Null-ls
-		use({
-			"jose-elias-alvarez/null-ls.nvim",
-			requires = {
-				"nvim-lua/plenary.nvim",
-			}
-		})
-
-		-- Show colors in code RGB, HEX...
-		use({
-			"norcalli/nvim-colorizer.lua",
-			config = "require('config.colorizer-config')",
-			event = "BufRead",
-		})
-
-		-- Statusline
-		use({
-			"freddiehaddad/feline.nvim",
-			requires = { "kyazdani42/nvim-web-devicons" },
-			config = "require('config.feline-statusline')",
-		})
-		-- Necessary for the git info
-		use({
-			"lewis6991/gitsigns.nvim",
-			requires = {
-				"nvim-lua/plenary.nvim",
-			},
-			config = "require('config.gitsings-config')",
-		})
-
-		-- Telescope
-		use({
-			"nvim-telescope/telescope.nvim",
-			requires = { "nvim-lua/plenary.nvim" },
-			cmd = "Telescope",
-			config = "require('config.telescope-config')",
-		})
-
-		-- Terminal
-		use({ "akinsho/nvim-toggleterm.lua", config = "require('config.toggleterm-config')" })
-
-		-- Treesitter
-		use({
-			"nvim-treesitter/nvim-treesitter",
-			-- event = "BufRead",
-			run = ":TSUpdate",
-			event = "BufWinEnter",
-			config = "require('config.treesitter-config')",
-		})
-
-		-- Which key
-		use({
-			"folke/which-key.nvim",
-			event = "BufWinEnter",
-			config = "require('config.which-key-config')",
-		})
-
-		-- Automatically set up your configuration after cloning packer.nvim
-		-- Put this at the end after all plugins
-		if Packer_bootstrap then
-			require("packer").sync()
-		end
-	end,
+}, {
+  install = { colorscheme = { "onedark_dark", "tokyonight" } },
 })

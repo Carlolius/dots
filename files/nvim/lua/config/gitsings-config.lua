@@ -10,8 +10,8 @@ require('gitsigns').setup {
     changedelete = { text = '·' },
     untracked    = { text = '┆' },
   },
-  signcolumn = false, -- Toggle with `:Gitsigns toggle_signs`
-  numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
+  signcolumn = true, -- show git signs in signcolumn
+  numhl      = true, -- highlight line number with git changes
   linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
 
@@ -19,8 +19,8 @@ require('gitsigns').setup {
     follow_files = true
   },
   auto_attach = true,
-  attach_to_untracked = false,
-  current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+  attach_to_untracked = true,
+  current_line_blame = true, -- show blame for current line
   current_line_blame_opts = {
     virt_text = true,
     virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
