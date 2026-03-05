@@ -1,6 +1,6 @@
 # Konsole Green over black
 
-[colors]
+[colors-dark]
 foreground=18f018 # Text
 background=000000 # Base
 regular0=000000   # Surface 1
