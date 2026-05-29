@@ -30,7 +30,7 @@ bindsym Mod1+x exec foot
 #
 # Toggle screen on/off
 #
-bindsym --locked Mod1+f2 exec swaymsg "output LVDS-1 dpms toggle"
+bindsym --locked Mod1+f2 exec swaymsg "output eDP-1 dpms toggle"
 
 #
 # Lock screen
@@ -85,4 +85,4 @@ bindsym Print exec 'grim - | swappy -f -', mode "default"
 bindsym shift+Print exec 'grim -g "$(slurp)" - | swappy -f -', mode "default"
 
 # Write faster
-bindsym Control+f1 exec 'bash -c /home/carlos/programs/ydotool/chooser.sh
+bindsym Control+f1 exec 'bash -c /home/carlos/programs/ydotool/chooser.sh'

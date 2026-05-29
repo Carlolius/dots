@@ -15,12 +15,13 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   -- Utility
-  { "numToStr/Comment.nvim", config = function() require('Comment').setup() end },
+  { "numToStr/Comment.nvim", keys = { "gc", "gb" }, config = function() require('Comment').setup() end },
   { "unblevable/quick-scope", event = "BufWinEnter" },
 
   -- Completion
   {
 	"hrsh7th/nvim-cmp",
+	event = "InsertEnter",
 	dependencies = {
 	  "L3MON4D3/LuaSnip",
 	  "hrsh7th/cmp-buffer",
@@ -31,6 +32,7 @@ require("lazy").setup({
 	  "hrsh7th/cmp-cmdline",
 	  "rafamadriz/friendly-snippets",
 	  "saadparwaiz1/cmp_luasnip",
+	  "ray-x/cmp-treesitter",
 	},
 	config = function() require('config.cmp-config') end,
   },
@@ -42,49 +44,44 @@ require("lazy").setup({
   { "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" },
 
   -- Colorschemes
-  { "Pocco81/Catppuccino.nvim" },
-  { "folke/tokyonight.nvim" },
-  { "morhetz/gruvbox" },
-  { "olimorris/onedarkpro.nvim" },
-  { "rebelot/kanagawa.nvim" },
-  { "wuelnerdotexe/vim-enfocado" },
-  { "glepnir/zephyr-nvim" },
+  { "olimorris/onedarkpro.nvim", lazy = false, priority = 1000 },
+  { "catppuccin/nvim",           name = "catppuccin", lazy = true },
+  { "folke/tokyonight.nvim",     lazy = true },
+  { "morhetz/gruvbox",           lazy = true },
+  { "rebelot/kanagawa.nvim",     lazy = true },
 
-  -- File explorer (updated)
+  -- File explorer
   {
 	"nvim-tree/nvim-tree.lua",
-	dependencies = { "kyazdani42/nvim-web-devicons" },
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	cmd = "NvimTreeToggle",
 	config = function() require('config.nvim-tree-config') end,
   },
 
   -- Indent guide
-  { "lukas-reineke/indent-blankline.nvim", config = function() require('config.indent-blankline') end },
-
-  -- Grammar/LangTool
-  { "brymer-meneses/grammar-guard.nvim" },
+  { "lukas-reineke/indent-blankline.nvim", event = "BufRead", dependencies = { "HiPhish/rainbow-delimiters.nvim" }, config = function() require('config.indent-blankline') end },
 
   -- Markdown
-  { "plasticboy/vim-markdown" },
+  { "plasticboy/vim-markdown", ft = "markdown" },
   { "iamcco/markdown-preview.nvim", ft = "markdown", cmd = "MarkdownPreview", build = function() vim.fn['mkdp#util#install']() end },
 
   -- Clipboard manager
-  { "AckslD/nvim-neoclip.lua", dependencies = { "nvim-telescope/telescope.nvim" }, config = function() require('neoclip').setup() end },
+  { "AckslD/nvim-neoclip.lua", event = "VeryLazy", dependencies = { "nvim-telescope/telescope.nvim" }, config = function() require('neoclip').setup() end },
 
   -- Colorizer
-  { "norcalli/nvim-colorizer.lua", event = "BufRead", config = function() require('config.colorizer-config') end },
+  { "NvChad/nvim-colorizer.lua", event = "BufRead", config = function() require('config.colorizer-config') end },
 
   -- Statusline
-  { "nvim-lualine/lualine.nvim", dependencies = { "kyazdani42/nvim-web-devicons" }, config = function() require('config.lualine-config') end },
+  { "nvim-lualine/lualine.nvim", event = "VeryLazy", dependencies = { "nvim-tree/nvim-web-devicons" }, config = function() require('config.lualine-config') end },
 
   -- Git signs
-  { "lewis6991/gitsigns.nvim", dependencies = { "nvim-lua/plenary.nvim" }, config = function() require('config.gitsings-config') end },
+  { "lewis6991/gitsigns.nvim", event = "BufRead", dependencies = { "nvim-lua/plenary.nvim" }, config = function() require('config.gitsigns-config') end },
 
   -- Telescope
-  { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" }, cmd = "Telescope", config = function() require('config.telescope-config') end },
+  { "nvim-telescope/telescope.nvim", cmd = "Telescope", dependencies = { "nvim-lua/plenary.nvim" }, config = function() require('config.telescope-config') end },
 
   -- Terminal
-  { "akinsho/nvim-toggleterm.lua", config = function() require('config.toggleterm-config') end },
+  { "akinsho/toggleterm.nvim", event = "VeryLazy", config = function() require('config.toggleterm-config') end },
 
   -- Treesitter
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", event = "BufWinEnter", config = function() require('config.treesitter-config') end },

@@ -90,6 +90,7 @@
 		"spacing": 10
 	},
 	"clock": {
+		"format": "{:%H:%M}",
 		"format-alt": "{:%Y-%m-%d %H:%M:%S}",
 		"tooltip-format": "<big>{:%d %B %Y}</big>\n<tt><big>{calendar}</big></tt>",
 		"on-scroll": {
@@ -112,12 +113,6 @@
 		"interval": 10,
 		"format": "{used} 󰋊",
 		"path": "/"
-	},
-	"custom/fan": {
-		"interval": 10,
-		"format": {},
-		"exec": "grep speed /proc/acpi/ibm/fan | awk '{print $2}'",
-		"output-fan": "%output%"
 	},
 	"temperature": {
 		// "thermal-zone": 2,
@@ -212,7 +207,7 @@
 				""
 			]
 		},
-		"on-click": "exec pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
 		"on-click-right": "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle",
 		"on-click-middle": "pavucontrol"
 	},
@@ -236,7 +231,7 @@
 		},
 		"escape": true,
 		// "exec": "python $HOME/.config/waybar/mediaplayer.py 2> /dev/null",
-		"exec": "python $HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null & python $HOME/.config/waybar/mediaplayer.py --player ncspot 2> /dev/null", // Filter player based on name
+		"exec": "python $HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null", // Filter player based on name
 		"on-click": "playerctl play-pause",
 		"on-click-right": "playerctl next",
 		"on-scroll-up": "playerctl position 3-",

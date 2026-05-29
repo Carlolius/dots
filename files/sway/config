@@ -19,13 +19,13 @@ set $term foot
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu usr/bin/rofi | rofi -modes "drun,run" -show drun -show-icons  | xargs swaymsg exec --
+set $menu rofi -modi "drun,run" -show drun -show-icons
 
 ### Output configuration
 #+
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg /home/carlos/Descargas/fotos/mario mushroom.jpg fill
+output * bg "/home/carlos/Descargas/fotos/mario mushroom.jpg" fill
 #
 # Example configuration:
 #
@@ -216,7 +216,7 @@ default_border pixel 2
 default_floating_border pixel 2
 smart_borders no_gaps
 smart_gaps on
-hide_edge_borders --i3 smart
+hide_edge_borders smart
 
 #
 # Status Bar:

@@ -8,7 +8,7 @@ bindgesture swipe:4:right workspace next
 
 # Music
 bindgesture pinch:outward exec playerctl play-pause
-bindgesture swipe:3:left exec playerctl previus
+bindgesture swipe:3:left exec playerctl previous
 bindgesture swipe:3:right exec playerctl next
 bindgesture swipe:3:up exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindgesture swipe:3:down exec pactl set-sink-volume @DEFAULT_SINK@ -5%

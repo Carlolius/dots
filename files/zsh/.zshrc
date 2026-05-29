@@ -61,6 +61,10 @@ for km in viopp visual; do
   done
 done
 
+# Bracketed paste — prevents auto-indent mangling pasted text
+autoload -Uz bracketed-paste-magic
+zle -N bracketed-paste bracketed-paste-magic
+
 # Completion
 source $HOME/.config/zsh/completion.zsh
 

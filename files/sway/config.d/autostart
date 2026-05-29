@@ -6,4 +6,4 @@ exec sleep 10 && exec megasync &
 # Dropbox
 exec sleep 10 && exec dropbox &
 # KDE polkit, for graphical authentication.
-exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1 &
+exec /usr/lib/polkit-kde-authentication-agent-1

@@ -43,7 +43,7 @@ set.incsearch = true
 
 -- UI
 set.wildmenu = true
-set.wildmode = { "longest:full,full" }
+set.wildmode = { "longest:full", "full" }
 set.completeopt = { "menuone", "preview", "noinsert", "noselect" }
 
 -- Clipboard & Syntax
@@ -56,8 +56,6 @@ set.termguicolors = true
 cmd([[colorscheme onedark_dark]])
 cmd([[highlight TabLineSel guibg=#454545]])
 
--- Global options
-global.mapleader = " "
 
 -- Python environment detection
 if vim.fn.exists("$VIRTUAL_ENV") == 1 then

@@ -1,15 +1,21 @@
 -- Nvim Tree config
 -------------------
 
-require 'nvim-tree'.setup {
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "NvimTree",
+  callback = function()
+    vim.opt_local.statusline = " "
+  end,
+})
+
+require("nvim-tree").setup({
 	disable_netrw = true,
 	hijack_netrw = true,
-	open_on_tab = false,
 	hijack_cursor = true,
-	update_cwd = true,
-	update_focused_file = { enable = true, update_root = false },
+	sync_root_with_cwd = true,
+	update_focused_file = { enable = true, update_cwd = false },
 	filters = {
-		custom = { '*.tmp', '.git' }
+		custom = { "*.tmp", ".git" },
 	},
 	actions = {
 		open_file = {
@@ -20,43 +26,27 @@ require 'nvim-tree'.setup {
 		indent_markers = { enable = true },
 		icons = {
 			glyphs = {
-				default = "",
-				symlink = "",
-				-- git = {
-				-- 	unstaged = "",
-				-- 	staged = "S",
-				-- 	unmerged = "",
-				-- 	renamed = "➜",
-				-- 	deleted = "",
-				-- 	untracked = "U",
-				-- 	ignored = "◌",
-				-- },
+				default = "",
+				symlink = "",
 				folder = {
-					default = "",
-					open = "",
-					empty = "",
-					empty_open = "",
-					symlink = "",
+					default = "",
+					open = "",
+					empty = "",
+					empty_open = "",
+					symlink = "",
 				},
 			},
-		}
+		},
 	},
-	-- diagnostics disabled (no LSP configured currently)
 	diagnostics = { enable = false },
 	git = {
 		enable = true,
 		ignore = true,
 		timeout = 500,
 	},
-	system_open = {
-		-- the command to run this, leaving nil should work in most cases
-		cmd = nil,
-		-- the command arguments as a list
-		args = {}
-	},
 	view = {
 		width = 25,
-		side = 'left',
+		side = "left",
 		relativenumber = false,
-	}
-}
+	},
+})
