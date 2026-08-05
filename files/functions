@@ -115,3 +115,9 @@ function total_update {
 			echo "Mira a ver en que la has liado";;
 	esac
 }
+
+# Teams AFK — reenvía cualquier flag a teams_afk_control.py
+# (ver hermes-skills/productivity/teams-afk). Uso: teams-afk --snooze 30
+teams-afk() {
+	/home/carlos/Kif/teams-afk/venv/bin/python3 /home/carlos/Kif/teams-afk/scripts/teams_afk_control.py "$@"
+}
