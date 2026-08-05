@@ -5,17 +5,16 @@ conky.config = {
 	-- Various config
 
 	background = true, -- Conky will be forked to background when started
-	cpu_avg_samples = 2, -- The number of samples to average for CPU monitoring. 
-	diskio_avg_samples = 10, -- The number of samples to average for disk I/O monitoring. 
-	double_buffer = true,  --  (eliminates flicker) 
+	cpu_avg_samples = 2, -- The number of samples to average for CPU monitoring.
+	diskio_avg_samples = 10, -- The number of samples to average for disk I/O monitoring.
+	double_buffer = true,  --  (eliminates flicker)
 	if_up_strictness = 'address',
-	net_avg_samples = 2, -- The number of samples to average for net data 
-	no_buffers = true, -- Subtract (file system) buffers from used memory? 
+	net_avg_samples = 2, -- The number of samples to average for net data
+	no_buffers = true, -- Subtract (file system) buffers from used memory?
 	temperature_unit = 'celsius',
 	update_interval = 1,
 	imlib_cache_size = 0,
 	total_run_times = 0, -- This is the number of times Conky will update before quitting, set to zero to run forever.
-	temperature_unit = 'celsius',
 
 -- Position
 
@@ -35,7 +34,7 @@ conky.config = {
 	stippled_borders = 0,
 
 	--Textual
-	
+
 	format_human_readable = true,
 	font = 'Trebuchet MS:size=6',
 	max_text_width = 0,
@@ -49,7 +48,7 @@ conky.config = {
 	own_window = true, -- Create own window instead of using desktop (required in nautilus)
 	own_window_argb_value = 0,
 	own_window_argb_visual = true,
-	own_window_type = 'override',-- # options are: normal/override/dock/desktop/panel
+	own_window_type = 'normal',-- # options are: normal/override/dock/desktop/panel -- 'normal' + regla de KWin para mantenerlo detrás (override no es gestionado por KWin, así que los hints/below no le afectan)
 	text_buffer_size = 2048,
 	own_window_transparent = true,
 	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
@@ -60,34 +59,45 @@ conky.config = {
 	color1 = '#68A1DF', -- title_color
 	color2 = '#FAA916', -- top memory or processe, graphs
 	color3 = '#FBFFFE',	-- text color
+	color4 = '#FF5555', -- warnings (temp alta, batería baja)
 
 };
 
 conky.text = [[
-${font sans-serif:bold:size=8}SYSTEMA ${hr 2}
-${font sans-serif:normal:size=8}Kernel: $kernel $alignr $machine
+${font sans-serif:bold:size=8}SISTEMA ${hr 2}
+${font sans-serif:size=8}Kernel: $kernel $alignr $machine
 Host:$alignr$nodename
 Tiempo encendido:$alignr$uptime
 
+#Bateria#######################################################################
+${font sans-serif:bold:size=8}BATERIA ${hr 2}
+${font sans-serif:size=8}Estado: ${alignr}${battery BAT0}
+Carga: ${alignr}${battery_percent BAT0}%
+${battery_bar BAT0}
+Tiempo restante: ${alignr}${battery_time BAT0}
+
+#Temperaturas y ventiladores###################################################
+${font sans-serif:bold:size=8}TEMPERATURAS ${hr 2}
+${font sans-serif:size=8}CPU (Tctl): ${alignr}${execi 3 awk '{printf "%.1f", $1/1000}' /sys/class/hwmon/hwmon4/temp1_input}°C
+GPU (edge): ${alignr}${execi 3 awk '{printf "%.1f", $1/1000}' /sys/class/hwmon/hwmon3/temp1_input}°C
+NVMe: ${alignr}${execi 3 awk '{printf "%.1f", $1/1000}' /sys/class/hwmon/hwmon1/temp1_input}°C
+WiFi (mt7921): ${alignr}${execi 5 awk '{printf "%.1f", $1/1000}' /sys/class/hwmon/hwmon5/temp1_input}°C
+Ventilador 1: ${alignr}${execi 3 cat /sys/class/hwmon/hwmon2/fan1_input} RPM
+Ventilador 2: ${alignr}${execi 3 cat /sys/class/hwmon/hwmon2/fan2_input} RPM
+
 #Procesador####################################################################
 ${font sans-serif:bold:size=8}PROCESADOR ${hr 2}
-${font sans-serif:normal:size=8}${cpugraph cpu1}
-CPU1: ${cpu cpu1}% ${goto 65} ${cpubar cpu1}
-CPU2: ${cpu cpu2}% ${goto 65} ${cpubar cpu2}
-CPU3: ${cpu cpu3}% ${goto 65} ${cpubar cpu3}
-CPU4: ${cpu cpu4}% ${goto 65} ${cpubar cpu4}
-Temperatura: ${alignr} ${execi 5 sensors | grep Package | cut -c 17-20} °C
-Ventilador: ${alignr} ${execi 5 sensors | grep fan2 | cut -c 16-20} RPM
+${font sans-serif:size=8}${cpugraph cpu0}
+Total: ${cpu cpu0}% ${goto 65}${cpubar cpu0}
 
-#GPU###########################################################################
+#GPU (AMD iGPU)#################################################################
 ${font sans-serif:bold:size=8}GPU ${hr 2}
-${font sans-serif:normal:size=8}Uso: $alignr${exec nvidia-smi -i 0 | grep % | cut -c 2-4} %
-VRAM: ${alignr}${exec nvidia-smi -i 0| grep % | cut -c 37-40} MB
-${voffset 2}Temperatura: ${alignr}${nvidia temp}°C
+${font sans-serif:size=8}Uso: ${alignr}${execi 2 cat /sys/class/drm/card1/device/gpu_busy_percent}%
+Potencia (PPT): ${alignr}${execi 3 awk '{printf "%.1f", $1/1000000}' /sys/class/hwmon/hwmon3/power1_input} W
 
 #Memoria#######################################################################
 ${font sans-serif:bold:size=8}MEMORIA ${hr 2}
-${font sans-serif:normal:size=8}RAM $alignc $mem / $memmax $alignr $memperc%
+${font sans-serif:size=8}RAM $alignc $mem / $memmax $alignr $memperc%
 $membar
 SWAP $alignc ${swap} / ${swapmax} $alignr ${swapperc}%
 ${swapbar}
@@ -95,58 +105,34 @@ ${voffset 5}Name${goto 180}MEM%${alignr}MEM
 ${top_mem name 1} ${goto 180}${top_mem mem 1}${alignr}${top_mem mem_res 1}
 ${top_mem name 2} ${goto 180}${top_mem mem 2}${alignr}${top_mem mem_res 2}
 ${top_mem name 3} ${goto 180}${top_mem mem 3}${alignr}${top_mem mem_res 3}
-${top_mem name 4} ${goto 180}${top_mem mem 4}${alignr}${top_mem mem_res 4}
-${top_mem name 5} ${goto 180}${top_mem mem 5}${alignr}${top_mem mem_res 5}
 
 #Procesos######################################################################
 ${font sans-serif:bold:size=8}PROCESOS ${hr 2}
-${font sans-serif:normal:size=8}#
+${font sans-serif:size=8}#
 ${voffset 5}Name${goto 180}CPU%${alignr}MEM%
 ${top name 1} ${goto 180}${top cpu 1}${alignr}${top mem 1}
 ${top name 2} ${goto 180}${top cpu 2}${alignr}${top mem 2}
 ${top name 3} ${goto 180}${top cpu 3}${alignr}${top mem 3}
-${top name 4} ${goto 180}${top cpu 4}${alignr}${top mem 4}
-${top name 5} ${goto 180}${top cpu 5}${alignr}${top mem 5}
 
 #Discos########################################################################
-${font sans-serif:bold:size=8}DISCOS ${hr 2}${font sans-serif:normal:size=8}
+${font sans-serif:bold:size=8}DISCOS ${hr 2}${font sans-serif:size=8}
 / $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
 ${fs_bar /}
-Lectura / Escritura: ${alignr} ${diskio_read /dev/sdb} / ${diskio_write /dev/sdb}
-${if_existing /mnt/Datos160}
-Datos160 $alignc ${fs_used /mnt/Datos160} / ${fs_size /mnt/Datos160} $alignr ${fs_used_perc /mnt/Datos160}%
-${fs_bar /mnt/Datos160}
-Lectura / Escritura: $alignr ${diskio_read /dev/sda} / ${diskio_write /dev/sda}
-${endif}${if_existing /mnt/Datos500}
-Datos500 $alignc ${fs_used /mnt/Datos500} / ${fs_size /mnt/Datos500} $alignr ${fs_used_perc /mnt/Datos500}%
-${fs_bar /mnt/Datos500}
-Lectura / Escritura: $alignr ${diskio_read /dev/sdd} / ${diskio_write /dev/sdd}
-${endif}
+Lectura / Escritura: ${alignr}${diskio_read nvme0n1} / ${diskio_write nvme0n1}
+
 #Internet######################################################################
 ${font sans-serif:bold:size=8}INTERNET ${hr 2}
-${font sans-serif:normal:size=8}#
-IP Externa: ${alignr}${texeci 3600 wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1}
-####
-${if_existing /sys/class/net/eno1/operstate up}#
-IP Local: $alignr ${addr eno1}
-Descarga: ${downspeed eno1}/s $alignr Subida: ${upspeed eno1}/s
-${downspeedgraph eno1 32,120}$alignr ${upspeedgraph eno1 32,120}
-Total: ${totaldown eno1} $alignr Total: ${totalup eno1}
+${font sans-serif:size=8}IP Externa: ${alignr}${texeci 3600 curl -s --max-time 3 https://icanhazip.com}
+${if_existing /sys/class/net/wlp2s0/operstate up}#
+Red: $alignr ${wireless_essid wlp2s0}
+Señal: $alignr ${wireless_link_qual_perc wlp2s0}%
+IP Local: $alignr ${addr wlp2s0}
+Descarga: ${downspeed wlp2s0}/s $alignr Subida: ${upspeed wlp2s0}/s
+${downspeedgraph wlp2s0 32,120}$alignr ${upspeedgraph wlp2s0 32,120}
+Total: ${totaldown wlp2s0} $alignr Total: ${totalup wlp2s0}
 ${endif}#
-####
-${if_existing /sys/class/net/wlp0s29u1u1/operstate up}#
-Red: $alignr ${wireless_essid}
-IP Local: $alignr ${addr wlp0s29u1u1}
-Descarga: ${downspeed wlp0s29u1u1}/s $alignr Subida: ${upspeed wlp0s29u1u1}/s
-${downspeedgraph wlp0s29u1u1 32,120}$alignr ${upspeedgraph wlp0s29u1u1 32,120}
-Total: ${totaldown wlp0s29u1u1} $alignr Total: ${totalup wlp0s29u1u1}
-${endif}#
-####
-${if_existing /sys/class/net/wlp3s0u2/operstate up}#
-Red: $alignr ${wireless_essid}
-IP Local: $alignr ${addr wlp3s0u2}
-Descarga: ${downspeed wlp3s0u2}/s $alignr Subida: ${upspeed wlp3s0u2}/s
-${downspeedgraph wlp3s0u2 32,120}$alignr ${upspeedgraph wlp3s0u2 32,120}
-Total: ${totaldown wlp3s0u2} $alignr Total: ${totalup wlp3s0u2}
+${if_existing /sys/class/net/enp1s0/operstate up}#
+IP Local (eth): $alignr ${addr enp1s0}
+Descarga: ${downspeed enp1s0}/s $alignr Subida: ${upspeed enp1s0}/s
 ${endif}
 ]];

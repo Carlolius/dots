@@ -51,10 +51,10 @@ dotfiles:
     dst: ~/.config/waybar
   f_conkyrc:
     src: conky/conkyrc
-    dst: ~/.conkyrc
+    dst: ~/.config/conky/conkyrc
   f_conkyrc2:
     src: conky/conkyrc2
-    dst: ~/.conkyrc2
+    dst: ~/.config/conky/conkyrc2
   f_i3-barconfig:
     src: i3/barconfig
     dst: ~/.config/i3/barconfig
@@ -63,7 +63,7 @@ dotfiles:
     dst: ~/.config/i3/config
   f_inicio-conky:
     src: conky/inicio-conky.sh
-    dst: ~/.inicio-conky.sh
+    dst: ~/.config/conky/inicio-conky.sh
   f_rofi-config:
     src: rofi/config.rasi
     dst: ~/.config/rofi/config.rasi
@@ -152,6 +152,7 @@ profiles:
 
   yanos:
     include:
+    - conky
     - nvim
     - rofi
     - sh

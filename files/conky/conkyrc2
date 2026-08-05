@@ -10,12 +10,11 @@ conky.config = {
 	double_buffer = true,  --  (eliminates flicker) 
 	if_up_strictness = 'address',
 	net_avg_samples = 2, -- The number of samples to average for net data 
-	no_buffers = true, -- Subtract (file system) buffers from used memory? 
+	no_buffers = true, -- Subtract (file system) buffers from used memory?
 	temperature_unit = 'celsius',
 	update_interval = 1,
 	imlib_cache_size = 0,
 	total_run_times = 0, -- This is the number of times Conky will update before quitting, set to zero to run forever.
-	temperature_unit = 'celsius',
 
 -- Position
 
@@ -49,7 +48,7 @@ conky.config = {
 	own_window = true, -- Create own window instead of using desktop (required in nautilus)
 	own_window_argb_value = 0,
 	own_window_argb_visual = true,
-	own_window_type = 'override',-- # options are: normal/override/dock/desktop/panel
+	own_window_type = 'normal',-- # options are: normal/override/dock/desktop/panel -- ver conkyrc: 'normal' + regla de KWin para mantenerlo detrás y en todos los escritorios
 	text_buffer_size = 2048,
 	own_window_transparent = true,
 	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
