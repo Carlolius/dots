@@ -1,6 +1,7 @@
 # Should be called before compinit
 zmodload zsh/complist
 
+[[ -d ~/.cache/zsh ]] || mkdir -p ~/.cache/zsh
 autoload -Uz compinit; compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
 _comp_options+=(globdots) # With hidden files
 
