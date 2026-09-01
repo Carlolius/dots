@@ -1,3 +1,5 @@
 env
 
 files/zsh/.zcompdump
+__pycache__/
+*.pyc

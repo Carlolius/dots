@@ -22,13 +22,41 @@ def write_output(text, player):
     sys.stdout.flush()
 
 
+def pick_best_player(manager):
+    """With several MPRIS players tracked at once (e.g. more than one app,
+    or a kdeconnect bridge from the phone), show the one that's actually
+    Playing rather than whichever fired the last event — otherwise the bar
+    flickers between players every time either one emits a signal."""
+    players = manager.props.players
+    if not players:
+        return None
+    for p in players:
+        if p.props.status == 'Playing':
+            return p
+    return players[0]
+
+
+def refresh_display(manager):
+    player = pick_best_player(manager)
+    if player is None:
+        sys.stdout.write('\n')
+        sys.stdout.flush()
+        return
+    render_player(player)
+
+
 def on_play(player, status, manager):
     logger.info('Received new playback status')
-    on_metadata(player, player.props.metadata, manager)
+    refresh_display(manager)
 
 
 def on_metadata(player, metadata, manager):
     logger.info('Received new metadata')
+    refresh_display(manager)
+
+
+def render_player(player):
+    metadata = player.props.metadata
     track_info = ''
 
     if player.props.player_name == 'spotify' and \
@@ -55,8 +83,7 @@ def on_player_appeared(manager, player, selected_player=None):
 
 def on_player_vanished(manager, player):
     logger.info('Player has vanished')
-    sys.stdout.write('\n')
-    sys.stdout.flush()
+    refresh_display(manager)
 
 
 def init_player(manager, name):
@@ -65,7 +92,7 @@ def init_player(manager, name):
     player.connect('playback-status', on_play, manager)
     player.connect('metadata', on_metadata, manager)
     manager.manage_player(player)
-    on_metadata(player, player.props.metadata, manager)
+    refresh_display(manager)
 
 
 def signal_handler(sig, frame):
