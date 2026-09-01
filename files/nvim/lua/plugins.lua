@@ -27,6 +27,7 @@ require("lazy").setup({
 	  "hrsh7th/cmp-buffer",
 	  "hrsh7th/cmp-calc",
 	  "hrsh7th/cmp-emoji",
+	  "hrsh7th/cmp-nvim-lsp",
 	  "hrsh7th/cmp-nvim-lua",
 	  "hrsh7th/cmp-path",
 	  "hrsh7th/cmp-cmdline",
@@ -35,6 +36,15 @@ require("lazy").setup({
 	  "ray-x/cmp-treesitter",
 	},
 	config = function() require('config.cmp-config') end,
+  },
+
+  -- LSP (Mason installs servers, wired up via Neovim's native LSP client)
+  { "mason-org/mason.nvim", cmd = "Mason", opts = {} },
+  {
+	"mason-org/mason-lspconfig.nvim",
+	event = { "BufReadPre", "BufNewFile" },
+	dependencies = { "mason-org/mason.nvim", "neovim/nvim-lspconfig" },
+	config = function() require('config.lsp-config') end,
   },
 
   -- Autopairs

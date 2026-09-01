@@ -57,9 +57,9 @@ cmd([[colorscheme onedark_dark]])
 cmd([[highlight TabLineSel guibg=#454545]])
 
 
--- Python environment detection
-if vim.fn.exists("$VIRTUAL_ENV") == 1 then
-  global.python3_host_prog = vim.fn.substitute(vim.fn.system("which -a python3 | head -n2 | tail -n1"), "\n", "", "g")
-else
-  global.python3_host_prog = vim.fn.substitute(vim.fn.system("which python3"), "\n", "", "g")
-end
+-- No plugin here needs a Python/Node/Perl remote-plugin host (everything is
+-- pure Lua) — disable those providers instead of leaving them half-detected
+-- and warning on every :checkhealth.
+global.loaded_python3_provider = 0
+global.loaded_node_provider = 0
+global.loaded_perl_provider = 0

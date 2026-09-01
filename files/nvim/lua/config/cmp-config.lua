@@ -16,6 +16,7 @@ cmp.setup({
 				vim_item.kind
 			)
 			vim_item.menu = ({
+				nvim_lsp = "[LSP]",
 				luasnip = "[LuaSnip]",
 				nvim_lua = "[Lua]",
 				path = "[Path]",
@@ -61,6 +62,7 @@ cmp.setup({
 		completion = cmp.config.window.bordered(),
 	},
 	sources = {
+		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },
 		{ name = "treesitter" },
