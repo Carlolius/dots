@@ -38,6 +38,14 @@ setopt share_history            # Share history between all sessions.
 [ -r  $HOME/.config/envrc ] && . $HOME/.config/envrc
 source $HOME/.config/aliases
 source $HOME/.config/functions
+# p10k falls back to forking `who` (~10ms) to detect SSH when none of the
+# SSH env vars are set. Pre-seed its result when we already know we're
+# local, so it skips that fork. Sessions actually over SSH keep SSH_TTY/
+# SSH_CLIENT/SSH_CONNECTION set and hit p10k's fast path unaffected.
+if [[ -z $SSH_CLIENT && -z $SSH_TTY && -z $SSH_CONNECTION ]]; then
+  typeset -gix P9K_SSH=0
+  typeset -gx _P9K_SSH_TTY=$TTY
+fi
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 

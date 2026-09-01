@@ -2,7 +2,16 @@
 zmodload zsh/complist
 
 [[ -d ~/.cache/zsh ]] || mkdir -p ~/.cache/zsh
-autoload -Uz compinit; compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
+autoload -Uz compinit
+# compaudit (security check on every $fpath dir) is the slow part of compinit,
+# not the dump load. Only re-run it once a day; skip it (-C) otherwise.
+zcompdump=~/.cache/zsh/zcompdump-$ZSH_VERSION
+if [[ -n ${zcompdump}(#qN.mh+24) ]]; then
+  compinit -d "$zcompdump"
+  touch "$zcompdump" 2>/dev/null  # compinit doesn't bump mtime when fpath is unchanged
+else
+  compinit -C -d "$zcompdump"
+fi
 _comp_options+=(globdots) # With hidden files
 
 # Use hjlk in menu selection (during completion)
