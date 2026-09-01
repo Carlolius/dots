@@ -11,6 +11,12 @@ dotfiles:
   d_scripts:
     src: scripts
     dst: ~/scripts
+  f_ayk-startup-service:
+    src: systemd/ayk_startup.service
+    dst: ~/.config/systemd/user/ayk_startup.service
+  f_ayk-startup-timer:
+    src: systemd/ayk_startup.timer
+    dst: ~/.config/systemd/user/ayk_startup.timer
   d_termite:
     src: termite
     dst: ~/.config/termite
@@ -161,6 +167,8 @@ profiles:
     dotfiles:
     - d_foot
     - d_scripts
+    - f_ayk-startup-service
+    - f_ayk-startup-timer
     - d_tmux
     - d_waybar
     - f_aliases

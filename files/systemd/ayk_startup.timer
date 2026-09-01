@@ -1,0 +1,15 @@
+[Unit]
+Description=Run work apps on a strict morning window
+
+[Timer]
+# systemd OnCalendar doesn't support a HH:MM:SS..HH:MM:SS range across a
+# minute/hour boundary (the original "08:59:00..09:10:00" was silently
+# invalid and never fired) — simplified to a single weekday morning trigger.
+OnCalendar=Mon..Fri 09:00:00
+# If the PC was off at the time, run immediately on boot/login
+Persistent=true
+# Allow up to 1 minute of jitter around the trigger time
+AccuracySec=1m
+
+[Install]
+WantedBy=timers.target

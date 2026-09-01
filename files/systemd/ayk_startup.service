@@ -1,0 +1,11 @@
+[Unit]
+Description=Launch AYK applications
+After=plasma-workspace.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/scripts/ayk_startup.sh
+StandardOutput=journal
+
+[Install]
+WantedBy=default.target

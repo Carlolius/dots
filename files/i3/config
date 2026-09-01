@@ -202,7 +202,7 @@ exec setxkbmap -layout es # Set the spanish layout for the keyboard
 # Sound at start
 exec --no-startup-id mpv ~/dots/media/seatbelt.wav
 # Screenlocker
-# exec --no-startup-id sh ~/scripts/screenlock.sh
+exec --no-startup-id sh ~/scripts/screenlock.sh
 # Dropbox
 exec --no-startup-id dropbox
 # Polybar
