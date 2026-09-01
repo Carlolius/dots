@@ -215,7 +215,6 @@ bindsym Mod4+t border toggle
 default_border pixel 2
 default_floating_border pixel 2
 smart_borders no_gaps
-smart_gaps on
 hide_edge_borders smart
 
 #

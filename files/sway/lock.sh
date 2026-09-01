@@ -13,3 +13,4 @@ swaylock \
   --key-hl-color 00FF00 \
   --line-color 00000000 \
   --separator-color 373b41 \
+  "$@"
