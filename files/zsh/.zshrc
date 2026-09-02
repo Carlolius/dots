@@ -77,6 +77,7 @@ zle -N bracketed-paste bracketed-paste-magic
 source $HOME/.config/zsh/completion.zsh
 
 # fzf shell integration — fuzzy Ctrl+R (history), Ctrl+T (files)
+export FZF_CTRL_T_OPTS="--preview 'bat --style=full --color=always {}'"
 source <(fzf --zsh)
 # fzf's default Alt+C (cd) is unreachable here — KDE has a global shortcut
 # on SpeedCrunch bound to Alt+C that intercepts it before the terminal ever
