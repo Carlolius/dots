@@ -76,10 +76,15 @@ zle -N bracketed-paste bracketed-paste-magic
 # Completion
 source $HOME/.config/zsh/completion.zsh
 
+# fzf shell integration — fuzzy Ctrl+R (history), Ctrl+T (files)
+source <(fzf --zsh)
+# fzf's default Alt+C (cd) is unreachable here — KDE has a global shortcut
+# on SpeedCrunch bound to Alt+C that intercepts it before the terminal ever
+# sees it. Rebound to Alt+D instead (free in both KDE and zsh's vi mode).
+bindkey '^[d' fzf-cd-widget
+
 # Autosuggestions
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-# History substring search
-bindkey '^R' history-incremental-search-backward
 # Next line binds the Ctrl + l to end of line in Vi normal mode
 bindkey -v '^L' vi-end-of-line
 bindkey -v '^J' vi-forward-word
@@ -91,3 +96,8 @@ promptinit
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 (( ! ${+functions[p10k]} )) || p10k finalize
+
+# zsh-syntax-highlighting must be sourced last — it wraps zle widgets, and
+# anything sourced after it that also defines widgets (fzf, autosuggestions)
+# can break its highlighting.
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
