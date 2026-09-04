@@ -76,7 +76,16 @@ function extract {
 # Case to update different stuff quickly
 function total_update {
 	function u_dots { echo "Actualizando dots" && git -C ~/dots pull --no-rebase; }
-	function u_sistema { echo "Actualizando sistema" && yay; }
+	function u_sistema {
+		echo "Actualizando sistema" && yay
+		local pacnews=$(find /etc -iname "*.pacnew" 2>/dev/null)
+		if [[ -n "$pacnews" ]]; then
+			echo ""
+			echo "Quedan $(echo "$pacnews" | wc -l) fichero(s) .pacnew por revisar:"
+			echo "$pacnews"
+			echo "(usa pacdiff, o pídeselo a Claude)"
+		fi
+	}
 	function u_vim { echo "Actualizando plugins de nvim" && nvim --headless "+Lazy! sync" +qa; }
 	function u_pip { echo "Actualizando pip" && pip freeze --user | cut -d'=' -f1 | xargs -n1 pip install -U; }
 	if [[ $1 != '' ]] ; then
