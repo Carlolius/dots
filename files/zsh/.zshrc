@@ -22,7 +22,7 @@ setopt pushd_ignore_dups    	# Do not store duplicates in the stack.
 setopt pushd_silent         	# Do not print the directory stack after pushd or popd.
 
 # History options
-HISTFILE=$HOME/histfile
+HISTFILE=${XDG_STATE_HOME:-$HOME/.local/state}/zsh/history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt append_history           # Intead rewrite the hole history, add the commands to the end.
