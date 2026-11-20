@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import logging
+import os
 import sys
 import signal
 import gi
@@ -33,6 +34,15 @@ def pick_best_player(manager):
     for p in players:
         if p.props.status == 'Playing':
             return p
+    # ninguno suena: el ultimo que sono (lo guarda sway/scripts/media.sh), si sigue conectado
+    try:
+        with open(os.path.join(os.environ.get('XDG_RUNTIME_DIR', '/tmp'), 'media-ultimo')) as f:
+            ultimo = f.read().strip()
+        for p in players:
+            if ultimo.startswith(p.props.player_name):
+                return p
+    except OSError:
+        pass
     return players[0]
 
 

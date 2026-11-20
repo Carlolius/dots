@@ -13,15 +13,15 @@ bindsym XF86AudioLowerVolume exec swayosd-client --output-volume lower
 bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
 #: Silenciar micro
 bindsym XF86AudioMicMute exec swayosd-client --input-volume mute-toggle
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec ~/.config/sway/scripts/media.sh toggle
+bindsym XF86AudioNext exec ~/.config/sway/scripts/media.sh next
+bindsym XF86AudioPrev exec ~/.config/sway/scripts/media.sh prev
 #: Play/pausa
-bindsym Mod1+Control+c exec playerctl play-pause
+bindsym Mod1+Control+c exec ~/.config/sway/scripts/media.sh toggle
 #: Pista siguiente
-bindsym Mod1+Control+b exec playerctl next
+bindsym Mod1+Control+b exec ~/.config/sway/scripts/media.sh next
 #: Pista anterior
-bindsym Mod1+Control+z exec playerctl previous
+bindsym Mod1+Control+z exec ~/.config/sway/scripts/media.sh prev
 
 #
 # Backlight

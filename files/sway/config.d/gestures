@@ -10,11 +10,11 @@ bindgesture swipe:4:right workspace next
 
 # Music
 #: Gesto: play/pausa
-bindgesture pinch:outward exec playerctl play-pause
+bindgesture pinch:outward exec ~/.config/sway/scripts/media.sh toggle
 #: Gesto: pista anterior
-bindgesture swipe:3:left exec playerctl previous
+bindgesture swipe:3:left exec ~/.config/sway/scripts/media.sh prev
 #: Gesto: pista siguiente
-bindgesture swipe:3:right exec playerctl next
+bindgesture swipe:3:right exec ~/.config/sway/scripts/media.sh next
 #: Gesto: subir volumen
 bindgesture swipe:3:up exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 #: Gesto: bajar volumen
