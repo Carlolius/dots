@@ -106,6 +106,9 @@ dotfiles:
   f_zshenv:
     src: zshenv
     dst: ~/.zshenv
+  d_kanshi:
+    src: kanshi
+    dst: ~/.config/kanshi
 
 profiles:
   bender:
@@ -168,6 +171,7 @@ profiles:
     - d_tmux
     - d_waybar
     - f_aliases
+    - d_kanshi
 
 # Packages used above
   conky:

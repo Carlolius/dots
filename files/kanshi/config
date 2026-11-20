@@ -1,0 +1,21 @@
+# kanshi: perfiles de pantalla. Gana el primero que coincide, de arriba abajo.
+# Los monitores se identifican por marca/modelo/serie, no por puerto, asi
+# da igual a que puerto del hub o del portatil enchufes el cable.
+
+# Portatil + monitor Acer (a la derecha)
+profile acer {
+    output eDP-1 enable mode 1920x1080 position 0,0
+    output "Acer Technologies HA240Y 0x82202483" enable mode 1920x1080 position 1920,0
+}
+
+# Portatil + cualquier otra pantalla (tele, proyector, monitor ajeno):
+# se usa su resolucion preferida a la derecha del portatil.
+profile externa {
+    output eDP-1 enable mode 1920x1080 position 0,0
+    output * enable position 1920,0
+}
+
+# Solo portatil
+profile portatil {
+    output eDP-1 enable mode 1920x1080 position 0,0
+}
