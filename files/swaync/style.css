@@ -1,0 +1,99 @@
+@define-color bg #1a1b26;
+@define-color bg2 #292e42;
+@define-color fg #c0caf5;
+@define-color dim #565f89;
+@define-color accent #7aa2f7;
+@define-color accent2 #bb9af7;
+@define-color urgent #f7768e;
+
+* { font-family: "Hack Nerd Font"; font-size: 13px; }
+
+/* Las ventanas contenedoras deben ser transparentes: si no, se ve un rectangulo detras de las esquinas redondeadas */
+window, .blank-window, .notification-window, .control-center-window, .floating-notifications,
+.floating-notifications.background, .notification-row .notification-background {
+  background: transparent; box-shadow: none; border: none;
+}
+
+/* Un solo borde: todo lo que rodea a .notification-content es transparente y sin sombra */
+.notification-row, .notification-row:focus, .notification-row:hover,
+.notification-background, .notification, .notification-default-action {
+  background: transparent; border: none; box-shadow: none; outline: none;
+}
+.notification { margin: 6px 10px; padding: 0; }
+.notification-content {
+  background: alpha(@bg, 0.95);
+  border: 2px solid @accent;
+  border-radius: 6px;
+  padding: 10px;
+}
+.notification.critical .notification-content { border-color: @urgent; }
+.summary { color: @accent2; font-weight: bold; font-size: 14px; }
+.body, .time { color: @fg; font-family: "Noto Sans", sans-serif; font-size: 13px; }
+.app-icon, .image { margin-right: 10px; }
+.close-button { background: @accent; color: @bg; border-radius: 0px; margin: 4px; padding: 0 4px; min-height: 20px; min-width: 20px; border: none; box-shadow: none; }
+.close-button:hover { background: @accent2; }
+
+.notification-action { background: @bg2; color: @fg; border-radius: 0px; margin: 4px; border: none; }
+.notification-action:hover { background: @accent; color: @bg; }
+
+.control-center {
+  background: alpha(@bg, 0.96);
+  border: 2px solid @accent;
+  border-radius: 0px;
+  padding: 6px;
+}
+.control-center .notification-row .notification-background { background: transparent; }
+.control-center-list { background: transparent; }
+
+.widget-title { margin: 10px 10px 4px 10px; color: @accent2; font-size: 16px; font-weight: bold; }
+.widget-title > button { background: @bg2; color: @fg; border-radius: 0px; padding: 4px 12px; border: none; }
+.widget-title > button:hover { background: @accent; color: @bg; }
+
+.widget-dnd { margin: 6px 12px; color: @fg; }
+.widget-dnd > switch { background: @bg2; border-radius: 0px; }
+.widget-dnd > switch:checked { background: @accent; }
+.widget-dnd > switch slider { background: @fg; border-radius: 0px; }
+
+.widget-buttons-grid { margin: 6px 10px; }
+.widget-buttons-grid > flowbox > flowboxchild > button {
+  background: @bg2; color: @fg; border-radius: 0px; font-size: 13px; min-height: 40px; min-width: 100px; margin: 3px; border: none;
+}
+.widget-buttons-grid > flowbox > flowboxchild > button:hover { background: @accent; color: @bg; }
+
+.widget-volume, .widget-backlight { background: @bg2; border-radius: 0px; margin: 6px 12px; padding: 6px 10px; color: @accent2; }
+scale trough { background: alpha(@fg, 0.15); border-radius: 0px; min-height: 8px; }
+scale highlight { background: linear-gradient(90deg, @accent, @accent2); border-radius: 0px; }
+scale slider { background: @fg; border-radius: 0px; min-width: 14px; min-height: 14px; }
+
+.widget-mpris { margin: 6px 12px; }
+.widget-mpris-player { background: @bg2; border-radius: 0px; padding: 8px; }
+.widget-mpris-title { color: @accent2; font-weight: bold; }
+.widget-mpris-subtitle { color: @fg; opacity: 0.8; }
+.widget-mpris button { color: @fg; }
+.widget-mpris button:hover { color: @accent; }
+
+/* Sin cajas extra al seleccionar o pasar el raton por una notificacion */
+.notification-row:focus, .notification-row:hover, .notification-row:active,
+.notification-row:focus .notification-background, .notification-row:hover .notification-background,
+.notification-row:focus .notification, .notification-row:hover .notification,
+.notification-background:focus, .notification-background:hover, .notification-background:active,
+.notification-default-action, .notification-default-action:hover,
+.notification-default-action:focus, .notification-default-action:active,
+.notification-default-action:hover .notification-content {
+  background-color: transparent; background-image: none; border: none; box-shadow: none; outline: none;
+}
+.notification-row:focus .notification-content, .notification-default-action:hover .notification-content {
+  border: 2px solid @accent2;
+  background: alpha(@bg, 0.95);
+}
+
+/* Filas de la lista y grupos: sin el fondo gris por defecto de GTK (la "caja dentro de otra caja") */
+list, list row, row, row:hover, row:selected, row:focus, row:active,
+.control-center-list, .control-center-list row, .control-center-list row:hover, .control-center-list row:selected,
+.notification-group, .notification-group:hover, .notification-group:focus, .notification-group-headers,
+.floating-notifications row, .floating-notifications row:hover {
+  background-color: transparent; background-image: none; box-shadow: none; border: none; outline: none;
+}
+
+/* Controles abajo, separados de las notificaciones */
+.widget-buttons-grid { margin-top: 10px; padding-top: 10px; border-top: 2px solid alpha(@fg, 0.15); }

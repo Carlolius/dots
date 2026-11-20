@@ -1,0 +1,90 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "positionX": "right",
+  "positionY": "top",
+  "layer": "overlay",
+  "control-center-layer": "top",
+  "layer-shell": true,
+  "cssPriority": "user",
+  "control-center-margin-top": 10,
+  "control-center-margin-bottom": 10,
+  "control-center-margin-right": 10,
+  "control-center-width": 420,
+  "notification-window-width": 400,
+  "timeout": 8,
+  "timeout-low": 4,
+  "timeout-critical": 0,
+  "fit-to-screen": true,
+  "keyboard-shortcuts": true,
+  "notification-grouping": true,
+  "image-visibility": "when-available",
+  "transition-time": 150,
+  "hide-on-clear": true,
+  "hide-on-action": true,
+  "text-empty": "Sin notificaciones",
+  "widgets": [
+    "title",
+    "dnd",
+    "notifications",
+    "buttons-grid",
+    "volume",
+    "backlight",
+    "mpris"
+  ],
+  "widget-config": {
+    "title": {
+      "text": "Notificaciones",
+      "clear-all-button": true,
+      "button-text": "󰆴 Borrar"
+    },
+    "dnd": {
+      "text": "No molestar"
+    },
+    "volume": {
+      "label": "󰕾"
+    },
+    "backlight": {
+      "label": "󰃟",
+      "device": "amdgpu_bl1"
+    },
+    "mpris": {
+      "image-size": 64,
+      "image-radius": 10
+    },
+    "buttons-grid": {
+      "actions": [
+        {
+          "label": "󰖩  Wi-Fi",
+          "command": "foot nmtui"
+        },
+        {
+          "label": "󰂯  Bluetooth",
+          "command": "~/.config/sway/scripts/bluetooth.sh"
+        },
+        {
+          "label": "󰍹  Pantallas",
+          "command": "~/.config/sway/scripts/pantallas.sh"
+        },
+        {
+          "label": "󰖔  Noche",
+          "command": "~/.config/sway/scripts/noche.sh toggle"
+        },
+        {
+          "label": "󰾅  Perfil",
+          "command": "~/.config/sway/scripts/vatios.sh perfil"
+        },
+        {
+          "label": "󰌾  Bloquear",
+          "command": "~/.config/sway/lock.sh"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "limpiar-enlaces": {
+      "body": "<a ",
+      "exec": "/home/carlos/.config/sway/scripts/limpiar-notif.sh",
+      "run-on": "receive"
+    }
+  }
+}

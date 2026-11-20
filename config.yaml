@@ -115,6 +115,9 @@ dotfiles:
   d_fuzzel:
     src: fuzzel
     dst: ~/.config/fuzzel
+  d_swaync:
+    src: swaync
+    dst: ~/.config/swaync
 
 profiles:
   bender:
@@ -177,6 +180,7 @@ profiles:
     - d_tmux
     - d_waybar
     - f_aliases
+    - d_swaync
     - d_fuzzel
     - d_tema
     - d_kanshi
