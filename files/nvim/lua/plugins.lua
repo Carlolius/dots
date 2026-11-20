@@ -50,9 +50,6 @@ require("lazy").setup({
   -- Autopairs
   { "windwp/nvim-autopairs", event = "InsertEnter", config = function() require('config.autopairs') end },
 
-  -- Code action menu
-  { "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" },
-
   -- Colorschemes
   { "olimorris/onedarkpro.nvim", lazy = false, priority = 1000 },
   { "catppuccin/nvim",           name = "catppuccin", lazy = true },

@@ -5,7 +5,6 @@ local cmd = vim.cmd
 local global = vim.g
 
 -- Indentation
-set.autoindent = true
 set.smartindent = true
 set.shiftwidth = 0 -- Use tabstop value
 set.tabstop = 4
@@ -32,23 +31,18 @@ set.backup = false
 set.swapfile = false
 set.undofile = true
 set.writebackup = false
-set.hidden = true
 set.foldlevel = 5
 
 -- Search
 set.ignorecase = true
 set.smartcase = true
-set.hlsearch = true
-set.incsearch = true
 
 -- UI
-set.wildmenu = true
 set.wildmode = { "longest:full", "full" }
 set.completeopt = { "menuone", "preview", "noinsert", "noselect" }
 
 -- Clipboard & Syntax
 set.clipboard = "unnamedplus"
-set.syntax = "on"
 set.formatoptions = "jcroqlnt"
 
 -- Terminal & Colors

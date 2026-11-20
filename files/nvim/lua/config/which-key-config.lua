@@ -63,14 +63,9 @@ local setup = {
 	triggers = {
 		{ "<auto>", mode = "nxsot" },
 	},
-	disable = {
-		-- list of mode / prefixes that should never be hooked by WhichKey
-		-- this is mostly relevant for key maps that start with a native binding
-		-- most people should not need to change this
-		i = { "j", "k" },
-		v = { "j", "k" },
-	},
 }
+
+wk.setup(setup)
 
 wk.add({
     { "<leader>b", group = "buffer" },
@@ -152,9 +147,7 @@ wk.add({
     { "<leader>wk", "<C-W>k", desc = "window-up" },
     { "<leader>wl", "<C-W>l", desc = "window-right" },
     { "<leader>ws", "<C-W>s", desc = "split-window-below" },
-    { "<leader>wv", "<C-W>v", desc = "split-window-below" },
+    { "<leader>wv", "<C-W>v", desc = "split-window-right" },
     { "<leader>ww", "<C-W>w", desc = "other-window" },
     { "<leader>w|", "<C-W>v", desc = "split-window-right" },
   })
-
-wk.setup(setup)

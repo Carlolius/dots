@@ -4,6 +4,9 @@
 -- ============================================================================
 -- Load Bootstrap (must run first)
 -- ============================================================================
+-- The leader must be set before lazy.nvim loads any plugin
+vim.g.mapleader = " "
+
 require("plugins") -- Load lazy.nvim and plugins
 
 -- ============================================================================

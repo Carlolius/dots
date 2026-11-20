@@ -4,8 +4,7 @@
 -- General keybinds the other ones are in WhichKey plugin configuration
 -- Local var
 local keymap = vim.api.nvim_set_keymap
--- Map leader to space
-vim.g.mapleader = " "
+-- (the leader itself is set in init.lua, before plugins load)
 -- Quickly cancel search highlighting
 keymap("n", "<Leader>c", ":nohlsearch<cr>", { noremap = true })
 -- Quick search in buffer
