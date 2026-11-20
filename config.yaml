@@ -8,18 +8,18 @@ dotfiles:
   d_foot:
     src: foot
     dst: ~/.config/foot
-  d_scripts:
-    src: scripts
-    dst: ~/scripts
+  f_ayk-startup-script:
+    src: scripts/ayk_startup.sh
+    dst: ~/scripts/ayk_startup.sh
+  f_screenlock:
+    src: scripts/screenlock.sh
+    dst: ~/scripts/screenlock.sh
   f_ayk-startup-service:
     src: systemd/ayk_startup.service
     dst: ~/.config/systemd/user/ayk_startup.service
   f_ayk-startup-timer:
     src: systemd/ayk_startup.timer
     dst: ~/.config/systemd/user/ayk_startup.timer
-  d_termite:
-    src: termite
-    dst: ~/.config/termite
   d_tmux:
     src: tmux
     dst: ~/.config/tmux
@@ -61,12 +61,6 @@ dotfiles:
   f_conkyrc2:
     src: conky/conkyrc2
     dst: ~/.config/conky/conkyrc2
-  f_i3-barconfig:
-    src: i3/barconfig
-    dst: ~/.config/i3/barconfig
-  f_i3-config:
-    src: i3/config
-    dst: ~/.config/i3/config
   f_inicio-conky:
     src: conky/inicio-conky.sh
     dst: ~/.config/conky/inicio-conky.sh
@@ -115,12 +109,12 @@ profiles:
     include:
     - X
     - conky
-    - i3
     - nvim
     - rofi
     - sh
     - vim
     dotfiles:
+    - d_polybar
     - d_tmux
     - f_alacritty
     - f_sxhkd
@@ -139,14 +133,13 @@ profiles:
   nibbler:
     include:
     - X
-    - i3
     - nvim
     - rofi
     - sh
     - vim
     dotfiles:
-    - d_scripts
-    - d_termite
+    - d_polybar
+    - f_screenlock
     - d_tmux
     - f_sxhkd
 
@@ -166,7 +159,7 @@ profiles:
     - vim
     dotfiles:
     - d_foot
-    - d_scripts
+    - f_ayk-startup-script
     - f_ayk-startup-service
     - f_ayk-startup-timer
     - d_tmux
@@ -179,12 +172,6 @@ profiles:
     - f_conkyrc
     - f_conkyrc2
     - f_inicio-conky
-
-  i3:
-    dotfiles:
-    - d_polybar
-    - f_i3-barconfig
-    - f_i3-config
 
   nvim:
     dotfiles:
