@@ -6,6 +6,10 @@
 -- extend: add a server name to `servers` below and Mason installs it
 -- automatically on next start, no other wiring needed.
 
+-- This setup uses vim.lsp.config/enable (nvim 0.11+); on older nvim just skip LSP
+-- instead of erroring every time a file is opened.
+if vim.fn.has('nvim-0.11') == 0 then return end
+
 require('mason').setup()
 
 local servers = {

@@ -134,7 +134,6 @@ wk.add({
     { "<leader>tp", "<cmd>Telescope neoclip default<cr>", desc = "Clipboard" },
     { "<leader>tt", "<cmd>Telescope treesitter<cr>", desc = "Treesitter" },
     { "<leader>w", group = "windows" },
-    { "<leader>w-", "<C-W>s", desc = "split-window-below" },
     { "<leader>w2", "<C-W>v", desc = "layout-double-columns" },
     { "<leader>w=", "<C-W>=", desc = "balance-window" },
     { "<leader>wH", "<C-W>5<", desc = "expand-window-left" },
@@ -149,5 +148,4 @@ wk.add({
     { "<leader>ws", "<C-W>s", desc = "split-window-below" },
     { "<leader>wv", "<C-W>v", desc = "split-window-right" },
     { "<leader>ww", "<C-W>w", desc = "other-window" },
-    { "<leader>w|", "<C-W>v", desc = "split-window-right" },
   })

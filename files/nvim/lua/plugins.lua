@@ -15,7 +15,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   -- Utility
-  { "numToStr/Comment.nvim", keys = { "gc", "gb" }, config = function() require('Comment').setup() end },
   { "unblevable/quick-scope", event = "BufWinEnter" },
 
   -- Completion
@@ -69,7 +68,6 @@ require("lazy").setup({
   { "lukas-reineke/indent-blankline.nvim", event = "BufRead", dependencies = { "HiPhish/rainbow-delimiters.nvim" }, config = function() require('config.indent-blankline') end },
 
   -- Markdown
-  { "plasticboy/vim-markdown", ft = "markdown" },
   { "iamcco/markdown-preview.nvim", ft = "markdown", cmd = "MarkdownPreview", build = function() vim.fn['mkdp#util#install']() end },
 
   -- Clipboard manager

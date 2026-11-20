@@ -76,6 +76,9 @@ dotfiles:
   f_nvim-init:
     src: nvim/init.lua
     dst: ~/.config/nvim/init.lua
+  f_nvim-lazy-lock:
+    src: nvim/lazy-lock.json
+    dst: ~/.config/nvim/lazy-lock.json
   d_sway:
     src: sway
     dst: ~/.config/sway
@@ -177,6 +180,7 @@ profiles:
     dotfiles:
     - d_nvim-lua
     - f_nvim-init
+    - f_nvim-lazy-lock
 
   rofi:
     dotfiles:
