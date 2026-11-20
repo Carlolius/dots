@@ -1,0 +1,107 @@
+@define-color bg #@bg@;
+@define-color bg2 #@bg2@;
+@define-color fg #@fg@;
+@define-color dim #@dim@;
+@define-color accent #@accent@;
+@define-color accent2 #@accent2@;
+@define-color urgent #@urgent@;
+@define-color green #@green@;
+@define-color yellow #@yellow@;
+
+* {
+    font-family: "Hack Nerd Font", FontAwesome, Roboto, sans-serif;
+    font-size: 14px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: alpha(@bg, 0.96);
+    border-top: 2px solid @accent;
+    color: @fg;
+    font-weight: bold;
+}
+window#waybar.empty #window { background: transparent; }
+
+/* Modulos pegados, sin pastillas */
+#custom-noche, #custom-despierto, #custom-vatios, #clock, #battery, #bluetooth, #cpu, #memory, #disk, #temperature, #backlight, #network,
+#pulseaudio, #custom-media, #tray, #mode, #idle_inhibitor, #scratchpad,
+#language, #custom-notif, #custom-power {
+    background-color: transparent;
+    color: @fg;
+    padding: 0 8px;
+    margin: 2px 0 0 0;
+    border-radius: @r3@px;
+}
+
+/* Escritorios */
+#workspaces { margin: 2px 4px 0 4px; }
+#workspaces button {
+    padding: 0 8px;
+    margin: 0 1px;
+    background: transparent;
+    color: @dim;
+    border-radius: @r3@px;
+    box-shadow: none;
+}
+#workspaces button:hover { background: @bg2; color: @fg; box-shadow: none; }
+#workspaces button.focused { background: @accent; color: @bg; }
+#workspaces button.urgent { background: @urgent; color: @bg; }
+
+#window { color: @fg; margin: 0 8px; font-weight: normal; }
+window#waybar.tabbed #window { color: @yellow; }
+
+#mode { background: @yellow; color: @bg; }
+
+/* Iconos de acento */
+#custom-vatios { color: @yellow; }
+#custom-vatios.power-saver { color: @green; }
+#custom-vatios.performance { color: @urgent; }
+#cpu { color: @accent2; }
+#disk { color: @accent2; }
+#memory { color: @accent2; }
+#temperature { color: @accent2; }
+#temperature.critical { background: @urgent; color: @bg; }
+#backlight { color: @yellow; }
+#custom-notif:hover, #custom-power:hover, #bluetooth:hover,
+#network:hover, #pulseaudio:hover, #custom-media:hover { background: @accent; color: @bg; }
+#custom-notif { color: @accent2; }
+#custom-power { color: @urgent; }
+#custom-power:hover { background: @urgent; color: @bg; }
+
+#pulseaudio { color: @accent; }
+#pulseaudio.muted { color: @dim; }
+#bluetooth { color: @accent2; }
+#bluetooth.off, #bluetooth.disabled { color: @dim; }
+#bluetooth.connected { color: @green; }
+#network { color: @accent2; }
+#network.disconnected, #network.disabled { color: @dim; }
+#language { color: @yellow; min-width: 56px; }
+#custom-noche { color: @yellow; }
+#custom-noche.activa { background: @yellow; color: @bg; }
+#custom-noche.apagada { color: @dim; }
+#custom-despierto.activo { background: @yellow; color: @bg; }
+#custom-media { color: @green; }
+#scratchpad { color: @accent2; }
+#scratchpad.empty { background: transparent; }
+
+/* Bateria */
+#battery { color: @fg; }
+#battery.good, #battery.better { color: @green; }
+#battery.warning:not(.charging) { color: @yellow; }
+#battery.charging, #battery.plugged { background: @green; color: @bg; }
+@keyframes blink { to { background-color: @fg; color: @urgent; } }
+#battery.critical:not(.charging) {
+    background: @urgent; color: @bg;
+    animation: blink 0.7s linear infinite alternate;
+}
+
+#tray > .passive { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; background-color: @urgent; }
+
+/* Tooltip: el cuadro rectangular de detras debe ser transparente para que se vea solo el redondeado */
+tooltip, tooltip.background { background: transparent; box-shadow: none; border: none; }
+tooltip decoration { background: transparent; box-shadow: none; }
+tooltip > box, tooltip label { background: @bg; color: @fg; }
+tooltip > box { border: 2px solid @accent; border-radius: @r1@px; padding: 4px 8px; }

@@ -109,6 +109,9 @@ dotfiles:
   d_kanshi:
     src: kanshi
     dst: ~/.config/kanshi
+  d_tema:
+    src: tema
+    dst: ~/.config/tema
 
 profiles:
   bender:
@@ -171,6 +174,7 @@ profiles:
     - d_tmux
     - d_waybar
     - f_aliases
+    - d_tema
     - d_kanshi
 
 # Packages used above
