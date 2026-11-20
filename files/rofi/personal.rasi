@@ -28,7 +28,7 @@ window {
 }
 
 inputbar {
-    font:       "Montserrat 20";
+    font:       "Noto Sans 20";
     padding:    12px;
     spacing:    12px;
     children:   [ icon-search, entry ];

@@ -6,7 +6,7 @@
 " Map leader to space
 let mapleader = " "
 " Quickly cancel search highlighting
-nnoremap <leader><space> :nohlsearch<cr>
+nnoremap <leader>c :nohlsearch<cr>
 " Move buffer
 "nnoremap <leader>bn :bNext<cr>
 " Shortcutting split navigation

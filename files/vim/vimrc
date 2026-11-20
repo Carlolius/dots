@@ -22,10 +22,10 @@ set undodir=~/.cache/vim/undo
 " No backup of files needed
 set nobackup
 set nowritebackup
-" Insert 2 spaces for a tab
-set tabstop=2
-" Change the number of space characters inserted for indentation
-set shiftwidth=2
+" A tab is 4 columns wide (same as nvim)
+set tabstop=4
+" shiftwidth=0 means "use tabstop" when indenting (same as nvim)
+set shiftwidth=0
 " Makes tabbing smarter will realize you have 2 vs 4
 set smarttab
 " Makes indenting smart
@@ -108,8 +108,6 @@ set termguicolors
 
 " Autocommands
 """""""""""""""
-" Vertically center document when entering insert mode
-autocmd InsertEnter * norm zz
 " Stoled from https://github.com/CKolkey/.dotfiles/blob/master/nvim_init.vim
 
 " Autoreload changed files
