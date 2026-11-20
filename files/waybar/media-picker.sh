@@ -29,7 +29,7 @@ for p in "${players[@]}"; do
   label_to_player["$label"]="$p"
 done
 
-chosen=$(printf '%s\n' "${lines[@]}" | rofi -dmenu -p "Reproductor")
+chosen=$(printf '%s\n' "${lines[@]}" | fuzzel --dmenu --prompt "󰎆 ")
 [ -z "$chosen" ] && exit 0
 
 target="${label_to_player[$chosen]:-}"
