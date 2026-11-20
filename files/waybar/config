@@ -1,6 +1,6 @@
 // vim:ft=json
 {
-	"layer": "bottom", // Waybar at top layer
+	"layer": "bottom", // Drawn below the windows
 	"position": "bottom", // Waybar position (top|bottom|left|right)
 	/* "height": 25, // Waybar height (to be removed for auto height) */
 	// "width": 1280, // Waybar width
@@ -115,10 +115,11 @@
 		"path": "/"
 	},
 	"temperature": {
-		// hwmon indices aren't stable across reboots/kernel updates — if this
-		// ever goes blank again, `cat /sys/class/hwmon/hwmon*/name` to find
-		// which one is "k10temp" (AMD CPU) now and update the path below.
-		"hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
+		// hwmonN indices change across reboots/kernel updates, so point at the
+		// sensor's stable PCI device (k10temp, AMD CPU) and let waybar find the hwmon.
+		// If it ever goes blank: readlink -f /sys/class/hwmon/hwmon*/device (k10temp one).
+		"hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
+		"input-filename": "temp1_input",
 		"critical-threshold": 75,
 		// "format-critical": "{temperatureC}°C {icon}",
 		"format": "{temperatureC}°C {icon}",
@@ -192,7 +193,7 @@
 		// "scroll-step": 1, // %, can be a float
 		"format": "{format_source} {volume}% {icon}",
 		"format-bluetooth": "{format_source} {volume}% {icon} ",
-		"format-bluetooth-muted": "{format_source} ﱝ {icon} ",
+		"format-bluetooth-muted": "{format_source} 󰝟 {icon} ",
 		"format-muted": "{format_source} 󰝟",
 		"format-source": "{volume}% ",
 		"format-source-muted": "",
@@ -210,7 +211,7 @@
 			]
 		},
 		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-		"on-click-right": "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+		"on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
 		"on-click-middle": "pavucontrol"
 	},
 	"bluetooth": {
@@ -241,6 +242,6 @@
 	},
 	"custom/power": {
 		"format": "",
-		"on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Shutdown'  'shutdown -h now' -b 'Restart' 'shutdown -r now' -b 'Logout' 'swaymsg exit' -b 'Hibernate' 'systemctl hibernate' --background=#005566 --button-background=#009999 --button-border=#002b33 --border-bottom=#002b33"
+		"on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Shutdown' 'systemctl poweroff' -b 'Restart' 'systemctl reboot' -b 'Logout' 'swaymsg exit' -b 'Hibernate' 'systemctl hibernate' --background=#005566 --button-background=#009999 --button-border=#002b33 --border-bottom=#002b33"
 	},
 }
