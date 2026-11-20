@@ -29,7 +29,7 @@ alias rm='rm -I'
 
 # Utilities
 alias cls="clear"
-alias myip="ip route get 1 | awk '{print \$7}' && curl http://ipecho.net/plain && print " 
+alias myip="ip route get 1 | awk '{print \$7}' && curl https://ipecho.net/plain && print " 
 alias copy="wl-paste | wl-copy"
 alias unlock="sudo rm /var/lib/pacman/db.lck"
 alias ssh="TERM=xterm-256color \ssh"  # easier connection to non 256 color supported terminal
@@ -59,17 +59,12 @@ alias cpr='rsync --archive -hh --partial --info=stats1 --info=progress2 --modify
 alias mvr='rsync --archive -hh --partial --info=stats1 --info=progress2 --modify-window=1 --remove-source-files'
 
 # Dotdrop
-alias dotdrop="source ~/dots/env/bin/activate; sh ~/dots/dotdrop.sh"
-alias dotdropinstall="source ~/dots/env/bin/activate; sh ~/dots/dotdrop.sh install -D; deactivate"
-alias dotdropupdate="source ~/dots/env/bin/activate; sh ~/dots/dotdrop.sh update -P; deactivate"
-alias dotdropcompare="source ~/dots/env/bin/activate; sh ~/dots/dotdrop.sh compare; deactivate"
-alias dotins="dotdropinstall"
-alias dotup="dotdropupdate"
-alias dotcomp="dotdropcompare"
+# The venv is activated only inside the subshell, so it never leaks into the session
+dotdrop() ( source ~/dots/env/bin/activate && sh ~/dots/dotdrop.sh "$@" )
+alias dotins="dotdrop install -D"
+alias dotup="dotdrop update -P"
+alias dotcomp="dotdrop compare"
 alias dotconf="nvim ~/dots/config.yaml"
-
-# Tmux
-alias tmux='tmux -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
 
 # Daemons
 alias tvst='sudo systemctl start teamviewerd'

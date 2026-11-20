@@ -94,7 +94,6 @@ function total_update {
 		echo "¿Qué actualizamos?
 		s) Sistema
 		v) Plugins de Vim
-		r) Repositorios de git
 		d) dots
 		A) Todo lo anterior
 		p) pip
@@ -108,9 +107,6 @@ function total_update {
 			u_vim;;
 		d)
 			u_dots;;
-		r)
-			u_dots
-			;;
 		[Aa])
 			u_dots &
 			u_sistema
@@ -128,5 +124,5 @@ function total_update {
 # Teams AFK — reenvía cualquier flag a teams_afk_control.py
 # (ver hermes-skills/productivity/teams-afk). Uso: teams-afk --snooze 30
 teams-afk() {
-	/home/carlos/Kif/teams-afk/venv/bin/python3 /home/carlos/Kif/teams-afk/scripts/teams_afk_control.py "$@"
+	"$HOME"/Kif/teams-afk/venv/bin/python3 "$HOME"/Kif/teams-afk/scripts/teams_afk_control.py "$@"
 }

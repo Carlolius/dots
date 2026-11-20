@@ -13,7 +13,6 @@ setopt auto_pushd 		# Push the current directory visited on the stack.
 setopt cdable_vars 		# Change directory to a path stored in a variable.
 setopt completealiases 		# complete aliases
 setopt complete_in_word     	# Complete from both ends of a word.
-setopt correct 			# Spell correction
 setopt extended_glob        	# Use extended globbing syntax.
 setopt menu_complete 		# Use menu completion.
 setopt nomatch 			# print error if generation pattern has no match

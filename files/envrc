@@ -8,7 +8,6 @@ exists() {
 # Tell GPG which tty one is using so that it can prompt for pw
 GPG_TTY=$(tty)
 export GPG_TTY
-export GPG_AGENT_INFO=1
 
 # Choose default editor
 if exists nvim; then
@@ -38,16 +37,13 @@ export SXHKD_SHELL="sh"
 # XDG Paths
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE_HOME="$HOME"/.cache
-export XDG_DATA="$HOME"/.local/share
+export XDG_DATA_HOME="$HOME"/.local/share
 
 # ZSH Path
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 # Put zsh completion cache in cache directory
 export ZSH_COMPDUMP=$HOME/.cache/.zcompdump-$HOST
 
-# Python pip path
-export PATH="$PATH:/$HOME/.local/bin"
-
-# Npm packages
+# User bin (pip --user, npm global) first in PATH
 PATH="$HOME/.local/bin:$PATH"
 export npm_config_prefix="$HOME/.local"
