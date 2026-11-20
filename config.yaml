@@ -121,6 +121,9 @@ dotfiles:
   d_swayosd:
     src: swayosd
     dst: ~/.config/swayosd
+  f_hyprlock:
+    src: hypr/hyprlock.conf
+    dst: ~/.config/hypr/hyprlock.conf
 
 profiles:
   bender:
@@ -183,6 +186,7 @@ profiles:
     - d_tmux
     - d_waybar
     - f_aliases
+    - f_hyprlock
     - d_swayosd
     - d_swaync
     - d_fuzzel
