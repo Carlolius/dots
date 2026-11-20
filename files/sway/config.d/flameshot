@@ -1,5 +1,5 @@
 #
-# For flameshot to work
+# Exporta el entorno Wayland a systemd y dbus (portales, apps lanzadas por dbus)
 #
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null && \

@@ -1,9 +1,17 @@
 # Programs that autostart when Sway loads.
-# Dunst
-exec sleep 5 && dunst & 
+# Pantallas (perfiles por monitor)
+exec kanshi
+# sway reinicia las posiciones al recargar; kanshi las reaplica
+exec_always pgrep -x kanshi >/dev/null && kanshictl reload
+# Notificaciones y panel de ajustes rapidos
+exec swaync
+# OSD de volumen/brillo
+exec swayosd-server
 # Megasync for Mega.
 exec sleep 10 && exec megasync &
 # Dropbox
 exec sleep 10 && exec dropbox &
 # KDE polkit, for graphical authentication.
 exec /usr/lib/polkit-kde-authentication-agent-1
+# Luz nocturna (modo guardado en ~/.config/tema/noche-modo)
+exec ~/.config/sway/scripts/noche.sh start

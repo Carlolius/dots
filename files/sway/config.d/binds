@@ -5,31 +5,42 @@
 #
 # Audio
 #
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+#: Subir volumen
+bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume raise
+#: Bajar volumen
+bindsym XF86AudioLowerVolume exec swayosd-client --output-volume lower
+#: Silenciar audio
+bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
+#: Silenciar micro
+bindsym XF86AudioMicMute exec swayosd-client --input-volume mute-toggle
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+#: Play/pausa
 bindsym Mod1+Control+c exec playerctl play-pause
+#: Pista siguiente
 bindsym Mod1+Control+b exec playerctl next
+#: Pista anterior
 bindsym Mod1+Control+z exec playerctl previous
 
 #
 # Backlight
 #
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+#: Bajar brillo
+bindsym XF86MonBrightnessDown exec ~/.config/sway/scripts/brillo.sh down
+#: Subir brillo
+bindsym XF86MonBrightnessUp exec ~/.config/sway/scripts/brillo.sh up
 
 #
 # Term
 #
+#: Abrir terminal
 bindsym Mod1+x exec foot
 
 #
 # Toggle screen on/off
 #
+#: Apagar/encender la pantalla del portátil
 bindsym --locked Mod1+f2 exec swaymsg "output eDP-1 dpms toggle"
 
 #
@@ -40,49 +51,71 @@ bindsym Mod4+Mod1+l exec ~/.config/sway/lock.sh
 #
 # Alt+Tab to switch between windows
 #
-bindsym Mod1+tab workspace next_on_output 
-bindsym Mod1+Shift+tab workspace back_and_forth
+#: Cambiar a la ventana anterior (como KDE)
+bindsym Mod1+tab exec ~/.config/sway/scripts/alttab.sh
+#: Cambiar a la ventana menos reciente
+bindsym Mod1+Shift+tab exec ~/.config/sway/scripts/alttab.sh atras
 
 #
-# Exit mode
+# Sesion y energia (menu con confirmacion)
 #
-set $exit "exit: Poweroff, Sleep, Hibernate, Reboot, Logout"
-mode $exit {
-    bindsym --to-code {
-        p exec systemctl poweroff
-        s exec systemctl suspend, mode "default"
-	h exec systemctl hibernate, mode "default"
-        r exec systemctl reboot
-        l exec swaymsg exit
-    
-# back to normal: Enter or Escape
-        Return mode "default"
-        Escape mode "default"
-        $mod+x mode "default"
-    }
-}
-
-bindsym --to-code $mod+shift+a mode $exit
+#: Menu de sesion y energia (bloquear, suspender, apagar...)
+bindsym --to-code $mod+shift+a exec ~/.config/sway/scripts/salir.sh
 
 #
-# Screen capture
-#
-set $screenshot 1 Screen, 2 area, 3 screen clipboard, 4 area clipboard
-mode "$screenshot" {
-    bindsym 1 exec 'grim ~/ps_$(date +"%Y%m%d%H%M%S").png', mode "default"
-    bindsym 2 exec 'grim -g "$(slurp)" ~/ps_$(date +"%Y%m%d%H%M%S").png', mode "default"
-    bindsym 3 exec 'grim - | wl-copy', mode "default"
-    bindsym 4 exec 'grim -g "$(slurp)" - | wl-copy', mode "default"
-
-# back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym $mod+Print mode "default"
-}
-
-bindsym $mod+Print mode "$screenshot"
-bindsym Print exec 'grim - | swappy -f -', mode "default"
-bindsym shift+Print exec 'grim -g "$(slurp)" - | swappy -f -', mode "default"
+# Capturas: menu con fuzzel (area, pantalla, ventana, portapapeles/archivo)
+#: Captura de la ventana activa al portapapeles
+bindsym Print exec ~/.config/sway/scripts/capturas.sh activa
+#: Menu de capturas (guardar, area, pantalla, ventana...)
+bindsym $mod+Print exec ~/.config/sway/scripts/capturas.sh
+#: Captura de un area al editor (swappy)
+bindsym Shift+Print exec 'grim -g "$(slurp)" - | swappy -f -'
 
 # Write faster
+#: Escribir rápido (ydotool)
 bindsym Control+f1 exec 'bash -c ~/programs/ydotool/chooser.sh'
+
+#
+# Menus y atajos al estilo KDE
+#
+#: Menu de pantallas (extender, solo portatil...)
+bindsym $mod+p exec ~/.config/sway/scripts/pantallas.sh
+#: Lista buscable de todos los atajos
+bindsym $mod+F1 exec ~/.config/sway/scripts/atajos.sh
+#: Panel de notificaciones y ajustes rapidos
+bindsym $mod+n exec swaync-client -t -sw
+#: Cerrar ventana (como KDE)
+bindsym Mod1+F4 kill
+#: Escritorio anterior (como KDE)
+bindsym $mod+Ctrl+Left workspace prev
+#: Escritorio siguiente (como KDE)
+bindsym $mod+Ctrl+Right workspace next
+#: Ventana al escritorio anterior
+bindsym $mod+Ctrl+Shift+Left move container to workspace prev; workspace prev
+#: Ventana al escritorio siguiente
+bindsym $mod+Ctrl+Shift+Right move container to workspace next; workspace next
+#: Saltar a la otra pantalla
+bindsym $mod+Shift+Tab focus output right
+#: Redimensionar: estrechar (como Polonium)
+bindsym $mod+Ctrl+h resize shrink width 40px
+#: Redimensionar: ensanchar
+bindsym $mod+Ctrl+l resize grow width 40px
+#: Redimensionar: acortar
+bindsym $mod+Ctrl+k resize shrink height 40px
+#: Redimensionar: alargar
+bindsym $mod+Ctrl+j resize grow height 40px
+#: Pantalla completa
+bindsym $mod+Shift+f fullscreen
+#: Pantalla completa
+bindsym F11 fullscreen
+
+#
+# Tema y bluetooth
+#
+#: Cambiar paleta de colores y forma de esquinas
+bindsym $mod+Shift+t exec ~/.config/tema/aplicar.sh
+#: Menu de bluetooth
+bindsym $mod+Shift+b exec ~/.config/sway/scripts/bluetooth.sh
+
+#: Luz nocturna (como KDE: Ctrl+Alt+I)
+bindsym Control+Mod1+i exec ~/.config/sway/scripts/noche.sh toggle

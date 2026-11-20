@@ -3,16 +3,25 @@
 # ######## ######## ### ####
 
 # Movement
+#: Gesto: escritorio anterior
 bindgesture swipe:4:left workspace prev
+#: Gesto: escritorio siguiente
 bindgesture swipe:4:right workspace next
 
 # Music
+#: Gesto: play/pausa
 bindgesture pinch:outward exec playerctl play-pause
+#: Gesto: pista anterior
 bindgesture swipe:3:left exec playerctl previous
+#: Gesto: pista siguiente
 bindgesture swipe:3:right exec playerctl next
+#: Gesto: subir volumen
 bindgesture swipe:3:up exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+#: Gesto: bajar volumen
 bindgesture swipe:3:down exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
 # Bright
+#: Gesto: subir brillo
 bindgesture swipe:4:up exec brightnessctl set 5%+
+#: Gesto: bajar brillo
 bindgesture swipe:4:down exec brightnessctl set 5%-
