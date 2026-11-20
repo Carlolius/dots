@@ -118,6 +118,9 @@ dotfiles:
   d_swaync:
     src: swaync
     dst: ~/.config/swaync
+  d_swayosd:
+    src: swayosd
+    dst: ~/.config/swayosd
 
 profiles:
   bender:
@@ -180,6 +183,7 @@ profiles:
     - d_tmux
     - d_waybar
     - f_aliases
+    - d_swayosd
     - d_swaync
     - d_fuzzel
     - d_tema
