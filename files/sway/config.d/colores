@@ -1,0 +1,8 @@
+# Generado por ~/.config/tema/aplicar.sh: no editar a mano.
+#                       borde    fondo    texto    indicador  borde-hijo
+client.focused          #7aa2f7 #292e42 #c0caf5 #bb9af7 #7aa2f7
+client.focused_inactive #292e42 #1a1b26 #565f89 #292e42 #292e42
+client.unfocused        #292e42 #1a1b26 #565f89 #292e42 #292e42
+client.urgent           #f7768e #f7768e #1a1b26 #f7768e #f7768e
+client.placeholder      #1a1b26 #1a1b26 #c0caf5 #1a1b26 #1a1b26
+client.background       #1a1b26
