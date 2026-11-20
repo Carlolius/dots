@@ -112,6 +112,9 @@ dotfiles:
   d_tema:
     src: tema
     dst: ~/.config/tema
+  d_fuzzel:
+    src: fuzzel
+    dst: ~/.config/fuzzel
 
 profiles:
   bender:
@@ -174,6 +177,7 @@ profiles:
     - d_tmux
     - d_waybar
     - f_aliases
+    - d_fuzzel
     - d_tema
     - d_kanshi
 
