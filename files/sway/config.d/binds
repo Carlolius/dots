@@ -119,3 +119,6 @@ bindsym $mod+Shift+b exec ~/.config/sway/scripts/bluetooth.sh
 
 #: Luz nocturna (como KDE: Ctrl+Alt+I)
 bindsym Control+Mod1+i exec ~/.config/sway/scripts/noche.sh toggle
+
+#: Lista de ventanas abiertas (todas las pantallas)
+bindsym $mod+Tab exec ~/.config/sway/scripts/ventanas.sh
