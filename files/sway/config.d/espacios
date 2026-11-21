@@ -1,0 +1,12 @@
+# Escritorios por pantalla: 1-5 en el monitor Acer y 6-10 en el portatil.
+# Si el Acer no esta conectado, todos pasan al portatil (sway usa la siguiente pantalla de la lista).
+workspace 1 output "Acer Technologies HA240Y 0x82202483" eDP-1
+workspace 2 output "Acer Technologies HA240Y 0x82202483" eDP-1
+workspace 3 output "Acer Technologies HA240Y 0x82202483" eDP-1
+workspace 4 output "Acer Technologies HA240Y 0x82202483" eDP-1
+workspace 5 output "Acer Technologies HA240Y 0x82202483" eDP-1
+workspace 6 output eDP-1 "Acer Technologies HA240Y 0x82202483"
+workspace 7 output eDP-1 "Acer Technologies HA240Y 0x82202483"
+workspace 8 output eDP-1 "Acer Technologies HA240Y 0x82202483"
+workspace 9 output eDP-1 "Acer Technologies HA240Y 0x82202483"
+workspace 10 output eDP-1 "Acer Technologies HA240Y 0x82202483"
