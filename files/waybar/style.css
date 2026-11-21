@@ -77,7 +77,7 @@ window#waybar.tabbed #window { color: @yellow; }
 #bluetooth.connected { color: @green; }
 #network { color: @accent2; }
 #network.disconnected, #network.disabled { color: @dim; }
-#language { color: @yellow; min-width: 56px; }
+#language { color: @yellow; min-width: 40px; padding: 0 4px; }
 #custom-noche { color: @yellow; }
 #custom-noche.activa { background: @yellow; color: @bg; }
 #custom-noche.apagada { color: @dim; }
