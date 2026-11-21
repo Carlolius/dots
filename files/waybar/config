@@ -176,7 +176,7 @@
 		"tooltip-format-disabled": "Wi-Fi apagado (click central para encender)",
 		"on-click": "$HOME/.config/sway/scripts/toggle-red.sh wifi",
 		"on-click-right": "$HOME/.config/sway/scripts/wifi.sh",
-		"on-click-middle": "foot nmtui"
+		"on-click-middle": "foot --app-id float nmtui"
 	},
 	"network#eth": {
 		"interval": 5,
@@ -188,7 +188,7 @@
 		"tooltip-format-linked": "Cable conectado pero sin red",
 		"on-click": "$HOME/.config/sway/scripts/toggle-red.sh cable",
 		"on-click-right": "$HOME/.config/sway/scripts/wifi.sh",
-		"on-click-middle": "foot nmtui"
+		"on-click-middle": "foot --app-id float nmtui"
 	},
 	"pulseaudio": {
 		"format": "{format_source} {icon} {volume}%",

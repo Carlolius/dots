@@ -55,7 +55,7 @@
       "actions": [
         {
           "label": "󰖩  Wi-Fi",
-          "command": "foot nmtui"
+          "command": "foot --app-id float nmtui"
         },
         {
           "label": "󰂯  Bluetooth",
